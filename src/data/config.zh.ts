@@ -2,7 +2,7 @@ import { Config } from './types';
 
 export const configZh: Config = {
     identity: {
-        name: "鄭立誠 (Bruce Cheng)",
+        name: "鄭力誠 (Bruce Cheng)",
         role: "專案負責人 / AI 工程師 / 資料科學家",
         tagline: "透過 AI 架構設計與智慧製造領導力，推動產業創新。",
         email: "bruce.zheng0814@gmail.com",
