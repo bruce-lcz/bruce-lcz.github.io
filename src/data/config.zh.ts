@@ -16,17 +16,18 @@ export const configZh: Config = {
     },
     experience: [
         {
-            id: "stealth-mode",
+            id: "pixart",
             type: 'current',
-            company: "Stealth Mode / 新機會",
+            company: "PixArt 原相科技",
             companyMeta: {
-                description: "專注於下一代 AI 解決方案的創新科技新創。",
-                industry: "科技 / AI",
-                logo: "/logos/stealth.svg"
+                description: "專注於 CMOS 影像感測器及相關 IC 設計的全球領先無晶圓廠半導體公司。",
+                industry: "半導體 / IC 設計",
+                url: "https://www.pixart.com",
+                logo: "/logos/pixart.jfif"
             },
-            role: "Building the Future",
-            period: "4 個月前 - 現在",
-            description: "致力於下一代產品的技術策略規劃與架構基礎建設。",
+            role: "AI 工程師 / 專案負責人",
+            period: "2025年9月 - 現在",
+            description: "致力於下一代 AI 產品的技術策略規劃與架構基礎建設。",
             techStack: ["React", "TypeScript", "AI Agents", "System Design"],
             achievements: [
                 "制定技術策略與發展藍圖。",
@@ -43,7 +44,7 @@ export const configZh: Config = {
                 description: "全球領先的顯示解決方案與智慧製造技術供應商。",
                 industry: "製造 / 顯示技術",
                 url: "https://www.auo.com",
-                logo: "/logos/auo.svg"
+                logo: "/logos/auo.png"
             },
             role: "AI 工程師 / 專案負責人",
             period: "2021年8月 - 2025年8月",
@@ -209,7 +210,7 @@ export const configZh: Config = {
             field: "工業工程與管理",
             period: "2019 - 2021",
             thesis: "基於 R-tree 與 SPACE-MDL-LSTM 之大區域人流預測效率優化",
-            logo: "/logos/yuntech.svg"
+            logo: "/logos/yuntech.png"
         },
         {
             school: "國立雲林科技大學",
@@ -217,7 +218,7 @@ export const configZh: Config = {
             field: "工業工程與管理",
             period: "2015 - 2019",
             thesis: "彈性生產流程之機台派工最佳化",
-            logo: "/logos/yuntech.svg"
+            logo: "/logos/yuntech.png"
         }
     ],
     awards: [
