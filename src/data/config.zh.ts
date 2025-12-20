@@ -22,7 +22,7 @@ export const configZh: Config = {
             companyMeta: {
                 description: "專注於下一代 AI 解決方案的創新科技新創。",
                 industry: "科技 / AI",
-                logo: "/logos/company-placeholder.svg"
+                logo: "/logos/stealth.svg"
             },
             role: "Building the Future",
             period: "4 個月前 - 現在",
@@ -43,7 +43,7 @@ export const configZh: Config = {
                 description: "全球領先的顯示解決方案與智慧製造技術供應商。",
                 industry: "製造 / 顯示技術",
                 url: "https://www.auo.com",
-                logo: "/logos/company-placeholder.svg"
+                logo: "/logos/auo.svg"
             },
             role: "AI 工程師 / 專案負責人",
             period: "2021年8月 - 2025年8月",
@@ -65,7 +65,7 @@ export const configZh: Config = {
             companyMeta: {
                 description: "台灣最高學術研究機構。",
                 industry: "學術研究",
-                logo: "/logos/company-placeholder.svg"
+                logo: "/logos/sinica.png"
             },
             role: "研究實習生",
             period: "2019年2月 - 2019年7月",
@@ -209,7 +209,7 @@ export const configZh: Config = {
             field: "工業工程與管理",
             period: "2019 - 2021",
             thesis: "基於 R-tree 與 SPACE-MDL-LSTM 之大區域人流預測效率優化",
-            logo: "/logos/school-placeholder.svg"
+            logo: "/logos/yuntech.svg"
         },
         {
             school: "國立雲林科技大學",
@@ -217,7 +217,7 @@ export const configZh: Config = {
             field: "工業工程與管理",
             period: "2015 - 2019",
             thesis: "彈性生產流程之機台派工最佳化",
-            logo: "/logos/school-placeholder.svg"
+            logo: "/logos/yuntech.svg"
         }
     ],
     awards: [
