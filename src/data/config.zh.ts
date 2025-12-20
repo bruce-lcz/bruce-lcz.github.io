@@ -10,7 +10,7 @@ export const configZh: Config = {
     },
     links: {
         github: "https://github.com/bruce-lcz",
-        linkedin: "https://www.linkedin.com/in/bruce-cheng-0814",
+        linkedin: "https://www.linkedin.com/in/力誠-鄭-036b721b9",
 
         email: "mailto:bruce.zheng0814@gmail.com",
     },
