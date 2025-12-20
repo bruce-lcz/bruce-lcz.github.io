@@ -6,6 +6,7 @@ import { Projects } from './components/Projects';
 import { Education } from './components/Education';
 import { Awards } from './components/Awards';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
+import { Skills } from './components/Skills';
 
 // import { config } from './data/config'; // REMOVED
 import { useLanguage } from './context/LanguageContext';
@@ -13,7 +14,7 @@ import { useLanguage } from './context/LanguageContext';
 const Home = () => {
     const { config } = useLanguage();
     const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
-    const [activeTab, setActiveTab] = useState<'experience' | 'projects'>('experience');
+    const [activeTab, setActiveTab] = useState<'experience' | 'projects' | 'skills'>('experience');
 
     const selectedProject = selectedProjectId
         ? config.projects?.find(p => p.id === selectedProjectId) ?? null
@@ -35,6 +36,7 @@ const Home = () => {
                     >
                         Experience
                     </button>
+
                     <button
                         onClick={() => setActiveTab('projects')}
                         className={`relative px-6 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${activeTab === 'projects'
@@ -43,6 +45,15 @@ const Home = () => {
                             }`}
                     >
                         Projects
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('skills')}
+                        className={`relative px-6 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${activeTab === 'skills'
+                            ? 'bg-white text-gray-900 shadow-sm'
+                            : 'text-gray-500 hover:text-gray-700'
+                            }`}
+                    >
+                        Skills
                     </button>
                 </div>
             </div>
@@ -54,8 +65,10 @@ const Home = () => {
                         <Education />
                         <Awards />
                     </>
-                ) : (
+                ) : activeTab === 'projects' ? (
                     <Projects onProjectSelect={setSelectedProjectId} />
+                ) : (
+                    <Skills />
                 )}
             </div>
 
