@@ -38,9 +38,11 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                             <div className="flex justify-between items-start mb-4">
                                 <span className={`
                                     text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider
-                                    ${project.category === 'work' ? 'bg-blue-50 text-blue-600' :
-                                        project.category === 'research' ? 'bg-purple-50 text-purple-600' :
-                                            'bg-green-50 text-green-600'}
+                                    ${project.category.toLowerCase() === 'work' ? 'bg-blue-50 text-blue-600' :
+                                        project.category.toLowerCase() === 'research' ? 'bg-purple-50 text-purple-600' :
+                                            project.category.toLowerCase() === 'pixart' ? 'bg-indigo-50 text-indigo-600' :
+                                                project.category.toLowerCase() === 'auo' ? 'bg-blue-50 text-blue-600' :
+                                                    'bg-green-50 text-green-600'}
                                 `}>
                                     {project.category}
                                 </span>

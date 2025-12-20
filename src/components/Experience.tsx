@@ -31,16 +31,6 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                             }
             `}
                     >
-                        {job.type === 'current' && (
-                            <div className="absolute top-6 right-6 flex items-center gap-2">
-                                <span className="relative flex h-3 w-3">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                                </span>
-                                <span className="text-primary font-semibold text-xs uppercase tracking-wider">Current</span>
-                            </div>
-                        )}
-
                         <div className="flex flex-col mb-6">
                             <div className="flex items-start justify-between">
                                 <div>
@@ -54,6 +44,15 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                                             <span className="text-gray-500 flex items-center gap-1.5">
                                                 <Calendar className="w-4 h-4" />
                                                 {job.period}
+                                                {job.type === 'current' && (
+                                                    <span className="inline-flex items-center gap-1 ml-2 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                                                        <span className="relative flex h-2 w-2 mr-1">
+                                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                                                        </span>
+                                                        Current
+                                                    </span>
+                                                )}
                                             </span>
                                         </div>
                                         {/* Company Meta Description */}
