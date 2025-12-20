@@ -16,17 +16,18 @@ export const configEn: Config = {
     },
     experience: [
         {
-            id: "stealth-mode",
+            id: "pixart",
             type: 'current',
-            company: "Stealth Mode / New Opportunity",
+            company: "PixArt Imaging Inc.",
             companyMeta: {
-                description: "Innovative tech startup focusing on next-gen AI solutions.",
-                industry: "Technology / AI",
-                logo: "/logos/company-placeholder.svg"
+                description: "A leading fabless semiconductor company specializing in CMOS image sensors and related IC design.",
+                industry: "Semiconductor / IC Design",
+                url: "https://www.pixart.com",
+                logo: "/logos/pixart.jfif"
             },
-            role: "Building the Future",
-            period: "4 months ago - Present",
-            description: "Driving new strategic initiatives and architectural foundations for next-generation products.",
+            role: "AI Engineer / Project Leader",
+            period: "Sep 2025 - Present",
+            description: "Driving new strategic initiatives and architectural foundations for next-generation AI products.",
             techStack: ["React", "TypeScript", "AI Agents", "System Design"],
             achievements: [
                 "Formulating technical strategy and roadmap.",
@@ -43,7 +44,7 @@ export const configEn: Config = {
                 description: "A world-leading provider of display solutions and smart manufacturing technologies.",
                 industry: "Manufacturing / Display Technology",
                 url: "https://www.auo.com",
-                logo: "/logos/company-placeholder.svg"
+                logo: "/logos/auo.png"
             },
             role: "AI Engineer / Project Leader",
             period: "Aug 2021 - Aug 2025",
@@ -65,7 +66,7 @@ export const configEn: Config = {
             companyMeta: {
                 description: "The national academy of Taiwan, supporting research in various disciplines.",
                 industry: "Research",
-                logo: "/logos/company-placeholder.svg"
+                logo: "/logos/sinica.png"
             },
             role: "Research Intern",
             period: "Feb 2019 - Jul 2019",
@@ -209,7 +210,7 @@ Developed a system to parse and normalize messy address data from various source
             field: "Industrial Engineering and Management",
             period: "2019 - 2021",
             thesis: "Improve the Predicted Efficiency of Crowd Flow in Large Areas Based on R-tree and SPACE-MDL-LSTM",
-            logo: "/logos/school-placeholder.svg"
+            logo: "/logos/yuntech.png"
         },
         {
             school: "National Yunlin University of Science and Technology",
@@ -217,7 +218,7 @@ Developed a system to parse and normalize messy address data from various source
             field: "Industrial Engineering and Management",
             period: "2015 - 2019",
             thesis: "Optimization of machine dispatching in flexible production processes",
-            logo: "/logos/school-placeholder.svg"
+            logo: "/logos/yuntech.png"
         }
     ],
     awards: [

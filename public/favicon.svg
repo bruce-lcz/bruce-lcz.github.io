@@ -1,0 +1,9 @@
+<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="128" height="128" rx="32" fill="#FAFAFA"/>
+    <!-- Top Bun -->
+    <path d="M34 50C34 38.9543 42.9543 30 54 30H74C85.0457 30 94 38.9543 94 50V54H34V50Z" fill="#F5A623"/>
+    <!-- Patty -->
+    <rect x="34" y="60" width="60" height="14" rx="4" fill="#8B572A"/>
+    <!-- Bottom Bun -->
+    <path d="M34 80H94V84C94 95.0457 85.0457 104 74 104H54C42.9543 104 34 95.0457 34 84V80Z" fill="#F5A623"/>
+</svg>

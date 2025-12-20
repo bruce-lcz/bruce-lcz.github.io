@@ -34,11 +34,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         const savedLang = localStorage.getItem('language') as Language;
         if (savedLang === 'en' || savedLang === 'zh') {
             setLanguageState(savedLang);
-        } else {
-            // Optional: Detect browser language
-            const browserLang = navigator.language.startsWith('zh') ? 'zh' : 'en';
-            setLanguageState(browserLang);
         }
+        // Removed browser detection to enforce English default unless saved
     }, []);
 
     const config = language === 'zh' ? configZh : configEn;
