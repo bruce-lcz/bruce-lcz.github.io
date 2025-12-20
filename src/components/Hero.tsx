@@ -7,7 +7,7 @@ export const Hero = () => {
     const { identity, links } = config;
 
     return (
-        <section className="relative min-h-[90vh] flex flex-col justify-center items-center px-6 py-20 bg-white overflow-hidden">
+        <section className="relative min-h-[60vh] flex flex-col justify-start md:justify-center items-center px-6 pt-28 pb-12 md:py-12 bg-white overflow-hidden">
             {/* Minimal Grid Background Pattern */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f3f4_1px,transparent_1px),linear-gradient(to_bottom,#f1f3f4_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
@@ -17,8 +17,8 @@ export const Hero = () => {
                     <button
                         onClick={() => language !== 'en' && toggleLanguage()}
                         className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${language === 'en'
-                                ? 'bg-white text-gray-900 shadow-sm'
-                                : 'text-gray-500 hover:text-gray-900'
+                            ? 'bg-white text-gray-900 shadow-sm'
+                            : 'text-gray-500 hover:text-gray-900'
                             }`}
                     >
                         EN
@@ -26,8 +26,8 @@ export const Hero = () => {
                     <button
                         onClick={() => language !== 'zh' && toggleLanguage()}
                         className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${language === 'zh'
-                                ? 'bg-white text-gray-900 shadow-sm'
-                                : 'text-gray-500 hover:text-gray-900'
+                            ? 'bg-white text-gray-900 shadow-sm'
+                            : 'text-gray-500 hover:text-gray-900'
                             }`}
                     >
                         中文
@@ -41,26 +41,26 @@ export const Hero = () => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="text-center max-w-4xl mx-auto z-10"
             >
-                <div className="inline-block mb-8">
+                <div className="inline-block mb-6">
                     <span className="px-4 py-2 rounded-full bg-gray-50 text-gray-900 border border-gray-200 text-sm font-medium tracking-wide shadow-sm">
-                        Portfolio 2025
+                        Professional Profile
                     </span>
                 </div>
 
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900 leading-[1.2]">
+                <h1 className="text-3xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900 leading-[1.2]">
                     {identity.name}
                 </h1>
 
-                <p className="text-xl md:text-2xl font-light text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                <p className="text-lg md:text-2xl font-light text-gray-600 max-w-2xl mx-auto mb-6 leading-relaxed">
                     {identity.role}
                 </p>
 
-                <p className="text-lg text-gray-500 max-w-lg mx-auto mb-12 leading-relaxed">
+                <p className="text-base md:text-lg text-gray-500 max-w-lg mx-auto mb-8 leading-relaxed">
                     {identity.tagline}
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-                    <a
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+                    {/* <a
                         href={links.resume}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -68,7 +68,7 @@ export const Hero = () => {
                     >
                         View Resume
                         <ArrowRight className="w-5 h-5" />
-                    </a>
+                    </a> */}
                     <a
                         href={`mailto:${links.email}`}
                         className="flex items-center gap-2 px-8 py-3 rounded-lg font-medium text-gray-700 bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"

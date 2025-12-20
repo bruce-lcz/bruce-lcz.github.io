@@ -1,18 +1,18 @@
 import { Config } from './types';
+import { PERSONAL_INFO, SOCIAL_LINKS, COMPANIES } from './common';
 
 export const configEn: Config = {
     identity: {
-        name: "Bruce Cheng",
-        role: "Project Leader / AI Engineer / Data Scientist",
-        tagline: "Driving industrial innovation through AI architecture and smart manufacturing leadership.",
-        email: "bruce.zheng0814@gmail.com",
-        avatar: "/assets/avatar.jpg",
+        name: PERSONAL_INFO.name,
+        role: "Information Engineer (Generative AI & LLM)",
+        tagline: "Specializing in On-Premise Generative AI system architecture for the IC Design industry, with end-to-end capabilities from design to deployment.",
+        email: PERSONAL_INFO.email,
+        avatar: PERSONAL_INFO.avatar,
     },
     links: {
-        github: "https://github.com/bruce-lcz",
-        linkedin: "https://www.linkedin.com/in/bruce-cheng-0814",
-
-        email: "mailto:bruce.zheng0814@gmail.com",
+        github: SOCIAL_LINKS.github,
+        linkedin: SOCIAL_LINKS.linkedin,
+        email: SOCIAL_LINKS.email,
     },
     experience: [
         {
@@ -20,222 +20,357 @@ export const configEn: Config = {
             type: 'current',
             company: "PixArt Imaging Inc.",
             companyMeta: {
-                description: "A leading fabless semiconductor company specializing in CMOS image sensors and related IC design.",
+                ...COMPANIES.pixart,
+                description: "A leading global fabless semiconductor company specializing in CMOS image sensors and related IC design.",
                 industry: "Semiconductor / IC Design",
-                url: "https://www.pixart.com",
-                logo: "/logos/pixart.jfif"
             },
-            role: "AI Engineer / Project Leader",
-            period: "Sep 2025 - Present",
-            description: "Driving new strategic initiatives and architectural foundations for next-generation AI products.",
-            techStack: ["React", "TypeScript", "AI Agents", "System Design"],
+            role: "Information Engineer (Generative AI and LLM Projects)",
+            period: "Aug 2025 - Present",
+            description: "Part of the IT team, responsible for building 'On-Premise' Generative AI infrastructure that meets high security standards for the IC Design industry, empowering Legal, Operations, and R&D departments.",
+            techStack: ["vLLM", "Vector DB", "ASR", "AWS Bedrock", "System Architecture"],
             achievements: [
-                "Formulating technical strategy and roadmap.",
-                "Designing scalable architecture patterns.",
-                "Establishing engineering best practices."
+                "L&IP (Legal & IP) Support: Built a local RAG system to enable automated translation and retrieval of patent documents while ensuring data security.",
+                "Operations Optimization: Developed an automated meeting minute system integrating ASR and LLM for accurate transcripts and summaries.",
+                "R&D Empowerment: Implemented a local Coding Copilot service to enhance development efficiency while protecting code IP.",
+                "Future Roadmap: Advancing Verilog logic optimization Copilot and enterprise-level LLM platform construction.",
             ],
-            relatedProjectIds: []
+            relatedProjectIds: ["pixart-legal-rag", "pixart-meeting-assistant", "pixart-coding-copilot"],
         },
         {
             id: "auo",
             type: 'past',
-            company: "AUO - Smart Manufacturing",
+            company: "AUO Corporation - Advanced Manufacturing Center",
             companyMeta: {
-                description: "A world-leading provider of display solutions and smart manufacturing technologies.",
+                ...COMPANIES.auo,
+                description: "A global leader in display solutions and smart manufacturing technologies.",
                 industry: "Manufacturing / Display Technology",
-                url: "https://www.auo.com",
-                logo: "/logos/auo.png"
             },
             role: "AI Engineer / Project Leader",
             period: "Aug 2021 - Aug 2025",
-            description: "Led cross-functional teams to design AI architectures and optimize manufacturing processes, evolving systems from RAG to Agent-based solutions.",
+            description: "Led cross-functional teams to design AI architectures and optimize manufacturing processes, evolving systems from RAG to Agent-based solutions integrated with Knowledge Graphs.",
             techStack: ["Python", "SQL", "Databricks", "Streamlit", "FastAPI", "LLM Agents"],
             achievements: [
-                "Preventive Maintenance System: Reduced prediction error by 20%, saving 90 man-hours monthly.",
-                "Intelligent Assistant Platform: Evolved architecture from RAG to Agent-based with Knowledge Graph integration.",
-                "Cross-Factory Implementation: Increased yield by 1.43% and reduced defects by 12.62%, saving ~300 man-hours/month.",
-                "Capacity Calculation: Improved planning accuracy, saving 3 hours of daily manual work.",
-                "Recognized as 'Level 3 Elite Talent' in Smart Manufacturing; Defensive Patent approved."
+                "Cross-Factory Yield Optimization: Increased yield by 1.43% and reduced defects by 12.62% through AI parameter recommendation, saving approx. 300 man-hours monthly.",
+                "Intelligent Assistant Platform: Upgraded architecture from RAG to an Agent system with Knowledge Graph integration, solving complex attribution problems.",
+                "Preventive Maintenance System (PHM): Reduced defect prediction error (RMSE) by 20%, saving 90 hours of manual inspection time monthly.",
+                "Professional Recognition: Project outcomes approved for internal 'Defensive Patent'; recognized as 'Level 3 Elite Talent' in Smart Manufacturing.",
             ],
-            relatedProjectIds: ["auo-pm", "auo-assistant", "auo-yield"]
+            relatedProjectIds: ["auo-assistant", "auo-yield", "auo-pm"],
         },
         {
             id: "academia-sinica",
             type: 'past',
             company: "Academia Sinica - GIS Center",
             companyMeta: {
-                description: "The national academy of Taiwan, supporting research in various disciplines.",
-                industry: "Research",
-                logo: "/logos/sinica.png"
+                ...COMPANIES.sinica,
+                description: "Taiwan's premier academic research institution.",
+                industry: "Academic Research",
             },
             role: "Research Intern",
             period: "Feb 2019 - Jul 2019",
-            description: "Developed web systems for address data sampling and normalization.",
-            techStack: ["Web Development", "Data Normalization"],
+            description: "Developed a Web system for address data sampling and normalization.",
+            techStack: ["Web Development", "Data Normalization", "PostgreSQL"],
             achievements: [
-                "Developed a web system for online address sampling services.",
-                "Designed a normalization module and address attribute database."
+                "Developed an online address sampling service system, winning the Best Student Paper Award at TGIS.",
+                "Designed normalization modules and an address attribute database, solving unstructured data issues in Taiwan address formats.",
             ],
-            relatedProjectIds: ["address-normalization"]
-        }
+            relatedProjectIds: ["address-normalization"],
+        },
     ],
     projects: [
         {
-            id: "auo-pm",
-            title: "Preventive Maintenance System (PHM)",
-            category: "work",
-            role: "AI Engineer / Project Lead",
-            period: "2022 - 2024",
-            companyId: "auo",
-            shortDescription: "Reduced prediction error by 20% and saved 90 man-hours monthly through advanced predictive modeling.",
+            id: "pixart-legal-rag",
+            title: "Legal & IP On-Premise RAG System",
+            category: "PixArt",
+            role: "AI Architect / Full-Stack Developer",
+            period: "2025 - Present",
+            companyId: "pixart",
+            shortDescription: "High-security on-premise patent retrieval and translation system for the IC design industry.",
             description: `
-**Context:**
-Factory machinery downtime is costly. Traditional maintenance schedules were inefficient, leading to either unnecessary maintenance or unexpected failures.
+**Background:**
+Patent documents and IP data in the IC design industry are highly sensitive and cannot be processed using public cloud LLM services.
 
 **Solution:**
-Developed a predictive maintenance system using machine learning to forecast equipment failure.
-- Implemented data pipelines on Databricks.
-- Built prediction models using XGBoost/LightGBM.
-- Deployed inference API using FastAPI.
+- **On-Premise Deployment:** Deployed local inference services (using vLLM) to ensure data remains within the intranet.
+- **RAG Architecture:** Integrated Vector Database (Vector DB) with local models for precise retrieval and technical terminology translation.
+- **Full-Stack Development:** Provided an intuitive Web interface (Streamlit/FastAPI) for legal personnel.
 
-**Impact:**
-- **20%** reduction in prediction error compared to legacy systems.
-- **90 man-hours** saved per month in manual inspection and downtime analysis.
-      `,
+**Results:**
+- Achieved secure automated translation of patent documents, significantly reducing analysis time.
+- Ensured all sensitive IP data is processed within the corporate firewall, complying with strict security regulations.
+            `,
             keyFeatures: [
-                "Real-time equipment health monitoring",
-                "Automated alert generation",
-                "Root cause analysis dashboard"
+                "vLLM High-Performance Inference Engine",
+                "High-Security Data Processing Workflow",
+                "Local Vector Retrieval Integration",
             ],
             challenges: [
-                "Handling massive volumes of high-frequency sensor data.",
-                "Addressing class imbalance in failure data."
+                "Optimizing generation quality of local models in specific legal/technical domains.",
+                "vLLM memory management and performance tuning under hardware resource constraints.",
             ],
-            techStack: ["Python", "Databricks", "XGBoost", "FastAPI"]
+            techStack: ["vLLM", "Vector DB", "Python", "Docker", "RAG"],
+        },
+        {
+            id: "pixart-meeting-assistant",
+            title: "Enterprise ASR Meeting Minutes System",
+            category: "PixArt",
+            role: "AI Engineer",
+            period: "2025 - Present",
+            companyId: "pixart",
+            shortDescription: "Automated meeting minutes and summary generation tool integrating speech recognition and LLM.",
+            description: `
+**Background:**
+Frequent cross-departmental meetings make manual minute-taking time-consuming and prone to omissions.
+
+**Solution:**
+- **Voice Processing:** Applied ASR (Automatic Speech Recognition) and Voice Segmentation technologies for accurate speech-to-text conversion.
+- **Smart Summarization:** Integrated LLM to extract key points and organize Action Items from transcripts.
+
+**Results:**
+- Automated generation of meeting transcripts and structured summaries, enhancing operations management efficiency.
+            `,
+            keyFeatures: [
+                "Multi-Speaker Voice Separation (Speaker Diarization)",
+                "Automated Action Item Generation",
+                "Meeting Key Summaries",
+            ],
+            challenges: [
+                "Handling simultaneous speech and environmental noise interference.",
+                "Accuracy calibration for semiconductor terminology speech recognition.",
+            ],
+            techStack: ["ASR (Whisper)", "vLLM", "Voice Segmentation", "Python"],
+        },
+        {
+            id: "pixart-coding-copilot",
+            title: "R&D On-Premise Coding Copilot",
+            category: "PixArt",
+            role: "AI Architect",
+            period: "2025 - Present",
+            companyId: "pixart",
+            shortDescription: "Implemented local code assistance service to protect R&D IP.",
+            description: `
+**Background:**
+R&D teams need AI coding assistance, but commercial Copilot solutions pose risks of code leakage.
+
+**Solution:**
+- **Localization Deployment:** Set up enterprise-exclusive Code LLM inference services (based on vLLM).
+- **Integrated Application:** Integrated via API into the development environment, providing secure code completion and optimization suggestions.
+- **Future Roadmap:** Expanding support to Verilog language to assist in chip design.
+
+**Results:**
+- Provided AI-assisted development capabilities to the R&D team in a fully air-gapped environment.
+            `,
+            keyFeatures: [
+                "Code LLM Local Deployment",
+                "vLLM Inference Service",
+                "Verilog Syntax Support (Planned)",
+            ],
+            challenges: [
+                "Latency optimization for on-premise inference services.",
+                "Fine-tuning models for Hardware Description Languages (HDL).",
+            ],
+            techStack: ["vLLM", "Code LLM", "Python", "Docker"],
         },
         {
             id: "auo-assistant",
             title: "Intelligent Assistant Platform (RAG -> Agent)",
-            category: "work",
+            category: "AUO",
             role: "AI Architect",
             period: "2023 - 2025",
             companyId: "auo",
-            shortDescription: "Evolved from a document retrieval system (RAG) to an autonomous Agent-based solution with Knowledge Graph integration.",
+            shortDescription: "Evolved from document retrieval (RAG) to an autonomous Agent system with Knowledge Graph.",
             description: `
 **Evolution:**
-Started as a RAG system to help engineers find technical documentation. Evolved into an Agentic workflow that can actively query databases and perform diagnostic tasks.
+Initially a RAG system for engineers to find technical documents, evolved into an Agentic workflow capable of active database querying and diagnostic tasks.
 
 **Architecture:**
-- **RAG Phase:** Vector database (Milvus) + LangChain.
-- **Agent Phase:** Multi-agent system (LangGraph) capable of tool use (SQL queries, API calls).
-- **Knowledge Graph:** Integrated Neo4j to map relationships between equipment, processes, and failure modes.
+- **RAG Phase:** Vector Database + LangChain.
+- **Agent Phase:** Multi-Agent System (LangGraph) with tool usage capabilities (SQL Query, API Call).
+- **Knowledge Graph:** Integrated Neo4j to map relationships between equipment, processes, and proprietary terminology.
 
 **Key Achievements:**
-- Drastically reduced information retrieval time for engineers.
-- Enabled complex query answering like "Why is yield dropping in Cell A?"
-      `,
+- Evolved from simple Q&A to answering complex attribution questions like "Why did the yield drop?".
+- Established Table Description Generator for automated knowledge preparation workflows.
+            `,
             keyFeatures: [
-                "Multi-turn conversation capability",
-                "Integration with internal manufacturing databases",
-                "Hallucination reduction via Knowledge Graph constraints"
+                "Multi-Agent Architecture",
+                "Knowledge Graph Integration",
+                "SQL Agent Automated Data Querying",
             ],
             challenges: [
-                "Ensuring accuracy of technical engineering answers.",
-                "Latency optimization for complex agentic chains."
+                "Ensuring Text-to-SQL accuracy in complex manufacturing databases.",
+                "Resolving hallucination and infinite loop issues in Agent execution paths.",
             ],
-            techStack: ["LLM", "RAG", "LangChain/LangGraph", "Neo4j", "Milvus"]
+            techStack: ["LLM", "LangGraph", "Neo4j", "RAG", "Python"],
         },
         {
             id: "auo-yield",
-            title: "Cross-Factory Yield AI",
-            category: "work",
+            title: "Cross-Factory Yield AI Optimization (Golden Path)",
+            category: "AUO",
             role: "Data Scientist",
             period: "2021 - 2023",
             companyId: "auo",
             shortDescription: "Increased yield by 1.43% and reduced defects by 12.62% across multiple factories.",
             description: `
 **Problem:**
-Yield variations between factories producing similar products were unexplained.
+Unexplained yield differences existed between different factories producing similar products.
 
-**Approach:**
-- Standardized data schemas across factories.
-- Applied statistical analysis and ML to identify "Golden Path" parameters.
-- Implemented automated setpoint recommendations.
+**Methodology:**
+- **Data Standardization:** Unified sensor data formats and definitions across factories.
+- **Golden Path Algorithm:** Identified optimal machine combination paths and parameter settings.
+- **Explainable AI (XAI):** Provided engineers with basis for parameter adjustments, avoiding "black box" predictions.
 
 **Results:**
-- Yield improvement: **+1.43%**
-- Defect reduction: **-12.62%**
-- Operational savings: **~300 man-hours/month**
-      `,
+- Yield Increase: **+1.43%**
+- Defect Reduction: **-12.62%**
+- Operational Savings: **Approx. 300 man-hours monthly**
+            `,
             keyFeatures: [
-                "Cross-site data normalization",
-                "Automated parameter recommendation engine"
+                "Optimal Path Recommendation Algorithm",
+                "Cross-Site Data Standardization (ETL)",
+                "LIME Model Explainability Analysis",
             ],
             challenges: [
-                "Inconsistent sensor calibration across sites.",
-                "Cultural resistance to changing established process parameters."
+                "Standardization challenges due to inconsistent equipment capabilities across factories.",
+                "On-site communication and verification for changing established process parameters.",
             ],
-            techStack: ["Python", "SQL", "Scikit-learn", "Tableau"]
+            techStack: ["Python", "SQL", "Scikit-learn", "LIME", "Genetic Algorithm"],
+        },
+        {
+            id: "auo-pm",
+            title: "Preventive Maintenance System (PM)",
+            category: "AUO",
+            role: "AI Engineer / Project Lead",
+            period: "2022 - 2024",
+            companyId: "auo",
+            shortDescription: "Implemented custom Loss Function, reducing defect prediction error by 20%.",
+            description: `
+**Background:**
+Traditional maintenance relied on fixed cycles, unable to address sudden equipment anomalies.
+
+**Solution:**
+- Developed time-series prediction models based on LSTM.
+- **Innovation:** Designed Trend Consistency Loss Function to focus on capturing anomaly trends rather than single-point errors.
+- Integrated scheduling systems to automatically suggest optimal maintenance timing.
+
+**Results:**
+- Reduced prediction error (RMSE) by **20%**.
+- Saved **90 hours** of manual inspection time monthly.
+            `,
+            keyFeatures: [
+                "Custom Loss Function Design",
+                "LSTM Time Series Forecasting",
+                "Maintenance Scheduling Optimization",
+            ],
+            challenges: [
+                "Handling extreme class imbalance in failure data.",
+                "Balancing conflicts between capacity demands and downtime maintenance costs.",
+            ],
+            techStack: ["Python", "TensorFlow/PyTorch", "LSTM", "FastAPI"],
         },
         {
             id: "address-normalization",
             title: "Address Data Normalization System",
-            category: "research",
+            category: "Research",
             role: "Research Intern",
             period: "2019",
             companyId: "academia-sinica",
-            shortDescription: "Web system for standardizing unstructured address text into structured formats.",
+            shortDescription: "Automated normalization system solving Taiwan address format chaos.",
             description: `
 **Project:**
-Developed a system to parse and normalize messy address data from various sources for the GIS center.
+Developed a system for the GIS Center to parse and normalize unstructured address data from various sources.
 
-**Role:**
-- Designed the database schema for address attributes.
-- Built the web interface for researchers to upload and clean data.
-      `,
+**Achievements:**
+- Designed address normalization modules and built a national address attribute database.
+- Won the 2019 TGIS Best Student Paper Award.
+            `,
             keyFeatures: [
-                "Fuzzy string matching for address components",
-                "Interactive cleaning interface"
+                "Address String Normalization Algorithm",
+                "Web Sampling Service System",
             ],
             challenges: [
-                "Handling ambiguous and non-standard address formats in Taiwan."
+                "Handling high ambiguity in Taiwan address formats.",
             ],
-            techStack: ["Web Development", "Python", "PostgreSQL"]
-        }
+            techStack: ["Python", "Django", "PostgreSQL", "Web Development"],
+        },
     ],
     education: [
         {
             school: "National Yunlin University of Science and Technology",
-            degree: "Master",
+            degree: "Master's Degree",
             field: "Industrial Engineering and Management",
             period: "2019 - 2021",
-            thesis: "Improve the Predicted Efficiency of Crowd Flow in Large Areas Based on R-tree and SPACE-MDL-LSTM",
-            logo: "/logos/yuntech.png"
+            thesis: "Efficiency Optimization of Large-Area Crowd Flow Prediction based on R-tree and SPACE-MDL-LSTM",
+            logo: COMPANIES.yuntech.logo,
         },
         {
             school: "National Yunlin University of Science and Technology",
-            degree: "Bachelor",
+            degree: "Bachelor's Degree",
             field: "Industrial Engineering and Management",
             period: "2015 - 2019",
-            thesis: "Optimization of machine dispatching in flexible production processes",
-            logo: "/logos/yuntech.png"
-        }
+            thesis: "Optimization of Machine Dispatching in Flexible Production Processes",
+            logo: COMPANIES.yuntech.logo,
+        },
     ],
     awards: [
         {
+            year: "2025",
+            title: "Smart Manufacturing Level 3 Elite Talent (Predictive Production)",
+            organization: "AUO Corporation",
+        },
+        {
             year: "2020",
             title: "Best Student Paper Award",
-            organization: "TGIS Conference"
+            organization: "Taiwan Association of Geographic Information System Conference (TGIS)",
         },
         {
             year: "2019",
             title: "Best Student Paper Award",
-            organization: "TGIS Conference"
-        }
+            organization: "Taiwan Association of Geographic Information System Conference (TGIS)",
+        },
     ],
     skills: [
-        "Project Leadership", "Architecture Design", "Python & SQL",
-        "LLM Applications", "Machine Learning", "Data Engineering",
-        "Databricks", "Streamlit", "FastAPI", "Django"
-    ]
+        {
+            category: "Generative AI & LLM Architecture",
+            items: [
+                "On-Premise Deployment (vLLM)",
+                "RAG Architecture",
+                "Multi-Agent Systems (LangGraph)",
+                "Knowledge Graph (Neo4j)",
+                "ASR & Audio Processing (Whisper)",
+                "Prompt Engineering",
+                "Vector Database Integration",
+            ],
+        },
+        {
+            category: "System Engineering & Backend",
+            items: [
+                "System Architecture Design",
+                "Python Backend (FastAPI / Django)",
+                "API Design & Microservices",
+                "Containerization (Docker)",
+                "Cloud Services (AWS Bedrock)",
+                "Git & CI/CD Basics",
+            ],
+        },
+        {
+            category: "Data Science & Algorithms",
+            items: [
+                "Time Series Forecasting (LSTM)",
+                "Custom Loss Function Design",
+                "Explainable AI (XAI / LIME)",
+                "Data Engineering & ETL (Databricks / SQL)",
+                "Algorithm Optimization (Genetic Algorithm)",
+            ],
+        },
+        {
+            category: "Technical Leadership",
+            items: [
+                "Technical Project Management",
+                "Cross-functional Team Leadership",
+                "AI Strategy Planning",
+                "Problem Solving & RCA",
+            ],
+        },
+    ],
 };

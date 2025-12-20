@@ -27,7 +27,7 @@ export interface ProjectMedia {
 export interface DetailedProject {
     id: string;
     title: string;
-    category: 'work' | 'side-project' | 'research';
+    category: string;
     role: string;
     period: string;
     companyId?: string; // Link back to job
@@ -70,6 +70,11 @@ export interface SocialLinks {
     email: string;
 }
 
+export interface SkillCategory {
+    category: string;
+    items: string[];
+}
+
 export interface Config {
     identity: UserIdentity;
     links: SocialLinks;
@@ -77,5 +82,5 @@ export interface Config {
     projects: DetailedProject[];
     education: Education[];
     awards: Award[];
-    skills: string[];
+    skills: SkillCategory[];
 }
