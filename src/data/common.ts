@@ -11,7 +11,7 @@ export const PERSONAL_INFO = {
 
 export const SOCIAL_LINKS = {
     github: "https://github.com/bruce-lcz",
-    linkedin: "https://www.linkedin.com/in/力誠-鄭-036b721b9",
+    linkedin: "https://www.linkedin.com/in/bruce-lcz",
     email: `mailto:${PERSONAL_INFO.email}`,
 };
 
