@@ -14,7 +14,7 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                 <div>
                     <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">Project Achievements</h2>
                     <div className="h-1 w-12 bg-primary rounded-full mb-6" />
-                    <p className="text-gray-600 max-w-xl text-lg">
+                    <p className="text-gray-600 text-lg">
                         A collection of technical initiatives, system architectures, and AI solutions delivering measurable impact.
                     </p>
                 </div>

@@ -4,7 +4,7 @@ export const PERSONAL_INFO = {
     name: "Bruce Cheng", // Default/English name
     nameZh: "鄭力誠 (Bruce Cheng)", // Chinese specific name
     email: "bruce.zheng0814@gmail.com",
-    avatar: "/assets/avatar.jpg",
+    avatar: "/assets/avatar.png",
     taglineEn: "Driving industrial innovation through AI architecture and smart manufacturing leadership.",
     taglineZh: "透過 AI 架構設計與智慧製造領導力，推動產業創新。",
 };

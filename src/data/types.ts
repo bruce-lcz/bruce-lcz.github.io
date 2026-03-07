@@ -40,6 +40,29 @@ export interface DetailedProject {
     link?: string;
 }
 
+export interface ProjectTranslation {
+    title: string;
+    role: string;
+    shortDescription: string;
+    description: string;
+    keyFeatures: string[];
+    challenges: string[];
+}
+
+export interface UnifiedProject {
+    id: string;
+    category: string;
+    period: string;
+    companyId?: string;
+    techStack: string[];
+    media?: ProjectMedia[];
+    link?: string;
+    translations: {
+        en: ProjectTranslation;
+        zh: ProjectTranslation;
+    };
+}
+
 export interface Education {
     school: string;
     degree: string;
@@ -59,6 +82,7 @@ export interface UserIdentity {
     name: string;
     role: string;
     tagline: string;
+    about: string[];
     email: string;
     avatar: string;
 }
@@ -84,3 +108,4 @@ export interface Config {
     awards: Award[];
     skills: SkillCategory[];
 }
+
