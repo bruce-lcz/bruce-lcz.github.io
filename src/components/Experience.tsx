@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, ChevronRight, Layout, Building } from 'lucide-react';
+import { Briefcase, Calendar, ChevronRight, Layout } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 interface ExperienceProps {
@@ -55,13 +55,7 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                                                 )}
                                             </span>
                                         </div>
-                                        {/* Company Meta Description */}
-                                        {job.companyMeta?.description && (
-                                            <p className="text-gray-500 text-sm mt-1 italic flex items-center gap-1.5">
-                                                <Building className="w-3.5 h-3.5 shrink-0" />
-                                                {job.companyMeta.description}
-                                            </p>
-                                        )}
+
                                     </div>
                                 </div>
                                 {job.companyMeta?.logo && (

@@ -12,7 +12,7 @@ import { Skills } from './components/Skills';
 import { useLanguage } from './context/LanguageContext';
 
 const Home = () => {
-    const { config } = useLanguage();
+    const { config, language } = useLanguage();
     const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<'experience' | 'projects' | 'skills'>('experience');
 
@@ -34,7 +34,7 @@ const Home = () => {
                             : 'text-gray-500 hover:text-gray-700'
                             }`}
                     >
-                        Experience
+                        {language === 'zh' ? '經歷' : 'Experience'}
                     </button>
 
                     <button
@@ -44,7 +44,7 @@ const Home = () => {
                             : 'text-gray-500 hover:text-gray-700'
                             }`}
                     >
-                        Projects
+                        {language === 'zh' ? '專案' : 'Projects'}
                     </button>
                     <button
                         onClick={() => setActiveTab('skills')}
@@ -53,7 +53,7 @@ const Home = () => {
                             : 'text-gray-500 hover:text-gray-700'
                             }`}
                     >
-                        Skills
+                        {language === 'zh' ? '技能' : 'Skills'}
                     </button>
                 </div>
             </div>

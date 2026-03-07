@@ -83,7 +83,7 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                                                 rel="noopener noreferrer"
                                                 className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 rounded-lg transition-colors text-white font-medium"
                                             >
-                                                View Live <ExternalLink className="w-4 h-4" />
+                                                GitHub Repository <ExternalLink className="w-4 h-4" />
                                             </a>
                                         )}
                                     </div>
