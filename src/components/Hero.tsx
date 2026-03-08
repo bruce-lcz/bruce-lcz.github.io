@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Mail, Globe } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Globe, FileText } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const Hero = () => {
@@ -68,15 +68,6 @@ export const Hero = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-                    {/* <a
-                        href={links.resume}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-gray-900 text-white px-8 py-3 rounded-lg font-medium text-lg hover:bg-gray-800 transition-all shadow-md hover:shadow-lg translate-y-0 hover:-translate-y-1 duration-200"
-                    >
-                        View Resume
-                        <ArrowRight className="w-5 h-5" />
-                    </a> */}
                     <a
                         href={`mailto:${links.email}`}
                         className="flex items-center gap-2 px-8 py-3 rounded-lg font-medium text-gray-700 bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
@@ -86,12 +77,13 @@ export const Hero = () => {
                     </a>
                 </div>
 
-                <div className="flex justify-center gap-8">
+                <div className="flex justify-center gap-8 items-center">
                     {links.github && (
                         <a
                             href={links.github}
                             target="_blank"
                             rel="noopener noreferrer"
+                            title="GitHub"
                             className="text-gray-400 hover:text-gray-900 transition-colors"
                         >
                             <Github className="w-7 h-7" />
@@ -102,11 +94,20 @@ export const Hero = () => {
                             href={links.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
+                            title="LinkedIn"
                             className="text-gray-400 hover:text-[#0077b5] transition-colors"
                         >
                             <Linkedin className="w-7 h-7" />
                         </a>
                     )}
+                    <a
+                        href="/Bruce_Cheng_Resume.pdf"
+                        download="Bruce_Cheng_Resume.pdf"
+                        title="Download Resume"
+                        className="text-gray-400 hover:text-gray-900 transition-colors"
+                    >
+                        <FileText className="w-7 h-7" />
+                    </a>
                 </div>
             </motion.div>
         </section>

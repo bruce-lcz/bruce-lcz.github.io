@@ -162,10 +162,11 @@ export const configEn: Config = {
         {
             category: "Frontend & Dev Tools",
             items: [
-                "React / TypeScript",
-                "Streamlit / Gradio (Internal Tools)",
+                "Streamlit (AI Internal Tools)",
+                "AI-Assisted Web Dev",
                 "Git & Version Control",
-                "CI/CD Basics",
+                "CI/CD",
+                "Linux Management",
             ],
         },
     ],
