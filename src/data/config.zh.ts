@@ -162,10 +162,10 @@ export const configZh: Config = {
         {
             category: "前端與開發工具",
             items: [
-                "React / TypeScript",
-                "Streamlit / Gradio（內部工具）",
+                "Streamlit (AI Internal Tools)",
+                "AI 輔助網頁開發",
                 "Git 版本控制",
-                "CI/CD 基礎",
+                "CI/CD / Linux 管理",
             ],
         },
     ],
