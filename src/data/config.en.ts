@@ -5,10 +5,11 @@ import { UNIFIED_PROJECTS } from './projects';
 export const configEn: Config = {
     identity: {
         name: PERSONAL_INFO.name,
-        role: "AI Application Engineer",
-        tagline: "Dedicated to transforming Generative AI models into high-value enterprise applications, with full-stack capabilities from architecture to deployment.",
+        role: "AI Solution Architect & GenAI Workflow Builder",
+        tagline: "I turn messy engineering and business problems into practical AI workflows, from the first problem framing to systems people can actually use.",
         about: [
-            "Dedicated to transforming cutting-edge Generative AI models into high-value enterprise applications. I specialize in handling on-premise deployments within strict security environments, leveraging a full-stack microservices approach to build robust and performant AI solutions."
+            "I work where AI ideas meet real constraints: confidential documents, on-prem environments, manufacturing data, legacy workflows, and teams that need more than a demo. My strength is turning those constraints into clear system designs, usable tools, and workflows that fit how people already work.",
+            "I enjoy the space between architecture and implementation. Beyond building LLM, RAG, agent, and automation systems, I have led internal workshops, shared adoption practices with engineering teams, and returned to academic labs and universities to give talks and technical feedback."
         ],
         email: PERSONAL_INFO.email,
         avatar: PERSONAL_INFO.avatar,
@@ -30,12 +31,12 @@ export const configEn: Config = {
             },
             role: "Information Engineer (Generative AI and LLM Projects)",
             period: "Aug 2025 - Present",
-            description: "Part of the IT team, responsible for building 'On-Premise' Generative AI infrastructure that meets high security standards for the IC Design industry, empowering Legal, Operations, and R&D departments.",
+            description: "Part of the IT team, designing GenAI workflows for IC design teams in on-prem and air-gapped environments. I translate high-security requirements from Legal, Operations, and R&D into internal AI systems that are practical enough to become part of daily work.",
             techStack: ["vLLM", "Vector DB", "ASR", "AWS Bedrock", "System Architecture"],
             achievements: [
-                "Automated contract comparison and patent translation using Vision-LLM OCR and multi-layer LLM pipelines, significantly enhancing legal audit efficiency with full data security compliance.",
-                "Built the fully offline Auto-Minutes system integrating ASR and Speaker Diarization, improving long-audio processing efficiency by 50%–70%.",
-                "Constructed an offline GenAI collaboration platform driving 120B+ models, enabling enterprise-wide AI productivity through tiered model services.",
+                "Designed on-prem Legal AI workflows for secure contract review and confidential patent translation without sending sensitive documents to cloud AI services.",
+                "Built a fully offline meeting intelligence workflow integrating ASR, speaker diarization, and structured summarization, improving long-audio processing efficiency by 50%–70%.",
+                "Designed and deployed an internal GenAI workspace for air-gapped IC design teams, enabling coding assistants, multimodal AI, and AI-assisted engineering workflows.",
             ],
             relatedProjectIds: ["pixart-genai-hub", "legal-contract-comparison", "patent-translation-service", "auto-minutes-system"],
         },
@@ -50,11 +51,11 @@ export const configEn: Config = {
             },
             role: "AI Engineer / Project Leader",
             period: "Aug 2021 - Aug 2025",
-            description: "Led cross-functional teams to design AI architectures and optimize manufacturing processes, evolving systems from RAG to Agent-based solutions integrated with Knowledge Graphs.",
+            description: "Led cross-functional AI initiatives for manufacturing, turning operational variability, engineering knowledge, and process bottlenecks into decision-support workflows and explainable recommendations that production teams could act on.",
             techStack: ["Python", "SQL", "Databricks", "Streamlit", "FastAPI", "LLM Agents"],
             achievements: [
-                "Cross-factory yield optimization via AI parameter recommendation: +1.43% yield, -12.62% defects, ~300 man-hours saved monthly.",
-                "Evolved the intelligent assistant platform from RAG to a Multi-Agent system with Knowledge Graph, enabling complex attribution analysis.",
+                "Designed a cross-factory AI optimization workflow that translated manufacturing variability into explainable parameter recommendations: +1.43% yield, -12.62% defects, ~300 man-hours saved monthly.",
+                "Led the evolution of an internal manufacturing knowledge assistant from basic RAG search into a Multi-Agent decision-support system integrating SQL tools and Knowledge Graph reasoning.",
                 "Predictive maintenance system (PHM): -20% defect prediction error (RMSE), 90 man-hours saved monthly.",
                 "Outcomes approved for internal Defensive Patent; recognized as Level 3 Elite Talent in Smart Manufacturing.",
             ],

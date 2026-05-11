@@ -7,15 +7,19 @@ interface ProjectsProps {
 }
 
 export const Projects = ({ onProjectSelect }: ProjectsProps) => {
-    const { config } = useLanguage();
+    const { config, language } = useLanguage();
     return (
         <section className="max-w-6xl mx-auto px-6 py-20" id="projects">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">Project Achievements</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
+                        {language === 'zh' ? '精選 Workflows' : 'Selected Workflows'}
+                    </h2>
                     <div className="h-1 w-12 bg-primary rounded-full mb-6" />
                     <p className="text-gray-600 text-lg">
-                        A collection of technical initiatives, system architectures, and AI solutions delivering measurable impact.
+                        {language === 'zh'
+                            ? '這些案例呈現我如何把模糊的 AI 需求，拆解成團隊真的能使用的系統、工具與 workflow。'
+                            : 'A closer look at how I turn ambiguous AI needs into systems, tools, and workflows that teams can use.'}
                     </p>
                 </div>
             </div>

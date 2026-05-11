@@ -73,7 +73,9 @@ const Home = () => {
             </div>
 
             <footer className="text-center py-20 text-gray-500 text-sm border-t border-gray-200 bg-white">
-                <p>© {new Date().getFullYear()} Bruce Cheng. Built for Impact.</p>
+                <p>
+                    © {new Date().getFullYear()} Bruce Cheng. {language === 'zh' ? '用心製作。' : 'Built with care.'}
+                </p>
             </footer>
 
             <ProjectDetailModal

@@ -12,7 +12,7 @@ interface ProjectDetailModalProps {
 }
 
 export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailModalProps) => {
-    const { config } = useLanguage();
+    const { config, language } = useLanguage();
     // Prevent body scroll when modal is open
     useEffect(() => {
         if (isOpen) {
@@ -83,7 +83,7 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                                                 rel="noopener noreferrer"
                                                 className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 rounded-lg transition-colors text-white font-medium"
                                             >
-                                                GitHub Repository <ExternalLink className="w-4 h-4" />
+                                                {language === 'zh' ? 'GitHub 專案' : 'GitHub Repository'} <ExternalLink className="w-4 h-4" />
                                             </a>
                                         )}
                                     </div>
@@ -98,7 +98,7 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                                     <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                                         <h3 className="flex items-center gap-2 font-bold text-gray-900 mb-4">
                                             <Award className="w-5 h-5 text-primary" />
-                                            Key Features
+                                            {language === 'zh' ? '關鍵設計' : 'Key Features'}
                                         </h3>
                                         <ul className="space-y-3">
                                             {project.keyFeatures.map((feature, idx) => (
@@ -114,7 +114,7 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                                         <div className="bg-orange-50 p-6 rounded-xl border border-orange-100">
                                             <h3 className="flex items-center gap-2 font-bold text-gray-900 mb-4">
                                                 <Tag className="w-5 h-5 text-orange-500" />
-                                                Core Challenges
+                                                {language === 'zh' ? '核心挑戰' : 'Core Challenges'}
                                             </h3>
                                             <ul className="space-y-3">
                                                 {project.challenges.map((challenge, idx) => (
@@ -135,7 +135,9 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
 
                                 {/* Tech Stack */}
                                 <div>
-                                    <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Tech Stack & Tools</h3>
+                                    <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">
+                                        {language === 'zh' ? '技術與工具' : 'Tech Stack & Tools'}
+                                    </h3>
                                     <div className="flex flex-wrap gap-2">
                                         {project.techStack.map(tech => (
                                             <span key={tech} className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-md text-sm font-medium border border-gray-200">

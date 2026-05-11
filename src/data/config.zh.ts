@@ -5,10 +5,11 @@ import { UNIFIED_PROJECTS } from './projects';
 export const configZh: Config = {
     identity: {
         name: PERSONAL_INFO.nameZh,
-        role: "AI Application Engineer",
-        tagline: "致力於將生成式 AI 模型轉化為高價值企業應用，具備從系統架構到全端開發的端對端實戰能力。",
+        role: "AI 解決方案架構師｜GenAI Workflow Builder",
+        tagline: "我擅長把模糊的工程與商業問題，拆解成可實作的 AI workflow，從問題定義一路做到團隊真的能使用的系統。",
         about: [
-            "致力於將先進的 Generative AI 模型轉化為具備實用價值的企業級應用。擅長處理高資安環境的端側部署，並結合全端微服務架構，打造兼具效能與體驗的完整解決方案。"
+            "我常處理的是那些不只需要模型 demo 的 AI 題目：機密文件、內網環境、製造資料、既有流程，以及真正要被團隊採用的內部工具。我的強項是把這些限制整理成清楚的系統設計、可使用的工具，以及貼近實際工作方式的 workflow。",
+            "我喜歡站在架構與實作中間，把需求拆成能落地的設計，再一路做到可運作的系統。除了 LLM、RAG、Agent 與自動化流程開發，我也曾舉辦內部工作坊、和工程團隊分享 AI 採用經驗，並回到學校與研究室進行演講和技術回饋。"
         ],
         email: PERSONAL_INFO.email,
         avatar: PERSONAL_INFO.avatar,
@@ -30,12 +31,12 @@ export const configZh: Config = {
             },
             role: "Information Engineer (Generative AI and LLM Projects)",
             period: "2025年8月 - 至今",
-            description: "隸屬於 IT 團隊，負責建置符合 IC 設計產業高資安標準的「本地端 (On-Premise)」生成式 AI 基礎設施，賦能 Legal、Operations 與 R&D 部門。",
+            description: "隸屬於 IT 團隊，為 IC 設計團隊設計 On-Prem 與 Air-Gapped 環境下的 GenAI workflow。我將法務、營運與研發的高資安需求，轉化為能融入日常工作的內部 AI 系統。",
             techStack: ["LLM", "ASR", "AWS Bedrock", "System Architecture"],
             achievements: [
-                "使用 Vision-LLM OCR 與多層次 LLM 流程，開發自動化合約比對與專利翻譯系統，在確保資安合規的前提下大幅提升法務審核效率。",
-                "建構完全離線的 Auto-Minutes 系統，整合 ASR 與說話者分離技術，將長音檔處理效率提升 50%–70%。",
-                "建構全離線 GenAI 協作平台，成功驅動 120B+ 超大規模模型，透過模型分級服務極大化研發效率。",
+                "設計本地端 Legal AI workflow，讓敏感合約審閱與機密專利翻譯不需要送到雲端 AI 服務。",
+                "建構完全離線的會議智慧化 workflow，整合 ASR、說話者分離與結構化摘要，將長音檔處理效率提升 50%–70%。",
+                "設計並部署面向 Air-Gapped IC 設計團隊的內部 GenAI workspace，支援 coding assistant、多模態分析與 AI 輔助工程流程。",
             ],
             relatedProjectIds: ["pixart-genai-hub", "legal-contract-comparison", "patent-translation-service", "auto-minutes-system"],
         },
@@ -50,11 +51,11 @@ export const configZh: Config = {
             },
             role: "AI 工程師 / 專案負責人",
             period: "2021年8月 - 2025年8月",
-            description: "帶領跨部門團隊設計 AI 架構並優化製造流程，將系統從 RAG 演進為結合 Knowledge Graph 的 Agent-based 解決方案。",
+            description: "帶領跨部門 AI 專案，將製造現場的流程瓶頸、製程變異與工程知識，轉化為決策輔助 workflow 與可解釋的參數建議，讓生產團隊能實際採用。",
             techStack: ["Python", "SQL", "Databricks", "Streamlit", "FastAPI", "LLM Agents"],
             achievements: [
-                "跨廠區良率 AI 優化：+1.43% 良率、-12.62% 缺陷、每月節省約 300 工時。",
-                "智慧助理平台架構演進：從 RAG 升級為結合知識圖譜的 Multi-Agent 系統，具備複雜歸因分析能力。",
+                "設計跨廠 AI 優化 workflow，將製造變異轉化為可解釋的參數建議：+1.43% 良率、-12.62% 缺陷、每月節省約 300 工時。",
+                "主導內部製造知識助理從基礎 RAG 搜尋演進為結合 SQL 工具與知識圖譜推理的 Multi-Agent 決策輔助系統。",
                 "PHM 預防性維護系統：預測誤差（RMSE）降低 20%，每月節省 90 工時人工檢測。",
                 "專案成果獲內部防禦性專利核可；獲選公司智慧製造 Level 3 精英人才。",
             ],

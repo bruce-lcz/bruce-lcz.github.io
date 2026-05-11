@@ -3,11 +3,13 @@ import { GraduationCap } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const Education = () => {
-    const { config } = useLanguage();
+    const { config, language } = useLanguage();
     return (
         <section className="max-w-4xl mx-auto px-6 py-20 bg-white">
             <div className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">Education</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
+                    {language === 'zh' ? '學歷' : 'Education'}
+                </h2>
                 <div className="h-1 w-12 bg-primary rounded-full" />
             </div>
 

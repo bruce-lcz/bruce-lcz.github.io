@@ -51,7 +51,7 @@ export const Hero = () => {
 
                 <div className="inline-block mb-4">
                     <span className="px-4 py-2 rounded-full bg-gray-50 text-gray-900 border border-gray-200 text-sm font-medium tracking-wide shadow-sm">
-                        Professional Profile
+                        {language === 'zh' ? 'AI Workflow 設計者' : 'AI Workflow Builder'}
                     </span>
                 </div>
 
@@ -73,7 +73,7 @@ export const Hero = () => {
                         className="flex items-center gap-2 px-8 py-3 rounded-lg font-medium text-gray-700 bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
                     >
                         <Mail className="w-5 h-5" />
-                        Contact Me
+                        {language === 'zh' ? '聯絡我' : 'Contact Me'}
                     </a>
                 </div>
 
@@ -103,7 +103,7 @@ export const Hero = () => {
                     <a
                         href="/Bruce_Cheng_Resume.pdf"
                         download="Bruce_Cheng_Resume.pdf"
-                        title="Download Resume"
+                        title={language === 'zh' ? '下載履歷' : 'Download Resume'}
                         className="text-gray-400 hover:text-gray-900 transition-colors"
                     >
                         <FileText className="w-7 h-7" />

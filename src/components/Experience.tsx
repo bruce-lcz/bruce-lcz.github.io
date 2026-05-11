@@ -7,11 +7,13 @@ interface ExperienceProps {
 }
 
 export const Experience = ({ onProjectSelect }: ExperienceProps) => {
-    const { config } = useLanguage();
+    const { config, language } = useLanguage();
     return (
         <section className="max-w-4xl mx-auto px-6 py-20 bg-gray-50" id="experience">
             <div className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">Experience</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
+                    {language === 'zh' ? '經歷' : 'Experience'}
+                </h2>
                 <div className="h-1 w-12 bg-primary rounded-full" />
             </div>
 
@@ -50,7 +52,7 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                                                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                                                             <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                                                         </span>
-                                                        Current
+                                                        {language === 'zh' ? '目前' : 'Current'}
                                                     </span>
                                                 )}
                                             </span>
@@ -84,7 +86,7 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                             <div className="mb-6 pt-4 border-t border-dashed border-gray-200">
                                 <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
                                     <Layout className="w-4 h-4" />
-                                    Key Projects
+                                    {language === 'zh' ? '關鍵專案' : 'Key Projects'}
                                 </h4>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     {job.relatedProjectIds.map(pid => {
