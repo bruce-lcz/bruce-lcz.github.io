@@ -5,6 +5,14 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --portfolio-surface: rgba(255, 255, 255, 0.82);
+    --portfolio-border: rgba(218, 220, 224, 0.88);
+    --portfolio-shadow: 0 22px 70px rgba(15, 23, 42, 0.08);
+    --portfolio-shadow-soft: 0 12px 32px rgba(15, 23, 42, 0.05);
+    --portfolio-glow: radial-gradient(circle at top, rgba(26, 115, 232, 0.18), transparent 52%);
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -24,5 +32,43 @@
   h5,
   h6 {
     @apply font-display tracking-tight text-gray-900;
+  }
+}
+
+@layer components {
+  .editorial-surface {
+    background: var(--portfolio-surface);
+    border: 1px solid var(--portfolio-border);
+    box-shadow: var(--portfolio-shadow-soft);
+    backdrop-filter: blur(14px);
+  }
+
+  .editorial-card {
+    @apply rounded-[28px] border border-gray-200 bg-white;
+    box-shadow: var(--portfolio-shadow-soft);
+  }
+
+  .editorial-kicker {
+    @apply text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-primary/80;
+  }
+}
+
+@layer utilities {
+  .bg-editorial-glow {
+    background-image: var(--portfolio-glow);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -1,0 +1,49 @@
+<svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111821"/>
+      <stop offset="1" stop-color="#19232D"/>
+    </linearGradient>
+    <linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E2833"/>
+      <stop offset="1" stop-color="#18212A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/>
+  <rect x="24" y="24" width="1392" height="432" rx="36" stroke="#2A3643"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="72" y="60" width="128" height="40" rx="20" fill="#18212B" stroke="#344454"/>
+    <rect x="216" y="60" width="152" height="40" rx="20" fill="#18212B" stroke="#344454"/>
+    <rect x="384" y="60" width="176" height="40" rx="20" fill="#18212B" stroke="#344454"/>
+    <text x="107" y="86" fill="#E7EEF6" font-size="15" font-weight="600">On-Prem</text>
+    <text x="255" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Confidential</text>
+    <text x="424" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Zero-Omission</text>
+  </g>
+  <g filter="url(#glow)" stroke="#5AD7F7" stroke-width="4" stroke-linecap="round">
+    <path d="M292 240H356"/><path d="M504 240H568"/><path d="M716 240H780"/><path d="M928 240H992"/><path d="M1140 240H1204"/>
+  </g>
+  <g fill="#5AD7F7">
+    <path d="M356 240L343 232V248L356 240Z"/><path d="M568 240L555 232V248L568 240Z"/><path d="M780 240L767 232V248L780 240Z"/><path d="M992 240L979 232V248L992 240Z"/><path d="M1204 240L1191 232V248L1204 240Z"/>
+  </g>
+  <g fill="url(#node)" stroke="#334252">
+    <rect x="88" y="184" width="204" height="112" rx="26"/><rect x="300" y="184" width="204" height="112" rx="26"/><rect x="512" y="184" width="204" height="112" rx="26"/><rect x="724" y="184" width="204" height="112" rx="26"/><rect x="936" y="184" width="204" height="112" rx="26"/><rect x="1148" y="184" width="204" height="112" rx="26"/>
+  </g>
+  <g fill="#141C25" stroke="#3A4E62">
+    <rect x="154" y="198" width="44" height="44" rx="12"/><rect x="366" y="198" width="44" height="44" rx="12"/><rect x="578" y="198" width="44" height="44" rx="12"/><rect x="790" y="198" width="44" height="44" rx="12"/><rect x="1002" y="198" width="44" height="44" rx="12"/><rect x="1214" y="198" width="44" height="44" rx="12"/>
+  </g>
+  <g fill="none" stroke="#87E6FB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="166" y="206" width="20" height="26" rx="3"/><path d="M171 214H181M171 220H181"/>
+    <rect x="375" y="210" width="26" height="18" rx="4"/><path d="M365 234H411"/>
+    <circle cx="600" cy="220" r="10"/><path d="M595 220L599 224L606 216"/>
+    <path d="M803 210L812 220L803 230"/><path d="M815 210L824 220L815 230"/>
+    <circle cx="1024" cy="220" r="10" stroke="#F59E0B"/><path d="M1018 220H1030M1024 214V226" stroke="#F59E0B"/>
+    <circle cx="1236" cy="214" r="7"/><path d="M1236 221V232"/><path d="M1227 232H1245"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#EAF1F8" font-size="24" font-weight="700">
+    <text x="137" y="272">Input Docs</text><text x="370" y="272">OCR</text><text x="547" y="272">Validation</text><text x="754" y="272">LLM Compare</text><text x="974" y="272">Diff Review</text><text x="1194" y="272">Reviewer</text>
+  </g>
+</svg>

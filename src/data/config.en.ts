@@ -5,8 +5,8 @@ import { UNIFIED_PROJECTS } from './projects';
 export const configEn: Config = {
     identity: {
         name: PERSONAL_INFO.name,
-        role: "AI Solution Architect & GenAI Workflow Builder",
-        tagline: "I turn messy engineering and business problems into practical AI workflows, from the first problem framing to systems people can actually use.",
+        role: "AI Solution Architect | Enterprise GenAI Applications",
+        tagline: "I design and build secure internal LLM applications that help teams solve document, engineering, and manufacturing workflow problems.",
         about: [
             "I work where AI ideas meet real constraints: confidential documents, on-prem environments, manufacturing data, legacy workflows, and teams that need more than a demo. My strength is turning those constraints into clear system designs, usable tools, and workflows that fit how people already work.",
             "I enjoy the space between architecture and implementation. Beyond building LLM, RAG, agent, and automation systems, I have led internal workshops, shared adoption practices with engineering teams, and returned to academic labs and universities to give talks and technical feedback."
@@ -81,16 +81,59 @@ export const configEn: Config = {
             relatedProjectIds: ["address-normalization"],
         },
     ],
-    projects: UNIFIED_PROJECTS.map(p => ({
-        id: p.id,
-        category: p.category,
-        period: p.period,
-        companyId: p.companyId,
-        techStack: p.techStack,
-        media: p.media,
-        link: p.link,
-        ...p.translations.en,
-    })),
+    projects: UNIFIED_PROJECTS.map((p) => {
+        const baseProject = {
+            id: p.id,
+            category: p.category,
+            visualType: p.visualType,
+            period: p.period,
+            companyId: p.companyId,
+            heroBadges: p.heroBadges,
+            heroImage: p.heroImage,
+            techStack: p.techStack,
+            media: p.media,
+            link: p.link,
+            ...p.translations.en,
+        };
+
+        if (p.id !== 'legal-contract-comparison') {
+            return baseProject;
+        }
+
+        return {
+            ...baseProject,
+            title: "On-Prem Legal Document Comparison Web App",
+            visualType: "legal-comparison",
+            role: "AI Solution Architect",
+            company: "PixArt Imaging Inc.",
+            period: "2026/02 – 2026/03",
+            summary: "Designed a secure on-prem AI workflow that helps legal teams compare signed contracts and confidential legal documents without exposing sensitive content to cloud services.",
+            shortDescription: "Designed a secure on-prem AI workflow that helps legal teams compare signed contracts and confidential legal documents without exposing sensitive content to cloud services.",
+            heroBadges: ["On-Prem AI", "OCR + LLM Comparison", "Clause-Level Diff Review"],
+            heroImage: "/images/projects/legal-document-comparison-hero.svg",
+            techStack: ["Python", "FastAPI", "vLLM", "Vision LLM (OCR)", "LLM Pipeline", "Document Processing"],
+            problemSolved: [
+                "Confidential legal documents could not be uploaded to external AI or cloud-based document review services.",
+                "Signed or scanned contracts often contained handwritten marks, stamps, and formatting differences that made manual comparison time-consuming.",
+                "Legal reviewers needed a reliable way to compare document versions while preserving every legal keyword and clause.",
+                "AI-assisted comparison required deterministic validation to avoid missing or altering critical legal content.",
+            ],
+            implementationHighlights: [
+                "Built an internal Web App that compares original legal files with signed or scanned contract documents.",
+                "Integrated OCR, document restructuring, and LLM-based comparison into an on-prem workflow.",
+                "Added a deterministic validation layer using Multiset Check to reduce the risk of missing keywords during restructuring.",
+                "Designed a synchronized dual-pane review interface for clause-level difference visualization.",
+                "Kept the workflow fully inside the company environment to protect confidential legal documents.",
+            ],
+            impact: [
+                "Reduced manual effort required to compare signed contracts and revised legal documents.",
+                "Improved review reliability by combining OCR, LLM comparison, and deterministic validation.",
+                "Helped legal teams review sensitive documents without relying on external services.",
+                "Demonstrated how LLM-based document intelligence can be productized into an internal enterprise Web App.",
+            ],
+            cardTags: ["Python", "FastAPI", "vLLM", "Vision LLM (OCR)", "Document Processing"],
+        };
+    }),
     education: [
         {
             school: "National Yunlin University of Science and Technology",

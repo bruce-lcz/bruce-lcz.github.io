@@ -28,13 +28,33 @@ export interface DetailedProject {
     id: string;
     title: string;
     category: string;
+    visualType?:
+        | 'legal-comparison'
+        | 'patent-translation'
+        | 'meeting-intelligence'
+        | 'genai-workspace'
+        | 'gym-tracker'
+        | 'manufacturing-assistant'
+        | 'yield-optimization'
+        | 'preventive-maintenance'
+        | 'address-normalization';
     role: string;
+    company?: string;
     period: string;
+    companyName?: string;
     companyId?: string; // Link back to job
     shortDescription: string; // Used for cards/previews
     description: string; // Full markdown description
     keyFeatures: string[];
     challenges: string[];
+    summary?: string;
+    problemSolved?: string[];
+    implementationHighlights?: string[];
+    impact?: string[];
+    oneLineSummary?: string;
+    cardTags?: string[];
+    heroBadges?: string[];
+    heroImage?: string;
     techStack: string[];
     media?: ProjectMedia[];
     link?: string;
@@ -43,17 +63,31 @@ export interface DetailedProject {
 export interface ProjectTranslation {
     title: string;
     role: string;
+    visualType?: DetailedProject['visualType'];
+    company?: string;
+    companyName?: string;
     shortDescription: string;
     description: string;
     keyFeatures: string[];
     challenges: string[];
+    summary?: string;
+    problemSolved?: string[];
+    implementationHighlights?: string[];
+    impact?: string[];
+    oneLineSummary?: string;
+    cardTags?: string[];
+    heroBadges?: string[];
+    heroImage?: string;
 }
 
 export interface UnifiedProject {
     id: string;
     category: string;
     period: string;
+    visualType?: DetailedProject['visualType'];
     companyId?: string;
+    heroBadges?: string[];
+    heroImage?: string;
     techStack: string[];
     media?: ProjectMedia[];
     link?: string;

@@ -6,78 +6,143 @@ interface ProjectsProps {
     onProjectSelect: (projectId: string) => void;
 }
 
+const categoryStyles: Record<string, string> = {
+    work: 'bg-primary-50 text-primary',
+    research: 'bg-slate-100 text-slate-700',
+    personal: 'bg-emerald-50 text-emerald-700',
+    pixart: 'bg-blue-50 text-blue-700',
+    auo: 'bg-sky-50 text-sky-700',
+};
+
 export const Projects = ({ onProjectSelect }: ProjectsProps) => {
     const { config, language } = useLanguage();
+    const [featuredProject, ...otherProjects] = config.projects ?? [];
+
+    const getCategoryClassName = (category: string) => categoryStyles[category.toLowerCase()] ?? 'bg-gray-100 text-gray-700';
+
     return (
-        <section className="max-w-6xl mx-auto px-6 py-20" id="projects">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <section className="mx-auto max-w-6xl px-6 py-20" id="projects">
+            <div className="mb-12 grid gap-5 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:items-end">
                 <div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
-                        {language === 'zh' ? '精選 Workflows' : 'Selected Workflows'}
+                    <p className="editorial-kicker">{language === 'zh' ? 'Chapter 02' : 'Chapter 02'}</p>
+                    <h2 className="mt-3 text-4xl font-semibold tracking-tight text-gray-900">
+                        {language === 'zh' ? '精選專案' : 'Selected Projects'}
                     </h2>
-                    <div className="h-1 w-12 bg-primary rounded-full mb-6" />
-                    <p className="text-gray-600 text-lg">
-                        {language === 'zh'
-                            ? '這些案例呈現我如何把模糊的 AI 需求，拆解成團隊真的能使用的系統、工具與 workflow。'
-                            : 'A closer look at how I turn ambiguous AI needs into systems, tools, and workflows that teams can use.'}
-                    </p>
                 </div>
+                <p className="max-w-2xl text-base leading-7 text-gray-600">
+                    {language === 'zh'
+                        ? '比起羅列功能，我更在意專案如何把問題、限制與團隊使用情境整理成真正可採用的 workflow。'
+                        : 'The point is not just what was built, but how each project translated constraints, workflow gaps, and team behavior into something adoptable.'}
+                </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {config.projects?.map((project, index) => (
-                    <motion.div
-                        key={project.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        onClick={() => onProjectSelect(project.id)}
-                        className="group relative bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 cursor-pointer flex flex-col h-full"
-                    >
-                        {/* Hover Effect Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
-
-                        <div className="relative flex-1">
-                            <div className="flex justify-between items-start mb-4">
-                                <span className={`
-                                    text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider
-                                    ${project.category.toLowerCase() === 'work' ? 'bg-blue-50 text-blue-600' :
-                                        project.category.toLowerCase() === 'research' ? 'bg-purple-50 text-purple-600' :
-                                            project.category.toLowerCase() === 'pixart' ? 'bg-indigo-50 text-indigo-600' :
-                                                project.category.toLowerCase() === 'auo' ? 'bg-blue-50 text-blue-600' :
-                                                    'bg-green-50 text-green-600'}
-                                `}>
-                                    {project.category}
+            {featuredProject && (
+                <motion.button
+                    type="button"
+                    onClick={() => onProjectSelect(featuredProject.id)}
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.45 }}
+                    className="group relative mb-8 w-full overflow-hidden rounded-[32px] border border-gray-200 bg-[linear-gradient(135deg,#ffffff_0%,#f8fbff_45%,#eef4ff_100%)] p-8 text-left shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_28px_85px_rgba(15,23,42,0.12)]"
+                >
+                    <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-primary/10 blur-3xl transition-transform duration-300 group-hover:scale-110" />
+                    <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.7fr)]">
+                        <div>
+                            <div className="flex flex-wrap items-center gap-3">
+                                <span className="rounded-full border border-primary/15 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                                    {language === 'zh' ? 'Featured Project' : 'Featured Project'}
                                 </span>
-                                <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                <span className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${getCategoryClassName(featuredProject.category)}`}>
+                                    {featuredProject.category}
+                                </span>
                             </div>
 
-                            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                                {project.title}
+                            <h3 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-gray-900 md:text-[2.2rem]">
+                                {featuredProject.title}
                             </h3>
 
-                            <p className="text-gray-600 text-sm line-clamp-3 mb-6 leading-relaxed">
-                                {project.shortDescription}
+                            <p className="mt-4 max-w-3xl text-base leading-8 text-gray-600 md:text-lg">
+                                {featuredProject.summary ?? featuredProject.oneLineSummary ?? featuredProject.shortDescription}
                             </p>
                         </div>
 
-                        <div className="relative mt-auto pt-4 border-t border-gray-100">
-                            <div className="flex flex-wrap gap-2">
-                                {project.techStack.slice(0, 3).map(tech => (
-                                    <span key={tech} className="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-1 rounded border border-gray-100">
-                                        {tech}
-                                    </span>
-                                ))}
-                                {project.techStack.length > 3 && (
-                                    <span className="text-xs font-medium text-gray-400 px-2 py-1">
-                                        +{project.techStack.length - 3}
-                                    </span>
-                                )}
+                        <div className="flex flex-col justify-between rounded-[26px] border border-white/70 bg-white/80 p-5 shadow-[0_16px_36px_rgba(15,23,42,0.06)]">
+                            <div className="space-y-4">
+                                <div>
+                                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gray-400">
+                                        {language === 'zh' ? 'Role' : 'Role'}
+                                    </p>
+                                    <p className="mt-2 text-sm leading-6 text-gray-700">
+                                        {featuredProject.role}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gray-400">
+                                        {language === 'zh' ? 'Signals' : 'Signals'}
+                                    </p>
+                                    <div className="mt-3 flex flex-wrap gap-2">
+                                        {(featuredProject.cardTags ?? featuredProject.techStack.slice(0, 4)).map((tag) => (
+                                            <span key={tag} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-600">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary">
+                                {language === 'zh' ? '閱讀專案細節' : 'Open project detail'}
+                                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </div>
                         </div>
-                    </motion.div>
-                ))}
+                    </div>
+                </motion.button>
+            )}
+
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {otherProjects.map((project, index) => {
+                    const previewText = project.summary ?? project.oneLineSummary ?? project.shortDescription;
+                    const cardTags = project.cardTags ?? project.techStack.slice(0, 3);
+
+                    return (
+                        <motion.button
+                            key={project.id}
+                            type="button"
+                            onClick={() => onProjectSelect(project.id)}
+                            initial={{ opacity: 0, y: 18 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.35, delay: index * 0.05 }}
+                            className="group flex h-full flex-col rounded-[28px] border border-gray-200 bg-white p-6 text-left shadow-[0_18px_45px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_22px_60px_rgba(15,23,42,0.08)]"
+                        >
+                            <div className="flex items-start justify-between gap-4">
+                                <span className={`rounded-full px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] ${getCategoryClassName(project.category)}`}>
+                                    {project.category}
+                                </span>
+                                <ArrowUpRight className="h-5 w-5 shrink-0 text-gray-400 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                            </div>
+
+                            <h3 className="mt-6 text-2xl font-semibold tracking-tight text-gray-900 transition-colors group-hover:text-primary">
+                                {project.title}
+                            </h3>
+
+                            <p className="mt-3 flex-1 text-sm leading-7 text-gray-600">
+                                {previewText}
+                            </p>
+
+                            <div className="mt-6 border-t border-gray-100 pt-4">
+                                <div className="flex flex-wrap gap-2">
+                                    {cardTags.map((tag) => (
+                                        <span key={tag} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-600">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.button>
+                    );
+                })}
             </div>
         </section>
     );

@@ -1,427 +1,472 @@
 import { UnifiedProject } from './types';
 
 export const PROJECT_ORDER: string[] = [
-    "personal-gym-tracker-v2",
-    "legal-contract-comparison",
-    "patent-translation-service",
-    "auto-minutes-system",
-    "pixart-genai-hub",
-    "auo-assistant",
-    "auo-yield",
-    "auo-pm",
-    "address-normalization",
+    'personal-gym-tracker-v2',
+    'legal-contract-comparison',
+    'patent-translation-service',
+    'auto-minutes-system',
+    'pixart-genai-hub',
+    'auo-assistant',
+    'auo-yield',
+    'auo-pm',
+    'address-normalization',
 ];
 
 const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
     {
-        id: "legal-contract-comparison",
-        category: "PixArt",
-        period: "2026/02 - 2026/03",
-        companyId: "pixart",
-        techStack: ["Python", "FastAPI", "vLLM", "Vision LLM (OCR)", "LLM Pipeline"],
+        id: 'legal-contract-comparison',
+        category: 'PixArt',
+        visualType: 'legal-comparison',
+        period: '2026/02 - 2026/03',
+        companyId: 'pixart',
+        heroBadges: ['On-Prem AI', 'OCR + LLM Comparison', 'Clause-Level Diff Review'],
+        heroImage: '/images/projects/legal-document-comparison-hero.svg',
+        techStack: ['Python', 'FastAPI', 'vLLM', 'Vision LLM (OCR)', 'LLM Pipeline'],
         translations: {
             en: {
-                title: "On-Prem Contract Review Workflow",
-                role: "AI Solution Architect",
-                shortDescription: "Designed a secure on-prem AI workflow that helps legal teams compare signed contracts without exposing sensitive documents to cloud services.",
-                description: `
-Highly sensitive legal documents could not be processed with cloud AI tools such as ChatGPT or NotebookLM. I turned that constraint into an on-prem contract review workflow that reduced manual comparison effort while keeping every document inside internal infrastructure.
-
-The implementation combined **Vision-LLM OCR via vLLM**, signature and stamp filtering, paragraph restructuring, and deterministic diff validation. To make the workflow legally reliable, I added a custom **Multiset Check** to guarantee zero character omissions during LLM restructuring, then used **diff-match-patch (Myers algorithm)** to surface precise clause-level differences. What previously took tens of minutes of manual review could be completed in seconds with a clearer review trail.
-            `,
-                keyFeatures: [
-                    "On-prem contract review flow for signed documents and confidential legal files",
-                    "Deterministic validation layer with Multiset Check to enforce zero-omission restructuring",
-                    "Clause-level difference visualization with synchronized dual-pane review interface",
+                title: 'On-Prem Legal Document Comparison Web App',
+                role: 'AI Solution Architect',
+                company: 'PixArt Imaging Inc.',
+                shortDescription: 'Designed a secure on-prem AI workflow that helps legal teams compare signed contracts and confidential legal documents without exposing sensitive content to cloud services.',
+                description: '',
+                keyFeatures: [],
+                challenges: [],
+                summary: 'Designed a secure on-prem AI workflow that helps legal teams compare signed contracts and confidential legal documents without exposing sensitive content to cloud services.',
+                problemSolved: [
+                    'Confidential legal documents could not be uploaded to external AI or cloud-based document review services.',
+                    'Signed or scanned contracts often contained handwritten marks, stamps, and formatting differences that made manual comparison time-consuming.',
+                    'Legal reviewers needed a reliable way to compare document versions while preserving every legal keyword and clause.',
+                    'AI-assisted comparison required deterministic validation to avoid missing or altering critical legal content.',
                 ],
-                challenges: [
-                    "Making an AI-assisted workflow reliable enough for legal review under strict confidentiality constraints.",
-                    "Ensuring OCR and LLM restructuring preserved every legal keyword while filtering handwritten marks and stamps.",
+                implementationHighlights: [
+                    'Built an internal Web App that compares original legal files with signed or scanned contract documents.',
+                    'Integrated OCR, document restructuring, and LLM-based comparison into an on-prem workflow.',
+                    'Added a deterministic validation layer using Multiset Check to reduce the risk of missing keywords during restructuring.',
+                    'Designed a synchronized dual-pane review interface for clause-level difference visualization.',
+                    'Kept the workflow fully inside the company environment to protect confidential legal documents.',
                 ],
+                impact: [
+                    'Reduced manual effort required to compare signed contracts and revised legal documents.',
+                    'Improved review reliability by combining OCR, LLM comparison, and deterministic validation.',
+                    'Helped legal teams review sensitive documents without relying on external services.',
+                    'Demonstrated how LLM-based document intelligence can be productized into an internal enterprise Web App.',
+                ],
+                cardTags: ['Python', 'FastAPI', 'vLLM', 'Vision LLM (OCR)', 'Document Processing'],
             },
             zh: {
-                title: "本地端合約審閱 Workflow",
-                role: "AI 解決方案架構師",
-                shortDescription: "設計安全的本地端 AI workflow，協助法務團隊比對已簽署合約，同時避免敏感文件送到雲端服務。",
-                description: `
-高度敏感的法務文件無法直接使用 ChatGPT 或 NotebookLM 等雲端 AI 工具處理。我將這個限制轉化為一套本地端合約審閱 workflow，讓文件全程留在內部環境，同時降低人工逐字比對的負擔。
-
-技術實作上，流程整合 **Vision-LLM OCR via vLLM**、簽名印章過濾、段落重組與可驗證的差異比對。為了讓 workflow 足以支撐法務審閱，我加入自訂 **Multiset 檢核機制**，確保 LLM 重組過程零漏字，再透過 **diff-match-patch（Myers 演算法）** 進行條文級差異標示。原本數十分鐘的人工核對，現在可在秒級完成，並保留更清楚的審閱軌跡。
-            `,
+                title: '內網法律文件比對 Web App',
+                role: 'AI 解決方案架構師',
+                company: 'PixArt Imaging Inc.',
+                shortDescription: '設計安全的 on-prem AI workflow，協助法務團隊在不外流敏感資料的前提下，比對已簽署合約與機密法律文件。',
+                description: '此專案面對的核心限制是資料安全。法律文件無法離開公司環境，因此我把 OCR、文件重組、LLM 差異分析與 deterministic validation 整合成一套內部可用流程，讓法務團隊能以更低成本完成條文級別的比對審查。',
                 keyFeatures: [
-                    "面向簽署文件與機密法務資料的本地端合約審閱流程",
-                    "以 Multiset Check 建立零漏字的 deterministic validation layer",
-                    "支援雙欄同步檢視與條文級差異標示的審閱介面",
+                    '支援原始法律文件與已簽署文件版本比對',
+                    '整合 OCR、條文重組與 clause-level diff 檢視',
+                    '加入 deterministic validation 降低關鍵字遺漏風險',
                 ],
                 challenges: [
-                    "在嚴格保密限制下，讓 AI 輔助流程具備足夠可靠性以支撐法務審閱。",
-                    "在過濾手寫簽名與印章標記的同時，確保 OCR 與 LLM 重組保留所有法律關鍵字。",
+                    '如何在高機密限制下完成文件比對而不依賴雲端服務。',
+                    '如何在掃描品質、手寫標記與格式差異存在時，仍維持穩定審閱精度。',
                 ],
-            }
-        }
+                summary: '設計安全的 on-prem AI workflow，協助法務團隊在不外流敏感資料的前提下，比對已簽署合約與機密法律文件。',
+                problemSolved: [
+                    '機密法律文件無法上傳到外部 AI 或雲端文件審閱服務。',
+                    '已簽署或掃描版合約常帶有手寫標記、印章與格式差異，人工比對耗時且容易遺漏。',
+                    '法務需要一套可靠機制，在保留法律關鍵字與條文精度的前提下比對不同版本。',
+                    'AI 比對流程需要可驗證機制，避免因文件重組造成關鍵內容遺失。',
+                ],
+                implementationHighlights: [
+                    '打造企業內部 Web App，支援原始法律文件與簽署版本的比對。',
+                    '將 OCR、文件重組與 LLM 差異分析整合為 on-prem workflow。',
+                    '加入 Multiset Check 進行 deterministic validation，降低重組後遺漏關鍵字的風險。',
+                    '設計雙欄同步檢視介面，支援 clause-level 差異審查。',
+                    '全流程部署在公司內部環境，保護敏感法律資料。',
+                ],
+                impact: [
+                    '降低法務人員比對簽署合約與修訂文件所需的人工作業量。',
+                    '結合 OCR、LLM 比對與 deterministic validation，提高審閱可靠度。',
+                    '讓法務團隊在不依賴外部服務的情況下完成敏感文件審查。',
+                    '展示 LLM 文件理解能力如何被產品化成企業內部可用 Web App。',
+                ],
+                cardTags: ['Python', 'FastAPI', 'vLLM', 'Vision LLM (OCR)', 'Document Processing'],
+            },
+        },
     },
     {
-        id: "patent-translation-service",
-        category: "PixArt",
-        period: "2026/01 - 2026/02",
-        companyId: "pixart",
-        techStack: ["Python", "FastAPI", "vLLM", "Prompt Engineering", "LLM Pipeline"],
+        id: 'patent-translation-service',
+        category: 'PixArt',
+        visualType: 'patent-translation',
+        period: '2026/01 - 2026/02',
+        companyId: 'pixart',
+        heroBadges: ['On-Prem LLM', 'docx Translation', 'Terminology Consistency'],
+        heroImage: '/images/projects/patent-translation-hero.svg',
+        techStack: ['Python', 'FastAPI', 'vLLM', 'Prompt Engineering', 'Few-Shot Learning', 'docx Processing', 'Web App'],
         translations: {
             en: {
-                title: "Patent Translation Workflow for IC Design",
-                role: "AI Solution Architect",
-                shortDescription: "Built an on-prem patent translation workflow for legal and engineering teams working with confidential IC design documents.",
-                description: `
-Confidential patent and IP documents could not be sent to cloud AI services, yet legal and engineering teams still needed a faster translation workflow for IC design materials. I built an on-prem patent translation system that let internal teams process sensitive multilingual documents while preserving IP protection.
-
-The solution used a two-stage local LLM pipeline: an initial translation pass followed by legal syntax proofreading and style refinement. I handled cross-strait terminology localization through **System Prompt engineering + Few-Shot Learning**, avoiding dependence on external dictionaries while keeping domain language consistent. The workflow supported **.docx** upload and returned translated output with original formatting preserved, making it practical for real legal and engineering handoff processes.
-            `,
-                keyFeatures: [
-                    "Confidential patent workflow localized for legal and engineering collaboration",
-                    "Two-stage on-prem translation and legal proofreading pipeline",
-                    "Terminology localization with formatting-preserving .docx processing",
+                title: 'On-Prem Patent Translation Web App',
+                role: 'AI Solution Architect',
+                companyName: 'PixArt Imaging Inc.',
+                shortDescription: 'Built an internal AI Web App for translating confidential patent documents with on-prem LLMs, preserving document structure while improving legal and IC design terminology consistency.',
+                description: '',
+                keyFeatures: [],
+                challenges: [],
+                summary: 'Designed and developed an internal AI translation Web App deployed inside the company to help legal and engineering teams securely process confidential patent documents, while improving first-draft translation quality, document structure retention, and terminology consistency across long-form content.',
+                problemSolved: [
+                    'Confidential patent and legal documents could not be uploaded to external AI or translation services.',
+                    'Legal teams needed a faster way to produce reviewable first-draft patent translations.',
+                    'General translation tools struggled to handle both legal tone and IC design terminology.',
+                    'In long patent documents, inconsistent naming of the same technical concept across sections reduced legal precision and readability.',
                 ],
-                challenges: [
-                    "Maintaining terminology accuracy for IC design and legal language without exposing documents to external services.",
-                    "Keeping translation tone and style consistent across long-form patent content through layered verification.",
+                implementationHighlights: [
+                    'Built an internal AI Web App that combined `.docx` upload/download with LLM-based translation processing and result export.',
+                    'Integrated an on-prem vLLM inference service so confidential document content stayed inside the company\'s internal environment.',
+                    'Designed a staged LLM pipeline that separated initial translation from legal-tone proofreading.',
+                    'Used prompt rules, few-shot examples, and prior-context control to keep technical terminology consistent across long documents.',
+                    'Handled `.docx` parsing and reconstruction to preserve original paragraph structure and formatting as much as possible.',
                 ],
+                impact: [
+                    'Turned LLM capability into a practical internal Web App rather than a standalone translation workflow.',
+                    'Supported legal and engineering teams in handling sensitive documents without data leaving the company.',
+                    'Improved consistency of legal and technical terminology in long patent documents and reduced manual proofreading effort.',
+                    'Established an extensible foundation for future confidential-document use cases such as contract review, document comparison, and legal knowledge assistance.',
+                ],
+                cardTags: ['Python', 'FastAPI', 'vLLM', 'Prompt Engineering', 'docx'],
             },
             zh: {
-                title: "IC 設計專利翻譯 Workflow",
-                role: "AI 解決方案架構師",
-                shortDescription: "建置本地端專利翻譯 workflow，讓法務與工程團隊能處理機密 IC 設計文件，不必依賴雲端 AI 服務。",
-                description: `
-專利與智財文件牽涉核心技術，無法送到雲端 AI 服務處理，但法務與工程團隊仍需要更快的翻譯流程來處理 IC 設計資料。我建置了一套本地端專利翻譯系統，讓內部團隊能在保護 IP 的前提下處理敏感的多語文件。
-
-技術上採用兩階段本地端 LLM pipeline：第一階段完成初版翻譯，第二階段進行法律語法校對與風格修飾。我以 **System Prompt + Few-Shot Learning** 處理兩岸術語在地化與專利語境一致性，避免依賴外部詞典，同時支援 **.docx** 上傳與原始格式保留，讓輸出能直接銜接既有法務與工程協作流程。
-            `,
+                title: '內網專利翻譯 Web App',
+                role: 'AI 解決方案架構師',
+                companyName: 'PixArt Imaging Inc.',
+                shortDescription: '以 on-prem LLM 建構企業內部專利翻譯工具，在保留文件結構的同時提升法律語氣與 IC 設計術語一致性。',
+                description: '這個專案的目標不是做一個單純翻譯腳本，而是把 LLM 能力包裝成法務與工程團隊每天能用的內部工具。系統支援 `.docx` 上傳與匯出，並透過分階段 LLM pipeline 處理初稿翻譯、法律語氣潤飾與上下文一致性控制。',
                 keyFeatures: [
-                    "面向法務與工程協作的機密專利翻譯 workflow",
-                    "兩階段本地端翻譯與法律語境校對 pipeline",
-                    "支援術語在地化與 .docx 原始格式保留",
+                    '支援 `.docx` 上傳、翻譯與結果匯出',
+                    '以 staged LLM pipeline 分離初稿翻譯與法律語氣校稿',
+                    '維持長篇專利文件中的術語一致性與段落結構',
                 ],
                 challenges: [
-                    "在不依賴外部翻譯服務的前提下，維持 IC 設計與法律術語的翻譯準確度。",
-                    "在長篇專利文件中維持語氣、格式與用語的一致性。",
+                    '如何在公司內網中處理高敏感專利文件，並避免資料外流。',
+                    '如何讓法律語氣與 IC 設計專有名詞在長文件中維持一致。',
                 ],
-            }
-        }
+                summary: '設計並開發企業內部 AI 翻譯 Web App，協助法務與工程團隊安全處理機密專利文件，同時改善翻譯初稿品質、文件結構保留與專有名詞一致性。',
+                problemSolved: [
+                    '機密專利與法律文件無法上傳到外部 AI 或翻譯服務。',
+                    '法務團隊需要更快產出可審閱的專利翻譯初稿。',
+                    '一般翻譯工具難以兼顧法律語氣與 IC 設計術語。',
+                    '長篇專利文件中同一技術概念若跨段落命名不一致，會影響法律精度與可讀性。',
+                ],
+                implementationHighlights: [
+                    '打造內部 AI Web App，結合 `.docx` 上傳下載、LLM 翻譯與結果匯出。',
+                    '整合 on-prem vLLM inference service，確保機密內容留在公司內部。',
+                    '設計 staged LLM pipeline，分離初稿翻譯與法律語氣 proofreading。',
+                    '透過 prompt rules、few-shot examples 與前文控制維持長文件術語一致。',
+                    '處理 `.docx` 解析與重建，盡可能保留原始段落與格式。',
+                ],
+                impact: [
+                    '把 LLM 能力轉化成真正可用的企業內部翻譯產品，而非一次性流程。',
+                    '協助法務與工程團隊在高敏感情境下處理文件而不讓資料離開公司。',
+                    '提升長篇專利文件的法律與技術術語一致性，降低人工校稿成本。',
+                    '為合約審查、文件比對與法律知識協作等後續場景建立可延伸基礎。',
+                ],
+                cardTags: ['Python', 'FastAPI', 'vLLM', 'Prompt Engineering', 'docx'],
+            },
+        },
     },
     {
-        id: "auto-minutes-system",
-        category: "PixArt",
-        period: "2025/11 - 2026/01",
-        companyId: "pixart",
-        techStack: ["Python", "ASR (Whisper)", "Speaker Diarization", "vLLM", "LLM Pipeline"],
+        id: 'auto-minutes-system',
+        category: 'PixArt',
+        visualType: 'meeting-intelligence',
+        period: '2025/11 - 2026/01',
+        companyId: 'pixart',
+        heroBadges: ['Offline ASR', 'Speaker Diarization', 'Structured Minutes'],
+        heroImage: '/images/projects/meeting-minutes-hero.svg',
+        techStack: ['Python', 'ASR (Whisper)', 'Speaker Diarization', 'vLLM', 'LLM Pipeline'],
         translations: {
             en: {
-                title: "Auto-Minutes Offline Meeting Transcription System",
-                role: "AI Application Engineer",
-                shortDescription: "Completely offline meeting transcription and summarization system integrating ASR, Diarization, and LLM.",
-                description: `
-All meeting audio must stay on-premise for compliance. This system chains **Whisper (Breeze ASR)** for word-level transcription, **pyannote.audio** for Speaker Diarization, and a local **vLLM** for punctuation correction and structured summary generation. **VAD segmentation** and **GPU batch processing** significantly reduce processing time for long recordings, and a **SHA256 cache system** prevents redundant computation on repeated uploads.
-            `,
+                title: 'Offline AI Meeting Minutes System',
+                role: 'AI Application Engineer',
+                shortDescription: 'Completely offline meeting transcription and summarization system integrating ASR, Diarization, and LLM.',
+                description: 'All meeting audio must stay on-premise for compliance. This system chains Whisper (Breeze ASR) for word-level transcription, pyannote.audio for Speaker Diarization, and a local vLLM for punctuation correction and structured summary generation. VAD segmentation and GPU batch processing significantly reduce processing time for long recordings, and a SHA256 cache system prevents redundant computation on repeated uploads.',
                 keyFeatures: [
-                    "Accurate transcription and alignment with Speaker Diarization",
-                    "vLLM-based automated text formatting, optimization, and summarization",
-                    "VAD segmentation, GPU batch acceleration, and computation caching",
+                    'Accurate transcription and alignment with Speaker Diarization',
+                    'vLLM-based automated text formatting, optimization, and summarization',
+                    'VAD segmentation, GPU batch acceleration, and computation caching',
                 ],
                 challenges: [
-                    "Optimizing memory allocation for long audio and solving inference time issues via VAD segmentation.",
-                    "Accurately aligning ASR timestamps with speaker labels in complex multi-speaker scenarios.",
+                    'Optimizing memory allocation for long audio and solving inference time issues via VAD segmentation.',
+                    'Accurately aligning ASR timestamps with speaker labels in complex multi-speaker scenarios.',
                 ],
             },
             zh: {
-                title: "Auto-Minutes 離線會議轉錄系統",
-                role: "AI Application Engineer",
-                shortDescription: "整合 ASR、說話者標記與 LLM 摘要技術，專為資安需求打造的離線會議記錄系統。",
-                description: `
-會議錄音依資安要求必須全程本地端處理。系統串接 **Whisper（Breeze ASR）** 進行詞級轉錄、**pyannote.audio** 進行說話者分離，再透過本地 **vLLM** 處理標點修正與結構化摘要。**VAD 切割**與 **GPU 批次處理**大幅縮短長音檔的處理時間，**SHA256 快取機制**避免重複上傳造成的重複計算。
-            `,
+                title: '離線 AI 會議紀錄系統',
+                role: 'AI Application Engineer',
+                shortDescription: '整合 ASR、Speaker Diarization 與 LLM 的全離線會議轉錄與摘要流程。',
+                description: '所有會議音檔都必須留在公司內部。這套系統串接 Whisper（Breeze ASR）做逐字轉錄、pyannote.audio 做 Speaker Diarization，再交由本地 vLLM 進行標點修正與結構化摘要生成。透過 VAD segmentation、GPU batch processing 與 SHA256 cache，長音檔的處理效率大幅提升。',
                 keyFeatures: [
-                    "具備說話者識別 (Speaker Diarization) 的精確轉錄與對齊",
-                    "基於 vLLM 的自動化文本優化與會議摘要生成",
-                    "支援 VAD 智慧切割、GPU 批次加速與運算快取機制",
+                    '轉錄結果可與 Speaker Diarization 對齊，提升會議紀錄可讀性',
+                    '利用 vLLM 進行自動格式整理、內容優化與摘要生成',
+                    '以 VAD segmentation、GPU batch 與快取機制降低重複計算成本',
                 ],
                 challenges: [
-                    "優化長音檔處理中的記憶體配置，解決單一模型推論時間過長問題。",
-                    "在多人同時發言的情境下，精準對齊 ASR 時間戳與說話者標籤。",
+                    '如何在長音檔場景下控制記憶體與推論時間。',
+                    '如何在多講者、交錯發言情況下讓 ASR 時間戳與講者標記對齊。',
                 ],
-            }
-        }
+            },
+        },
     },
     {
-        id: "pixart-genai-hub",
-        category: "PixArt",
-        period: "2025 - Present",
-        companyId: "pixart",
-        techStack: ["Python", "vLLM", "LLM Serving", "Multimodal LLM", "Docker"],
+        id: 'pixart-genai-hub',
+        category: 'PixArt',
+        visualType: 'genai-workspace',
+        period: '2025 - Present',
+        companyId: 'pixart',
+        heroBadges: ['Air-Gapped AI', 'Internal Model Serving', 'Multimodal Workspace'],
+        heroImage: '/images/projects/genai-workspace-hero.svg',
+        techStack: ['Python', 'vLLM', 'LLM Serving', 'Multimodal LLM', 'Docker'],
         translations: {
             en: {
-                title: "Air-Gapped GenAI Workspace for IC Design Teams",
-                role: "AI Solution Architect",
-                shortDescription: "Designed and deployed an on-prem GenAI workspace for IC design teams, bringing LLMs, coding assistants, and multimodal workflows into air-gapped environments.",
-                description: `
-IC design teams needed useful AI assistance, but cloud copilots and public LLM tools were not viable in an air-gapped environment. I designed and deployed an on-prem GenAI workspace that supported coding, document analysis, multimodal inspection, and daily engineering workflows.
-
-Under the hood, the workspace ran **vLLM**-based model serving on internal GPU infrastructure with a tiered service strategy for speed vs. deep reasoning, including **120B-class models** for high-complexity tasks. I also integrated a **Vision-to-Text pipeline** for semiconductor specs and waveform images, while building context management strategies for stable long conversations. The broader goal was not just model hosting, but enabling engineers to use AI inside real security and workflow constraints.
-            `,
+                title: 'Air-Gapped GenAI Workspace for IC Design Teams',
+                role: 'AI Solution Architect',
+                shortDescription: 'Designed and deployed an on-prem GenAI workspace for IC design teams, bringing LLMs, coding assistants, and multimodal workflows into air-gapped environments.',
+                description: 'IC design teams needed useful AI assistance, but cloud copilots and public LLM tools were not viable in an air-gapped environment. I designed and deployed an on-prem GenAI workspace that supported coding, document analysis, multimodal inspection, and daily engineering workflows. Under the hood, the workspace ran vLLM-based model serving on internal GPU infrastructure with a tiered service strategy for speed vs. deep reasoning, including 120B-class models for high-complexity tasks. I also integrated a Vision-to-Text pipeline for semiconductor specs and waveform images, while building context management strategies for stable long conversations.',
                 keyFeatures: [
-                    "Internal GenAI workspace for coding assistants, knowledge work, and multimodal engineering tasks",
-                    "Tiered on-prem model serving with fast-response and deep-reasoning modes",
-                    "Multimodal analysis and context-management infrastructure for production workflows",
+                    'Internal GenAI workspace for coding assistants, knowledge work, and multimodal engineering tasks',
+                    'Tiered on-prem model serving with fast-response and deep-reasoning modes',
+                    'Multimodal analysis and context-management infrastructure for production workflows',
                 ],
                 challenges: [
-                    "Balancing model scale, latency, and infrastructure constraints in a fully air-gapped deployment.",
-                    "Turning raw model availability into practical developer enablement and workflow adoption.",
+                    'Balancing model scale, latency, and infrastructure constraints in a fully air-gapped deployment.',
+                    'Turning raw model availability into practical developer enablement and workflow adoption.',
                 ],
             },
             zh: {
-                title: "面向 IC 設計團隊的 Air-Gapped GenAI Workspace",
-                role: "AI 解決方案架構師",
-                shortDescription: "設計並部署面向 IC 設計團隊的本地端 GenAI workspace，讓 LLM、coding assistant 與多模態 workflow 能進入 Air-Gapped 環境。",
-                description: `
-IC 設計團隊需要實用的 AI 協助，但在 Air-Gapped 環境下，雲端 copilots 與公開 LLM 工具都不可行。我設計並部署本地端 GenAI workspace，支援 coding、文件分析、多模態檢視與日常工程 workflow。
-
-在底層架構上，workspace 以 **vLLM** 為核心，部署於內部 GPU 資源，並採分級服務策略，兼顧日常快速回應與高複雜度任務所需的 **120B 級模型**。我也整合 **Vision-to-Text pipeline** 來處理半導體規格書與波形圖，同時建立長對話的 context 管理機制。這個專案的重點不只是模型上線，而是讓工程師能在真實的資安與 workflow 限制中使用 AI。
-            `,
+                title: 'Air-Gapped GenAI Workspace',
+                role: 'AI 解決方案架構師',
+                shortDescription: '為 IC 設計團隊規劃與部署 on-prem GenAI workspace，讓 LLM、coding assistant 與多模態 workflow 能在 air-gapped 環境中被使用。',
+                description: 'IC 設計團隊需要 AI 協助，但在 air-gapped 環境下無法使用公有雲 copilots 與公開 LLM 工具。我規劃並部署一套 on-prem GenAI workspace，涵蓋 coding、文件分析、多模態檢視與日常工程 workflow。底層以內部 GPU 基礎設施承載 vLLM serving，並依速度與深度推理需求做分層服務設計。',
                 keyFeatures: [
-                    "支援 coding assistant、知識工作與多模態工程任務的內部 GenAI workspace",
-                    "具備快速回應與深度推理雙模式的本地端模型服務架構",
-                    "面向實際工作流程的多模態分析與 context 管理機制",
+                    '支援 coding assistant、知識工作與多模態工程任務的內部 GenAI workspace',
+                    '依任務型態提供快回應與深推理兩種 on-prem 模型服務層',
+                    '建立多模態分析與 context 管理能力，讓 workflow 可進入日常使用',
                 ],
                 challenges: [
-                    "在完全離線部署條件下平衡模型規模、延遲與基礎設施限制。",
-                    "將模型可用性轉化成工程團隊真的會採用的工作方式。",
+                    '如何在完全 air-gapped 部署下平衡模型規模、延遲與基礎設施限制。',
+                    '如何把單純的模型可用性轉成工程團隊真正願意採用的 workflow。',
                 ],
-            }
-        }
+            },
+        },
     },
     {
-        id: "personal-gym-tracker-v2",
-        category: "Personal",
-        period: "2026 - Present",
-        techStack: ["React", "TypeScript", "Cloudflare Workers", "Cloudflare D1", "LLM API Integration"],
-        link: "https://github.com/bruce-lcz/my-gym-tracker",
+        id: 'personal-gym-tracker-v2',
+        category: 'Personal',
+        visualType: 'gym-tracker',
+        period: '2026 - Present',
+        heroBadges: ['Personal Product', 'AI Coaching', 'Private Data Control'],
+        heroImage: '/images/projects/gym-coach-hero.svg',
+        techStack: ['React', 'TypeScript', 'Cloudflare Workers', 'Cloudflare D1', 'LLM API Integration'],
+        link: 'https://github.com/bruce-lcz/my-gym-tracker',
         translations: {
             en: {
-                title: "My Gym Tracker — Private AI Gym Coach",
-                role: "Developer / Designer",
-                shortDescription: "A personal side project born out of frustration with commercial gym apps — built my own, with AI features and an aesthetic I actually like.",
-                description: `
-Built because existing gym apps have too many ads, lock your data, and look generic. The stack is React + TypeScript on **Cloudflare D1 + Workers** (migrated from Google Sheets). An LLM integration handles **muscle group auto-mapping** from plain-text exercise names, and prompt-engineered AI coaching generates structured training recommendations from historical volume data. The UI is hand-crafted **Neumorphism** in Vanilla CSS with separate color themes for two users (Bruce / Linda).
-            `,
+                title: 'Private AI Gym Coach',
+                role: 'Developer / Designer',
+                shortDescription: 'A personal side project born out of frustration with commercial gym apps - built my own, with AI features and an aesthetic I actually like.',
+                description: 'Built because existing gym apps have too many ads, lock your data, and look generic. The stack is React + TypeScript on Cloudflare D1 + Workers (migrated from Google Sheets). An LLM integration handles muscle group auto-mapping from plain-text exercise names, and prompt-engineered AI coaching generates structured training recommendations from historical volume data. The UI is hand-crafted Neumorphism in Vanilla CSS with separate color themes for two users (Bruce / Linda).',
                 keyFeatures: [
-                    "LLM-powered AI coach: training volume analysis & goal suggestions",
-                    "Auto muscle group mapping — just type the exercise name",
-                    "Neumorphism UI with dual identity color themes (Bruce / Linda)",
-                    "Cloudflare D1 + Workers backend for edge-speed sync",
-                    "1-Click full data export — your data, your control",
+                    'LLM-powered AI coach: training volume analysis & goal suggestions',
+                    'Auto muscle group mapping - just type the exercise name',
+                    'Neumorphism UI with dual identity color themes (Bruce / Linda)',
+                    'Cloudflare D1 + Workers backend for edge-speed sync',
+                    '1-Click full data export - your data, your control',
                 ],
                 challenges: [
-                    "Getting Neumorphism to feel genuinely tactile in pure CSS — a lot of shadow-tuning went into this.",
-                    "Writing prompts precise enough that the LLM reliably maps unusual or abbreviated exercise names to the correct muscle groups.",
+                    'Getting Neumorphism to feel genuinely tactile in pure CSS - a lot of shadow-tuning went into this.',
+                    'Writing prompts precise enough that the LLM reliably maps unusual or abbreviated exercise names to the correct muscle groups.',
                 ],
             },
             zh: {
-                title: "My Gym Tracker — 自己的 AI 健身教練，自己打造",
-                role: "Developer / Designer",
-                shortDescription: "受夠了市售健身 App 的廣告與限制，乾脆自己從零打造一個，還順手加了 AI 功能。",
-                description: `
-因為市售健身 App 廣告太多、數據封鎖、介面普通，所以自己做一個。核心架構是 React + TypeScript，後端從 Google Sheets 遷移至 **Cloudflare D1 + Workers**。串接 LLM 做動作名稱的**肌肉群自動映射**，並透過 Prompt Engineering 讓 AI 根據歷史訓練量給出結構化建議。UI 以純 Vanilla CSS 手工打造 **Neumorphism** 風格，內建 Bruce / Linda 雙主題配色。
-            `,
+                title: '私人 AI 健身教練',
+                role: 'Developer / Designer',
+                shortDescription: '因為不滿意市面上的健身 App，所以自己做了一套帶有 AI 功能、也更符合自己審美的私人產品。',
+                description: '這個 side project 的出發點很直接：現成健身 App 廣告太多、資料不自由、介面也不夠有個性。我以 React + TypeScript 搭配 Cloudflare D1 + Workers 重做資料層，並讓 LLM 負責肌群自動對應與歷史訓練量分析，進一步生成結構化訓練建議。',
                 keyFeatures: [
-                    "AI 教練: 訓練量分析 + 結構化目標建議",
-                    "自動肌肉群映射 — 打動作名稱就好",
-                    "Neumorphism 觸感 UI，Bruce / Linda 雙主題配色",
-                    "Cloudflare D1 + Workers 邊緣架構，毫秒級同步",
-                    "1-Click 完整數據導出 — 數據永遠在自己手上",
+                    'LLM 驅動的 AI coach，提供訓練量分析與目標建議',
+                    '只輸入動作名稱就能自動對應主要肌群',
+                    '以 Vanilla CSS 手工打造 Neumorphism 介面，支援雙使用者色彩主題',
+                    'Cloudflare D1 + Workers 提供同步與資料控制能力',
+                    '支援一鍵完整匯出資料，保有個人資料掌控權',
                 ],
                 challenges: [
-                    "用純 CSS 把 Neumorphism 做到真的有觸覺回饋感，光是陰影參數就調了很久。",
-                    "Prompt 要夠精確，LLM 才能可靠地把各種縮寫或奇怪的動作名稱正確映射到肌肉群。",
+                    '如何用純 CSS 讓 Neumorphism 真的有觸感，而不是只剩風格噱頭。',
+                    '如何把 prompt 調整到足夠精準，讓 LLM 能穩定辨識不規則或縮寫的動作名稱。',
                 ],
-            }
-        }
+            },
+        },
     },
     {
-        id: "auo-assistant",
-        category: "AUO",
-        period: "2023 - 2025",
-        companyId: "auo",
-        techStack: ["Python", "LangGraph", "RAG / Vector DB", "Knowledge Graph (Neo4j)", "LLM Agents"],
+        id: 'auo-assistant',
+        category: 'AUO',
+        visualType: 'manufacturing-assistant',
+        period: '2023 - 2025',
+        companyId: 'auo',
+        heroBadges: ['Multi-Agent', 'Knowledge Graph', 'Decision Support'],
+        heroImage: '/images/projects/manufacturing-assistant-hero.svg',
+        techStack: ['Python', 'LangGraph', 'RAG / Vector DB', 'Knowledge Graph (Neo4j)', 'LLM Agents'],
         translations: {
             en: {
-                title: "Manufacturing Knowledge Assistant Evolution: RAG to Multi-Agent Decision Support",
-                role: "AI Solution Architect",
-                shortDescription: "Led the evolution of an internal manufacturing knowledge assistant from basic RAG search into a Multi-Agent decision-support system integrating SQL tools and Knowledge Graph reasoning.",
-                description: `
-Manufacturing teams initially had access to documents, but not to a system that could help reason across equipment history, process context, and operational data. I led the evolution of an internal assistant from basic RAG search into a decision-support workflow that could better support root-cause analysis and engineering investigations.
-
-The system evolved into a **Multi-Agent architecture with LangGraph**, capable of orchestrating SQL queries, API calls, and structured diagnostic steps. I integrated a **Neo4j Knowledge Graph** to model relationships between equipment, manufacturing processes, and proprietary terminology, allowing the assistant to move beyond document retrieval and support attribution questions such as why yield dropped, which process changed, and what context mattered operationally.
-            `,
+                title: 'Manufacturing Knowledge Assistant with Multi-Agent Decision Support',
+                role: 'AI Solution Architect',
+                shortDescription: 'Led the evolution of an internal manufacturing knowledge assistant from basic RAG search into a Multi-Agent decision-support system integrating SQL tools and Knowledge Graph reasoning.',
+                description: 'Manufacturing teams initially had access to documents, but not to a system that could help reason across equipment history, process context, and operational data. I led the evolution of an internal assistant from basic RAG search into a decision-support workflow that could better support root-cause analysis and engineering investigations. The system evolved into a Multi-Agent architecture with LangGraph, capable of orchestrating SQL queries, API calls, and structured diagnostic steps. I integrated a Neo4j Knowledge Graph to model relationships between equipment, manufacturing processes, and proprietary terminology.',
                 keyFeatures: [
-                    "Decision-support workflow for manufacturing investigations and attribution analysis",
-                    "Multi-Agent orchestration across SQL tools, APIs, and knowledge retrieval",
-                    "Knowledge Graph reasoning over equipment, process, and terminology relationships",
+                    'Decision-support workflow for manufacturing investigations and attribution analysis',
+                    'Multi-Agent orchestration across SQL tools, APIs, and knowledge retrieval',
+                    'Knowledge Graph reasoning over equipment, process, and terminology relationships',
                 ],
                 challenges: [
-                    "Making agent-driven reasoning trustworthy enough for engineering teams to use in production analysis.",
-                    "Controlling Text-to-SQL accuracy, hallucinations, and execution loops in complex manufacturing environments.",
+                    'Making agent-driven reasoning trustworthy enough for engineering teams to use in production analysis.',
+                    'Controlling Text-to-SQL accuracy, hallucinations, and execution loops in complex manufacturing environments.',
                 ],
             },
             zh: {
-                title: "製造知識助理演進：從 RAG 到 Multi-Agent 決策輔助",
-                role: "AI 解決方案架構師",
-                shortDescription: "主導內部製造知識助理由基礎 RAG 搜尋演進為結合 SQL 工具與知識圖譜推理的 Multi-Agent 決策輔助系統。",
-                description: `
-一開始，製造團隊雖然能查找文件，但缺少能夠串連設備歷程、製程脈絡與營運數據的決策輔助系統。我主導將內部助理從單純的 RAG 搜尋，演進成能支援歸因分析與工程診斷的 workflow，協助團隊更有效處理製造現場問題。
-
-在技術上，系統進一步演進為基於 **LangGraph 的 Multi-Agent 架構**，可協調 SQL 查詢、API 呼叫與結構化診斷步驟。我整合 **Neo4j 知識圖譜** 來建模設備、製程與專有術語的關聯，使助理不只會找文件，而能支援「為何良率下降」、「哪個製程變因最關鍵」這類更貼近製造決策的問題。
-            `,
+                title: '製造知識助理與 Multi-Agent 決策支援',
+                role: 'AI 解決方案架構師',
+                shortDescription: '帶領內部製造知識助理由基礎 RAG 搜尋，演進成整合 SQL 工具與 Knowledge Graph 推理的 Multi-Agent 決策支援系統。',
+                description: '一開始製造團隊有文件，卻沒有能跨設備歷史、製程情境與營運資料做推理的系統。我主導將內部助理由基礎 RAG 搜尋演進成能支援 root-cause analysis 與工程調查的 workflow，並以 LangGraph 建立 Multi-Agent 架構，協調 SQL、API 與結構化診斷步驟。',
                 keyFeatures: [
-                    "面向製造歸因分析與工程診斷的決策輔助 workflow",
-                    "整合 SQL 工具、API 與檢索能力的 Multi-Agent 架構",
-                    "以知識圖譜推理設備、製程與術語之間的關聯",
+                    '支援製造調查與歸因分析的決策支援 workflow',
+                    '可協調 SQL 工具、API 與知識檢索的 Multi-Agent 架構',
+                    '以 Knowledge Graph 建模設備、製程與專有名詞關係',
                 ],
                 challenges: [
-                    "讓 Agent 推理結果在工程團隊眼中具有可用性與可信度。",
-                    "在複雜製造資料環境下控制 Text-to-SQL 準確率、幻覺與執行迴圈風險。",
+                    '如何讓 agent-driven 推理結果足夠可靠，讓工程團隊願意實際採用。',
+                    '如何在複雜製造場景中控制 Text-to-SQL 的正確率、幻覺與執行循環。',
                 ],
-            }
-        }
+            },
+        },
     },
     {
-        id: "auo-yield",
-        category: "AUO",
-        period: "2021 - 2023",
-        companyId: "auo",
-        techStack: ["Python", "Scikit-learn", "XAI / LIME", "Genetic Algorithm", "SQL / ETL"],
+        id: 'auo-yield',
+        category: 'AUO',
+        visualType: 'yield-optimization',
+        period: '2021 - 2023',
+        companyId: 'auo',
+        heroBadges: ['Explainable AI', 'Yield Optimization', 'Cross-Factory Analytics'],
+        heroImage: '/images/projects/yield-optimization-hero.svg',
+        techStack: ['Python', 'Scikit-learn', 'XAI / LIME', 'Genetic Algorithm', 'SQL / ETL'],
         translations: {
             en: {
-                title: "Cross-Factory Yield Optimization Workflow with Explainable AI",
-                role: "AI Engineer / Optimization Lead",
-                shortDescription: "Designed a cross-factory AI optimization workflow that translated manufacturing variability into explainable parameter recommendations.",
-                description: `
-Similar products produced in different factories showed yield gaps that were difficult to explain and even harder to operationalize. I designed a cross-factory AI optimization workflow that translated manufacturing variability into recommendations engineers could actually use, rather than producing another black-box score.
-
-The system standardized sensor definitions and process data across sites, then used a **Golden Path optimization algorithm** to identify better equipment combinations and process parameters. To improve adoption, I paired the model output with **LIME-based explainability**, so engineers could understand why a recommendation was made and where to intervene. The result was not just a model improvement but a deployable optimization workflow: **+1.43% yield**, **-12.62% defects**, and roughly **300 man-hours saved monthly**.
-            `,
+                title: 'Explainable AI for Cross-Factory Yield Optimization',
+                role: 'AI Engineer / Optimization Lead',
+                shortDescription: 'Designed a cross-factory AI optimization workflow that translated manufacturing variability into explainable parameter recommendations.',
+                description: 'Similar products produced in different factories showed yield gaps that were difficult to explain and even harder to operationalize. I designed a cross-factory AI optimization workflow that translated manufacturing variability into recommendations engineers could actually use, rather than producing another black-box score. The system standardized sensor definitions and process data across sites, then used a Golden Path optimization algorithm to identify better equipment combinations and process parameters. To improve adoption, I paired the model output with LIME-based explainability.',
                 keyFeatures: [
-                    "Cross-factory optimization workflow for process and parameter recommendations",
-                    "Data standardization layer to unify sensor semantics across sites",
-                    "Explainable AI outputs that supported engineering adoption and decision-making",
+                    'Cross-factory optimization workflow for process and parameter recommendations',
+                    'Data standardization layer to unify sensor semantics across sites',
+                    'Explainable AI outputs that supported engineering adoption and decision-making',
                 ],
                 challenges: [
-                    "Standardizing inconsistent equipment and process definitions across multiple factories.",
-                    "Turning model output into recommendations that production teams would trust enough to act on.",
+                    'Standardizing inconsistent equipment and process definitions across multiple factories.',
+                    'Turning model output into recommendations that production teams would trust enough to act on.',
                 ],
             },
             zh: {
-                title: "結合可解釋 AI 的跨廠良率優化 Workflow",
-                role: "AI 工程師 / 最佳化專案負責人",
-                shortDescription: "設計跨廠 AI 優化 workflow，將製造變異轉化為工程團隊可採用的可解釋參數建議。",
-                description: `
-不同廠區生產相似產品時，常出現難以解釋、也難以落地改善的良率差異。我設計跨廠 AI 優化 workflow，目標不是只產出模型分數，而是把製造變異轉化為工程團隊能實際採納的參數建議與優化路徑。
-
-系統先統一各廠感測器與製程資料定義，再透過 **Golden Path 最佳化演算法** 找出更佳的機台組合與製程參數。為了提高現場採用度，我進一步整合 **LIME 可解釋性分析**，讓工程師能理解建議背後的原因與可調整方向。最終成果不只是模型效能提升，而是可被部署的跨廠優化流程：良率 **+1.43%**、缺陷 **-12.62%**、每月節省約 **300 工時**。
-            `,
+                title: '跨廠區良率最佳化的 Explainable AI',
+                role: 'AI 工程師 / 最佳化專案負責人',
+                shortDescription: '設計跨廠區 AI 最佳化 workflow，將製造變異轉成可被工程團隊理解與採用的參數建議。',
+                description: '相似產品在不同廠區生產時出現良率落差，往往很難解釋，更難落成實際動作。我設計跨廠區 AI 最佳化 workflow，不只輸出模型分數，而是把製造變異轉成工程師可採取的參數與設備組合建議。系統先統一跨廠感測器與製程資料，再以 Golden Path 演算法尋找更佳組合，並搭配 LIME 做可解釋說明。',
                 keyFeatures: [
-                    "面向跨廠製程與參數調整的優化 workflow",
-                    "統一多廠感測器語意的資料標準化層",
-                    "支援工程採用與決策溝通的可解釋 AI 輸出",
+                    '支援製程與參數建議的跨廠區最佳化 workflow',
+                    '建立資料標準化層，統一不同廠區的感測器語意',
+                    '提供有解釋依據的 AI 建議，提升工程導入意願',
                 ],
                 challenges: [
-                    "處理跨廠設備能力與製程定義不一致的標準化難題。",
-                    "把模型輸出轉化為現場願意採納並驗證的工程建議。",
+                    '如何標準化多個廠區之間不一致的設備與製程定義。',
+                    '如何把模型輸出轉成產線團隊願意採取行動的建議。',
                 ],
-            }
-        }
+            },
+        },
     },
     {
-        id: "auo-pm",
-        category: "AUO",
-        period: "2022 - 2024",
-        companyId: "auo",
-        techStack: ["Python", "PyTorch", "LSTM / Time Series", "Custom Loss Function", "FastAPI"],
+        id: 'auo-pm',
+        category: 'AUO',
+        visualType: 'preventive-maintenance',
+        period: '2022 - 2024',
+        companyId: 'auo',
+        heroBadges: ['Predictive Maintenance', 'Time Series AI', 'Scheduling Optimization'],
+        heroImage: '/images/projects/preventive-maintenance-hero.svg',
+        techStack: ['Python', 'PyTorch', 'LSTM / Time Series', 'Custom Loss Function', 'FastAPI'],
         translations: {
             en: {
-                title: "Preventive Maintenance System (PM)",
-                role: "AI Engineer / Project Lead",
-                shortDescription: "Implemented custom Loss Function, reducing defect prediction error by 20%.",
-                description: `
-Traditional maintenance ran on fixed cycles and missed sudden equipment anomalies. I built **LSTM-based time series prediction models** with a custom **Trend Consistency Loss Function** — designed to capture anomaly trends rather than minimize single-point errors, which is what matters for maintenance scheduling. The system integrates with scheduling workflows to suggest optimal timing automatically. Results: **-20% prediction error (RMSE)**, 90 man-hours saved monthly.
-            `,
+                title: 'AI-Based Preventive Maintenance System',
+                role: 'AI Engineer / Project Lead',
+                shortDescription: 'Implemented custom Loss Function, reducing defect prediction error by 20%.',
+                description: 'Traditional maintenance ran on fixed cycles and missed sudden equipment anomalies. I built LSTM-based time series prediction models with a custom Trend Consistency Loss Function - designed to capture anomaly trends rather than minimize single-point errors, which is what matters for maintenance scheduling. The system integrates with scheduling workflows to suggest optimal timing automatically. Results: -20% prediction error (RMSE), 90 man-hours saved monthly.',
                 keyFeatures: [
-                    "Custom Loss Function Design",
-                    "LSTM Time Series Forecasting",
-                    "Maintenance Scheduling Optimization",
+                    'Custom Loss Function Design',
+                    'LSTM Time Series Forecasting',
+                    'Maintenance Scheduling Optimization',
                 ],
                 challenges: [
-                    "Handling extreme class imbalance in failure data.",
-                    "Balancing conflicts between capacity demands and downtime maintenance costs.",
+                    'Handling extreme class imbalance in failure data.',
+                    'Balancing conflicts between capacity demands and downtime maintenance costs.',
                 ],
             },
             zh: {
-                title: "預防性維護系統 (PM)",
-                role: "AI 工程師 / 專案負責人",
-                shortDescription: "導入自定義 Loss Function，降低 20% 缺陷預測誤差。",
-                description: `
-傳統排程依賴固定週期，無法應對突發設備異常。開發基於 **LSTM 的時間序列預測模型**，自訂 **Trend Consistency Loss Function（趨勢一致性損失函數）**—— 專注於捕捉異常趨勢而非最小化單點誤差，這才是維護排程真正需要的預測目標。系統整合排程工作流，自動建議最佳維護時機。成效：預測誤差（RMSE）降低 **20%**、每月節省 90 工時。
-            `,
+                title: 'AI 預防保養系統',
+                role: 'AI 工程師 / 專案負責人',
+                shortDescription: '設計客製 Loss Function，讓設備異常預測更貼近維護排程需求，並降低預測誤差。',
+                description: '傳統保養多依固定週期執行，容易錯過突然出現的設備異常。我建立以 LSTM 為基礎的時間序列預測模型，並設計客製 Trend Consistency Loss Function，讓模型更關注異常趨勢而不是單點誤差，進一步與維護排程 workflow 整合。',
                 keyFeatures: [
-                    "Custom Loss Function 設計",
-                    "LSTM 時間序列預測",
-                    "維護排程最佳化",
+                    '客製 Loss Function 設計',
+                    'LSTM 時間序列預測',
+                    '維護排程最佳化',
                 ],
                 challenges: [
-                    "處理極度不平衡的故障數據 (Class Imbalance)。",
-                    "平衡產能需求與停機維護的成本衝突。",
+                    '如何處理故障資料中高度不平衡的類別分布。',
+                    '如何平衡產能需求與停機維護成本之間的衝突。',
                 ],
-            }
-        }
+            },
+        },
     },
     {
-        id: "address-normalization",
-        category: "Research",
-        period: "2019",
-        companyId: "academia-sinica",
-        techStack: ["Python", "Django", "PostgreSQL", "REST API"],
+        id: 'address-normalization',
+        category: 'Research',
+        visualType: 'address-normalization',
+        period: '2019',
+        companyId: 'academia-sinica',
+        heroBadges: ['Data Quality', 'Normalization Rules', 'Address Parsing'],
+        heroImage: '/images/projects/address-normalization-hero.svg',
+        techStack: ['Python', 'Django', 'PostgreSQL', 'REST API'],
         translations: {
             en: {
-                title: "Address Data Normalization System",
-                role: "Research Intern",
-                shortDescription: "Automated normalization system solving Taiwan address format chaos.",
-                description: `
-Developed for Academia Sinica's GIS Center to parse and normalize unstructured address data from multiple heterogeneous datasets. Built a normalization algorithm and a national address attribute database. Won the **Best Student Paper Award** at the 2019 TGIS Conference.
-            `,
+                title: 'Address Normalization & Data Quality System',
+                role: 'Research Intern',
+                shortDescription: 'Automated normalization system solving Taiwan address format chaos.',
+                description: 'Developed for Academia Sinica\'s GIS Center to parse and normalize unstructured address data from multiple heterogeneous datasets. Built a normalization algorithm and a national address attribute database. Won the Best Student Paper Award at the 2019 TGIS Conference.',
                 keyFeatures: [
-                    "Address String Normalization Algorithm",
-                    "Web Sampling Service System",
+                    'Address String Normalization Algorithm',
+                    'Web Sampling Service System',
                 ],
                 challenges: [
-                    "Handling high ambiguity in Taiwan address formats.",
+                    'Handling high ambiguity in Taiwan address formats.',
                 ],
             },
             zh: {
-                title: "地址資料標準化系統",
-                role: "研究實習生",
-                shortDescription: "解決台灣地址格式混亂問題的自動化正規化系統。",
-                description: `
-為中央研究院 GIS 中心開發，解析並標準化來自多個異質資料來源的非結構化地址資料。設計地址正規化演算法與全國地址屬性資料庫。獲 2019 年台灣地理資訊學會（TGIS）**最佳學生論文獎**。
-            `,
+                title: '地址正規化與資料品質系統',
+                role: '研究實習生',
+                shortDescription: '以自動化正規化流程處理台灣地址格式混亂與資料品質問題。',
+                description: '在中央研究院 GIS 中心實習期間，我負責處理多來源、異質且非結構化的地址資料，建立地址正規化演算法與全國地址屬性資料庫，並將成果做成 Web 抽樣與服務系統。',
                 keyFeatures: [
-                    "地址字串正規化演算法",
-                    "Web 抽樣服務系統",
+                    '地址字串正規化演算法',
+                    'Web 抽樣與服務系統',
                 ],
                 challenges: [
-                    "台灣地址格式的高度歧義性處理。",
+                    '如何處理台灣地址格式中高度歧義與不一致的表示方式。',
                 ],
-            }
-        }
+            },
+        },
     },
 ];
 
 export const UNIFIED_PROJECTS: UnifiedProject[] = PROJECT_ORDER
-    .map(id => UNIFIED_PROJECTS_MAP.find(p => p.id === id))
-    .filter((p): p is UnifiedProject => p !== undefined);
+    .map((id) => UNIFIED_PROJECTS_MAP.find((project) => project.id === id))
+    .filter((project): project is UnifiedProject => project !== undefined);

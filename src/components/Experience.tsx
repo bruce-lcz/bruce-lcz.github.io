@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, ChevronRight, Layout } from 'lucide-react';
+import { ArrowUpRight, Briefcase, CalendarDays } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 interface ExperienceProps {
@@ -8,121 +8,156 @@ interface ExperienceProps {
 
 export const Experience = ({ onProjectSelect }: ExperienceProps) => {
     const { config, language } = useLanguage();
+
     return (
-        <section className="max-w-4xl mx-auto px-6 py-20 bg-gray-50" id="experience">
-            <div className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
-                    {language === 'zh' ? '經歷' : 'Experience'}
-                </h2>
-                <div className="h-1 w-12 bg-primary rounded-full" />
+        <section className="mx-auto max-w-6xl px-6 py-20" id="experience">
+            <div className="mb-12 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
+                <div>
+                    <p className="editorial-kicker">{language === 'zh' ? 'Chapter 01' : 'Chapter 01'}</p>
+                    <h2 className="mt-3 text-4xl font-semibold tracking-tight text-gray-900">
+                        {language === 'zh' ? '經歷' : 'Experience'}
+                    </h2>
+                </div>
+                <p className="max-w-2xl text-base leading-7 text-gray-600">
+                    {language === 'zh'
+                        ? '這些角色不是平行陳列，而是一條逐步靠近 AI 產品化與高限制環境落地的工作路徑。'
+                        : 'These roles are less a list and more a progression toward AI productization in high-constraint environments.'}
+                </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="relative space-y-8 before:absolute before:bottom-8 before:left-4 before:top-8 before:w-px before:bg-gradient-to-b before:from-primary/30 before:via-gray-200 before:to-transparent md:before:left-6">
                 {config.experience.map((job, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 10 }}
+                    <motion.article
+                        key={job.id}
+                        initial={{ opacity: 0, y: 18 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className={`
-              relative p-8 rounded-xl border transition-all duration-200 group
-              ${job.type === 'current'
-                                ? 'bg-white border-primary/20 shadow-md'
-                                : 'bg-white border-gray-200 shadow-sm hover:shadow-md'
-                            }
-            `}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.4, delay: index * 0.08 }}
+                        className="relative pl-10 md:pl-16"
                     >
-                        <div className="flex flex-col mb-6">
-                            <div className="flex items-start justify-between">
-                                <div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-1">{job.role}</h3>
-                                    <div className="flex flex-col gap-1 mt-1">
-                                        <div className="flex items-center gap-x-4 gap-y-2 text-sm flex-wrap">
-                                            <span className="font-semibold text-primary flex items-center gap-1.5">
-                                                <Briefcase className="w-4 h-4" />
+                        <span className={`absolute left-[0.42rem] top-10 h-3.5 w-3.5 rounded-full border-4 border-white shadow-sm md:left-[1.15rem] ${job.type === 'current' ? 'bg-primary' : 'bg-gray-300'}`} />
+
+                        <div className={`rounded-[30px] border p-7 shadow-[0_18px_50px_rgba(15,23,42,0.06)] transition-all duration-300 ${
+                            job.type === 'current'
+                                ? 'border-primary/20 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)]'
+                                : 'border-gray-200 bg-white hover:-translate-y-0.5 hover:shadow-[0_20px_54px_rgba(15,23,42,0.08)]'
+                        }`}>
+                            <div className="flex flex-col gap-5 border-b border-gray-100 pb-6 lg:flex-row lg:items-start lg:justify-between">
+                                <div className="space-y-3">
+                                    <div className="flex flex-wrap items-center gap-3">
+                                        <span className="rounded-full border border-primary/15 bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                                            {job.type === 'current'
+                                                ? (language === 'zh' ? '目前角色' : 'Current Role')
+                                                : (language === 'zh' ? '過往角色' : 'Past Role')}
+                                        </span>
+                                        {job.type === 'current' && (
+                                            <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-medium text-gray-600 shadow-sm ring-1 ring-primary/10">
+                                                <span className="h-2 w-2 rounded-full bg-primary" />
+                                                {language === 'zh' ? '進行中' : 'Active'}
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
+                                            {job.role}
+                                        </h3>
+                                        <div className="mt-3 flex flex-col gap-2 text-sm text-gray-500 md:flex-row md:flex-wrap md:items-center md:gap-5">
+                                            <span className="inline-flex items-center gap-2 font-medium text-gray-700">
+                                                <Briefcase className="h-4 w-4 text-primary" />
                                                 {job.company}
                                             </span>
-                                            <span className="text-gray-500 flex items-center gap-1.5">
-                                                <Calendar className="w-4 h-4" />
+                                            <span className="inline-flex items-center gap-2">
+                                                <CalendarDays className="h-4 w-4 text-gray-400" />
                                                 {job.period}
-                                                {job.type === 'current' && (
-                                                    <span className="inline-flex items-center gap-1 ml-2 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                                                        <span className="relative flex h-2 w-2 mr-1">
-                                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                                                        </span>
-                                                        {language === 'zh' ? '目前' : 'Current'}
-                                                    </span>
-                                                )}
                                             </span>
                                         </div>
-
                                     </div>
                                 </div>
+
                                 {job.companyMeta?.logo && (
-                                    <img src={job.companyMeta.logo} alt={`${job.company} Logo`} className="w-12 h-12 object-contain" />
+                                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-gray-200 bg-white p-2 shadow-sm">
+                                        <img src={job.companyMeta.logo} alt={`${job.company} Logo`} className="h-full w-full object-contain" />
+                                    </div>
                                 )}
                             </div>
-                        </div>
 
-                        <p className="text-gray-600 mb-6 leading-relaxed">
-                            {job.description}
-                        </p>
+                            <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+                                <p className="text-base leading-8 text-gray-600">
+                                    {job.description}
+                                </p>
 
-                        {job.achievements.length > 0 && (
-                            <ul className="space-y-3 mb-8">
-                                {job.achievements.map((achievement, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-gray-700">
-                                        <ChevronRight className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                                        <span>{achievement}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-
-                        {/* Projects Section - Only show if there are related projects */}
-                        {job.relatedProjectIds && job.relatedProjectIds.length > 0 && onProjectSelect && (
-                            <div className="mb-6 pt-4 border-t border-dashed border-gray-200">
-                                <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
-                                    <Layout className="w-4 h-4" />
-                                    {language === 'zh' ? '關鍵專案' : 'Key Projects'}
-                                </h4>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                    {job.relatedProjectIds.map(pid => {
-                                        const project = config.projects?.find(p => p.id === pid);
-                                        if (!project) return null;
-                                        return (
-                                            <button
-                                                key={pid}
-                                                onClick={() => onProjectSelect(pid)}
-                                                className="flex flex-col items-start p-3 rounded-lg bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-colors text-left group/project"
-                                            >
-                                                <span className="font-semibold text-gray-900 text-sm group-hover/project:text-primary transition-colors flex items-center gap-1">
-                                                    {project.title}
-                                                    <ChevronRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover/project:opacity-100 group-hover/project:translate-x-0 transition-all" />
-                                                </span>
-                                                <span className="text-xs text-gray-500 mt-1 line-clamp-2">
-                                                    {project.shortDescription}
-                                                </span>
-                                            </button>
-                                        );
-                                    })}
+                                <div className="space-y-3">
+                                    <p className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-gray-400">
+                                        {language === 'zh' ? 'Highlights' : 'Highlights'}
+                                    </p>
+                                    <ul className="space-y-3">
+                                        {job.achievements.map((achievement) => (
+                                            <li key={achievement} className="flex items-start gap-3 text-sm leading-7 text-gray-700 md:text-[0.95rem]">
+                                                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary/70" />
+                                                <span>{achievement}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
-                        )}
 
-                        <div className="flex flex-wrap gap-2 pt-6 border-t border-gray-100">
-                            {job.techStack.map((tech) => (
-                                <span
-                                    key={tech}
-                                    className="px-3 py-1 bg-gray-100 text-gray-700 border border-gray-200 rounded-md text-sm font-medium group-hover:bg-primary-50 group-hover:text-primary group-hover:border-primary/20 transition-colors"
-                                >
-                                    {tech}
-                                </span>
-                            ))}
+                            {job.relatedProjectIds && job.relatedProjectIds.length > 0 && onProjectSelect && (
+                                <div className="mt-7 border-t border-dashed border-gray-200 pt-6">
+                                    <div className="mb-4 flex items-center justify-between gap-4">
+                                        <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500">
+                                            {language === 'zh' ? '相關專案' : 'Related Projects'}
+                                        </h4>
+                                        <span className="text-xs text-gray-400">
+                                            {language === 'zh' ? '可直接開啟細節' : 'Open for details'}
+                                        </span>
+                                    </div>
+
+                                    <div className="grid gap-3 md:grid-cols-2">
+                                        {job.relatedProjectIds.map((projectId) => {
+                                            const project = config.projects?.find((item) => item.id === projectId);
+
+                                            if (!project) {
+                                                return null;
+                                            }
+
+                                            return (
+                                                <button
+                                                    key={projectId}
+                                                    type="button"
+                                                    onClick={() => onProjectSelect(projectId)}
+                                                    className="group rounded-[22px] border border-gray-200 bg-gray-50/85 p-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:bg-white hover:shadow-[0_14px_34px_rgba(15,23,42,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                                                >
+                                                    <div className="flex items-start justify-between gap-4">
+                                                        <div>
+                                                            <h5 className="text-sm font-semibold text-gray-900">
+                                                                {project.title}
+                                                            </h5>
+                                                            <p className="mt-2 text-sm leading-6 text-gray-600">
+                                                                {project.shortDescription}
+                                                            </p>
+                                                        </div>
+                                                        <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 text-gray-400 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                                                    </div>
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            )}
+
+                            <div className="mt-6 flex flex-wrap gap-2">
+                                {job.techStack.map((tech) => (
+                                    <span
+                                        key={tech}
+                                        className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm font-medium text-gray-600"
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
-                    </motion.div>
+                    </motion.article>
                 ))}
             </div>
         </section>
