@@ -20,9 +20,7 @@ const renderLines = (lines: Array<{ width: string; tone?: LineTone }>, marker = 
         {lines.map((line, index) => (
             <div key={`${line.width}-${index}`} className="flex items-center gap-2">
                 <span className={`h-2.5 rounded-full ${line.width} ${lineToneClassName[line.tone ?? 'muted']}`} />
-                {marker ? (
-                    <span className="h-2 w-2 rounded-full border border-white/10 bg-white/40" />
-                ) : null}
+                {marker ? <span className="h-2 w-2 rounded-full border border-white/10 bg-white/40" /> : null}
             </div>
         ))}
     </div>
@@ -45,11 +43,9 @@ const Shell = ({
         <div className="overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,20,25,0.98),rgba(17,24,39,0.96))] shadow-[0_24px_70px_rgba(8,15,28,0.42),0_0_0_1px_rgba(255,255,255,0.02)]">
             <div className="border-b border-white/8 px-4 py-4 sm:px-5">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-cyan-100/65">
-                            {header}
-                        </p>
-                    </div>
+                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-cyan-100/65">
+                        {header}
+                    </p>
 
                     <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-400/12 px-3 py-1.5 text-xs font-medium text-cyan-100">
                         <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.55)]" />
@@ -61,7 +57,7 @@ const Shell = ({
             <div className="space-y-4 p-4 sm:p-5">
                 {children}
 
-                <div className="flex flex-col gap-3 rounded-2xl border border-white/8 bg-slate-950/45 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="rounded-2xl border border-white/8 bg-slate-950/45 px-4 py-3">
                     <p className="text-sm text-slate-300">{footer}</p>
                 </div>
 
@@ -84,8 +80,8 @@ const LegalComparisonVisual = () => (
     <Shell
         header="Document Comparison"
         status="Validation Passed"
-        footer="Clause-level differences highlighted · 3 differences detected"
-        tags={['On-Prem', 'Zero-Omission']}
+        footer="Clause-level differences highlighted with a review-ready validation check"
+        tags={['Confidential Review', 'Difference Analysis', 'Validation Layer']}
     >
         <div className="grid gap-3 md:grid-cols-2">
             <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
@@ -130,7 +126,7 @@ const PatentTranslationVisual = () => (
         header="Patent Translation Workspace"
         status="Format Preserved"
         footer="Source paragraphs aligned with localized terminology output"
-        tags={['On-Prem LLM', 'docx', 'Terminology']}
+        tags={['Translation Workflow', 'docx Export', 'Terminology Control']}
     >
         <div className="grid gap-3 md:grid-cols-[1.05fr_0.95fr]">
             <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
@@ -174,8 +170,8 @@ const MeetingMinutesVisual = () => (
     <Shell
         header="Meeting Intelligence Console"
         status="Summary Ready"
-        footer="Transcript, speakers, and action items generated in one offline workflow"
-        tags={['Offline ASR', 'Diarization', 'Minutes']}
+        footer="Transcript, speakers, and action items generated in one internal workflow"
+        tags={['Meeting Workflow', 'Structured Summary', 'Internal Processing']}
     >
         <div className="grid gap-3 md:grid-cols-[1.1fr_0.9fr]">
             <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
@@ -218,10 +214,10 @@ const MeetingMinutesVisual = () => (
 
 const GenAIWorkspaceVisual = () => (
     <Shell
-        header="Air-Gapped GenAI Workspace"
+        header="Internal GenAI Workspace"
         status="Models Online"
         footer="Internal chat, multimodal review, and coding assistance inside one secure workspace"
-        tags={['Air-Gapped', 'Model Serving', 'Multimodal']}
+        tags={['Internal Workspace', 'Model Access', 'Multimodal Support']}
     >
         <div className="grid gap-3 md:grid-cols-[0.78fr_1.22fr]">
             <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
@@ -274,7 +270,7 @@ const GymTrackerVisual = () => (
         header="Private AI Gym Coach"
         status="Plan Synced"
         footer="Training log, weekly volume, and AI coaching live in the same private dashboard"
-        tags={['Private Data', 'AI Coach', 'Cloud Sync']}
+        tags={['Personal Workflow', 'Private Data', 'AI Support']}
     >
         <div className="grid gap-3 md:grid-cols-[0.95fr_1.05fr]">
             <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
@@ -321,8 +317,8 @@ const ManufacturingAssistantVisual = () => (
     <Shell
         header="Manufacturing Assistant"
         status="Decision Path Ready"
-        footer="Knowledge graph context and tool-routed investigation steps for factory diagnosis"
-        tags={['Multi-Agent', 'Knowledge Graph', 'SQL Tools']}
+        footer="Knowledge context and tool-routed investigation steps for factory diagnosis"
+        tags={['Decision Support', 'Cross-Source Reasoning', 'Investigation Flow']}
     >
         <div className="grid gap-3 md:grid-cols-[0.92fr_1.08fr]">
             <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
@@ -361,7 +357,7 @@ const YieldOptimizationVisual = () => (
         header="Yield Optimization Studio"
         status="Recommendation Ready"
         footer="Cross-factory signals converted into explainable parameter recommendations"
-        tags={['XAI', 'Yield', 'Optimization']}
+        tags={['Optimization Workflow', 'Explainable Output', 'Cross-Factory']}
     >
         <div className="grid gap-3 md:grid-cols-[1fr_1fr]">
             <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
@@ -407,7 +403,7 @@ const PreventiveMaintenanceVisual = () => (
         header="Predictive Maintenance Monitor"
         status="Alert Ranked"
         footer="Time-series anomaly trends prioritized into maintenance scheduling signals"
-        tags={['LSTM', 'Anomaly Trend', 'Scheduling']}
+        tags={['Maintenance Planning', 'Trend Signals', 'Scheduling Support']}
     >
         <div className="grid gap-3 md:grid-cols-[1.08fr_0.92fr]">
             <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
@@ -448,13 +444,13 @@ const AddressNormalizationVisual = () => (
         header="Address Data Quality Console"
         status="Normalized"
         footer="Messy address strings parsed into structured fields for downstream use"
-        tags={['Normalization', 'Parsing', 'Data Quality']}
+        tags={['Data Quality', 'Normalization Logic', 'Structured Fields']}
     >
         <div className="grid gap-3 md:grid-cols-[1fr_1fr]">
             <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
                 <div className="mb-3 text-sm font-medium text-slate-100">Raw Address Input</div>
                 <div className="space-y-3">
-                    {['台北市信義區松仁路123號12樓', '台中市西屯區工業一路88巷3弄7號', '高雄市前鎮區復興四路20號'].map((row, index) => (
+                    {['Taipei City Xinyi Rd. Sec. 5 No. 23-2', 'Taichung City Industrial Rd. Lane 8', 'Kaohsiung City Minzu 1st Rd. No. 20'].map((row, index) => (
                         <div key={row} className="rounded-xl border border-white/8 bg-slate-950/45 px-3 py-3">
                             <div className="text-sm text-slate-200">{row}</div>
                             <div className="mt-2">{renderLines([{ width: index === 1 ? 'w-[72%]' : 'w-[64%]' }])}</div>

@@ -1,12 +1,12 @@
 export interface CompanyMeta {
     description?: string;
-    logo?: string; // path to image
+    logo?: string;
     url?: string;
     industry?: string;
 }
 
 export interface Job {
-    id: string; // Added ID for linking
+    id: string;
     type: 'current' | 'past';
     company: string;
     companyMeta?: CompanyMeta;
@@ -15,7 +15,7 @@ export interface Job {
     description: string;
     techStack: string[];
     achievements: string[];
-    relatedProjectIds?: string[]; // IDs linking to key projects
+    relatedProjectIds?: string[];
 }
 
 export interface ProjectMedia {
@@ -24,7 +24,15 @@ export interface ProjectMedia {
     caption?: string;
 }
 
-export interface DetailedProject {
+export interface NarrativeSection {
+    context?: string[];
+    constraint?: string[];
+    myRole?: string[];
+    systemDesign?: string[];
+    outcome?: string[];
+}
+
+export interface DetailedProject extends NarrativeSection {
     id: string;
     title: string;
     category: string;
@@ -42,9 +50,9 @@ export interface DetailedProject {
     company?: string;
     period: string;
     companyName?: string;
-    companyId?: string; // Link back to job
-    shortDescription: string; // Used for cards/previews
-    description: string; // Full markdown description
+    companyId?: string;
+    shortDescription: string;
+    description: string;
     keyFeatures: string[];
     challenges: string[];
     summary?: string;
@@ -52,6 +60,8 @@ export interface DetailedProject {
     implementationHighlights?: string[];
     impact?: string[];
     oneLineSummary?: string;
+    beforeSummary?: string;
+    afterSummary?: string;
     cardTags?: string[];
     heroBadges?: string[];
     heroImage?: string;
@@ -60,7 +70,7 @@ export interface DetailedProject {
     link?: string;
 }
 
-export interface ProjectTranslation {
+export interface ProjectTranslation extends NarrativeSection {
     title: string;
     role: string;
     visualType?: DetailedProject['visualType'];
@@ -75,6 +85,8 @@ export interface ProjectTranslation {
     implementationHighlights?: string[];
     impact?: string[];
     oneLineSummary?: string;
+    beforeSummary?: string;
+    afterSummary?: string;
     cardTags?: string[];
     heroBadges?: string[];
     heroImage?: string;
@@ -130,6 +142,7 @@ export interface SocialLinks {
 
 export interface SkillCategory {
     category: string;
+    description?: string;
     items: string[];
 }
 
@@ -142,4 +155,3 @@ export interface Config {
     awards: Award[];
     skills: SkillCategory[];
 }
-

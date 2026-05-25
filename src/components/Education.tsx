@@ -6,12 +6,12 @@ export const Education = () => {
     const { config, language } = useLanguage();
 
     return (
-        <section className="mx-auto max-w-6xl px-6 py-20 bg-white/55">
+        <section className="mx-auto max-w-6xl bg-white/55 px-6 py-20">
             <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
-                    <p className="editorial-kicker">{language === 'zh' ? 'Background' : 'Background'}</p>
+                    <p className="editorial-kicker">{language === 'zh' ? '背景' : 'Background'}</p>
                     <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-900">
-                        {language === 'zh' ? '教育' : 'Education'}
+                        {language === 'zh' ? '學歷' : 'Education'}
                     </h2>
                 </div>
             </div>

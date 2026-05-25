@@ -37,15 +37,29 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
     const heroBadges = project.heroBadges ?? project.cardTags ?? project.techStack.slice(0, 3);
 
     const labels = {
-        problemSolved: language === 'zh' ? '問題與限制' : 'Problem Solved',
+        narrative: language === 'zh' ? '專案敘事' : 'Project Narrative',
+        context: language === 'zh' ? '背景情境' : 'Context',
+        constraint: language === 'zh' ? '限制條件' : 'Constraint',
+        myRole: language === 'zh' ? '我的角色' : 'My Role',
+        systemDesign: language === 'zh' ? '系統設計' : 'System Design',
+        outcome: language === 'zh' ? '成果結果' : 'Outcome',
+        problemSolved: language === 'zh' ? '解決問題' : 'Problem Solved',
         implementationHighlights: language === 'zh' ? '實作重點' : 'Implementation Highlights',
-        impact: language === 'zh' ? '成果與影響' : 'Impact',
-        techStack: language === 'zh' ? '技術堆疊' : 'Tech Stack',
-        repository: language === 'zh' ? 'GitHub 專案連結' : 'GitHub Repository',
+        impact: language === 'zh' ? '影響與價值' : 'Impact',
+        techStack: language === 'zh' ? '技術組成' : 'Tech Stack',
+        repository: language === 'zh' ? 'GitHub 原始碼' : 'GitHub Repository',
         heroVisual: project.visualType
             ? (language === 'zh' ? '產品預覽' : 'Product Preview')
             : (language === 'zh' ? '系統概覽' : 'System Overview'),
     };
+
+    const narrativeSections = [
+        { label: labels.context, items: project.context ?? [] },
+        { label: labels.constraint, items: project.constraint ?? [] },
+        { label: labels.myRole, items: project.myRole ?? [] },
+        { label: labels.systemDesign, items: project.systemDesign ?? [] },
+        { label: labels.outcome, items: project.outcome ?? [] },
+    ].filter((section) => section.items.length > 0);
 
     const heroVisual = (() => {
         if (project.visualType) {
@@ -66,7 +80,7 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
 
         return (
             <div className="flex h-[240px] items-center justify-center rounded-[24px] border border-white/12 bg-white/5 text-sm text-gray-300 shadow-[0_24px_70px_rgba(8,15,28,0.38),0_0_0_1px_rgba(255,255,255,0.02)]">
-                {language === 'zh' ? '視覺預覽準備中' : 'Hero visual coming soon'}
+                {language === 'zh' ? '主視覺準備中' : 'Hero visual coming soon'}
             </div>
         );
     })();
@@ -166,6 +180,26 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                             </section>
 
                             <div className="space-y-10 px-6 py-8 md:px-10 md:py-10">
+                                {narrativeSections.length > 0 && (
+                                    <section className="space-y-5">
+                                        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
+                                            {labels.narrative}
+                                        </h2>
+                                        <div className="grid gap-4 lg:grid-cols-2">
+                                            {narrativeSections.map((section) => (
+                                                <article key={section.label} className="rounded-[24px] border border-gray-200 bg-gray-50/80 p-5">
+                                                    <h3 className="text-base font-semibold text-gray-900">
+                                                        {section.label}
+                                                    </h3>
+                                                    <div className="mt-4">
+                                                        {renderList(section.items)}
+                                                    </div>
+                                                </article>
+                                            ))}
+                                        </div>
+                                    </section>
+                                )}
+
                                 {problemSolved.length > 0 && (
                                     <section className="space-y-4">
                                         <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">

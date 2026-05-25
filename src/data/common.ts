@@ -5,8 +5,8 @@ export const PERSONAL_INFO = {
     nameZh: 'Bruce Cheng',
     email: 'bruce.zheng0814@gmail.com',
     avatar: '/assets/avatar.png',
-    taglineEn: 'Driving industrial innovation through AI architecture and smart manufacturing leadership.',
-    taglineZh: '以 AI 架構、產品化思維與製造場域理解，推動企業內部工作流程升級。',
+    taglineEn: 'Turning AI capabilities into practical workflows.',
+    taglineZh: '把 AI 變成可用流程',
 };
 
 export const SOCIAL_LINKS = {
