@@ -8,6 +8,7 @@ import { Skills } from './components/Skills';
 import { Education } from './components/Education';
 import { Awards } from './components/Awards';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
+import { ScrollspyNav } from './components/ScrollspyNav';
 import { useLanguage } from './context/LanguageContext';
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
     return (
         <div className="min-h-screen bg-[radial-gradient(circle_at_top,#eef4ff,transparent_28%),linear-gradient(180deg,#f8fafc_0%,#ffffff_26%,#f8fafc_100%)] text-gray-900">
             <Hero />
+            <ScrollspyNav />
 
             <main className="relative z-10 pb-20">
                 <WhatIActuallyBuild />

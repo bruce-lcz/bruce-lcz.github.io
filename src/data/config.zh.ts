@@ -6,10 +6,10 @@ export const configZh: Config = {
     identity: {
         name: PERSONAL_INFO.nameZh,
         role: 'AI Application Engineer / AI Solution Builder',
-        tagline: '我把模型、工具、資料與使用者流程串起來，讓 AI 不只停在 demo，而是能進入法務、研發、製造與知識工作的實際場景。',
+        tagline: '把模型、工具、資料流程與使用者介面接起來，讓 AI workflow 能實際支援法務、研發、製造與知識工作。',
         about: [
-            '我的核心能力不是某一種模型、某一種部署方式，或某一種單點技術，而是從真實限制與真實目標出發，選擇合適的模型、工具、資料流程、驗證方式與介面設計。',
-            '很多時候，工作的本質是把一句「可不可以用 AI 做？」拆成更清楚的問題：資料從哪裡來、哪些不能外流、哪裡需要人工判斷，以及最後怎麼包裝成團隊真的能使用的 workflow。',
+            '工具會依任務而變。On-prem、OCR、ASR、RAG、Agent 或 LLM API，都是為了解決具體問題而選用。',
+            '我關注的是需求如何被拆解、工具如何被組合，以及最後能不能形成團隊願意採用的 workflow。',
         ],
         email: PERSONAL_INFO.email,
         avatar: PERSONAL_INFO.avatar,

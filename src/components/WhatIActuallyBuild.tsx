@@ -30,28 +30,28 @@ export const WhatIActuallyBuild = () => {
         : [
             {
                 index: '01',
-                title: 'AI Workflow from Ambiguous Needs',
-                body: 'Break a vague “Can we use AI here?” into data sources, constraints, model fit, tool flow, and user interface.',
+                title: 'Clarify Where AI Helps',
+                body: 'Turn a vague “Can we use AI here?” into a clearer picture of the data, constraints, tool flow, and user interaction involved.',
             },
             {
                 index: '02',
-                title: 'Tool-Composite AI Applications',
-                body: 'Go beyond calling a model by combining OCR, ASR, RAG, agents, APIs, databases, validation logic, and product interfaces when the task needs them.',
+                title: 'Put the Right Tools Together',
+                body: 'Combine models, APIs, retrieval, parsing, validation, and interfaces based on what the workflow actually needs.',
             },
             {
                 index: '03',
-                title: 'Internal AI Products',
-                body: 'Package one-off AI experiments into internal tools, web apps, and workflows teams can use repeatedly.',
+                title: 'Make Internal Workflows Reusable',
+                body: 'Turn one-off AI prototypes into internal tools, web apps, or workflows that teams can use repeatedly.',
             },
             {
                 index: '04',
-                title: 'Domain-Aware Decision Support',
-                body: 'Apply AI in legal, engineering, manufacturing, and operations contexts where answers need to support real judgment, not just generate text.',
+                title: 'Support Work That Needs Judgment',
+                body: 'Apply AI in legal, engineering, manufacturing, and operations contexts where the output needs to support real decisions.',
             },
         ];
 
     return (
-        <section className="mx-auto max-w-6xl px-6 py-10 md:py-14">
+        <section className="mx-auto max-w-6xl scroll-mt-24 px-6 py-10 md:py-14" id="what-i-build">
             <div className="rounded-[32px] border border-white/80 bg-white/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur md:p-8">
                 <div className="mb-8 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
                     <div>

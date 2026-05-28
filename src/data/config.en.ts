@@ -6,10 +6,10 @@ export const configEn: Config = {
     identity: {
         name: PERSONAL_INFO.name,
         role: 'AI Application Engineer / AI Solution Builder',
-        tagline: 'I design AI workflows that connect models, tools, data, and real users — turning LLM capabilities into internal products that support legal, engineering, manufacturing, and knowledge work.',
+        tagline: 'Connecting models, tools, data flows, and user interfaces into AI workflows that support legal, engineering, manufacturing, and knowledge work.',
         about: [
-            'My core strength is not a single model stack or deployment mode. I work from real constraints and real workflow goals, then choose the right combination of models, tools, data flow, validation, and interface design.',
-            'That usually means translating an ambiguous “Can we use AI here?” into something more concrete: what data is involved, what cannot leave the environment, where human review matters, and how the final workflow becomes usable inside a team.',
+            'Tool choices depend on the task. On-prem models, OCR, ASR, RAG, agents, and APIs are selected only when they help solve the actual workflow problem.',
+            'My work sits between requirement framing, tool composition, workflow design, and internal productization — with a focus on making the result usable by real teams.',
         ],
         email: PERSONAL_INFO.email,
         avatar: PERSONAL_INFO.avatar,
@@ -51,7 +51,7 @@ export const configEn: Config = {
             },
             role: 'AI Engineer / Project Leader',
             period: 'Aug 2021 - Aug 2025',
-            description: 'I built manufacturing-facing AI systems that supported decision-making, process optimization, and operational workflows rather than model experiments in isolation.',
+            description: 'Built manufacturing-facing AI systems that supported decision-making, process optimization, and operational workflows rather than model experiments in isolation.',
             techStack: ['Python', 'SQL', 'Databricks', 'Streamlit', 'FastAPI', 'Agent Workflows'],
             achievements: [
                 'Turned cross-factory variability into explainable optimization recommendations engineers could act on.',

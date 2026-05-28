@@ -24,7 +24,7 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
     const afterLabel = language === 'zh' ? '解法設計' : 'Solution Design';
 
     return (
-        <section className="mx-auto max-w-6xl px-6 py-20" id="projects">
+        <section className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20" id="projects">
             <div className="mb-12 grid gap-5 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:items-end">
                 <div>
                     <p className="editorial-kicker">{language === 'zh' ? '代表作品' : 'Selected Work'}</p>

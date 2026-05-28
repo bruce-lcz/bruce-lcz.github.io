@@ -31,7 +31,7 @@ export const Hero = () => {
         ];
 
     return (
-        <section className="relative overflow-hidden px-6 pb-8 pt-8 md:pt-12">
+        <section className="relative overflow-hidden px-6 pb-8 pt-8 scroll-mt-24 md:pt-12" id="profile">
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(218,220,224,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(218,220,224,0.5)_1px,transparent_1px)] bg-[size:4.5rem_4.5rem] [mask-image:radial-gradient(ellipse_70%_58%_at_50%_30%,#000_64%,transparent_100%)]" />
             <div className="pointer-events-none absolute inset-x-0 top-0 h-[540px] bg-editorial-glow" />
 

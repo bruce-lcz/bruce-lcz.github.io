@@ -1,6 +1,7 @@
 import { UnifiedProject } from './types';
 
 export const PROJECT_ORDER: string[] = [
+    'asc-merge-c-generator',
     'pixart-genai-hub',
     'legal-contract-comparison',
     'patent-translation-service',
@@ -13,6 +14,127 @@ export const PROJECT_ORDER: string[] = [
 ];
 
 const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
+    {
+        id: 'asc-merge-c-generator',
+        category: 'PixArt',
+        period: '2026/05',
+        companyId: 'pixart',
+        heroBadges: ['Internal Automation Tool', 'Encoding-Safe ASC Processing', 'Downloadable C Export'],
+        heroImage: '/images/projects/asc-merge-c-generator-hero.svg',
+        techStack: ['Open WebUI', 'Python', 'Native Tool Calling', 'Nginx', 'Docker Compose'],
+        translations: {
+            en: {
+                title: 'ASC Merge & C Code Generator',
+                role: 'AI Application Engineer',
+                company: 'PixArt Imaging Inc.',
+                shortDescription: 'Built an internal AI-assisted workflow that merged ASC configuration files in order, preserved RD annotations, and exported downloadable C initialization code for SD users.',
+                description: 'An internal automation tool that turned fragile copy-paste work into a controlled file-processing workflow.',
+                keyFeatures: [
+                    'Supports both single-file conversion and ordered multi-file merge workflows',
+                    'Preserves RD comments, Chinese annotations, and append-based initialization order during processing',
+                    'Exports downloadable C files and optional merged ASC files through active internal links',
+                ],
+                challenges: [
+                    'ASC files arrived with mixed encodings, inconsistent formatting, and comments that could not be lost during conversion.',
+                    'The interaction flow had to collect inputs step by step instead of dumping all configuration questions on the user at once.',
+                ],
+                summary: 'Built an internal AI-assisted workflow that merged ASC configuration files in order, preserved RD annotations, and exported downloadable C initialization code for SD users.',
+                beforeSummary: 'SD users had to manually merge RD-provided ASC files, fix encoding issues, preserve comments, and then turn the result into C initialization code by hand.',
+                afterSummary: 'Upload, file-order confirmation, encoding-safe parsing, C generation, and downloadable export were brought together in one guided Open WebUI workflow.',
+                context: [
+                    'SD users regularly received one or more ASC configuration files from RD teams and needed to convert them into usable initialization code.',
+                    'The work was repetitive, but it still required careful handling of file order, comments, Chinese annotations, and output format details.',
+                ],
+                constraint: [
+                    'Open WebUI preview text could not be trusted when files used CP950, Big5, or other legacy encodings.',
+                    'The workflow had to behave differently for single-file versus multi-file cases without forcing users through unnecessary steps.',
+                ],
+                myRole: [
+                    'The full interaction flow, supporting Open WebUI skill behavior, and file-processing tool boundaries were defined as one coherent workflow.',
+                    'I implemented the Python tools for raw-byte ASC reading, encoding fallback, and export generation inside the internal environment.',
+                ],
+                systemDesign: [
+                    'Used Open WebUI native tool calling so the LLM could read uploaded ASC files through `asc_read`, reason over normalized content, and write outputs through `asc_export`.',
+                    'Integrated Nginx static hosting with exported files so the final result was delivered as downloadable artifacts instead of long code pasted into chat.',
+                ],
+                outcome: [
+                    'Reduced manual merging and conversion effort for SD users handling RD configuration files.',
+                    'Made the workflow more reliable by preserving annotations, merge order, and downloadable output behavior inside one repeatable tool.',
+                ],
+                problemSolved: [
+                    'Manual ASC merging was slow, error-prone, and easy to break when file order or repeated addresses mattered.',
+                    'Chinese comments and RD notes could become garbled or disappear when relying on preview text instead of raw file bytes.',
+                    'Users needed real output files, not a chat response that forced them to copy generated C code manually.',
+                ],
+                implementationHighlights: [
+                    'Developed `asc_read` to decode uploaded file bytes with UTF-8, UTF-8-SIG, CP950, Big5, GB18030, and Latin1 fallback handling.',
+                    'Developed `asc_export` to emit downloadable C files and optional merged ASC files through the internal download service.',
+                    'Added conditional logic for single-file and multi-file workflows, plus append-based merge behavior to preserve initialization sequence.',
+                ],
+                impact: [
+                    'Reduced repetitive manual work for SD users converting RD-delivered ASC configurations into engineering-ready C code.',
+                    'Improved reliability by preserving Chinese annotations, RD comments, and merge order in an on-premise internal workflow.',
+                    'Created a reusable Open WebUI automation pattern for future file-to-code internal tools.',
+                ],
+                cardTags: ['Internal Tool', 'Encoding Handling', 'File-to-Code Workflow'],
+            },
+            zh: {
+                title: 'ASC 合併與 C Code 產生器',
+                role: 'AI Application Engineer',
+                company: 'PixArt Imaging Inc.',
+                shortDescription: '建立一套給 SD 使用的內部 AI 輔助流程，能依序合併 ASC 設定檔、保留 RD 註解，並匯出可下載的 C 初始化程式碼。',
+                description: '把原本脆弱的手動複製貼上流程，整理成可重複使用的內部檔案處理工具。',
+                keyFeatures: [
+                    '同時支援單一 ASC 轉換與多 ASC 依序合併流程',
+                    '在處理過程中保留 RD 註解、中文標註與 append 式初始化順序',
+                    '透過內部下載連結匯出 C 檔，並在多檔情境下額外提供 merged ASC 檔',
+                ],
+                challenges: [
+                    'ASC 檔可能混用不同編碼、格式不一致，且轉換過程不能遺失 RD 註解與中間說明。',
+                    '互動流程必須逐步蒐集資訊，不能一次把所有設定問題丟給使用者。',
+                ],
+                summary: '建立一套給 SD 使用的內部 AI 輔助流程，能依序合併 ASC 設定檔、保留 RD 註解，並匯出可下載的 C 初始化程式碼。',
+                beforeSummary: 'SD 使用者過去要手動合併 RD 提供的 ASC 檔、修正編碼、保留註解，再自行轉成 C 初始化程式碼，流程耗時又容易出錯。',
+                afterSummary: '我把上傳、檔案順序確認、編碼安全讀取、C code 產生與下載匯出，整合成一個 Open WebUI 引導式流程。',
+                context: [
+                    'SD 使用者經常收到一份或多份來自 RD 的 ASC 設定檔，並需要把內容整理成可用的初始化程式碼。',
+                    '這類工作雖然重複，但對檔案順序、註解保留、中文標註與輸出格式都很敏感。',
+                ],
+                constraint: [
+                    '當檔案使用 CP950、Big5 等傳統編碼時，不能直接依賴 Open WebUI 的預覽文字。',
+                    '單檔與多檔情境需要不同處理方式，不能讓使用者被迫走多餘步驟。',
+                ],
+                myRole: [
+                    '我設計整體互動流程、Open WebUI skill 規則，以及底層檔案處理工具的分工。',
+                    '我實作 Python 工具來讀取 ASC 原始位元組、做編碼 fallback，並在內部環境完成輸出匯出流程。',
+                ],
+                systemDesign: [
+                    '透過 Open WebUI 的 native tool calling，讓 LLM 能先用 `asc_read` 讀取上傳檔，再根據正規化內容產生結果，最後透過 `asc_export` 輸出檔案。',
+                    '把 Nginx 靜態檔服務接到輸出流程上，讓最終結果以可下載檔案提供，而不是把整份 C code 直接貼在聊天視窗。',
+                ],
+                outcome: [
+                    '降低 SD 使用者在 RD 設定檔合併與轉換上的手動成本。',
+                    '把註解保留、順序控制與下載輸出整合進同一套可重複使用的內部工具，提升整體可靠性。',
+                ],
+                problemSolved: [
+                    '手動合併 ASC 檔不只花時間，也很容易在檔案順序或重複位址處理上出錯。',
+                    '若只依賴預覽文字，中文註解與 RD 備註很容易出現亂碼或在轉換過程中遺失。',
+                    '使用者需要的是可直接下載的結果檔，不是還要自行複製整理的聊天輸出。',
+                ],
+                implementationHighlights: [
+                    '開發 `asc_read`，以 UTF-8、UTF-8-SIG、CP950、Big5、GB18030、Latin1 等策略讀取上傳檔案原始位元組。',
+                    '開發 `asc_export`，輸出可下載的 C 檔，並在多檔情境下額外產生 merged ASC 檔。',
+                    '加入單檔 / 多檔條件分支與 append 式 merge 邏輯，保留初始化順序與重複位址處理方式。',
+                ],
+                impact: [
+                    '降低 SD 使用者把 RD 提供的 ASC 設定轉成工程可用 C code 時的重複人工成本。',
+                    '在內網環境下保留中文標註、RD 註解與檔案順序，提升流程可信度與可重複性。',
+                    '建立可延伸到其他 file-to-code 類型工具的 Open WebUI 內部自動化模式。',
+                ],
+                cardTags: ['內部工具', '編碼處理', '檔案轉程式流程'],
+            },
+        },
+    },
     {
         id: 'pixart-genai-hub',
         category: 'PixArt',
@@ -40,7 +162,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: 'Designed an internal GenAI workspace that gave engineering teams usable access to models, multimodal tools, and daily AI workflows inside a constrained environment.',
                 beforeSummary: 'Engineering teams had fragmented access to AI capabilities, with no stable internal workspace for coding help, document reading, or multimodal analysis.',
-                afterSummary: 'I turned model serving, multimodal utilities, and workflow framing into a shared internal workspace that teams could actually use in daily engineering work.',
+                afterSummary: 'Model serving, multimodal utilities, and workflow framing were brought together in a shared internal workspace that fit daily engineering work.',
                 context: [
                     'Engineering teams wanted practical AI support for coding, document reading, and technical analysis.',
                     'The need was broader than a chatbot: teams needed a place where multiple AI capabilities could be used as part of recurring work.',
@@ -50,8 +172,8 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'A useful solution needed to balance fast responses, stronger reasoning, and multimodal input handling.',
                 ],
                 myRole: [
-                    'I framed the problem as a product and workflow design task rather than a pure model deployment task.',
-                    'I designed how teams would access different model capabilities and how the workspace should support repeated use.',
+                    'The problem was treated as a product and workflow design task rather than a pure model deployment task.',
+                    'Access to different model capabilities and repeated-use patterns were designed around how teams would actually use the workspace.',
                 ],
                 systemDesign: [
                     'Built a shared workspace around internal model serving, multimodal processing, and task-oriented interaction flows.',
@@ -158,7 +280,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: 'Built an internal document comparison workflow that helped legal teams review confidential contracts without relying on external AI services.',
                 beforeSummary: 'Legal reviewers had to manually compare original files and signed scans, while confidential documents could not be sent to external AI tools.',
-                afterSummary: 'I turned document parsing, difference analysis, validation logic, and a dual-pane review UI into an internal comparison workflow the legal team could actually use.',
+                afterSummary: 'Document parsing, difference analysis, validation logic, and a dual-pane review UI were combined into an internal comparison workflow the legal team could use in practice.',
                 context: [
                     'The legal team needed a faster way to review signed or scanned contracts against source documents.',
                     'The goal was not to showcase OCR or LLMs, but to reduce slow and error-prone manual comparison work.',
@@ -168,8 +290,8 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Scanned files were structurally unstable, and legal review could not depend on unverified model output.',
                 ],
                 myRole: [
-                    'I decomposed the review problem into parsing, comparison, validation, and human review steps.',
-                    'I designed the workflow and packaged it as an internal web app instead of a loose backend pipeline.',
+                    'The review problem was broken into parsing, comparison, validation, and human review steps.',
+                    'The workflow was packaged as an internal web app instead of a loose backend pipeline.',
                 ],
                 systemDesign: [
                     'Combined document parsing, AI-assisted difference analysis, deterministic validation, and a side-by-side review interface.',
@@ -278,7 +400,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: 'Designed a staged translation workflow for confidential patent documents, turning draft translation, proofreading, terminology control, and docx output into one internal tool.',
                 beforeSummary: 'Patent translation had to balance legal tone, technical terminology, and document structure, but sensitive content was not suitable for external tools.',
-                afterSummary: 'I designed a staged LLM workflow that packaged translation, proofreading, terminology consistency, and docx export into an internal web app.',
+                afterSummary: 'A staged LLM workflow packaged translation, proofreading, terminology consistency, and docx export into an internal web app.',
                 context: [
                     'Legal and engineering teams needed faster first-draft patent translations they could still review seriously.',
                     'The real need was a usable translation workflow, not just a model that outputs translated text.',
@@ -288,8 +410,8 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'The workflow had to preserve legal tone, technical terms, and document structure across long files.',
                 ],
                 myRole: [
-                    'I mapped the workflow into separate stages instead of treating translation as a one-shot prompt task.',
-                    'I designed how upload, staged processing, terminology control, and export should work together in one product.',
+                    'The workflow was split into separate stages instead of treating translation as a one-shot prompt task.',
+                    'Upload, staged processing, terminology control, and export were structured to work together in one product.',
                 ],
                 systemDesign: [
                     'Separated translation, proofreading, and terminology handling into staged processing steps.',
@@ -396,7 +518,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: 'Built an internal workflow that turned meeting audio into usable transcripts and summaries for teams that could not rely on public meeting tools.',
                 beforeSummary: 'Meeting audio could not simply be dropped into public summarization tools, and turning transcripts into usable minutes took too much manual effort.',
-                afterSummary: 'I combined transcription, speaker handling, LLM structuring, and summary output into an internal meeting intelligence workflow.',
+                afterSummary: 'Transcription, speaker handling, LLM structuring, and summary output were combined into an internal meeting intelligence workflow.',
                 context: [
                     'Teams needed help moving from raw meeting recordings to usable notes and action-ready summaries.',
                     'The product goal was to reduce manual follow-up work after meetings, not just to transcribe audio.',
@@ -406,8 +528,8 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Long recordings and multi-speaker conversations made the workflow computationally and structurally messy.',
                 ],
                 myRole: [
-                    'I designed the workflow from audio ingestion to structured output.',
-                    'I focused on how multiple processing steps should cooperate so the final output would be useful to people, not just technically complete.',
+                    'The workflow covered audio ingestion through structured output.',
+                    'Multiple processing steps were arranged so the final output would be useful to people, not just technically complete.',
                 ],
                 systemDesign: [
                     'Combined transcription, speaker-aware segmentation, text cleanup, and LLM summarization into one staged workflow.',
@@ -514,7 +636,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: 'Evolved a manufacturing assistant from basic knowledge retrieval into a decision-support workflow that could reason across documents, SQL tools, and process knowledge.',
                 beforeSummary: 'Engineers had to piece together manufacturing issues across documents, tables, and process knowledge before they could even form a useful hypothesis.',
-                afterSummary: 'I combined retrieval, SQL tools, knowledge modeling, and agent workflow design into a decision-support system that could help structure investigation work.',
+                afterSummary: 'Retrieval, SQL tools, knowledge modeling, and agent workflow design were combined into a decision-support system that could help structure investigation work.',
                 context: [
                     'Engineering teams needed help investigating manufacturing issues that crossed documents, data tables, and process knowledge.',
                     'The challenge was less about text generation and more about supporting real analytical judgment.',
@@ -524,8 +646,8 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Any AI support had to be structured enough to avoid loose, ungrounded answers.',
                 ],
                 myRole: [
-                    'I reframed the assistant from a retrieval tool into a decision-support workflow.',
-                    'I designed how tool use, reasoning steps, and domain representation should work together.',
+                    'The assistant was reframed from a retrieval tool into a decision-support workflow.',
+                    'Tool use, reasoning steps, and domain representation were designed to work together as one system.',
                 ],
                 systemDesign: [
                     'Combined retrieval, SQL access, domain relationships, and agent orchestration into one structured analysis flow.',
@@ -632,7 +754,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: 'Designed a cross-factory workflow that turned process variability into explainable parameter recommendations engineers could act on.',
                 beforeSummary: 'Similar products made in different factories showed yield gaps, but teams lacked a practical way to turn that variability into usable improvement actions.',
-                afterSummary: 'I built a cross-factory analytics and optimization workflow that translated process differences into explainable recommendations for engineering teams.',
+                afterSummary: 'A cross-factory analytics and optimization workflow translated process differences into explainable recommendations for engineering teams.',
                 context: [
                     'Different factories produced similar products with meaningful yield variation.',
                     'The real business need was not another model score, but recommendations teams could operationalize.',
@@ -642,8 +764,8 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Recommendations had to be explainable enough for engineers to review and trust.',
                 ],
                 myRole: [
-                    'I designed the workflow around adoption: how data should be standardized, how optimization should run, and how results should be communicated.',
-                    'I focused on turning analysis output into something production teams could use in decision-making.',
+                    'The workflow was designed around adoption: how data should be standardized, how optimization should run, and how results should be communicated.',
+                    'Analysis output was shaped into something production teams could use in decision-making.',
                 ],
                 systemDesign: [
                     'Combined cross-site data normalization, optimization logic, and explainability into one workflow.',
@@ -751,7 +873,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: 'A personal product that turned frustrating gym tracking habits into a workflow I actually wanted to use, with private data control and lightweight AI assistance.',
                 beforeSummary: 'Existing gym apps felt generic, cluttered, and too controlling over personal data and daily tracking habits.',
-                afterSummary: 'I designed a private training workflow with custom tracking, lightweight AI support, and a UI I would actually keep using.',
+                afterSummary: 'A private training workflow was built around custom tracking, lightweight AI support, and a UI designed for repeated daily use.',
                 context: [
                     'This started from a personal frustration with existing fitness apps rather than a client requirement.',
                     'The interesting part was still workflow design: making a product worth returning to every day.',
@@ -761,8 +883,8 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'AI support had to be helpful without turning the app into a gimmick.',
                 ],
                 myRole: [
-                    'I handled product design, interface design, and implementation end-to-end.',
-                    'I decided where AI added value and where straightforward product design was enough.',
+                    'Product design, interface design, and implementation were handled end-to-end.',
+                    'AI was used selectively, with straightforward product design carrying the rest.',
                 ],
                 systemDesign: [
                     'Combined workout tracking, personal data storage, lightweight AI mapping, and coaching suggestions.',
@@ -869,7 +991,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: 'Built a maintenance planning workflow that focused prediction on actionable anomaly trends rather than isolated point accuracy.',
                 beforeSummary: 'Traditional maintenance scheduling followed fixed cycles and often reacted too slowly to emerging equipment issues.',
-                afterSummary: 'I built a prediction workflow that emphasized anomaly trends and fed scheduling decisions with more usable maintenance signals.',
+                afterSummary: 'A prediction workflow emphasized anomaly trends and fed scheduling decisions with more usable maintenance signals.',
                 context: [
                     'Operations teams needed better timing signals for maintenance planning.',
                     'The goal was to support maintenance decisions, not just to improve a benchmark score.',
@@ -879,8 +1001,8 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Outputs needed to map back to scheduling tradeoffs and operational timing.',
                 ],
                 myRole: [
-                    'I aligned model design with the actual maintenance decision problem.',
-                    'I led both the predictive approach and how outputs would support scheduling workflows.',
+                    'Model design was aligned with the actual maintenance decision problem.',
+                    'The predictive approach and output design were both shaped around scheduling workflows.',
                 ],
                 systemDesign: [
                     'Used time-series prediction with a custom objective shaped around trend consistency.',
@@ -987,7 +1109,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: 'Built a data quality workflow for parsing and normalizing messy Taiwan address data across heterogeneous datasets.',
                 beforeSummary: 'Address data across datasets was inconsistent, unstructured, and difficult to analyze reliably.',
-                afterSummary: 'I built normalization logic, structured address attributes, and a verification workflow to improve data quality at scale.',
+                afterSummary: 'Normalization logic, structured address attributes, and a verification workflow were combined to improve data quality at scale.',
                 context: [
                     'Research datasets contained large amounts of inconsistent address text.',
                     'The core need was better downstream data quality, not just string parsing by itself.',
@@ -997,8 +1119,8 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Users needed a way to inspect and verify normalization results.',
                 ],
                 myRole: [
-                    'I designed both the parsing logic and the surrounding workflow for checking results.',
-                    'I focused on turning messy raw data into something structured enough to reuse confidently.',
+                    'Both the parsing logic and the surrounding workflow for checking results were designed together.',
+                    'The goal was to turn messy raw data into something structured enough to reuse confidently.',
                 ],
                 systemDesign: [
                     'Combined normalization rules, an address attribute database, and a web-based sampling workflow.',
