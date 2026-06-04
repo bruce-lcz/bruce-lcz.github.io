@@ -122,3 +122,11 @@ docs/
 
 # Skills
 .github/skills/
+
+# Local build / verification artifacts
+temp-build*/
+temp-edge-profile/
+temp-chrome-profile/
+
+# Local image drafts
+/*.png
