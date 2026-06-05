@@ -265,6 +265,91 @@ const GenAIWorkspaceVisual = () => (
     </Shell>
 );
 
+const AscMergeCGeneratorVisual = () => (
+    <Shell
+        header="ASC Processing Tool"
+        status="Export Ready"
+        footer="Raw ASC bytes normalized through tool calls, then exported as downloadable C output"
+        tags={['ASC Read', 'Encoding Fallback', 'C Export']}
+    >
+        <div className="grid gap-3 md:grid-cols-[0.92fr_1.08fr]">
+            <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
+                <div className="mb-3 flex items-center justify-between gap-2">
+                    <span className="text-sm font-medium text-slate-100">Uploaded ASC Files</span>
+                    <span className="rounded-full border border-amber-300/20 bg-amber-400/10 px-2 py-1 text-[0.65rem] uppercase tracking-[0.16em] text-amber-100">
+                        Ordered
+                    </span>
+                </div>
+
+                <div className="space-y-3">
+                    {[
+                        ['01_motor.asc', 'CP950'],
+                        ['02_sensor.asc', 'Big5'],
+                        ['03_init.asc', 'UTF-8'],
+                    ].map(([fileName, encoding], index) => (
+                        <div key={fileName} className="rounded-xl border border-white/8 bg-slate-950/45 px-3 py-3">
+                            <div className="mb-2 flex items-center justify-between gap-2">
+                                <span className="text-xs font-medium text-slate-200">{fileName}</span>
+                                <span className={`rounded-full px-2 py-1 text-[0.65rem] uppercase tracking-[0.16em] ${index === 0 ? 'bg-cyan-400/10 text-cyan-100' : 'bg-white/[0.04] text-slate-300'}`}>
+                                    {encoding}
+                                </span>
+                            </div>
+                            {renderLines([
+                                { width: index === 1 ? 'w-[82%]' : 'w-[76%]', tone: index === 0 ? 'cyan' : 'muted' },
+                                { width: index === 2 ? 'w-[63%]' : 'w-[69%]', tone: index === 1 ? 'amber' : 'muted' },
+                            ])}
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            <section className="rounded-2xl border border-cyan-300/12 bg-white/[0.03] p-4">
+                <div className="mb-3 flex items-center justify-between gap-2">
+                    <span className="text-sm font-medium text-slate-100">Tool Calling Flow</span>
+                    <span className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-2 py-1 text-[0.65rem] uppercase tracking-[0.16em] text-cyan-100">
+                        Native
+                    </span>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-[0.9fr_1.1fr]">
+                    <div className="space-y-3">
+                        {['asc_read', 'merge order', 'asc_export'].map((label, index) => (
+                            <div key={label} className="flex items-center gap-3">
+                                <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-white/10 text-xs font-medium ${index === 2 ? 'bg-cyan-400/12 text-cyan-100' : 'bg-white/[0.04] text-slate-300'}`}>
+                                    {index + 1}
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                    <div className="text-xs font-medium text-slate-200">{label}</div>
+                                    <div className="mt-2 h-2 rounded-full bg-slate-800">
+                                        <div
+                                            className={`h-2 rounded-full ${index === 1 ? 'bg-amber-300/75' : 'bg-cyan-300/75'}`}
+                                            style={{ width: `${index === 0 ? 82 : index === 1 ? 68 : 92}%` }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="rounded-xl border border-white/8 bg-slate-950/45 p-3">
+                        <div className="mb-3 text-[0.65rem] uppercase tracking-[0.16em] text-slate-400">Download Artifacts</div>
+                        <div className="space-y-3">
+                            <div className="rounded-xl border border-cyan-300/15 bg-cyan-400/[0.06] p-3">
+                                <div className="mb-2 text-xs font-medium text-cyan-100">init_config.c</div>
+                                {renderLines([{ width: 'w-[86%]', tone: 'cyan' }, { width: 'w-[71%]' }])}
+                            </div>
+                            <div className="rounded-xl border border-white/8 bg-white/[0.03] p-3">
+                                <div className="mb-2 text-xs font-medium text-slate-200">merged.asc</div>
+                                {renderLines([{ width: 'w-[78%]', tone: 'amber' }, { width: 'w-[62%]' }])}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </Shell>
+);
+
 const GymTrackerVisual = () => (
     <Shell
         header="Private AI Gym Coach"
@@ -481,6 +566,8 @@ const AddressNormalizationVisual = () => (
 
 export const ProjectMockupVisual = ({ visualType }: ProjectMockupVisualProps) => {
     switch (visualType) {
+        case 'asc-merge-c-generator':
+            return <AscMergeCGeneratorVisual />;
         case 'legal-comparison':
             return <LegalComparisonVisual />;
         case 'patent-translation':

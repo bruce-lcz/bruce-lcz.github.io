@@ -35,8 +35,10 @@ export interface NarrativeSection {
 export interface DetailedProject extends NarrativeSection {
     id: string;
     title: string;
+    coreValueLine?: string;
     category: string;
     visualType?:
+        | 'asc-merge-c-generator'
         | 'legal-comparison'
         | 'patent-translation'
         | 'meeting-intelligence'
@@ -72,6 +74,7 @@ export interface DetailedProject extends NarrativeSection {
 
 export interface ProjectTranslation extends NarrativeSection {
     title: string;
+    coreValueLine?: string;
     role: string;
     visualType?: DetailedProject['visualType'];
     company?: string;

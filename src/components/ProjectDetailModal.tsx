@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { ExternalLink, X } from 'lucide-react';
 import { useEffect } from 'react';
+import ReactMarkdown, { type Components } from 'react-markdown';
 import { useLanguage } from '../context/LanguageContext';
 import { DetailedProject } from '../data/types';
 import { ProjectMockupVisual } from './ProjectMockupVisual';
@@ -10,6 +11,29 @@ interface ProjectDetailModalProps {
     onClose: () => void;
     project: DetailedProject | null;
 }
+
+const markdownComponents: Components = {
+    p: ({ children }) => <p className="my-0">{children}</p>,
+    code: ({ children }) => (
+        <code className="rounded-md bg-gray-100 px-1.5 py-0.5 font-mono text-[0.92em] text-gray-800">
+            {children}
+        </code>
+    ),
+    strong: ({ children }) => <strong className="font-semibold text-gray-900">{children}</strong>,
+    a: ({ children, href }) => (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary-700"
+        >
+            {children}
+        </a>
+    ),
+    ul: ({ children }) => <ul className="mt-2 space-y-2 pl-4">{children}</ul>,
+    ol: ({ children }) => <ol className="mt-2 list-decimal space-y-2 pl-5">{children}</ol>,
+    li: ({ children }) => <li className="list-disc pl-1">{children}</li>,
+};
 
 export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailModalProps) => {
     const { config, language } = useLanguage();
@@ -90,7 +114,11 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
             {items.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm leading-7 text-gray-700 md:text-base">
                     <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary/70" aria-hidden="true" />
-                    <span>{item}</span>
+                    <div className="min-w-0 flex-1">
+                        <ReactMarkdown components={markdownComponents}>
+                            {item}
+                        </ReactMarkdown>
+                    </div>
                 </li>
             ))}
         </ul>
