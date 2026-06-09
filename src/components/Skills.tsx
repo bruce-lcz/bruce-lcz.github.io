@@ -2,52 +2,69 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
 export const Skills = () => {
-    const { config } = useLanguage();
-    const skills = config.skills;
-
-    const container = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
-    };
-
-    const item = {
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0 }
-    };
+    const { config, language } = useLanguage();
 
     return (
-        <section className="max-w-4xl mx-auto px-6 pb-20">
+        <section className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20" id="capability-map">
+            <div className="mb-12 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
+                <div>
+                    <p className="editorial-kicker">{language === 'zh' ? '能力視角' : 'Capability View'}</p>
+                    <h2 className="mt-3 text-4xl font-semibold tracking-tight text-gray-900">
+                        {language === 'zh' ? '能力地圖' : 'Capability Map'}
+                    </h2>
+                </div>
+                <p className="max-w-2xl text-base leading-7 text-gray-600">
+                    {language === 'zh'
+                        ? '這裡不是把技能當成標籤牆，而是呈現我如何把技術放進需求拆解、系統組合、產品實作與 domain workflow 中。'
+                        : 'This is not a disconnected tag wall. It is a map of how I place technical choices inside requirement framing, system composition, product implementation, and domain workflows.'}
+                </p>
+            </div>
+
             <motion.div
-                variants={container}
                 initial="hidden"
                 animate="show"
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                variants={{
+                    hidden: { opacity: 0 },
+                    show: {
+                        opacity: 1,
+                        transition: {
+                            staggerChildren: 0.08,
+                        },
+                    },
+                }}
+                className="grid gap-6 md:grid-cols-2"
             >
-                {skills.map((skillGroup, index) => (
-                    <motion.div
-                        key={index}
-                        variants={item}
-                        className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                {config.skills.map((skillGroup) => (
+                    <motion.article
+                        key={skillGroup.category}
+                        variants={{
+                            hidden: { opacity: 0, y: 16 },
+                            show: { opacity: 1, y: 0 },
+                        }}
+                        className="rounded-[28px] border border-gray-200 bg-white/85 p-7 shadow-[0_14px_34px_rgba(15,23,42,0.04)]"
                     >
-                        <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gray-400">
+                            {language === 'zh' ? '能力範圍' : 'Capability Area'}
+                        </p>
+                        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-gray-900">
                             {skillGroup.category}
                         </h3>
-                        <div className="flex flex-wrap gap-2">
-                            {skillGroup.items.map((skill, skillIndex) => (
+                        {skillGroup.description && (
+                            <p className="mt-3 text-sm leading-7 text-gray-600">
+                                {skillGroup.description}
+                            </p>
+                        )}
+                        <div className="mt-6 flex flex-wrap gap-2.5">
+                            {skillGroup.items.map((skill) => (
                                 <span
-                                    key={skillIndex}
-                                    className="px-4 py-2 bg-gray-50 text-gray-700 rounded-lg text-sm font-medium border border-gray-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-100 transition-colors"
+                                    key={skill}
+                                    className="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:border-primary/20 hover:bg-primary-50 hover:text-primary"
                                 >
                                     {skill}
                                 </span>
                             ))}
                         </div>
-                    </motion.div>
+                    </motion.article>
                 ))}
             </motion.div>
         </section>

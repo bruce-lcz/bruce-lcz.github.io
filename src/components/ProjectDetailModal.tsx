@@ -1,9 +1,10 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Calendar, Tag, ChevronRight, Building, Award } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
-import { DetailedProject } from '../data/types'; // Updated import
-import { useLanguage } from '../context/LanguageContext';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ExternalLink, X } from 'lucide-react';
 import { useEffect } from 'react';
+import ReactMarkdown, { type Components } from 'react-markdown';
+import { useLanguage } from '../context/LanguageContext';
+import { DetailedProject } from '../data/types';
+import { ProjectMockupVisual } from './ProjectMockupVisual';
 
 interface ProjectDetailModalProps {
     isOpen: boolean;
@@ -11,159 +12,268 @@ interface ProjectDetailModalProps {
     project: DetailedProject | null;
 }
 
+const markdownComponents: Components = {
+    p: ({ children }) => <p className="my-0">{children}</p>,
+    code: ({ children }) => (
+        <code className="rounded-md bg-gray-100 px-1.5 py-0.5 font-mono text-[0.92em] text-gray-800">
+            {children}
+        </code>
+    ),
+    strong: ({ children }) => <strong className="font-semibold text-gray-900">{children}</strong>,
+    a: ({ children, href }) => (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary-700"
+        >
+            {children}
+        </a>
+    ),
+    ul: ({ children }) => <ul className="mt-2 space-y-2 pl-4">{children}</ul>,
+    ol: ({ children }) => <ol className="mt-2 list-decimal space-y-2 pl-5">{children}</ol>,
+    li: ({ children }) => <li className="list-disc pl-1">{children}</li>,
+};
+
 export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailModalProps) => {
-    const { config } = useLanguage();
-    // Prevent body scroll when modal is open
+    const { config, language } = useLanguage();
+
     useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
+        document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+
         return () => {
             document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
 
-    if (!project) return null;
+    if (!project) {
+        return null;
+    }
 
-    const company = config.experience.find(c => c.id === project.companyId);
+    const company = config.experience.find((item) => item.id === project.companyId);
+    const summary = project.summary ?? project.oneLineSummary ?? project.shortDescription;
+    const problemSolved = project.problemSolved ?? project.challenges;
+    const implementationHighlights = project.implementationHighlights ?? project.keyFeatures;
+    const impact = project.impact ?? [];
+    const metadata = [project.role, project.company ?? project.companyName ?? company?.company, project.period]
+        .filter(Boolean)
+        .join(' • ');
+    const heroBadges = project.heroBadges ?? project.cardTags ?? project.techStack.slice(0, 3);
+
+    const labels = {
+        narrative: language === 'zh' ? '專案敘事' : 'Project Narrative',
+        context: language === 'zh' ? '背景情境' : 'Context',
+        constraint: language === 'zh' ? '限制條件' : 'Constraint',
+        myRole: language === 'zh' ? '我的角色' : 'My Role',
+        systemDesign: language === 'zh' ? '系統設計' : 'System Design',
+        outcome: language === 'zh' ? '成果結果' : 'Outcome',
+        problemSolved: language === 'zh' ? '解決問題' : 'Problem Solved',
+        implementationHighlights: language === 'zh' ? '實作重點' : 'Implementation Highlights',
+        impact: language === 'zh' ? '影響與價值' : 'Impact',
+        techStack: language === 'zh' ? '技術組成' : 'Tech Stack',
+        repository: language === 'zh' ? 'GitHub 原始碼' : 'GitHub Repository',
+        heroVisual: project.visualType
+            ? (language === 'zh' ? '產品預覽' : 'Product Preview')
+            : (language === 'zh' ? '系統概覽' : 'System Overview'),
+    };
+
+    const narrativeSections = [
+        { label: labels.context, items: project.context ?? [] },
+        { label: labels.constraint, items: project.constraint ?? [] },
+        { label: labels.myRole, items: project.myRole ?? [] },
+        { label: labels.systemDesign, items: project.systemDesign ?? [] },
+        { label: labels.outcome, items: project.outcome ?? [] },
+    ].filter((section) => section.items.length > 0);
+
+    const heroVisual = (() => {
+        if (project.visualType) {
+            return <ProjectMockupVisual visualType={project.visualType} />;
+        }
+
+        if (project.heroImage) {
+            return (
+                <div className="overflow-hidden rounded-[24px] border border-white/12 bg-white/4 shadow-[0_24px_70px_rgba(8,15,28,0.38),0_0_0_1px_rgba(255,255,255,0.02)]">
+                    <img
+                        src={project.heroImage}
+                        alt={`${project.title} system overview`}
+                        className="block max-h-[260px] w-full object-contain bg-[radial-gradient(circle_at_50%_50%,_rgba(34,211,238,0.08),_transparent_60%),linear-gradient(180deg,rgba(14,19,25,0.95),rgba(11,15,20,0.98))] p-3 md:p-4"
+                    />
+                </div>
+            );
+        }
+
+        return (
+            <div className="flex h-[240px] items-center justify-center rounded-[24px] border border-white/12 bg-white/5 text-sm text-gray-300 shadow-[0_24px_70px_rgba(8,15,28,0.38),0_0_0_1px_rgba(255,255,255,0.02)]">
+                {language === 'zh' ? '主視覺準備中' : 'Hero visual coming soon'}
+            </div>
+        );
+    })();
+
+    const renderList = (items: string[]) => (
+        <ul className="space-y-3">
+            {items.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm leading-7 text-gray-700 md:text-base">
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary/70" aria-hidden="true" />
+                    <div className="min-w-0 flex-1">
+                        <ReactMarkdown components={markdownComponents}>
+                            {item}
+                        </ReactMarkdown>
+                    </div>
+                </li>
+            ))}
+        </ul>
+    );
 
     return (
         <AnimatePresence>
             {isOpen && (
-                <>
-                    {/* Backdrop */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={onClose}
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-3 backdrop-blur-sm sm:p-6"
+                >
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={onClose}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6"
+                        initial={{ opacity: 0, scale: 0.97, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.97, y: 20 }}
+                        transition={{ duration: 0.2 }}
+                        onClick={(event) => event.stopPropagation()}
+                        className="relative flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-[28px] bg-white shadow-2xl"
                     >
-                        {/* Modal Content */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            onClick={(e) => e.stopPropagation()}
-                            className="bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col relative"
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="absolute right-4 top-4 z-20 rounded-full border border-white/10 bg-black/20 p-2 text-white transition-colors hover:bg-white/10"
                         >
-                            {/* Header / Hero */}
-                            <div className="relative bg-gray-900 text-white p-8 shrink-0">
-                                <button
-                                    onClick={onClose}
-                                    className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
-                                >
-                                    <X className="w-6 h-6" />
-                                </button>
+                            <X className="h-5 w-5" />
+                        </button>
 
-                                <div className="flex flex-col gap-4">
-                                    <div className="flex flex-wrap gap-2 text-sm font-medium opacity-80">
-                                        {company && (
-                                            <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-full">
-                                                <Building className="w-3.5 h-3.5" />
-                                                {company.company}
-                                            </span>
-                                        )}
-                                        <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-full">
-                                            <Calendar className="w-3.5 h-3.5" />
-                                            {project.period}
-                                        </span>
-                                    </div>
+                        <div className="overflow-y-auto custom-scrollbar">
+                            <section className="relative overflow-hidden bg-gradient-to-br from-[#101214] via-[#16191d] to-[#1d2329] text-white">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(148,163,184,0.14),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(34,211,238,0.14),_transparent_28%)]" />
 
-                                    <h2 className="text-3xl md:text-4xl font-bold">{project.title}</h2>
+                                <div className="relative grid items-center gap-8 px-6 py-10 md:px-10 md:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,520px)]">
+                                    <div className="order-1 space-y-6">
+                                        <div className="space-y-4">
+                                            <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-white md:text-4xl lg:text-[2.75rem] lg:leading-[1.05]">
+                                                {project.title}
+                                            </h1>
 
-                                    <div className="flex flex-wrap items-center justify-between gap-4 mt-2">
-                                        <p className="text-lg text-gray-300 font-medium">{project.role}</p>
-                                        {project.link && (
-                                            <a
-                                                href={project.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 rounded-lg transition-colors text-white font-medium"
-                                            >
-                                                GitHub Repository <ExternalLink className="w-4 h-4" />
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
+                                            <p className="text-sm font-medium tracking-wide text-gray-300 md:text-base">
+                                                {metadata}
+                                            </p>
 
-                            {/* Scrollable Content */}
-                            <div className="flex-1 overflow-y-auto p-8 space-y-10 custom-scrollbar">
-
-                                {/* Quick Stats / Summary Cards */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
-                                        <h3 className="flex items-center gap-2 font-bold text-gray-900 mb-4">
-                                            <Award className="w-5 h-5 text-primary" />
-                                            Key Features
-                                        </h3>
-                                        <ul className="space-y-3">
-                                            {project.keyFeatures.map((feature, idx) => (
-                                                <li key={idx} className="flex items-start gap-2 text-gray-700 text-sm">
-                                                    <ChevronRight className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                                                    {feature}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    {project.challenges && project.challenges.length > 0 && (
-                                        <div className="bg-orange-50 p-6 rounded-xl border border-orange-100">
-                                            <h3 className="flex items-center gap-2 font-bold text-gray-900 mb-4">
-                                                <Tag className="w-5 h-5 text-orange-500" />
-                                                Core Challenges
-                                            </h3>
-                                            <ul className="space-y-3">
-                                                {project.challenges.map((challenge, idx) => (
-                                                    <li key={idx} className="flex items-start gap-2 text-gray-700 text-sm">
-                                                        <ChevronRight className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
-                                                        {challenge}
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                            <p className="max-w-2xl text-base leading-7 text-gray-200 md:text-lg md:leading-8">
+                                                {summary}
+                                            </p>
                                         </div>
-                                    )}
-                                </div>
 
-                                {/* Main Description (Markdown) */}
-                                <div className="prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-primary">
-                                    <ReactMarkdown>{project.description}</ReactMarkdown>
-                                </div>
+                                        <div className="flex flex-wrap gap-2.5">
+                                            {heroBadges.map((badge) => (
+                                                <span
+                                                    key={badge}
+                                                    className="rounded-full border border-white/20 bg-white/6 px-3 py-1.5 text-xs font-medium tracking-wide text-gray-100 md:text-sm"
+                                                >
+                                                    {badge}
+                                                </span>
+                                            ))}
+                                        </div>
 
-                                {/* Tech Stack */}
-                                <div>
-                                    <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Tech Stack & Tools</h3>
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.techStack.map(tech => (
-                                            <span key={tech} className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-md text-sm font-medium border border-gray-200">
+                                        {project.link && (
+                                            <div>
+                                                <a
+                                                    href={project.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/14"
+                                                >
+                                                    {labels.repository}
+                                                    <ExternalLink className="h-4 w-4" />
+                                                </a>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="order-2 flex justify-center lg:justify-end">
+                                        <div className="w-full max-w-[520px]">
+                                            <div className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-cyan-200/80">
+                                                {labels.heroVisual}
+                                            </div>
+                                            {heroVisual}
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <div className="space-y-10 px-6 py-8 md:px-10 md:py-10">
+                                {narrativeSections.length > 0 && (
+                                    <section className="space-y-5">
+                                        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
+                                            {labels.narrative}
+                                        </h2>
+                                        <div className="grid gap-4 lg:grid-cols-2">
+                                            {narrativeSections.map((section) => (
+                                                <article key={section.label} className="rounded-[24px] border border-gray-200 bg-gray-50/80 p-5">
+                                                    <h3 className="text-base font-semibold text-gray-900">
+                                                        {section.label}
+                                                    </h3>
+                                                    <div className="mt-4">
+                                                        {renderList(section.items)}
+                                                    </div>
+                                                </article>
+                                            ))}
+                                        </div>
+                                    </section>
+                                )}
+
+                                {problemSolved.length > 0 && (
+                                    <section className="space-y-4">
+                                        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
+                                            {labels.problemSolved}
+                                        </h2>
+                                        {renderList(problemSolved)}
+                                    </section>
+                                )}
+
+                                {implementationHighlights.length > 0 && (
+                                    <section className="space-y-4">
+                                        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
+                                            {labels.implementationHighlights}
+                                        </h2>
+                                        {renderList(implementationHighlights)}
+                                    </section>
+                                )}
+
+                                {impact.length > 0 && (
+                                    <section className="space-y-4">
+                                        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
+                                            {labels.impact}
+                                        </h2>
+                                        {renderList(impact)}
+                                    </section>
+                                )}
+
+                                <section className="space-y-4">
+                                    <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
+                                        {labels.techStack}
+                                    </h2>
+                                    <div className="flex flex-wrap gap-2.5">
+                                        {project.techStack.map((tech) => (
+                                            <span
+                                                key={tech}
+                                                className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-700"
+                                            >
                                                 {tech}
                                             </span>
                                         ))}
                                     </div>
-                                </div>
-
-                                {/* Media Gallery (Future) */}
-                                {project.media && project.media.length > 0 && (
-                                    <div className="space-y-4">
-                                        <h3 className="text-xl font-bold text-gray-900">Gallery</h3>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            {project.media.map((item, idx) => (
-                                                <div key={idx} className="rounded-lg overflow-hidden border border-gray-200">
-                                                    {item.type === 'image' && (
-                                                        <img src={item.url} alt={item.caption} className="w-full h-auto" />
-                                                    )}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
+                                </section>
                             </div>
-                        </motion.div>
+                        </div>
                     </motion.div>
-                </>
+                </motion.div>
             )}
         </AnimatePresence>
     );

@@ -1,0 +1,18 @@
+<svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse"><stop stop-color="#111821"/><stop offset="1" stop-color="#19232D"/></linearGradient><linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#1E2833"/><stop offset="1" stop-color="#18212A"/></linearGradient><filter id="glow" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/><rect x="24" y="24" width="1392" height="432" rx="36" stroke="#2A3643"/>
+  <g font-family="Segoe UI, Arial, sans-serif"><rect x="72" y="60" width="194" height="40" rx="20" fill="#18212B" stroke="#344454"/><rect x="282" y="60" width="160" height="40" rx="20" fill="#18212B" stroke="#344454"/><rect x="458" y="60" width="214" height="40" rx="20" fill="#18212B" stroke="#344454"/><text x="107" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Predictive</text><text x="319" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Time Series</text><text x="496" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Schedule Aware</text></g>
+  <g filter="url(#glow)" stroke="#5AD7F7" stroke-width="4" stroke-linecap="round"><path d="M292 240H356"/><path d="M504 240H568"/><path d="M716 240H780"/><path d="M928 240H992"/><path d="M1140 240H1204"/></g>
+  <g fill="#5AD7F7"><path d="M356 240L343 232V248L356 240Z"/><path d="M568 240L555 232V248L568 240Z"/><path d="M780 240L767 232V248L780 240Z"/><path d="M992 240L979 232V248L992 240Z"/><path d="M1204 240L1191 232V248L1204 240Z"/></g>
+  <g fill="url(#node)" stroke="#334252"><rect x="88" y="184" width="204" height="112" rx="26"/><rect x="300" y="184" width="204" height="112" rx="26"/><rect x="512" y="184" width="204" height="112" rx="26"/><rect x="724" y="184" width="204" height="112" rx="26"/><rect x="936" y="184" width="204" height="112" rx="26"/><rect x="1148" y="184" width="204" height="112" rx="26"/></g>
+  <g fill="#141C25" stroke="#3A4E62"><rect x="154" y="198" width="44" height="44" rx="12"/><rect x="366" y="198" width="44" height="44" rx="12"/><rect x="578" y="198" width="44" height="44" rx="12"/><rect x="790" y="198" width="44" height="44" rx="12"/><rect x="1002" y="198" width="44" height="44" rx="12"/><rect x="1214" y="198" width="44" height="44" rx="12"/></g>
+  <g fill="none" stroke="#87E6FB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M165 228H187"/><path d="M169 220H183"/><path d="M173 212H179"/>
+    <path d="M378 228L388 212L398 228"/><path d="M372 224H404"/>
+    <path d="M592 228C600 220 608 220 616 214"/><path d="M592 220C600 212 608 212 616 208"/>
+    <path d="M804 212H828M804 220H824M804 228H820"/>
+    <circle cx="1024" cy="220" r="10" stroke="#F59E0B"/><path d="M1024 214V220L1029 224" stroke="#F59E0B"/>
+    <path d="M1234 210V230"/><path d="M1228 216H1240"/><path d="M1228 226H1240"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#EAF1F8" font-size="24" font-weight="700"><text x="136" y="272">Sensor Data</text><text x="358" y="272">Sequence</text><text x="580" y="272">Forecast</text><text x="784" y="272">Risk Score</text><text x="981" y="272">Schedule</text><text x="1180" y="272">Maintain</text></g>
+</svg>

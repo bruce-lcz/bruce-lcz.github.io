@@ -3,38 +3,47 @@ import { Trophy } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const Awards = () => {
-    const { config } = useLanguage();
+    const { config, language } = useLanguage();
+
     return (
-        <section className="max-w-4xl mx-auto px-6 py-20 bg-gray-50">
-            <div className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">Awards</h2>
-                <div className="h-1 w-12 bg-primary rounded-full" />
+        <section className="mx-auto max-w-6xl px-6 py-20">
+            <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div>
+                    <p className="editorial-kicker">{language === 'zh' ? '認可' : 'Recognition'}</p>
+                    <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-900">
+                        {language === 'zh' ? '獎項與認可' : 'Awards & Recognition'}
+                    </h2>
+                </div>
             </div>
 
             <div className="space-y-4">
                 {config.awards.map((award, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: -10 }}
+                    <motion.article
+                        key={`${award.year}-${award.title}`}
+                        initial={{ opacity: 0, x: -14 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className="flex items-center gap-6 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300"
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.32, delay: index * 0.06 }}
+                        className="grid gap-4 rounded-[26px] border border-gray-200 bg-white p-6 shadow-[0_14px_34px_rgba(15,23,42,0.05)] md:grid-cols-[80px_1fr]"
                     >
-                        <div className="text-xl font-bold text-gray-400 w-16 text-right font-display">
+                        <div className="text-2xl font-semibold tracking-tight text-gray-400">
                             {award.year}
                         </div>
 
-                        <div className="h-10 w-px bg-gray-200" />
-
-                        <div className="flex-1">
-                            <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2 mb-1">
-                                <Trophy className="w-4 h-4 text-yellow-600" />
-                                {award.title}
-                            </h3>
-                            <p className="text-gray-600">{award.organization}</p>
+                        <div className="flex items-start gap-4">
+                            <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-50 text-amber-600">
+                                <Trophy className="h-4 w-4" />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-semibold text-gray-900">
+                                    {award.title}
+                                </h3>
+                                <p className="mt-2 text-sm leading-6 text-gray-600">
+                                    {award.organization}
+                                </p>
+                            </div>
                         </div>
-                    </motion.div>
+                    </motion.article>
                 ))}
             </div>
         </section>

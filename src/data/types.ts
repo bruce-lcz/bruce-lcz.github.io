@@ -1,12 +1,12 @@
 export interface CompanyMeta {
     description?: string;
-    logo?: string; // path to image
+    logo?: string;
     url?: string;
     industry?: string;
 }
 
 export interface Job {
-    id: string; // Added ID for linking
+    id: string;
     type: 'current' | 'past';
     company: string;
     companyMeta?: CompanyMeta;
@@ -15,7 +15,7 @@ export interface Job {
     description: string;
     techStack: string[];
     achievements: string[];
-    relatedProjectIds?: string[]; // IDs linking to key projects
+    relatedProjectIds?: string[];
 }
 
 export interface ProjectMedia {
@@ -24,36 +24,85 @@ export interface ProjectMedia {
     caption?: string;
 }
 
-export interface DetailedProject {
+export interface NarrativeSection {
+    context?: string[];
+    constraint?: string[];
+    myRole?: string[];
+    systemDesign?: string[];
+    outcome?: string[];
+}
+
+export interface DetailedProject extends NarrativeSection {
     id: string;
     title: string;
+    coreValueLine?: string;
     category: string;
+    visualType?:
+        | 'asc-merge-c-generator'
+        | 'legal-comparison'
+        | 'patent-translation'
+        | 'meeting-intelligence'
+        | 'genai-workspace'
+        | 'gym-tracker'
+        | 'manufacturing-assistant'
+        | 'yield-optimization'
+        | 'preventive-maintenance'
+        | 'address-normalization';
     role: string;
+    company?: string;
     period: string;
-    companyId?: string; // Link back to job
-    shortDescription: string; // Used for cards/previews
-    description: string; // Full markdown description
+    companyName?: string;
+    companyId?: string;
+    shortDescription: string;
+    description: string;
     keyFeatures: string[];
     challenges: string[];
+    summary?: string;
+    problemSolved?: string[];
+    implementationHighlights?: string[];
+    impact?: string[];
+    oneLineSummary?: string;
+    beforeSummary?: string;
+    afterSummary?: string;
+    cardTags?: string[];
+    heroBadges?: string[];
+    heroImage?: string;
     techStack: string[];
     media?: ProjectMedia[];
     link?: string;
 }
 
-export interface ProjectTranslation {
+export interface ProjectTranslation extends NarrativeSection {
     title: string;
+    coreValueLine?: string;
     role: string;
+    visualType?: DetailedProject['visualType'];
+    company?: string;
+    companyName?: string;
     shortDescription: string;
     description: string;
     keyFeatures: string[];
     challenges: string[];
+    summary?: string;
+    problemSolved?: string[];
+    implementationHighlights?: string[];
+    impact?: string[];
+    oneLineSummary?: string;
+    beforeSummary?: string;
+    afterSummary?: string;
+    cardTags?: string[];
+    heroBadges?: string[];
+    heroImage?: string;
 }
 
 export interface UnifiedProject {
     id: string;
     category: string;
     period: string;
+    visualType?: DetailedProject['visualType'];
     companyId?: string;
+    heroBadges?: string[];
+    heroImage?: string;
     techStack: string[];
     media?: ProjectMedia[];
     link?: string;
@@ -96,6 +145,7 @@ export interface SocialLinks {
 
 export interface SkillCategory {
     category: string;
+    description?: string;
     items: string[];
 }
 
@@ -108,4 +158,3 @@ export interface Config {
     awards: Award[];
     skills: SkillCategory[];
 }
-

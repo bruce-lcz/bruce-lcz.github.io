@@ -1,0 +1,101 @@
+<svg width="1440" height="520" viewBox="0 0 1440 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="40" x2="1310" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111821"/>
+      <stop offset="1" stop-color="#19232D"/>
+    </linearGradient>
+    <linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E2833"/>
+      <stop offset="1" stop-color="#18212A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="24" y="24" width="1392" height="472" rx="36" fill="url(#bg)"/>
+  <rect x="72" y="60" width="186" height="40" rx="20" fill="#18212B" stroke="#344454"/>
+  <rect x="276" y="60" width="210" height="40" rx="20" fill="#18212B" stroke="#344454"/>
+  <rect x="504" y="60" width="232" height="40" rx="20" fill="#18212B" stroke="#344454"/>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#E7EEF6" font-size="15" font-weight="600">
+    <text x="105" y="86">Open WebUI Tool</text>
+    <text x="320" y="86">Encoding Fallback</text>
+    <text x="540" y="86">Downloadable Export</text>
+  </g>
+
+  <g stroke="#4B5B6B" stroke-width="4" stroke-linecap="round">
+    <path d="M212 260H292"/>
+    <path d="M448 260H534"/>
+    <path d="M694 260H782"/>
+    <path d="M942 260H1028"/>
+    <path d="M1188 260H1248"/>
+  </g>
+  <g stroke="#7DD3FC" stroke-width="4" stroke-linecap="round" filter="url(#glow)">
+    <path d="M292 260H338"/>
+    <path d="M782 260H828"/>
+    <path d="M1028 260H1074"/>
+  </g>
+
+  <g>
+    <rect x="96" y="200" width="136" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
+    <rect x="332" y="200" width="136" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
+    <rect x="574" y="200" width="136" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
+    <rect x="822" y="200" width="136" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
+    <rect x="1068" y="200" width="136" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
+    <rect x="1252" y="200" width="112" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#EAF1F8" font-size="24" font-weight="700">
+    <text x="122" y="272">Upload</text>
+    <text x="367" y="272">Read</text>
+    <text x="600" y="272">Merge</text>
+    <text x="855" y="272">Generate</text>
+    <text x="1097" y="272">Export</text>
+    <text x="1275" y="272">Link</text>
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#93A6B8" font-size="14">
+    <text x="114" y="296">ASC files</text>
+    <text x="350" y="296">Raw bytes</text>
+    <text x="592" y="296">Ordered append</text>
+    <text x="844" y="296">C init code</text>
+    <text x="1087" y="296">.c / merged .asc</text>
+    <text x="1273" y="296">Nginx</text>
+  </g>
+
+  <g>
+    <rect x="122" y="226" width="32" height="42" rx="6" fill="#0F1720" stroke="#4B5B6B"/>
+    <rect x="162" y="234" width="36" height="8" rx="4" fill="#38BDF8"/>
+    <rect x="162" y="248" width="42" height="7" rx="3.5" fill="#5B7084"/>
+    <rect x="162" y="261" width="28" height="7" rx="3.5" fill="#5B7084"/>
+
+    <rect x="360" y="228" width="78" height="14" rx="7" fill="#38BDF8" fill-opacity="0.18" stroke="#38BDF8" stroke-opacity="0.5"/>
+    <rect x="360" y="250" width="58" height="8" rx="4" fill="#5B7084"/>
+    <rect x="360" y="264" width="44" height="8" rx="4" fill="#5B7084"/>
+
+    <rect x="602" y="226" width="80" height="18" rx="9" fill="#22C55E" fill-opacity="0.16" stroke="#22C55E" stroke-opacity="0.45"/>
+    <rect x="602" y="254" width="62" height="8" rx="4" fill="#5B7084"/>
+    <rect x="602" y="268" width="76" height="8" rx="4" fill="#5B7084"/>
+
+    <rect x="852" y="226" width="76" height="18" rx="9" fill="#F59E0B" fill-opacity="0.16" stroke="#F59E0B" stroke-opacity="0.5"/>
+    <rect x="852" y="254" width="54" height="8" rx="4" fill="#5B7084"/>
+    <rect x="852" y="268" width="68" height="8" rx="4" fill="#5B7084"/>
+
+    <rect x="1094" y="226" width="82" height="18" rx="9" fill="#38BDF8" fill-opacity="0.18" stroke="#38BDF8" stroke-opacity="0.5"/>
+    <rect x="1094" y="254" width="58" height="8" rx="4" fill="#5B7084"/>
+    <rect x="1094" y="268" width="70" height="8" rx="4" fill="#5B7084"/>
+
+    <circle cx="1308" cy="246" r="16" fill="#0F1720" stroke="#38BDF8" stroke-opacity="0.7"/>
+    <path d="M1302 246H1314" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+    <path d="M1308 240V252" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+    <rect x="1280" y="266" width="56" height="8" rx="4" fill="#5B7084"/>
+  </g>
+
+  <rect x="96" y="372" width="1268" height="66" rx="22" fill="#121921" stroke="#2F3D4A"/>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#A9BAC8">
+    <text x="126" y="413">ASC upload → raw-byte read → encoding normalization → ordered merge → C code generation → downloadable internal artifact</text>
+  </g>
+</svg>
