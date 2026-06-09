@@ -52,17 +52,17 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
 
     return (
         <section className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20" id="projects">
-            <div className="mb-12 grid gap-5 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:items-end">
+            <div className="mb-12 grid gap-5 lg:grid-cols-[max-content_minmax(0,1fr)] lg:items-end">
                 <div>
-                    <p className="editorial-kicker">{language === 'zh' ? '代表作品' : 'Selected Work'}</p>
+                    <p className="editorial-kicker">{language === 'zh' ? '作品集' : 'Portfolio'}</p>
                     <h2 className="mt-3 text-4xl font-semibold tracking-tight text-gray-900">
-                        {language === 'zh' ? '代表專案' : 'Selected Projects'}
+                        {language === 'zh' ? '專案案例' : 'Case Studies'}
                     </h2>
                 </div>
-                <p className="max-w-2xl text-base leading-7 text-gray-600">
+                <p className={`max-w-none text-base leading-7 text-gray-600 lg:justify-self-end ${language === 'zh' ? 'lg:whitespace-nowrap' : ''}`}>
                     {language === 'zh'
-                        ? '這裡呈現的不是單純做過哪些技術，而是我如何把模糊需求、限制條件與使用情境，整理成團隊真的能採用的 workflow 與內部產品。'
-                        : 'These projects show less what tools were used and more how ambiguous needs, constraints, and user behavior were turned into adoptable workflows and internal products.'}
+                        ? '把模糊需求、限制條件與使用情境，整理成團隊可採用的內部工具與 AI 應用專案。'
+                        : 'Turning ambiguous requirements, constraints, and usage scenarios into internal tools and AI applications teams can actually adopt.'}
                 </p>
             </div>
 

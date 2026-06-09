@@ -51,13 +51,13 @@ export const WhatIActuallyBuild = () => {
         ];
 
     return (
-        <section className="mx-auto max-w-6xl scroll-mt-24 px-6 py-10 md:py-14" id="what-i-build">
+        <section className="mx-auto max-w-6xl scroll-mt-24 py-10 md:py-14" id="what-i-build">
             <div className="rounded-[32px] border border-white/80 bg-white/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur md:p-8">
                 <div className="mb-8 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
                     <div>
-                        <p className="editorial-kicker">{language === 'zh' ? '工作方式' : 'Working Style'}</p>
+                        <p className="editorial-kicker">{language === 'zh' ? '能力面向' : 'Capabilities'}</p>
                         <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
-                            {language === 'zh' ? '我實際打造的東西' : 'What I Actually Build'}
+                            {language === 'zh' ? 'AI 應用與工具化案例' : 'AI Applications and Tooling Cases'}
                         </h2>
                     </div>
                     <p className="max-w-[42rem] text-[0.98rem] leading-7 text-gray-600">

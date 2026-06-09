@@ -20,7 +20,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
         period: '2026/05',
         companyId: 'pixart',
         visualType: 'asc-merge-c-generator',
-        heroBadges: ['Internal Automation Tool', 'Encoding-Safe ASC Processing', 'Downloadable C Export'],
+        heroBadges: ['Productionized Internal Tool', 'Workflow Automation', 'File-to-Code Conversion'],
         heroImage: '/images/projects/asc-merge-c-generator-hero.svg',
         techStack: ['Open WebUI', 'Python', 'Native Tool Calling', 'Nginx', 'Docker Compose'],
         translations: {
@@ -28,8 +28,8 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 title: 'ASC Merge & C Code Generator',
                 role: 'AI Application Engineer',
                 company: 'PixArt Imaging Inc.',
-                shortDescription: 'Built an internal AI-assisted workflow that merged ASC configuration files in order, preserved RD annotations, and exported downloadable C initialization code for SD users.',
-                description: 'An internal automation tool that turned fragile copy-paste work into a controlled file-processing workflow.',
+                shortDescription: 'Packaged a manual ASC merge and C code conversion process into a reusable internal tool for SD users.',
+                description: 'A reusable internal tool that turned manual configuration-file handling into a guided workflow.',
                 keyFeatures: [
                     'Supports both single-file conversion and ordered multi-file merge workflows',
                     'Preserves RD comments, Chinese annotations, and append-based initialization order during processing',
@@ -39,9 +39,9 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'ASC files arrived with mixed encodings, inconsistent formatting, and comments that could not be lost during conversion.',
                     'The interaction flow had to collect inputs step by step instead of dumping all configuration questions on the user at once.',
                 ],
-                summary: 'Built an internal AI-assisted workflow that merged ASC configuration files in order, preserved RD annotations, and exported downloadable C initialization code for SD users.',
+                summary: 'Packaged a manual ASC merge and C code conversion process into a reusable internal tool for SD users.',
                 beforeSummary: 'SD users had to manually merge RD-provided ASC files, fix encoding issues, preserve comments, and then turn the result into C initialization code by hand.',
-                afterSummary: 'Upload, file-order confirmation, encoding-safe parsing, C generation, and downloadable export were brought together in one guided Open WebUI workflow.',
+                afterSummary: 'Packaged the ASC merge and C code conversion process into a reusable internal tool, helping the SD team turn a manual configuration-file workflow into a guided, confirmable, and downloadable standardized process.',
                 context: [
                     'SD users regularly received one or more ASC configuration files from RD teams and needed to convert them into usable initialization code.',
                     'The work was repetitive, but it still required careful handling of file order, comments, Chinese annotations, and output format details.',
@@ -77,14 +77,14 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Improved reliability by preserving Chinese annotations, RD comments, and merge order in an on-premise internal workflow.',
                     'Created a reusable Open WebUI automation pattern for future file-to-code internal tools.',
                 ],
-                cardTags: ['Internal Tool', 'Encoding Handling', 'File-to-Code Workflow'],
+                cardTags: ['Productionized Internal Tool', 'Workflow Automation', 'Engineering Productivity', 'File-to-Code Conversion'],
             },
             zh: {
                 title: 'ASC 合併與 C Code 產生器',
                 role: 'AI Application Engineer',
                 company: 'PixArt Imaging Inc.',
-                shortDescription: '建立一套給 SD 使用的內部 AI 輔助流程，能依序合併 ASC 設定檔、保留 RD 註解，並匯出可下載的 C 初始化程式碼。',
-                description: '把原本脆弱的手動複製貼上流程，整理成可重複使用的內部檔案處理工具。',
+                shortDescription: '將 ASC 合併與 C code 轉換流程整理成 SD 團隊可重複使用的內部工具。',
+                description: '把原本仰賴人工整理的設定檔流程，轉成可輸入、可確認、可下載的標準化操作。',
                 keyFeatures: [
                     '同時支援單一 ASC 轉換與多 ASC 依序合併流程',
                     '在處理過程中保留 RD 註解、中文標註與 append 式初始化順序',
@@ -94,9 +94,9 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'ASC 檔可能混用不同編碼、格式不一致，且轉換過程不能遺失 RD 註解與中間說明。',
                     '互動流程必須逐步蒐集資訊，不能一次把所有設定問題丟給使用者。',
                 ],
-                summary: '建立一套給 SD 使用的內部 AI 輔助流程，能依序合併 ASC 設定檔、保留 RD 註解，並匯出可下載的 C 初始化程式碼。',
+                summary: '將 ASC 合併與 C code 轉換流程整理成 SD 團隊可重複使用的內部工具。',
                 beforeSummary: 'SD 使用者過去要手動合併 RD 提供的 ASC 檔、修正編碼、保留註解，再自行轉成 C 初始化程式碼，流程耗時又容易出錯。',
-                afterSummary: '我把上傳、檔案順序確認、編碼安全讀取、C code 產生與下載匯出，整合成一個 Open WebUI 引導式流程。',
+                afterSummary: '將 ASC 合併與 C code 轉換流程包裝成可重複使用的內部工具，協助 SD 團隊把原本仰賴人工整理的設定檔流程，轉成可輸入、可確認、可下載的標準化操作。',
                 context: [
                     'SD 使用者經常收到一份或多份來自 RD 的 ASC 設定檔，並需要把內容整理成可用的初始化程式碼。',
                     '這類工作雖然重複，但對檔案順序、註解保留、中文標註與輸出格式都很敏感。',
@@ -115,7 +115,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 outcome: [
                     '降低 SD 使用者在 RD 設定檔合併與轉換上的手動成本。',
-                    '把註解保留、順序控制與下載輸出整合進同一套可重複使用的內部工具，提升整體可靠性。',
+                    '把註解保留、順序確認與下載輸出整合進同一套可重複使用的流程，降低人工整理與格式確認成本。',
                 ],
                 problemSolved: [
                     '手動合併 ASC 檔不只花時間，也很容易在檔案順序或重複位址處理上出錯。',
@@ -132,7 +132,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     '在內網環境下保留中文標註、RD 註解與檔案順序，提升流程可信度與可重複性。',
                     '建立可延伸到其他 file-to-code 類型工具的 Open WebUI 內部自動化模式。',
                 ],
-                cardTags: ['內部工具', '編碼處理', '檔案轉程式流程'],
+                cardTags: ['工具化落地', '流程自動化', '工程效率提升', '檔案轉程式流程'],
             },
         },
     },
@@ -142,7 +142,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
         visualType: 'genai-workspace',
         period: '2025 - Present',
         companyId: 'pixart',
-        heroBadges: ['Internal GenAI Workspace', 'Engineering AI Workflow', 'Model Access Layer'],
+        heroBadges: ['Internal AI Platform', 'LLM Application', 'Engineering Productivity'],
         heroImage: '/images/projects/genai-workspace-hero.svg',
         techStack: ['Python', 'vLLM', 'Model Serving', 'Document Utilities', 'Docker'],
         translations: {
@@ -198,7 +198,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Helped engineering teams use AI in recurring work instead of isolated demos.',
                     'Provided a reusable internal workspace pattern for later document, coding, and analysis workflows.',
                 ],
-                cardTags: ['Internal AI Workspace', 'Model Access', 'Engineering Workflow', 'Document Utilities'],
+                cardTags: ['Internal AI Platform', 'LLM Application', 'Engineering Productivity', 'Document Intelligence'],
             },
             zh: {
                 title: '工程團隊 GenAI 工作區',
@@ -217,7 +217,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: '建置並整合內部 GenAI 工作區，協助工程使用者更容易存取內部模型與任務導向 AI 工具，支援程式輔助、文件閱讀與技術分析等日常工作情境。',
                 beforeSummary: '工程使用者原本需分散使用不同 AI 工具，單純的模型端點也不易直接融入日常工作流程。',
-                afterSummary: '整合內部模型存取、可重用的互動模式，以及文件/圖片處理相關工具，形成一個貼近工程任務的共享工作區。',
+                afterSummary: '整合 LLM 應用入口、可重用的互動模式，以及文件/圖片處理相關工具，形成一個貼近工程任務的共享工作區。',
                 context: [
                     '工程團隊希望把 AI 用在 coding、文件理解與技術分析等日常工作。',
                     '真正的需求不是一個聊天機器人，而是一個能承接多種 AI 工具使用情境的內部工作區。',
@@ -239,7 +239,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     '為後續的文件、程式輔助與分析 workflow 建立可重用的內部工作區模式。',
                 ],
                 problemSolved: [
-                    '團隊缺少一個能在日常工程流程中使用多種 AI 工具情境的內部入口。',
+                    '團隊缺少一個能在日常工程任務中使用多種 AI 工具情境的內部入口。',
                     '只有模型 API 或 endpoint，並不足以形成可被採用的工作流程。',
                 ],
                 implementationHighlights: [
@@ -251,7 +251,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     '讓 AI 更容易進入工程團隊的日常工作，而不只是停留在 demo。',
                     '建立後續內部 AI workflow 可重用的工作區模式。',
                 ],
-                cardTags: ['內部 AI 工作區', '模型存取', '工程流程', '文件工具'],
+                cardTags: ['內部 AI 平台', 'LLM 應用導入', '工程效率提升', '文件智能處理'],
             },
         },
     },
@@ -261,9 +261,9 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
         visualType: 'legal-comparison',
         period: '2026/02 - 2026/03',
         companyId: 'pixart',
-        heroBadges: ['Internal Review Workflow', 'Document Comparison', 'Review Support'],
+        heroBadges: ['Contract Comparison', 'Document Intelligence', 'Human Review Workflow'],
         heroImage: '/images/projects/legal-document-comparison-hero.svg',
-        techStack: ['Python', 'FastAPI', 'vLLM', 'Document Parsing', 'Review Support'],
+        techStack: ['Python', 'FastAPI', 'vLLM', 'Document Parsing', 'Human Review Workflow'],
         translations: {
             en: {
                 title: 'Legal Document Comparison Web App',
@@ -318,7 +318,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Helped legal users compare sensitive documents without relying on external AI services.',
                     'Showed how AI-assisted document comparison could be packaged into a usable internal review tool.',
                 ],
-                cardTags: ['Internal Review Tool', 'Document Comparison', 'Human-in-the-Loop Review', 'Review Support'],
+                cardTags: ['Contract Comparison', 'Document Intelligence', 'Human-in-the-Loop Review', 'Workflow Automation'],
             },
             zh: {
                 title: '法務文件比對 Web App',
@@ -344,7 +344,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 constraint: [
                     '文件屬於敏感資料，需要在公司內部環境處理。',
-                    '掃描文件格式不穩，且法務審閱需要人工覆核支援，不能只依賴模型輸出。',
+                    '掃描文件格式不穩，且法務審閱需要保留人工判斷，不能只依賴模型輸出。',
                 ],
                 myRole: [
                     '我把需求拆成文件解析、比對輔助、一致性檢查輔助與人工審閱四個步驟。',
@@ -372,7 +372,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     '協助法務在避免依賴外部 AI 工具的情況下處理敏感文件比對。',
                     '示範 AI 輔助文件比對如何被包裝成可使用的內部審閱工具。',
                 ],
-                cardTags: ['內部審閱工具', '文件比對', 'Human-in-the-Loop', '覆核支援'],
+                cardTags: ['合約差異比較', '文件智能處理', 'Human-in-the-Loop', '流程自動化'],
             },
         },
     },
@@ -438,7 +438,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Made first-draft patent translation more reviewable and more consistent for legal and engineering teams.',
                     'Packaged LLM translation capability into an internal workflow teams could reuse.',
                 ],
-                cardTags: ['Translation Workflow', 'Terminology Support', 'DOCX Processing', 'Internal Tool'],
+                cardTags: ['Long-Form Translation', 'Document Intelligence', 'Terminology Consistency', 'Productionized Internal Tool'],
             },
             zh: {
                 title: '專利翻譯流程 Web App',
@@ -491,7 +491,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     '讓法務與工程團隊更容易處理可審閱的專利翻譯初稿。',
                     '把 LLM 翻譯能力包裝成可重複使用的內部流程。',
                 ],
-                cardTags: ['翻譯流程', '術語支援', 'DOCX 處理', '內部工具'],
+                cardTags: ['長文翻譯', '文件智能處理', '術語一致性', '工具化落地'],
             },
         },
     },
@@ -674,7 +674,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Improved how engineering teams approached cross-source manufacturing analysis.',
                     'Created a stronger foundation for domain-aware AI support in operations.',
                 ],
-                cardTags: ['Decision Support', 'Cross-Source Reasoning', 'Domain Workflow'],
+                cardTags: ['Manufacturing Knowledge Integration', 'RAG Application', 'Multi-Agent System', 'Data Query Assistant'],
             },
             zh: {
                 title: '製造知識助理',
@@ -727,7 +727,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     '改善工程團隊進行跨來源製造分析的方式。',
                     '為營運現場建立更貼近領域脈絡的 AI 支援基礎。',
                 ],
-                cardTags: ['決策支援', '跨來源判斷', '領域 workflow'],
+                cardTags: ['製造知識整合', 'RAG 應用', 'Multi-Agent', '資料查詢助理'],
             },
         },
     },

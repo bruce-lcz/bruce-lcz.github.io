@@ -9,9 +9,9 @@ export const Awards = () => {
         <section className="mx-auto max-w-6xl px-6 py-20">
             <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
-                    <p className="editorial-kicker">{language === 'zh' ? '認可' : 'Recognition'}</p>
+                    <p className="editorial-kicker">{language === 'zh' ? '認證' : 'Recognition'}</p>
                     <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-900">
-                        {language === 'zh' ? '獎項與認可' : 'Awards & Recognition'}
+                        {language === 'zh' ? '獎項與認證' : 'Awards & Recognition'}
                     </h2>
                 </div>
             </div>

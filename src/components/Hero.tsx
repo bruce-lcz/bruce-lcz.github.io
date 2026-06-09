@@ -6,28 +6,28 @@ export const Hero = () => {
     const { config, language, toggleLanguage } = useLanguage();
     const { identity, links } = config;
     const isZh = language === 'zh';
-    const heroTitle = isZh ? '把 AI 能力整理成可用 workflow' : 'Turning AI capabilities into practical workflows.';
+    const heroTitle = isZh ? '把複雜需求做成 AI 解決方案' : 'Building AI solutions for complex requirements.';
 
     const editorialNotes = language === 'zh'
         ? [
-            '我不把自己定位成單一工具專家。On-prem、OCR、ASR、RAG、Agent 或 LLM API 都只是手段。',
-            '我的重點是根據限制拆解需求，組合合適工具，設計成團隊能採用的 workflow。',
+            '我擅長把需求、資料與限制整理成可落地的 AI 應用，讓模型能力接上實際使用流程。',
+            '根據限制拆解需求，組合合適方案，將 AI 能力設計成團隊能採用的流程與內部產品。',
         ]
         : [
-            'I do not position myself around a single deployment model or tool. On-prem, OCR, ASR, RAG, agents, and APIs are all options depending on the workflow and constraint.',
-            'My work usually sits between requirement framing, tool composition, workflow design, and internal productization so AI can move from demo to actual use.',
+            'I turn requirements, data, and constraints into practical AI applications that connect model capabilities with real usage flows.',
+            'I break down requirements through constraints, combine the right tools, and shape AI capabilities into workflows and internal products teams can adopt.',
         ];
 
     const signalCards = language === 'zh'
         ? [
             { label: '核心重點', value: '需求拆解、流程設計、內部 AI 產品化' },
             { label: '工作方式', value: '依照真實限制挑對模型、工具、資料流、驗證與介面' },
-            { label: '常見場域', value: '法務、研發、製造與內部知識工作' },
+            { label: '代表產出', value: '內部 AI 解決方案、文件智能處理與決策支援應用' },
         ]
         : [
             { label: 'Core Focus', value: 'Requirement framing, workflow design, and internal AI product building' },
             { label: 'Working Mode', value: 'Choose the right combination of models, tools, data flow, validation, and interface for the real constraint' },
-            { label: 'Typical Domains', value: 'Legal, engineering, manufacturing, and internal knowledge work' },
+            { label: 'Representative Outputs', value: 'Internal AI tools, document intelligence, and decision-support applications' },
         ];
 
     return (
@@ -69,25 +69,21 @@ export const Hero = () => {
                         </div>
                     </div>
 
-                    <div className={`grid gap-10 lg:items-center ${isZh ? 'lg:grid-cols-[minmax(0,1.42fr)_minmax(320px,0.78fr)]' : 'lg:grid-cols-[minmax(0,1.25fr)_minmax(320px,0.9fr)]'}`}>
+                    <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.78fr)] lg:items-center xl:gap-14">
                         <div className="order-2 lg:order-1">
-                            <div className={`mb-5 inline-flex items-center rounded-full border border-primary/15 bg-primary-50 text-primary shadow-sm ${isZh ? 'px-3.5 py-1.5 text-[0.95rem]' : 'px-4 py-2 text-sm'} font-medium`}>
+                            <div className="mb-5 inline-flex items-center rounded-full border border-primary/15 bg-primary-50 px-4 py-2 text-sm font-medium text-primary shadow-sm">
                                 {identity.role}
                             </div>
 
-                            {isZh ? (
-                                <h1 className="max-w-[620px] text-[3.25rem] font-semibold leading-[1.08] tracking-[-0.035em] text-gray-900 md:text-[4.2rem]">
-                                    把 AI 能力
-                                    <br />
-                                    整理成可用 workflow
-                                </h1>
-                            ) : (
-                                <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] text-gray-900 md:text-6xl">
-                                    {heroTitle}
-                                </h1>
-                            )}
+                            <h1
+                                className={`max-w-[680px] text-4xl font-semibold leading-[1.08] text-gray-900 md:text-5xl ${
+                                    isZh ? 'xl:text-[3rem]' : 'xl:text-[3.35rem]'
+                                }`}
+                            >
+                                {heroTitle}
+                            </h1>
 
-                            <p className={`mt-5 font-medium text-gray-700 ${isZh ? 'max-w-[640px] text-[1.02rem] leading-[1.95] md:text-[1.15rem]' : 'max-w-2xl text-lg leading-8 md:text-[1.35rem]'}`}>
+                            <p className="mt-5 max-w-[620px] text-lg font-medium leading-8 text-gray-700 md:text-xl">
                                 {identity.tagline}
                             </p>
 
@@ -130,11 +126,11 @@ export const Hero = () => {
                                 </div>
                             </div>
 
-                            <div className={`mt-10 grid gap-4 ${isZh ? 'md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]' : 'md:grid-cols-2'}`}>
+                            <div className="mt-10 grid gap-4 md:grid-cols-2">
                                 {editorialNotes.map((paragraph) => (
                                     <div
                                         key={paragraph}
-                                        className={`rounded-[24px] border border-gray-200/90 bg-white/95 text-gray-600 shadow-[0_14px_36px_rgba(15,23,42,0.05)] ${isZh ? 'p-4 text-[0.94rem] leading-[1.8] md:min-h-[118px]' : 'p-5 text-sm leading-7 md:min-h-[148px]'}`}
+                                        className="min-h-[148px] rounded-[24px] border border-gray-200/90 bg-white/95 p-5 text-sm leading-7 text-gray-600 shadow-[0_14px_36px_rgba(15,23,42,0.05)]"
                                     >
                                         {paragraph}
                                     </div>
@@ -143,7 +139,7 @@ export const Hero = () => {
                         </div>
 
                         <div className="order-1 lg:order-2">
-                            <div className="relative mx-auto max-w-[420px]">
+                            <div className="relative mx-auto max-w-[390px]">
                                 <div className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle_at_top,rgba(26,115,232,0.20),transparent_60%)] blur-2xl" />
                                 <div className="relative rounded-[32px] border border-gray-200 bg-[linear-gradient(160deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))] p-5 shadow-[0_24px_70px_rgba(15,23,42,0.12)]">
                                     <div className="rounded-[28px] border border-gray-200/90 bg-white px-5 py-6">
@@ -161,11 +157,11 @@ export const Hero = () => {
                                             </p>
                                             <div className="mt-4 space-y-3">
                                                 {signalCards.map((card) => (
-                                                    <div key={card.label} className={`rounded-[20px] border border-gray-200 bg-gray-50/80 ${isZh ? 'px-4 py-3.5' : 'px-4 py-4'}`}>
-                                                        <p className={`font-semibold text-gray-400 ${isZh ? 'text-[0.8rem] tracking-[0.08em]' : 'text-xs uppercase tracking-[0.18em]'}`}>
+                                                    <div key={card.label} className="rounded-[20px] border border-gray-200 bg-gray-50/80 px-4 py-4">
+                                                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">
                                                             {card.label}
                                                         </p>
-                                                        <p className={`mt-2 text-gray-700 ${isZh ? 'text-[0.95rem] leading-7' : 'text-sm leading-6'}`}>
+                                                        <p className="mt-2 text-sm leading-6 text-gray-700">
                                                             {card.value}
                                                         </p>
                                                     </div>

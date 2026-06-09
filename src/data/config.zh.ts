@@ -36,7 +36,7 @@ export const configZh: Config = {
             achievements: [
                 '落地法律文件比對與專利翻譯流程，支援敏感內部文件處理。',
                 '建立會議智慧流程，把內部音檔轉成可用的逐字稿、摘要與會議紀錄。',
-                '設計內部 GenAI workspace，讓模型存取、多模態分析與工程支援更容易被團隊採用。',
+                '設計內部 GenAI workspace，讓 LLM 應用、多模態分析與工程支援更容易被團隊採用。',
             ],
             relatedProjectIds: ['pixart-genai-hub', 'legal-contract-comparison', 'patent-translation-service', 'auto-minutes-system'],
         },
@@ -99,7 +99,7 @@ export const configZh: Config = {
             degree: '碩士',
             field: '工業工程與管理',
             period: '2019 - 2021',
-            thesis: '基於 R-tree 與 SPACE-MDL-LSTM 之大範圍人流預測效率優化',
+            thesis: '基於R-tree與SPACE-MDL-LSTM提升大區域人流預測之效率',
             logo: COMPANIES.yuntech.logo,
         },
         {
@@ -107,7 +107,7 @@ export const configZh: Config = {
             degree: '學士',
             field: '工業工程與管理',
             period: '2015 - 2019',
-            thesis: '柔性生產流程中的機台派工優化',
+            thesis: '最佳化彈性生產流程之機台派工',
             logo: COMPANIES.yuntech.logo,
         },
     ],
@@ -153,10 +153,10 @@ export const configZh: Config = {
             category: 'Product Implementation',
             description: '把 AI workflow 包裝成團隊真的能用的產品。',
             items: [
-                'FastAPI / Python backend',
-                'React / Streamlit internal tools',
-                'Docker deployment',
-                'Data pipeline and file processing',
+                'Backend workflow orchestration',
+                'Internal tool experience design',
+                'Deployment-ready packaging',
+                'Data and file workflow automation',
             ],
         },
         {
