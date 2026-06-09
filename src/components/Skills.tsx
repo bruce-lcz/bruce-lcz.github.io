@@ -41,16 +41,13 @@ export const Skills = () => {
                             hidden: { opacity: 0, y: 16 },
                             show: { opacity: 1, y: 0 },
                         }}
-                        className="rounded-[28px] border border-gray-200 bg-white/85 p-7 shadow-[0_14px_34px_rgba(15,23,42,0.04)]"
+                        className="flex h-full flex-col rounded-[28px] border border-gray-200 bg-white/85 p-7 shadow-[0_14px_34px_rgba(15,23,42,0.04)]"
                     >
-                        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gray-400">
-                            {language === 'zh' ? '能力範圍' : 'Capability Area'}
-                        </p>
-                        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-gray-900">
+                        <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
                             {skillGroup.category}
                         </h3>
                         {skillGroup.description && (
-                            <p className="mt-3 text-sm leading-7 text-gray-600">
+                            <p className="mt-3 min-h-[3.5rem] text-sm leading-7 text-gray-600">
                                 {skillGroup.description}
                             </p>
                         )}

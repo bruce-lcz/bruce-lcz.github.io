@@ -99,7 +99,7 @@ export const configEn: Config = {
             degree: "Master's Degree",
             field: 'Industrial Engineering and Management',
             period: '2019 - 2021',
-            thesis: 'Efficiency Optimization of Large-Area Crowd Flow Prediction Based on R-tree and SPACE-MDL-LSTM',
+            thesis: 'Improve the Predicted Efficiency of Crowd Flow in Large Areas Based on the R-tree and the SPACE-MDL-LSTM',
             logo: COMPANIES.yuntech.logo,
         },
         {
@@ -107,7 +107,7 @@ export const configEn: Config = {
             degree: "Bachelor's Degree",
             field: 'Industrial Engineering and Management',
             period: '2015 - 2019',
-            thesis: 'Optimization of Machine Dispatching in Flexible Production Processes',
+            thesis: 'Optimization of machine dispatching in flexible production processes',
             logo: COMPANIES.yuntech.logo,
         },
     ],
@@ -153,10 +153,10 @@ export const configEn: Config = {
             category: 'Product Implementation',
             description: 'How I package AI workflows into products people can actually use.',
             items: [
-                'FastAPI / Python backend',
-                'React / Streamlit internal tools',
-                'Docker deployment',
-                'Data pipeline and file processing',
+                'Backend workflow orchestration',
+                'Internal tool experience design',
+                'Deployment-ready packaging',
+                'Data and file workflow automation',
             ],
         },
         {

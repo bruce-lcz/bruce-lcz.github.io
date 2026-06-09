@@ -217,7 +217,7 @@ const GenAIWorkspaceVisual = () => (
         header="Internal GenAI Workspace"
         status="Models Online"
         footer="Internal chat, multimodal review, and coding assistance inside one secure workspace"
-        tags={['Internal Workspace', 'Model Access', 'Multimodal Support']}
+        tags={['Internal AI Platform', 'LLM Application', 'Multimodal Support']}
     >
         <div className="grid gap-3 md:grid-cols-[0.78fr_1.22fr]">
             <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
