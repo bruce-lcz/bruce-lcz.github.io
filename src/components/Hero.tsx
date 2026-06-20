@@ -1,175 +1,74 @@
+import type { MouseEvent } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDownRight, FileText, Github, Linkedin, Mail } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const Hero = () => {
-    const { config, language, toggleLanguage } = useLanguage();
+    const { config, language } = useLanguage();
     const { identity, links } = config;
     const isZh = language === 'zh';
-    const heroTitle = isZh ? '把複雜需求做成 AI 解決方案' : 'Building AI solutions for complex requirements.';
 
-    const editorialNotes = language === 'zh'
-        ? [
-            '我擅長把需求、資料與限制整理成可落地的 AI 應用，讓模型能力接上實際使用流程。',
-            '根據限制拆解需求，組合合適方案，將 AI 能力設計成團隊能採用的流程與內部產品。',
-        ]
-        : [
-            'I turn requirements, data, and constraints into practical AI applications that connect model capabilities with real usage flows.',
-            'I break down requirements through constraints, combine the right tools, and shape AI capabilities into workflows and internal products teams can adopt.',
-        ];
-
-    const signalCards = language === 'zh'
-        ? [
-            { label: '核心重點', value: '需求拆解、流程設計、內部 AI 產品化' },
-            { label: '工作方式', value: '依照真實限制挑對模型、工具、資料流、驗證與介面' },
-            { label: '代表產出', value: '內部 AI 解決方案、文件智能處理與決策支援應用' },
-        ]
-        : [
-            { label: 'Core Focus', value: 'Requirement framing, workflow design, and internal AI product building' },
-            { label: 'Working Mode', value: 'Choose the right combination of models, tools, data flow, validation, and interface for the real constraint' },
-            { label: 'Representative Outputs', value: 'Internal AI tools, document intelligence, and decision-support applications' },
-        ];
+    const handleWorkClick = (event: MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
+        document.getElementById('work')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
 
     return (
-        <section className="relative overflow-hidden px-6 pb-8 pt-8 scroll-mt-24 md:pt-12" id="profile">
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(218,220,224,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(218,220,224,0.5)_1px,transparent_1px)] bg-[size:4.5rem_4.5rem] [mask-image:radial-gradient(ellipse_70%_58%_at_50%_30%,#000_64%,transparent_100%)]" />
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-[540px] bg-editorial-glow" />
+        <section className="relative overflow-hidden px-6 pb-20 pt-28 md:pb-28 md:pt-36" id="home">
+            <div className="personal-orb personal-orb-blue -right-24 top-12" />
+            <div className="personal-orb personal-orb-warm -left-32 top-[34rem]" />
 
             <motion.div
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: 'easeOut' }}
                 className="relative mx-auto max-w-6xl"
             >
-                <div className="editorial-surface rounded-[36px] px-6 py-6 md:px-8 md:py-8 lg:px-10 lg:py-10">
-                    <div className="mb-8 flex items-center justify-between gap-4">
-                        <div>
-                            <p className="editorial-kicker">{language === 'zh' ? '作品檔案' : 'Portfolio Profile'}</p>
+                <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-center lg:gap-20">
+                    <div>
+                        <p className="mb-7 flex items-center gap-3 text-sm font-medium text-gray-500">
+                            <span className="h-px w-8 bg-primary" />
+                            {isZh ? '嗨，我是 Bruce。' : "Hi, I'm Bruce."}
+                        </p>
+
+                        <h1 className={`max-w-[820px] font-display font-medium leading-[1.04] tracking-[-0.045em] text-gray-950 ${isZh ? 'text-[2.9rem] md:text-[4.5rem]' : 'text-[2.85rem] md:text-[5rem]'}`}>
+                            {isZh ? (
+                                <>我設計與開發<span className="text-primary">企業 AI 應用</span>，從需求一路做到上線。</>
+                            ) : (
+                                <>I design and build <span className="text-primary">enterprise AI applications</span>, from requirements to rollout.</>
+                            )}
+                        </h1>
+
+                        <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-600 md:text-xl md:leading-9">
+                            {isZh
+                                ? '我專注在 AI 應用、內部工具與工作流程，負責從需求拆解、系統設計一路做到部署與導入。'
+                                : 'I build AI applications, internal tools, and workflows—from requirement framing and system design through deployment and adoption.'}
+                        </p>
+
+                        <div className="mt-9 flex flex-wrap items-center gap-3">
+                            <a href="#work" onClick={handleWorkClick} className="personal-button personal-button-dark">
+                                {isZh ? '看看我做的東西' : 'See what I build'}
+                                <ArrowDownRight className="h-4 w-4" />
+                            </a>
+                            <a href={`mailto:${links.email}`} className="personal-button personal-button-light">
+                                <Mail className="h-4 w-4" />
+                                {isZh ? '來聊聊' : 'Say hello'}
+                            </a>
                         </div>
 
-                        <div className="flex rounded-full border border-gray-200 bg-white/90 p-1 shadow-sm">
-                            <button
-                                type="button"
-                                onClick={() => language !== 'en' && toggleLanguage()}
-                                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
-                                    language === 'en' ? 'bg-gray-900 text-white' : 'text-gray-500 hover:text-gray-900'
-                                }`}
-                            >
-                                EN
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => language !== 'zh' && toggleLanguage()}
-                                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
-                                    language === 'zh' ? 'bg-gray-900 text-white' : 'text-gray-500 hover:text-gray-900'
-                                }`}
-                            >
-                                中文
-                            </button>
+                        <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-gray-500">
+                            <a href={links.github} target="_blank" rel="noopener noreferrer" className="social-link"><Github className="h-4 w-4" />GitHub</a>
+                            <a href={links.linkedin} target="_blank" rel="noopener noreferrer" className="social-link"><Linkedin className="h-4 w-4" />LinkedIn</a>
+                            <a href="/Bruce_Cheng_Resume.pdf" target="_blank" rel="noopener noreferrer" className="social-link"><FileText className="h-4 w-4" />{isZh ? '履歷' : 'Resume'}</a>
                         </div>
                     </div>
 
-                    <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.78fr)] lg:items-center xl:gap-14">
-                        <div className="order-2 lg:order-1">
-                            <div className="mb-5 inline-flex items-center rounded-full border border-primary/15 bg-primary-50 px-4 py-2 text-sm font-medium text-primary shadow-sm">
-                                {identity.role}
-                            </div>
-
-                            <h1
-                                className={`max-w-[680px] text-4xl font-semibold leading-[1.08] text-gray-900 md:text-5xl ${
-                                    isZh ? 'xl:text-[3rem]' : 'xl:text-[3.35rem]'
-                                }`}
-                            >
-                                {heroTitle}
-                            </h1>
-
-                            <p className="mt-5 max-w-[620px] text-lg font-medium leading-8 text-gray-700 md:text-xl">
-                                {identity.tagline}
-                            </p>
-
-                            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                                <a
-                                    href={`mailto:${links.email}`}
-                                    className="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                                >
-                                    <Mail className="h-4 w-4" />
-                                    {language === 'zh' ? '聯絡我' : 'Contact Me'}
-                                </a>
-
-                                <div className="flex flex-wrap items-center gap-3">
-                                    <a
-                                        href={links.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:text-gray-900"
-                                    >
-                                        <Github className="h-4 w-4" />
-                                        GitHub
-                                    </a>
-                                    <a
-                                        href={links.linkedin}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:text-gray-900"
-                                    >
-                                        <Linkedin className="h-4 w-4" />
-                                        LinkedIn
-                                    </a>
-                                    <a
-                                        href="/Bruce_Cheng_Resume.pdf"
-                                        download="Bruce_Cheng_Resume.pdf"
-                                        className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:text-gray-900"
-                                    >
-                                        <FileText className="h-4 w-4" />
-                                        {language === 'zh' ? '履歷' : 'Resume'}
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div className="mt-10 grid gap-4 md:grid-cols-2">
-                                {editorialNotes.map((paragraph) => (
-                                    <div
-                                        key={paragraph}
-                                        className="min-h-[148px] rounded-[24px] border border-gray-200/90 bg-white/95 p-5 text-sm leading-7 text-gray-600 shadow-[0_14px_36px_rgba(15,23,42,0.05)]"
-                                    >
-                                        {paragraph}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="order-1 lg:order-2">
-                            <div className="relative mx-auto max-w-[390px]">
-                                <div className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle_at_top,rgba(26,115,232,0.20),transparent_60%)] blur-2xl" />
-                                <div className="relative rounded-[32px] border border-gray-200 bg-[linear-gradient(160deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))] p-5 shadow-[0_24px_70px_rgba(15,23,42,0.12)]">
-                                    <div className="rounded-[28px] border border-gray-200/90 bg-white px-5 py-6">
-                                        <div className="flex justify-center">
-                                            <img
-                                                src={identity.avatar}
-                                                alt={identity.name}
-                                                className="h-32 w-32 rounded-[28px] object-cover shadow-lg md:h-40 md:w-40"
-                                            />
-                                        </div>
-
-                                        <div className="mt-6 border-t border-dashed border-gray-200 pt-5">
-                                            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gray-400">
-                                                {language === 'zh' ? '重點摘要' : 'Signals'}
-                                            </p>
-                                            <div className="mt-4 space-y-3">
-                                                {signalCards.map((card) => (
-                                                    <div key={card.label} className="rounded-[20px] border border-gray-200 bg-gray-50/80 px-4 py-4">
-                                                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">
-                                                            {card.label}
-                                                        </p>
-                                                        <p className="mt-2 text-sm leading-6 text-gray-700">
-                                                            {card.value}
-                                                        </p>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div className="mx-auto w-full max-w-[340px] lg:mx-0">
+                        <div className="relative rotate-[2deg] rounded-[2rem] bg-[#f2eadf] p-3 shadow-[0_24px_70px_rgba(47,40,32,0.16)]">
+                            <img src={identity.avatar} alt={identity.name} className="aspect-[4/5] w-full rounded-[1.45rem] object-cover" />
+                            <div className="absolute -bottom-5 -left-7 -rotate-[5deg] rounded-2xl border border-gray-200 bg-white px-5 py-4 shadow-lg">
+                                <p className="text-xs uppercase tracking-[0.18em] text-gray-400">{isZh ? '目前所在' : 'Currently'}</p>
+                                <p className="mt-1 font-display text-lg font-medium text-gray-900">Taiwan</p>
                             </div>
                         </div>
                     </div>

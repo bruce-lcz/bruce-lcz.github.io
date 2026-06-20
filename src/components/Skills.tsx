@@ -15,8 +15,8 @@ export const Skills = () => {
                 </div>
                 <p className="max-w-2xl text-base leading-7 text-gray-600">
                     {language === 'zh'
-                        ? '這裡不是把技能當成標籤牆，而是呈現我如何把技術放進需求拆解、系統組合、產品實作與 domain workflow 中。'
-                        : 'This is not a disconnected tag wall. It is a map of how I place technical choices inside requirement framing, system composition, product implementation, and domain workflows.'}
+                        ? '依照需求分析、系統整合、產品實作與應用領域，整理我實際使用的能力。'
+                        : 'Capabilities organized by requirement analysis, system integration, product implementation, and application domain.'}
                 </p>
             </div>
 

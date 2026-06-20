@@ -3,12 +3,9 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { Hero } from './components/Hero';
 import { WhatIActuallyBuild } from './components/WhatIActuallyBuild';
 import { Projects } from './components/Projects';
-import { Experience } from './components/Experience';
-import { Skills } from './components/Skills';
-import { Education } from './components/Education';
-import { Awards } from './components/Awards';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
-import { ScrollspyNav } from './components/ScrollspyNav';
+import { SiteHeader } from './components/SiteHeader';
+import { Background } from './components/Background';
 import { useLanguage } from './context/LanguageContext';
 
 const Home = () => {
@@ -20,23 +17,19 @@ const Home = () => {
         : null;
 
     return (
-        <div className="min-h-screen bg-[radial-gradient(circle_at_top,#eef4ff,transparent_28%),linear-gradient(180deg,#f8fafc_0%,#ffffff_26%,#f8fafc_100%)] text-gray-900">
+        <div className="min-h-screen overflow-hidden bg-[#fbfaf7] text-gray-900">
+            <SiteHeader />
             <Hero />
-            <ScrollspyNav />
 
-            <main className="relative z-10 pb-20">
+            <main className="relative z-10">
                 <WhatIActuallyBuild />
                 <Projects onProjectSelect={setSelectedProjectId} />
-                <Experience onProjectSelect={setSelectedProjectId} />
-                <Skills />
-                <Education />
-                <Awards />
+                <Background />
             </main>
 
-            <footer className="border-t border-gray-200/80 bg-white/80 py-12 text-center text-sm text-gray-500 backdrop-blur">
-                <p>
-                    © {new Date().getFullYear()} Bruce Cheng. {language === 'zh' ? '以清楚、實際、可用的方式設計與交付。' : 'Built with clarity, usefulness, and engineering care.'}
-                </p>
+            <footer className="mx-auto flex max-w-6xl flex-col gap-3 px-6 pb-10 pt-6 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+                <p>© {new Date().getFullYear()} Bruce Cheng</p>
+                <p>{language === 'zh' ? 'AI 應用工程師，現居台灣。' : 'AI application engineer based in Taiwan.'}</p>
             </footer>
 
             <ProjectDetailModal

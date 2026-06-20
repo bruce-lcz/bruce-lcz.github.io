@@ -6,10 +6,10 @@ export const configEn: Config = {
     identity: {
         name: PERSONAL_INFO.name,
         role: 'AI Application Engineer / AI Solution Builder',
-        tagline: 'Connecting models, tools, data flows, and user interfaces into AI workflows that support legal, engineering, manufacturing, and knowledge work.',
+        tagline: 'Designing and building enterprise AI applications, internal tools, and automation workflows.',
         about: [
-            'Tool choices depend on the task. On-prem models, OCR, ASR, RAG, agents, and APIs are selected only when they help solve the actual workflow problem.',
-            'My work sits between requirement framing, tool composition, workflow design, and internal productization — with a focus on making the result usable by real teams.',
+            'I choose between on-prem models, OCR, ASR, RAG, agents, and APIs based on data sensitivity, accuracy, latency, and maintenance cost.',
+            'My work covers requirement framing, system design, implementation, deployment, and user rollout.',
         ],
         email: PERSONAL_INFO.email,
         avatar: PERSONAL_INFO.avatar,
@@ -31,12 +31,12 @@ export const configEn: Config = {
             },
             role: 'Information Engineer (Generative AI / LLM Projects)',
             period: 'Aug 2025 - Present',
-            description: 'I work across Legal, R&D, and internal knowledge scenarios, turning high-constraint AI requests into internal workflows and products teams can actually use.',
+            description: 'I build generative AI applications for Legal, R&D, and internal knowledge teams, from requirements through deployment and rollout.',
             techStack: ['Python', 'FastAPI', 'vLLM', 'Workflow Design', 'Internal Productization'],
             achievements: [
                 'Shipped legal document comparison and patent translation workflows for sensitive internal document handling.',
                 'Built a meeting intelligence workflow that turned internal audio into structured minutes and summaries.',
-                'Designed an internal GenAI workspace that made model access, multimodal analysis, and engineering support easier to adopt.',
+                'Designed an internal GenAI workspace that combined model access, multimodal analysis, and engineering utilities.',
             ],
             relatedProjectIds: ['pixart-genai-hub', 'legal-contract-comparison', 'patent-translation-service', 'auto-minutes-system'],
         },
@@ -51,7 +51,7 @@ export const configEn: Config = {
             },
             role: 'AI Engineer / Project Leader',
             period: 'Aug 2021 - Aug 2025',
-            description: 'Built manufacturing-facing AI systems that supported decision-making, process optimization, and operational workflows rather than model experiments in isolation.',
+            description: 'Built manufacturing AI systems for decision support, process optimization, and preventive maintenance.',
             techStack: ['Python', 'SQL', 'Databricks', 'Streamlit', 'FastAPI', 'Agent Workflows'],
             achievements: [
                 'Turned cross-factory variability into explainable optimization recommendations engineers could act on.',
@@ -151,7 +151,7 @@ export const configEn: Config = {
         },
         {
             category: 'Product Implementation',
-            description: 'How I package AI workflows into products people can actually use.',
+            description: 'How I turn AI capabilities into deployable, maintainable internal products.',
             items: [
                 'Backend workflow orchestration',
                 'Internal tool experience design',
@@ -161,7 +161,7 @@ export const configEn: Config = {
         },
         {
             category: 'Domain Application',
-            description: 'Where I have applied workflow design and AI productization in practice.',
+            description: 'The business and product domains where I have delivered AI systems.',
             items: [
                 'Legal & IP workflows',
                 'Meeting intelligence',

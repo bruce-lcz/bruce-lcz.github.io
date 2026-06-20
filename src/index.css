@@ -18,7 +18,7 @@
   }
 
   body {
-    @apply bg-white text-gray-900 antialiased;
+    @apply bg-[#fbfaf7] text-gray-900 antialiased;
   }
 
   ::selection {
@@ -51,11 +51,39 @@
   .editorial-kicker {
     @apply text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-primary/80;
   }
+
+  .personal-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  .personal-button-dark {
+    @apply bg-gray-950 text-white shadow-[0_10px_28px_rgba(15,23,42,0.14)] hover:-translate-y-0.5 hover:bg-primary;
+  }
+
+  .personal-button-light {
+    @apply border border-gray-200 bg-white text-gray-700 shadow-sm hover:-translate-y-0.5 hover:border-gray-300 hover:text-gray-950;
+  }
+
+  .social-link {
+    @apply inline-flex items-center gap-1.5 transition-colors hover:text-primary;
+  }
 }
 
 @layer utilities {
   .bg-editorial-glow {
     background-image: var(--portfolio-glow);
+  }
+
+  .personal-orb {
+    @apply pointer-events-none absolute h-[28rem] w-[28rem] rounded-full blur-3xl;
+  }
+
+  .personal-orb-blue {
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.2), rgba(96, 165, 250, 0));
+  }
+
+  .personal-orb-warm {
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.14), rgba(251, 191, 36, 0));
   }
 }
 

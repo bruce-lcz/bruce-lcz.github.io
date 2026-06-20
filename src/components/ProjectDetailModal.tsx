@@ -55,23 +55,24 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
     const problemSolved = project.problemSolved ?? project.challenges;
     const implementationHighlights = project.implementationHighlights ?? project.keyFeatures;
     const impact = project.impact ?? [];
-    const metadata = [project.role, project.company ?? project.companyName ?? company?.company, project.period]
+    const displayPeriod = language === 'zh' ? project.period.replace('Present', '至今') : project.period;
+    const metadata = [project.role, project.company ?? project.companyName ?? company?.company, displayPeriod]
         .filter(Boolean)
         .join(' • ');
-    const heroBadges = project.heroBadges ?? project.cardTags ?? project.techStack.slice(0, 3);
+    const heroBadges = project.cardTags ?? project.heroBadges ?? project.techStack.slice(0, 3);
 
     const labels = {
-        narrative: language === 'zh' ? '專案敘事' : 'Project Narrative',
-        context: language === 'zh' ? '背景情境' : 'Context',
-        constraint: language === 'zh' ? '限制條件' : 'Constraint',
-        myRole: language === 'zh' ? '我的角色' : 'My Role',
-        systemDesign: language === 'zh' ? '系統設計' : 'System Design',
-        outcome: language === 'zh' ? '成果結果' : 'Outcome',
-        problemSolved: language === 'zh' ? '解決問題' : 'Problem Solved',
-        implementationHighlights: language === 'zh' ? '實作重點' : 'Implementation Highlights',
-        impact: language === 'zh' ? '影響與價值' : 'Impact',
-        techStack: language === 'zh' ? '技術組成' : 'Tech Stack',
-        repository: language === 'zh' ? 'GitHub 原始碼' : 'GitHub Repository',
+        narrative: language === 'zh' ? '從問題到交付' : 'From problem to delivery',
+        context: language === 'zh' ? '情境' : 'Context',
+        constraint: language === 'zh' ? '限制' : 'Constraints',
+        myRole: language === 'zh' ? '負責範圍' : 'My Role',
+        systemDesign: language === 'zh' ? '設計選擇' : 'Design',
+        outcome: language === 'zh' ? '結果' : 'Outcome',
+        problemSolved: language === 'zh' ? '我先解決什麼' : 'What needed fixing',
+        implementationHighlights: language === 'zh' ? '我怎麼做' : 'How I built it',
+        impact: language === 'zh' ? '帶來的改變' : 'What changed',
+        techStack: language === 'zh' ? '使用技術' : 'Built with',
+        repository: language === 'zh' ? '查看原始碼' : 'View source',
         heroVisual: project.visualType
             ? (language === 'zh' ? '產品預覽' : 'Product Preview')
             : (language === 'zh' ? '系統概覽' : 'System Overview'),
@@ -145,6 +146,7 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                         <button
                             type="button"
                             onClick={onClose}
+                            aria-label={language === 'zh' ? '關閉專案內容' : 'Close project detail'}
                             className="absolute right-4 top-4 z-20 rounded-full border border-white/10 bg-black/20 p-2 text-white transition-colors hover:bg-white/10"
                         >
                             <X className="h-5 w-5" />
@@ -207,19 +209,20 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                                 </div>
                             </section>
 
-                            <div className="space-y-10 px-6 py-8 md:px-10 md:py-10">
+                            <div className="space-y-12 px-6 py-9 md:px-10 md:py-12">
                                 {narrativeSections.length > 0 && (
                                     <section className="space-y-5">
-                                        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
+                                        <h2 className="editorial-kicker">
                                             {labels.narrative}
                                         </h2>
-                                        <div className="grid gap-4 lg:grid-cols-2">
-                                            {narrativeSections.map((section) => (
-                                                <article key={section.label} className="rounded-[24px] border border-gray-200 bg-gray-50/80 p-5">
-                                                    <h3 className="text-base font-semibold text-gray-900">
-                                                        {section.label}
-                                                    </h3>
-                                                    <div className="mt-4">
+                                        <div className="overflow-hidden rounded-[28px] border border-gray-200 bg-[#fbfaf7]">
+                                            {narrativeSections.map((section, index) => (
+                                                <article key={section.label} className="grid gap-4 border-b border-gray-200 p-5 last:border-b-0 md:grid-cols-[150px_1fr] md:p-6">
+                                                    <div className="flex items-center gap-3 md:items-start">
+                                                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-900 text-xs font-semibold text-white">{index + 1}</span>
+                                                        <h3 className="pt-1 text-sm font-semibold text-gray-900">{section.label}</h3>
+                                                    </div>
+                                                    <div>
                                                         {renderList(section.items)}
                                                     </div>
                                                 </article>
@@ -228,35 +231,24 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                                     </section>
                                 )}
 
-                                {problemSolved.length > 0 && (
-                                    <section className="space-y-4">
-                                        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
-                                            {labels.problemSolved}
-                                        </h2>
-                                        {renderList(problemSolved)}
-                                    </section>
-                                )}
-
-                                {implementationHighlights.length > 0 && (
-                                    <section className="space-y-4">
-                                        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
-                                            {labels.implementationHighlights}
-                                        </h2>
-                                        {renderList(implementationHighlights)}
-                                    </section>
-                                )}
-
-                                {impact.length > 0 && (
-                                    <section className="space-y-4">
-                                        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
-                                            {labels.impact}
-                                        </h2>
-                                        {renderList(impact)}
-                                    </section>
-                                )}
+                                <section className="grid gap-4 lg:grid-cols-3">
+                                    {[
+                                        { label: labels.problemSolved, items: problemSolved, tone: 'border-amber-200/70 bg-amber-50/55', dot: 'bg-amber-500' },
+                                        { label: labels.implementationHighlights, items: implementationHighlights, tone: 'border-blue-200/70 bg-blue-50/55', dot: 'bg-primary' },
+                                        { label: labels.impact, items: impact, tone: 'border-emerald-200/70 bg-emerald-50/55', dot: 'bg-emerald-500' },
+                                    ].filter((section) => section.items.length > 0).map((section) => (
+                                        <article key={section.label} className={`rounded-[26px] border p-5 md:p-6 ${section.tone}`}>
+                                            <div className="flex items-center gap-3">
+                                                <span className={`h-2.5 w-2.5 rounded-full ${section.dot}`} />
+                                                <h2 className="text-sm font-semibold text-gray-900">{section.label}</h2>
+                                            </div>
+                                            <div className="mt-5">{renderList(section.items)}</div>
+                                        </article>
+                                    ))}
+                                </section>
 
                                 <section className="space-y-4">
-                                    <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
+                                    <h2 className="editorial-kicker">
                                         {labels.techStack}
                                     </h2>
                                     <div className="flex flex-wrap gap-2.5">

@@ -20,8 +20,8 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                 </div>
                 <p className="max-w-2xl text-base leading-7 text-gray-600">
                     {language === 'zh'
-                        ? '這些經歷的共同主軸，不是做過哪些模型，而是我如何逐步把 AI 從分析工具推進成 workflow 與內部產品。'
-                        : 'These roles are less about isolated model work and more about how AI moved from analysis support toward workflow design and internal productization.'}
+                        ? '工作內容從資料分析與預測模型，逐步延伸到決策支援、流程設計與企業內部 AI 產品。'
+                        : 'My work has expanded from analytics and predictive models to decision support, workflow design, and internal AI products.'}
                 </p>
             </div>
 
