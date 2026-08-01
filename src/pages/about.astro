@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import App from '../App';
+import { getCollection } from 'astro:content';
+import { isPublished, sortArticles } from '../utils/articles';
+
+const allArticles = await getCollection('articles');
+const visibleArticles = sortArticles(allArticles.filter(isPublished)).slice(0, 3);
+const recentArticles = visibleArticles.map(a => ({
+  id: a.id,
+  title: a.data.title,
+  description: a.data.description,
+  publishedAt: a.data.publishedAt.toISOString(),
+  category: a.data.category,
+  tags: a.data.tags,
+  cover: a.data.cover
+}));
+---
+
+<BaseLayout
+  title="About — Bruce Cheng | AI Application Engineer"
+  description="Portfolio & Knowledge Base. Building AI solutions for complex requirements."
+>
+  <App client:only="react" recentArticles={recentArticles} />
+</BaseLayout>

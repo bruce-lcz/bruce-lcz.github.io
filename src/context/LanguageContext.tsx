@@ -30,12 +30,19 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const [language, setLanguageState] = useState<Language>('en');
 
     useEffect(() => {
-        // Load persisted language preference
-        const savedLang = localStorage.getItem('language') as Language;
-        if (savedLang === 'en' || savedLang === 'zh') {
-            setLanguageState(savedLang);
-        }
-        // Removed browser detection to enforce English default unless saved
+        const loadLang = () => {
+            const savedLang = localStorage.getItem('language') as Language;
+            if (savedLang === 'en' || savedLang === 'zh') {
+                setLanguageState(savedLang);
+            }
+        };
+
+        // Load persisted language preference initially
+        loadLang();
+
+        // Listen for changes from outside React (e.g. Navbar)
+        window.addEventListener('storage', loadLang);
+        return () => window.removeEventListener('storage', loadLang);
     }, []);
 
     const config = language === 'zh' ? configZh : configEn;

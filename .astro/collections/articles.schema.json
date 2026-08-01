@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "publishedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "draft": {
+      "default": false,
+      "type": "boolean"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "case-study",
+        "architecture-note",
+        "technical-guide",
+        "research-note"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "enterprise-ai",
+        "on-prem-llm",
+        "rag-document-ai",
+        "multimodal-ai",
+        "ai-agents",
+        "solution-architecture"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cover": {
+      "type": "string"
+    },
+    "coverAlt": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "publishedAt",
+    "type",
+    "category",
+    "tags"
+  ]
+}

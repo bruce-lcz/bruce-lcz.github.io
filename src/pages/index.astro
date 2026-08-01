@@ -1,0 +1,467 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { isPublished, sortArticles } from '../utils/articles';
+
+const allArticles = await getCollection('articles');
+const visibleArticles = sortArticles(allArticles.filter(isPublished));
+
+// Get unique categories from published articles
+const categories = [...new Set(visibleArticles.map(a => a.data.category))];
+
+// Category counts
+const categoryCounts: Record<string, number> = {};
+for (const article of visibleArticles) {
+  categoryCounts[article.data.category] = (categoryCounts[article.data.category] || 0) + 1;
+}
+
+// All tags with counts
+const tagCounts: Record<string, number> = {};
+for (const article of visibleArticles) {
+  for (const tag of article.data.tags) {
+    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+  }
+}
+const topTags = Object.entries(tagCounts)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 16);
+
+// Latest 5 for sidebar
+const latestArticles = visibleArticles.slice(0, 5);
+
+// Category display names
+const categoryLabels: Record<string, { en: string; zh: string }> = {
+  'enterprise-ai': { en: 'Enterprise AI', zh: '企業 AI' },
+  'on-prem-llm': { en: 'On-Prem LLM', zh: '地端 LLM' },
+  'rag-document-ai': { en: 'RAG & Document AI', zh: 'RAG 與文件 AI' },
+  'multimodal-ai': { en: 'Multimodal AI', zh: '多模態 AI' },
+  'ai-agents': { en: 'AI Agents', zh: 'AI Agent' },
+  'solution-architecture': { en: 'Solution Architecture', zh: '解決方案架構' },
+};
+---
+
+<BaseLayout
+  title="Bruce Cheng — AI Application Engineer"
+  description="Technical articles about Enterprise AI, on-prem LLM deployment, RAG, and solution architecture."
+  isHomepage={true}
+>
+  <div class="mx-auto max-w-6xl px-6 py-12 md:py-20">
+    <!-- Header -->
+    <div class="mb-10 max-w-2xl">
+      <p class="editorial-kicker" id="articles-kicker">Knowledge Base</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight text-gray-900 md:text-5xl" id="articles-title">
+        Articles
+      </h1>
+      <p class="mt-5 text-lg leading-8 text-gray-600" id="articles-subtitle">
+        Explore my deep dives and practices in AI deployment, workflow design, and engineering.
+      </p>
+    </div>
+
+    <!-- Search and Category filters -->
+    <div class="mb-10 space-y-4">
+      <!-- Search Input -->
+      <div class="relative max-w-md">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <input
+          type="text"
+          id="article-search"
+          class="block w-full rounded-full border-0 py-2.5 pl-10 pr-4 text-gray-900 ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 transition-all"
+          placeholder="Search articles..."
+          data-placeholder-en="Search articles..."
+          data-placeholder-zh="搜尋文章..."
+        />
+      </div>
+
+      <!-- Category filter tabs -->
+      {categories.length > 1 && (
+        <div class="flex flex-wrap gap-2" id="category-filters">
+        <button
+          type="button"
+          class="category-tab rounded-full border border-primary/20 bg-primary/8 px-4 py-2 text-sm font-medium text-primary transition-all"
+          data-category="all"
+        >
+          <span class="tab-label-en">All</span>
+          <span class="tab-label-zh hidden">全部</span>
+        </button>
+        {categories.map((cat) => (
+          <button
+            type="button"
+            class="category-tab rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 transition-all hover:border-gray-300 hover:text-gray-900"
+            data-category={cat}
+          >
+            <span class="tab-label-en">{categoryLabels[cat]?.en || cat}</span>
+            <span class="tab-label-zh hidden">{categoryLabels[cat]?.zh || cat}</span>
+          </button>
+        ))}
+      </div>
+    )}
+    </div>
+
+    <!-- Two-column layout: Articles + Sidebar -->
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px] xl:grid-cols-[minmax(0,1fr)_320px]">
+
+      <!-- Articles Grid -->
+      <div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2" id="articles-grid">
+          {visibleArticles.map((article: CollectionEntry<'articles'>) => (
+            <a
+              href={`/articles/${article.id}`}
+              class="article-card group flex flex-col rounded-[28px] border border-gray-200 bg-white p-0 shadow-[0_14px_34px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(15,23,42,0.1)] hover:border-gray-300 overflow-hidden"
+              data-category={article.data.category}
+              data-tags={article.data.tags.join(',')}
+              data-title={article.data.title.toLowerCase()}
+              data-description={article.data.description.toLowerCase()}
+            >
+              <!-- Cover image area -->
+              <div class="relative h-44 bg-gradient-to-br from-primary/5 via-blue-50 to-indigo-50 overflow-hidden">
+                {article.data.cover ? (
+                  <img
+                    src={article.data.cover}
+                    alt={article.data.coverAlt || article.data.title}
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div class="flex h-full items-center justify-center">
+                    <div class="relative">
+                      <div class="absolute -inset-8 rounded-full bg-primary/5 blur-2xl"></div>
+                      <svg class="relative h-12 w-12 text-primary/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                      </svg>
+                    </div>
+                  </div>
+                )}
+                <!-- Category badge on image -->
+                <span class="absolute top-4 left-4 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200/50 px-3 py-1 text-xs font-semibold text-primary shadow-sm">
+                  {categoryLabels[article.data.category]?.en || article.data.category}
+                </span>
+              </div>
+
+              <!-- Content -->
+              <div class="flex flex-1 flex-col p-5">
+                <!-- Date -->
+                <div class="flex items-center gap-3 text-xs text-gray-400 mb-3">
+                  <time datetime={article.data.publishedAt.toISOString()} class="font-mono tracking-tight">
+                    {article.data.publishedAt.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </time>
+                  <div class="h-px flex-1 bg-gray-100"></div>
+                </div>
+
+                <!-- Title -->
+                <h2 class="text-[1.05rem] font-semibold leading-tight tracking-tight text-gray-900 group-hover:text-primary transition-colors duration-300 mb-2 line-clamp-2">
+                  {article.data.title}
+                </h2>
+
+                <!-- Description -->
+                <p class="flex-1 text-sm leading-relaxed text-gray-500 line-clamp-3 mb-4">
+                  {article.data.description}
+                </p>
+
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-1.5 pt-3 border-t border-gray-100">
+                  {article.data.tags.slice(0, 3).map((tag: string) => (
+                    <span class="rounded-full bg-gray-50 border border-gray-100 px-2.5 py-1 text-xs font-medium text-gray-500">
+                      #{tag}
+                    </span>
+                  ))}
+                  {article.data.tags.length > 3 && (
+                    <span class="px-2 py-1 text-xs text-gray-400">+{article.data.tags.length - 3}</span>
+                  )}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <!-- Empty state -->
+        <div id="empty-state" class={`py-24 text-center ${visibleArticles.length === 0 ? '' : 'hidden'}`}>
+          <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gray-50">
+            <svg class="h-10 w-10 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900" id="empty-state-title">{visibleArticles.length === 0 ? 'No articles yet' : 'No matching articles'}</h3>
+          <p class="mt-2 text-sm text-gray-500" id="empty-state-subtitle">{visibleArticles.length === 0 ? 'Articles are coming soon. Stay tuned!' : 'Try adjusting your search or filters.'}</p>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 flex flex-col gap-6">
+
+          <!-- Categories Widget -->
+          <div class="rounded-[24px] border border-gray-200 bg-white p-5 shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gray-400 mb-4" id="sidebar-categories-label">Categories</p>
+            <nav class="flex flex-col gap-1" id="sidebar-category-nav">
+              <button
+                type="button"
+                class="sidebar-category-btn active-sidebar-cat flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-primary bg-primary/6 transition-all hover:bg-primary/10"
+                data-category="all"
+              >
+                <span class="flex items-center gap-2">
+                  <span class="tab-label-en">All Articles</span>
+                  <span class="tab-label-zh hidden">全部文章</span>
+                </span>
+                <span class="text-xs font-semibold tabular-nums rounded-full bg-primary/10 text-primary px-2 py-0.5">{visibleArticles.length}</span>
+              </button>
+              {categories.map((cat) => (
+                <button
+                  type="button"
+                  class="sidebar-category-btn flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-gray-600 transition-all hover:bg-gray-50 hover:text-gray-900"
+                  data-category={cat}
+                >
+                  <span class="flex items-center gap-2">
+                    <span class="tab-label-en">{categoryLabels[cat]?.en || cat}</span>
+                    <span class="tab-label-zh hidden">{categoryLabels[cat]?.zh || cat}</span>
+                  </span>
+                  <span class="text-xs font-semibold tabular-nums rounded-full bg-gray-100 text-gray-500 px-2 py-0.5">{categoryCounts[cat]}</span>
+                </button>
+              ))}
+            </nav>
+          </div>
+
+          <!-- Latest Articles Widget -->
+          {latestArticles.length > 0 && (
+            <div class="rounded-[24px] border border-gray-200 bg-white p-5 shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gray-400 mb-4" id="sidebar-latest-label">Latest</p>
+              <div class="flex flex-col gap-3">
+                {latestArticles.map((article, i) => (
+                  <a
+                    href={`/articles/${article.id}`}
+                    class="group flex items-start gap-3 rounded-xl p-2.5 -mx-2.5 transition-all hover:bg-gray-50"
+                  >
+                    <span class="mt-0.5 shrink-0 flex h-6 w-6 items-center justify-center rounded-lg bg-gray-100 text-[0.65rem] font-bold text-gray-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                      {i + 1}
+                    </span>
+                    <div class="min-w-0">
+                      <p class="text-sm font-medium leading-snug text-gray-800 group-hover:text-primary transition-colors line-clamp-2">
+                        {article.data.title}
+                      </p>
+                      <time class="mt-1 block text-[0.7rem] font-mono text-gray-400" datetime={article.data.publishedAt.toISOString()}>
+                        {article.data.publishedAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </time>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Tags Widget -->
+          {topTags.length > 0 && (
+            <div class="rounded-[24px] border border-gray-200 bg-white p-5 shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gray-400 mb-4" id="sidebar-tags-label">Tags</p>
+              <div class="flex flex-wrap gap-2">
+                {topTags.map(([tag, count]) => (
+                  <button
+                    type="button"
+                    class="tag-filter-btn rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-600 transition-all hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
+                    data-tag={tag}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // --- Filtering (Search + Category + Tags) ---
+  const allCards = document.querySelectorAll('.article-card');
+  const searchInput = document.getElementById('article-search') as HTMLInputElement;
+  const emptyState = document.getElementById('empty-state');
+  
+  let currentCategory = 'all';
+  let currentTag: string | null = null;
+  let searchQuery = '';
+
+  function applyFilters() {
+    let visibleCount = 0;
+    
+    allCards.forEach((card) => {
+      const el = card as HTMLElement;
+      const category = el.dataset.category;
+      const tags = el.dataset.tags ? el.dataset.tags.split(',') : [];
+      const title = el.dataset.title || '';
+      const description = el.dataset.description || '';
+      
+      const matchCategory = currentCategory === 'all' || category === currentCategory;
+      const matchTag = !currentTag || tags.includes(currentTag);
+      const matchSearch = !searchQuery || title.includes(searchQuery) || description.includes(searchQuery) || tags.some(t => t.includes(searchQuery));
+      
+      const isVisible = matchCategory && matchTag && matchSearch;
+      el.style.display = isVisible ? '' : 'none';
+      
+      if (isVisible) visibleCount++;
+    });
+
+    if (emptyState) {
+      emptyState.classList.toggle('hidden', visibleCount > 0);
+      
+      // Update empty state text based on why it's empty
+      const isZh = localStorage.getItem('language') === 'zh';
+      const titleEl = document.getElementById('empty-state-title');
+      const subtitleEl = document.getElementById('empty-state-subtitle');
+      
+      if (titleEl && subtitleEl) {
+        if (allCards.length === 0) {
+          titleEl.textContent = isZh ? '尚未發布文章' : 'No articles yet';
+          subtitleEl.textContent = isZh ? '敬請期待！' : 'Articles are coming soon. Stay tuned!';
+        } else {
+          titleEl.textContent = isZh ? '沒有符合的文章' : 'No matching articles';
+          subtitleEl.textContent = isZh ? '請嘗試調整搜尋條件。' : 'Try adjusting your search or filters.';
+        }
+      }
+    }
+  }
+
+  function filterByCategory(category: string) {
+    currentCategory = category;
+    
+    // Clear tag when category changes
+    if (currentTag) {
+       currentTag = null;
+       document.querySelectorAll('.tag-filter-btn').forEach((b) => {
+        b.classList.remove('tag-active', 'border-primary/30', 'bg-primary/5', 'text-primary');
+        b.classList.add('border-gray-200', 'bg-gray-50', 'text-gray-600');
+      });
+    }
+
+    applyFilters();
+
+    // Sync top tabs
+    document.querySelectorAll('.category-tab').forEach((tab) => {
+      const isActive = (tab as HTMLElement).dataset.category === category;
+      tab.className = isActive
+        ? 'category-tab rounded-full border border-primary/20 bg-primary/8 px-4 py-2 text-sm font-medium text-primary transition-all'
+        : 'category-tab rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 transition-all hover:border-gray-300 hover:text-gray-900';
+    });
+
+    // Sync sidebar buttons
+    document.querySelectorAll('.sidebar-category-btn').forEach((btn) => {
+      const isActive = (btn as HTMLElement).dataset.category === category;
+      btn.className = isActive
+        ? 'sidebar-category-btn active-sidebar-cat flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-primary bg-primary/6 transition-all hover:bg-primary/10'
+        : 'sidebar-category-btn flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-gray-600 transition-all hover:bg-gray-50 hover:text-gray-900';
+    });
+  }
+
+  // Search input
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = (e.target as HTMLInputElement).value.toLowerCase().trim();
+      applyFilters();
+    });
+  }
+
+  // Top tabs
+  document.querySelectorAll('.category-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      filterByCategory((tab as HTMLElement).dataset.category || 'all');
+    });
+  });
+
+  // Sidebar category buttons
+  document.querySelectorAll('.sidebar-category-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterByCategory((btn as HTMLElement).dataset.category || 'all');
+    });
+  });
+
+  // Tag filter
+  document.querySelectorAll('.tag-filter-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tag = (btn as HTMLElement).dataset.tag;
+
+      // Toggle active state
+      const isActive = btn.classList.contains('tag-active');
+      document.querySelectorAll('.tag-filter-btn').forEach((b) => {
+        b.classList.remove('tag-active', 'border-primary/30', 'bg-primary/5', 'text-primary');
+        b.classList.add('border-gray-200', 'bg-gray-50', 'text-gray-600');
+      });
+
+      if (!isActive && tag) {
+        currentTag = tag;
+        btn.classList.add('tag-active', 'border-primary/30', 'bg-primary/5', 'text-primary');
+        btn.classList.remove('border-gray-200', 'bg-gray-50', 'text-gray-600');
+        
+        // Reset category to all when a tag is selected
+        currentCategory = 'all';
+        syncCategoryUI('all');
+      } else {
+        currentTag = null;
+      }
+      applyFilters();
+    });
+  });
+
+  function syncCategoryUI(category: string) {
+    document.querySelectorAll('.category-tab').forEach((tab) => {
+      const isActive = (tab as HTMLElement).dataset.category === category;
+      tab.className = isActive
+        ? 'category-tab rounded-full border border-primary/20 bg-primary/8 px-4 py-2 text-sm font-medium text-primary transition-all'
+        : 'category-tab rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 transition-all hover:border-gray-300 hover:text-gray-900';
+    });
+    document.querySelectorAll('.sidebar-category-btn').forEach((btn) => {
+      const isActive = (btn as HTMLElement).dataset.category === category;
+      btn.className = isActive
+        ? 'sidebar-category-btn active-sidebar-cat flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-primary bg-primary/6 transition-all hover:bg-primary/10'
+        : 'sidebar-category-btn flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-gray-600 transition-all hover:bg-gray-50 hover:text-gray-900';
+    });
+  }
+
+  // --- Language sync ---
+  function updateArticlesPageLang() {
+    const lang = localStorage.getItem('language') || 'en';
+    const isZh = lang === 'zh';
+
+    const kicker = document.getElementById('articles-kicker');
+    const title = document.getElementById('articles-title');
+    const subtitle = document.getElementById('articles-subtitle');
+    const sidebarCategoriesLabel = document.getElementById('sidebar-categories-label');
+    const sidebarLatestLabel = document.getElementById('sidebar-latest-label');
+    const sidebarTagsLabel = document.getElementById('sidebar-tags-label');
+
+    if (kicker) kicker.textContent = isZh ? '知識庫' : 'Knowledge Base';
+    if (title) title.textContent = isZh ? '技術文章' : 'Articles';
+    if (subtitle) subtitle.textContent = isZh
+      ? '探索我在 AI 部署、流程設計與工程實踐的深度分享。'
+      : 'Explore my deep dives and practices in AI deployment, workflow design, and engineering.';
+    if (sidebarCategoriesLabel) sidebarCategoriesLabel.textContent = isZh ? '分類' : 'Categories';
+    if (sidebarLatestLabel) sidebarLatestLabel.textContent = isZh ? '最新文章' : 'Latest';
+    if (sidebarTagsLabel) sidebarTagsLabel.textContent = isZh ? '標籤' : 'Tags';
+
+    // Update tab labels
+    document.querySelectorAll('.tab-label-en').forEach(el => el.classList.toggle('hidden', isZh));
+    document.querySelectorAll('.tab-label-zh').forEach(el => el.classList.toggle('hidden', !isZh));
+
+    // Update search placeholder
+    const searchInput = document.getElementById('article-search') as HTMLInputElement;
+    if (searchInput) {
+      searchInput.placeholder = isZh 
+        ? searchInput.dataset.placeholderZh || '搜尋文章...' 
+        : searchInput.dataset.placeholderEn || 'Search articles...';
+    }
+    
+    // Trigger apply filters to update empty state text
+    applyFilters();
+  }
+
+  updateArticlesPageLang();
+  window.addEventListener('storage', updateArticlesPageLang);
+</script>

@@ -2,7 +2,7 @@
 export default {
     content: [
         "./index.html",
-        "./src/**/*.{js,ts,jsx,tsx}",
+        "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
     ],
     theme: {
         extend: {
@@ -58,5 +58,8 @@ export default {
             }
         },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/typography'),
+    ],
 }
+

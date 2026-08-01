@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { isPublished, sortArticles } from '../../utils/articles';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+export async function getStaticPaths() {
+  const allArticles = await getCollection('articles');
+  const visibleArticles = sortArticles(allArticles.filter(isPublished));
+
+  return visibleArticles.map((entry: CollectionEntry<'articles'>, index: number) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+      prevArticle: index < visibleArticles.length - 1 ? visibleArticles[index + 1] : null,
+      nextArticle: index > 0 ? visibleArticles[index - 1] : null,
+      allArticles: visibleArticles,
+    },
+  }));
+}
+
+type Props = {
+  entry: CollectionEntry<'articles'>;
+  prevArticle: CollectionEntry<'articles'> | null;
+  nextArticle: CollectionEntry<'articles'> | null;
+  allArticles: CollectionEntry<'articles'>[];
+};
+
+const { entry, prevArticle, nextArticle, allArticles } = Astro.props;
+const { Content, headings } = await render(entry);
+
+// Find related articles (same category, excluding current)
+const relatedArticles = allArticles
+  .filter(a => a.data.category === entry.data.category && a.id !== entry.id)
+  .slice(0, 3);
+
+// Estimate reading time (rough: ~400 chars/min for Chinese, ~200 words/min for English)
+const body = entry.body || '';
+const charCount = body.length;
+const readingTime = Math.max(1, Math.ceil(charCount / 400));
+---
+
+<ArticleLayout
+  frontmatter={entry.data}
+  headings={headings}
+  prevArticle={prevArticle ? { id: prevArticle.id, title: prevArticle.data.title } : null}
+  nextArticle={nextArticle ? { id: nextArticle.id, title: nextArticle.data.title } : null}
+  relatedArticles={relatedArticles.map(a => ({
+    id: a.id,
+    title: a.data.title,
+    description: a.data.description,
+    publishedAt: a.data.publishedAt,
+    category: a.data.category,
+    tags: a.data.tags,
+  }))}
+  readingTime={readingTime}
+>
+  <Content />
+</ArticleLayout>

@@ -6,7 +6,7 @@ type SectionLink = {
     label: string;
 };
 
-const sectionIds = ['profile', 'what-i-build', 'projects', 'experience', 'capability-map'];
+const sectionIds = ['profile', 'what-i-build', 'projects', 'experience', 'articles', 'capability-map'];
 
 export const ScrollspyNav = () => {
     const { language } = useLanguage();
@@ -19,6 +19,7 @@ export const ScrollspyNav = () => {
                 { id: 'what-i-build', label: 'What I Build' },
                 { id: 'projects', label: 'Projects' },
                 { id: 'experience', label: 'Experience' },
+                { id: 'articles', label: 'Articles' },
                 { id: 'capability-map', label: 'Capability Map' },
             ]
             : [
@@ -26,6 +27,7 @@ export const ScrollspyNav = () => {
                 { id: 'what-i-build', label: 'What I Build' },
                 { id: 'projects', label: 'Projects' },
                 { id: 'experience', label: 'Experience' },
+                { id: 'articles', label: 'Articles' },
                 { id: 'capability-map', label: 'Capability Map' },
             ]
     ), [language]);

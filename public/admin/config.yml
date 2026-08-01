@@ -1,0 +1,26 @@
+backend:
+  name: github
+  repo: bruce-lcz/bruce-lcz.github.io
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "articles"
+    label: "Articles"
+    folder: "src/content/articles"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Published At", name: "publishedAt", widget: "datetime"}
+      - {label: "Updated At", name: "updatedAt", widget: "datetime", required: false}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Type", name: "type", widget: "select", options: ["case-study", "architecture-note", "technical-guide", "research-note"]}
+      - {label: "Category", name: "category", widget: "select", options: ["enterprise-ai", "on-prem-llm", "rag-document-ai", "multimodal-ai", "ai-agents", "solution-architecture"]}
+      - {label: "Tags", name: "tags", widget: "list", default: []}
+      - {label: "Cover Image", name: "cover", widget: "image", required: false}
+      - {label: "Cover Alt Text", name: "coverAlt", widget: "string", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}

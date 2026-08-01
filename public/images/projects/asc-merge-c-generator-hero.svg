@@ -48,7 +48,7 @@
     <rect x="1252" y="200" width="112" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
   </g>
 
-  <g font-family="Segoe UI, Arial, sans-serif" fill="#EAF1F8" font-size="24" font-weight="700">
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#EAF1F8" font-size="24" font-weight="700" transform="translate(0, 10)">
     <text x="122" y="272">Upload</text>
     <text x="367" y="272">Read</text>
     <text x="600" y="272">Merge</text>
@@ -57,7 +57,7 @@
     <text x="1275" y="272">Link</text>
   </g>
 
-  <g font-family="Segoe UI, Arial, sans-serif" fill="#93A6B8" font-size="14">
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#93A6B8" font-size="14" transform="translate(0, 10)">
     <text x="114" y="296">ASC files</text>
     <text x="350" y="296">Raw bytes</text>
     <text x="592" y="296">Ordered append</text>
@@ -66,7 +66,7 @@
     <text x="1273" y="296">Nginx</text>
   </g>
 
-  <g>
+  <g transform="translate(0, -20)">
     <rect x="122" y="226" width="32" height="42" rx="6" fill="#0F1720" stroke="#4B5B6B"/>
     <rect x="162" y="234" width="36" height="8" rx="4" fill="#38BDF8"/>
     <rect x="162" y="248" width="42" height="7" rx="3.5" fill="#5B7084"/>

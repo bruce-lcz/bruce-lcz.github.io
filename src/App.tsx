@@ -10,8 +10,14 @@ import { Awards } from './components/Awards';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { ScrollspyNav } from './components/ScrollspyNav';
 import { useLanguage } from './context/LanguageContext';
+import { RecentArticles, ArticlePreview } from './components/RecentArticles';
+import { ArticlesCTA } from './components/ArticlesCTA';
 
-const Home = () => {
+interface HomeProps {
+    recentArticles?: ArticlePreview[];
+}
+
+const Home = ({ recentArticles = [] }: HomeProps) => {
     const { config, language } = useLanguage();
     const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
@@ -22,22 +28,18 @@ const Home = () => {
     return (
         <div className="min-h-screen bg-[radial-gradient(circle_at_top,#eef4ff,transparent_28%),linear-gradient(180deg,#f8fafc_0%,#ffffff_26%,#f8fafc_100%)] text-gray-900">
             <Hero />
+            <ArticlesCTA articles={recentArticles} />
             <ScrollspyNav />
 
             <main className="relative z-10 pb-20">
                 <WhatIActuallyBuild />
+                <RecentArticles articles={recentArticles} />
                 <Projects onProjectSelect={setSelectedProjectId} />
                 <Experience onProjectSelect={setSelectedProjectId} />
                 <Skills />
                 <Education />
                 <Awards />
             </main>
-
-            <footer className="border-t border-gray-200/80 bg-white/80 py-12 text-center text-sm text-gray-500 backdrop-blur">
-                <p>
-                    © {new Date().getFullYear()} Bruce Cheng. {language === 'zh' ? '以清楚、實際、可用的方式設計與交付。' : 'Built with clarity, usefulness, and engineering care.'}
-                </p>
-            </footer>
 
             <ProjectDetailModal
                 isOpen={!!selectedProjectId}
@@ -48,13 +50,21 @@ const Home = () => {
     );
 };
 
-function App() {
+import { LanguageProvider } from './context/LanguageContext';
+
+interface AppProps {
+    recentArticles?: ArticlePreview[];
+}
+
+function App({ recentArticles = [] }: AppProps) {
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Home />} />
-            </Routes>
-        </Router>
+        <LanguageProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Home recentArticles={recentArticles} />} />
+                </Routes>
+            </Router>
+        </LanguageProvider>
     );
 }
 

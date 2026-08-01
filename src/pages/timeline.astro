@@ -1,0 +1,273 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { configEn } from '../data/config.en';
+import { configZh } from '../data/config.zh';
+import { UNIFIED_PROJECTS } from '../data/projects';
+
+// Combine and sort timeline items
+type TimelineItem = {
+  id: string;
+  type: 'experience' | 'education' | 'award' | 'project';
+  date: Date;
+  dateStr: string;
+  dataEn: any;
+  dataZh: any;
+};
+
+const items: TimelineItem[] = [];
+
+// Parse "Mon YYYY - Mon YYYY" or "YYYY - YYYY" or just "YYYY" to get a comparable date
+function parseDate(dateStr: string): Date {
+  const parts = dateStr.split(' - ');
+  const startStr = parts[0];
+  
+  if (startStr.includes(' ')) {
+    // "Aug 2021"
+    return new Date(startStr);
+  } else if (startStr.includes('/')) {
+    // "2021/08"
+    return new Date(startStr.replace('/', '-'));
+  } else {
+    // "2021"
+    return new Date(`${startStr}-01-01`);
+  }
+}
+
+// Add experiences
+configEn.experience.forEach((exp, i) => {
+  const zhExp = configZh.experience[i];
+  items.push({
+    id: exp.id,
+    type: 'experience',
+    date: parseDate(exp.period),
+    dateStr: exp.period,
+    dataEn: exp,
+    dataZh: zhExp,
+  });
+});
+
+// Add education
+configEn.education.forEach((edu, i) => {
+  const zhEdu = configZh.education[i];
+  items.push({
+    id: `edu-${i}`,
+    type: 'education',
+    date: parseDate(edu.period),
+    dateStr: edu.period,
+    dataEn: edu,
+    dataZh: zhEdu,
+  });
+});
+
+// Add awards
+configEn.awards.forEach((award, i) => {
+  const zhAward = configZh.awards[i];
+  items.push({
+    id: `award-${i}`,
+    type: 'award',
+    date: parseDate(award.year),
+    dateStr: award.year,
+    dataEn: award,
+    dataZh: zhAward,
+  });
+});
+
+// Add projects
+UNIFIED_PROJECTS.forEach((project) => {
+  items.push({
+    id: project.id,
+    type: 'project',
+    date: parseDate(project.period),
+    dateStr: project.period,
+    dataEn: project.translations.en,
+    dataZh: project.translations.zh,
+  });
+});
+
+// Sort by date descending
+items.sort((a, b) => b.date.getTime() - a.date.getTime());
+
+// Group by year for display
+const groupedItems: Record<string, TimelineItem[]> = {};
+items.forEach((item) => {
+  const year = item.date.getFullYear().toString();
+  if (!groupedItems[year]) {
+    groupedItems[year] = [];
+  }
+  groupedItems[year].push(item);
+});
+
+const years = Object.keys(groupedItems).sort((a, b) => parseInt(b) - parseInt(a));
+---
+
+<BaseLayout
+  title="Timeline — Bruce Cheng | Journey"
+  description="My professional journey, experience, education, and key projects."
+>
+  <div class="mx-auto max-w-4xl px-6 py-12 md:py-20">
+    <!-- Header -->
+    <div class="mb-16">
+      <p class="editorial-kicker" id="timeline-kicker">Journey</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight text-gray-900 md:text-5xl" id="timeline-title">
+        Timeline
+      </h1>
+      <p class="mt-5 text-lg leading-8 text-gray-600" id="timeline-subtitle">
+        A chronological overview of my career, education, and significant projects.
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative border-l border-gray-200 ml-3 md:ml-6 space-y-12">
+      {years.map((year) => (
+        <div class="relative">
+          {/* Year Marker */}
+          <div class="absolute left-0 -translate-x-[50%] top-0 flex items-center justify-center">
+            <span class="flex px-3 py-1 md:px-4 md:py-1.5 items-center justify-center rounded-full bg-white text-xs md:text-sm font-bold text-gray-900 ring-4 ring-white border-2 border-gray-100 shadow-sm whitespace-nowrap">
+              {year}
+            </span>
+          </div>
+
+          <div class="pl-8 md:pl-12 pt-12 md:pt-16 space-y-10">
+            {groupedItems[year].map((item) => (
+              <div class="relative group">
+                {/* Connecting Line to Item dot */}
+                <div class="absolute left-[-32px] md:left-[-48px] top-4 w-8 md:w-12 h-px bg-gray-200"></div>
+                
+                {/* Item Dot */}
+                <div class={`absolute left-[-32px] md:left-[-48px] -translate-x-[50%] top-3 h-3 w-3 rounded-full ring-4 ring-white ${
+                  item.type === 'experience' ? 'bg-primary' :
+                  item.type === 'education' ? 'bg-indigo-500' :
+                  item.type === 'project' ? 'bg-emerald-500' :
+                  'bg-amber-500'
+                }`}></div>
+
+                {/* Content Card */}
+                <div class="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all hover:border-gray-300 hover:shadow-md">
+                  
+                  {/* Type Badge */}
+                  <div class="mb-3 flex items-center justify-between">
+                    <span class={`rounded-full px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider ${
+                      item.type === 'experience' ? 'bg-primary/10 text-primary' :
+                      item.type === 'education' ? 'bg-indigo-50 text-indigo-700' :
+                      item.type === 'project' ? 'bg-emerald-50 text-emerald-700' :
+                      'bg-amber-50 text-amber-700'
+                    }`}>
+                      <span class="tl-type-en">
+                        {item.type === 'experience' ? 'Experience' : 
+                         item.type === 'education' ? 'Education' : 
+                         item.type === 'project' ? 'Project' : 'Award'}
+                      </span>
+                      <span class="tl-type-zh hidden">
+                        {item.type === 'experience' ? '工作經歷' : 
+                         item.type === 'education' ? '學歷' : 
+                         item.type === 'project' ? '專案' : '獎項'}
+                      </span>
+                    </span>
+                    <span class="text-xs font-mono text-gray-400">{item.dateStr}</span>
+                  </div>
+
+                  {/* Specific Content based on Type */}
+                  {item.type === 'experience' && (
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900">
+                        <span class="tl-en">{item.dataEn.role}</span>
+                        <span class="tl-zh hidden">{item.dataZh.role}</span>
+                      </h3>
+                      <p class="text-sm font-medium text-gray-500 mt-1">
+                        <span class="tl-en">{item.dataEn.company}</span>
+                        <span class="tl-zh hidden">{item.dataZh.company}</span>
+                      </p>
+                      <p class="mt-3 text-sm text-gray-600 leading-relaxed">
+                        <span class="tl-en">{item.dataEn.description}</span>
+                        <span class="tl-zh hidden">{item.dataZh.description}</span>
+                      </p>
+                    </div>
+                  )}
+
+                  {item.type === 'education' && (
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900">
+                        <span class="tl-en">{item.dataEn.degree} in {item.dataEn.field}</span>
+                        <span class="tl-zh hidden">{item.dataZh.degree} - {item.dataZh.field}</span>
+                      </h3>
+                      <p class="text-sm font-medium text-gray-500 mt-1">
+                        <span class="tl-en">{item.dataEn.school}</span>
+                        <span class="tl-zh hidden">{item.dataZh.school}</span>
+                      </p>
+                      <p class="mt-3 text-sm text-gray-600 leading-relaxed">
+                        <span class="text-gray-400 text-xs uppercase tracking-wider block mb-1">Thesis</span>
+                        <span class="tl-en">{item.dataEn.thesis}</span>
+                        <span class="tl-zh hidden">{item.dataZh.thesis}</span>
+                      </p>
+                    </div>
+                  )}
+
+                  {item.type === 'project' && (
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900">
+                        <a href={`/projects/${item.id}`} class="hover:text-primary transition-colors flex items-center gap-1">
+                          <span class="tl-en">{item.dataEn.title}</span>
+                          <span class="tl-zh hidden">{item.dataZh.title}</span>
+                          <svg class="h-3.5 w-3.5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z" clip-rule="evenodd" />
+                          </svg>
+                        </a>
+                      </h3>
+                      <p class="text-sm font-medium text-gray-500 mt-1">
+                        <span class="tl-en">{item.dataEn.company || 'Personal Project'}</span>
+                        <span class="tl-zh hidden">{item.dataZh.company || '個人專案'}</span>
+                      </p>
+                      <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-2">
+                        <span class="tl-en">{item.dataEn.shortDescription}</span>
+                        <span class="tl-zh hidden">{item.dataZh.shortDescription}</span>
+                      </p>
+                    </div>
+                  )}
+
+                  {item.type === 'award' && (
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900">
+                        <span class="tl-en">{item.dataEn.title}</span>
+                        <span class="tl-zh hidden">{item.dataZh.title}</span>
+                      </h3>
+                      <p class="text-sm font-medium text-gray-500 mt-1">
+                        <span class="tl-en">{item.dataEn.organization}</span>
+                        <span class="tl-zh hidden">{item.dataZh.organization}</span>
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  function updateTimelinePageLang() {
+    const lang = localStorage.getItem('language') || 'en';
+    const isZh = lang === 'zh';
+
+    const kicker = document.getElementById('timeline-kicker');
+    const title = document.getElementById('timeline-title');
+    const subtitle = document.getElementById('timeline-subtitle');
+
+    if (kicker) kicker.textContent = isZh ? '旅程' : 'Journey';
+    if (title) title.textContent = isZh ? '時間軸' : 'Timeline';
+    if (subtitle) subtitle.textContent = isZh
+      ? '我的職涯、學歷與重要專案的時間序列總覽。'
+      : 'A chronological overview of my career, education, and significant projects.';
+
+    document.querySelectorAll('.tl-en').forEach(el => el.classList.toggle('hidden', isZh));
+    document.querySelectorAll('.tl-zh').forEach(el => el.classList.toggle('hidden', !isZh));
+    document.querySelectorAll('.tl-type-en').forEach(el => el.classList.toggle('hidden', isZh));
+    document.querySelectorAll('.tl-type-zh').forEach(el => el.classList.toggle('hidden', !isZh));
+  }
+
+  updateTimelinePageLang();
+  window.addEventListener('storage', updateTimelinePageLang);
+</script>

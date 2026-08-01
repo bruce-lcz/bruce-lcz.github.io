@@ -1,0 +1,184 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Bruce Cheng} \\ \vspace{3pt}
+    \small AI Application Engineer / AI Solution Builder \\
+    \small \href{mailto:bruce.zheng0814@gmail.com}{\underline{bruce.zheng0814@gmail.com}} $|$
+    \href{https://github.com/bruce-lcz}{\underline{github.com/bruce-lcz}} $|$
+    \href{https://www.linkedin.com/in/bruce-lcz}{\underline{linkedin.com/in/bruce-lcz}}
+\end{center}
+
+\section{Summary}
+\small{
+AI Application Engineer focused on turning ambiguous enterprise needs into usable AI workflows and internal products. Experienced across on-premise LLM serving, RAG/agent workflows, OCR, ASR, document intelligence, manufacturing decision support, and workflow automation. I work between requirement framing, system composition, backend implementation, and user-facing delivery, with a strong emphasis on security-constrained environments and practical team adoption.
+}
+
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {PixArt Imaging Inc.}{Aug 2025 -- Present}
+      {Information Engineer (Generative AI / LLM Projects)}{Hsinchu, Taiwan}
+      \resumeItemListStart
+        \resumeItem{Build on-premise Generative AI workflows for Legal, R\&D, engineering, and internal knowledge scenarios in a semiconductor / IC design environment with strict data-security constraints.}
+        \resumeItem{\textbf{Internal GenAI Workspace:} Designed and integrated a shared internal workspace around vLLM model serving, document/image utilities, and task-oriented interaction flows, helping engineering teams adopt AI for coding support, document review, and technical analysis.}
+        \resumeItem{\textbf{ASC Merge \& C Code Generator:} Productionized a manual ASC merge and C initialization-code conversion process into an Open WebUI tool using Python native tool calling, raw-byte decoding fallback, Docker Compose, and Nginx-hosted downloadable artifacts.}
+        \resumeItem{\textbf{Legal Contract Comparison System:} Built an offline document comparison pipeline combining OCR, LLM-based paragraph restructuring, multiset validation, and diff review to reduce slow, error-prone manual contract checks.}
+        \resumeItem{\textbf{Patent Translation Workflow:} Designed a local LLM workflow for first-draft patent translation with staged prompting, proofreading support, terminology consistency handling, and DOCX export for sensitive IP documents.}
+        \resumeItem{\textbf{Auto-Minutes Meeting Intelligence:} Engineered an offline meeting workflow combining ASR, speaker-aware segmentation, text cleanup, and LLM summarization to turn internal audio into structured minutes and summaries.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {AUO Corporation - Advanced Manufacturing Center}{Aug 2021 -- Aug 2025}
+      {AI Engineer / Project Leader}{Taichung, Taiwan}
+      \resumeItemListStart
+        \resumeItem{Led manufacturing-facing AI projects that connected models, data pipelines, explainability, and internal tools to real engineering and operational decision workflows.}
+        \resumeItem{\textbf{Manufacturing Assistant Platform (RAG $\rightarrow$ Agent):} Evolved internal documentation retrieval into a domain-aware assistant capable of retrieval, SQL querying, API/tool use, structured diagnostics, and process-knowledge reasoning.}
+        \resumeItem{\textbf{Cross-Factory Yield Optimization:} Developed a Golden Path optimization workflow and LIME-based explainable analysis to translate cross-factory variability into actionable engineering parameters, improving yield by 1.43\%, reducing defects by 12.62\%, and saving approx. 300 man-hours monthly.}
+        \resumeItem{\textbf{Preventive Maintenance Workflow:} Designed an LSTM-based time-series prediction workflow with a custom trend-consistency objective, reducing defect prediction RMSE by 20\% and saving approx. 90 man-hours monthly.}
+        \resumeItem{Recognized as Smart Manufacturing Level 3 Elite Talent; preventive maintenance outcomes were approved for an internal defensive patent.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Academia Sinica - GIS Center}{Feb 2019 -- Jul 2019}
+      {Research Intern}{Taipei, Taiwan}
+      \resumeItemListStart
+        \resumeItem{Built a data quality workflow for parsing and normalizing ambiguous Taiwan address strings across heterogeneous research datasets.}
+        \resumeItem{Developed rule-based normalization logic, structured address attributes, and a web-based sampling/review interface; won the Best Student Paper Award at TGIS 2019.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Selected Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{ASC Merge \& C Code Generator} $|$ \emph{Open WebUI, Python, Native Tool Calling, Docker, Nginx}}{2026}
+          \resumeItemListStart
+            \resumeItem{Converted a repetitive SD configuration-file workflow into a guided internal tool supporting single-file conversion, ordered multi-file merge, legacy encoding fallback, comment preservation, and downloadable C/ASC outputs.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Internal GenAI Workspace} $|$ \emph{Python, vLLM, Model Serving, Document Utilities, Docker}}{2025 -- Present}
+          \resumeItemListStart
+            \resumeItem{Combined internal model access, reusable interaction patterns, and document/image utilities into a shared workspace for engineering productivity and recurring AI-assisted workflows.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Legal Contract Comparison System} $|$ \emph{Python, FastAPI, vLLM, OCR, Human Review Workflow}}{2025 -- Present}
+          \resumeItemListStart
+            \resumeItem{Implemented an offline document-intelligence pipeline for contract comparison, using OCR, LLM restructuring, omission checks, and diff visualization to support safer legal review.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Manufacturing Assistant Platform} $|$ \emph{RAG, LangGraph, SQL, API Tools, Knowledge Graph}}{2024 -- 2025}
+          \resumeItemListStart
+            \resumeItem{Expanded an internal manufacturing assistant from document retrieval into a tool-using decision-support workflow for diagnostics, structured queries, and process reasoning.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Private AI Gym Coach} $|$ \emph{React, TypeScript, Cloudflare Workers, D1, LLM API}}{2026 -- Present}
+          \resumeItemListStart
+            \resumeItem{Built a personal fitness product around repeated workout-tracking behavior, using AI selectively for exercise mapping and coaching prompts while keeping the core UI fast, private, and workflow-focused.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{AI Workflow \& LLM Systems}{: On-Premise LLM Serving, vLLM, RAG, Agent Workflows, Tool Calling, LangGraph, Knowledge Graph, Prompt Engineering, Validation/Fallback Design} \\
+     \textbf{Document, Speech \& Multimodal AI}{: OCR, Document Parsing, Patent/Legal Workflows, ASR, Speaker Segmentation, Vision-LLM, Meeting Intelligence} \\
+     \textbf{Backend \& Product Engineering}{: Python, FastAPI, Django, REST APIs, Microservices, Docker, Cloudflare Workers, Cloudflare D1, AWS Bedrock, Workflow Orchestration} \\
+     \textbf{Data Science \& Manufacturing AI}{: Time-Series Forecasting, LSTM, Custom Loss Functions, Explainable AI (LIME), Genetic Algorithms, SQL, Databricks, ETL} \\
+     \textbf{Frontend \& Internal Tools}{: React, TypeScript, Streamlit, Tailwind CSS, Internal Tool UX, Git, CI/CD, Linux}
+    }}
+ \end{itemize}
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {National Yunlin University of Science and Technology}{2019 -- 2021}
+      {Master's Degree, Industrial Engineering and Management}{Yunlin, Taiwan}
+      \resumeItemListStart
+        \resumeItem{\textbf{Thesis:} Improve the Predicted Efficiency of Crowd Flow in Large Areas Based on the R-tree and the SPACE-MDL-LSTM}
+      \resumeItemListEnd
+    \resumeSubheading
+      {National Yunlin University of Science and Technology}{2015 -- 2019}
+      {Bachelor's Degree, Industrial Engineering and Management}{Yunlin, Taiwan}
+      \resumeItemListStart
+        \resumeItem{\textbf{Thesis:} Optimization of Machine Dispatching in Flexible Production Processes}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Awards}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Smart Manufacturing Level 3 Elite Talent} $|$ \emph{AUO Corporation}}{2025}
+    \resumeProjectHeading
+      {\textbf{Best Student Paper Award} $|$ \emph{Taiwan Geographic Information Society Conference (TGIS)}}{2020}
+    \resumeProjectHeading
+      {\textbf{Best Student Paper Award} $|$ \emph{Taiwan Geographic Information Society Conference (TGIS)}}{2019}
+  \resumeSubHeadingListEnd
+
+\end{document}
