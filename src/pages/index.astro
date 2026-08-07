@@ -32,29 +32,38 @@ const latestArticles = visibleArticles.slice(0, 5);
 
 // Category display names
 const categoryLabels: Record<string, { en: string; zh: string }> = {
-  'enterprise-ai': { en: 'Enterprise AI', zh: '企業 AI' },
-  'on-prem-llm': { en: 'On-Prem LLM', zh: '地端 LLM' },
+  // AI & Engineering
+  'ai-engineering': { en: 'AI Engineering', zh: 'AI 工程' },
   'rag-document-ai': { en: 'RAG & Document AI', zh: 'RAG 與文件 AI' },
-  'multimodal-ai': { en: 'Multimodal AI', zh: '多模態 AI' },
-  'ai-agents': { en: 'AI Agents', zh: 'AI Agent' },
   'solution-architecture': { en: 'Solution Architecture', zh: '解決方案架構' },
+  // Dev & Tools
+  'dev-tools': { en: 'Dev & Tools', zh: '開發與工具' },
+  // Personal
+  'life': { en: 'Life', zh: '生活' },
+  'learning': { en: 'Learning', zh: '學習筆記' },
+  'thoughts': { en: 'Thoughts', zh: '雜談' },
 };
 ---
 
 <BaseLayout
-  title="Bruce Cheng — AI Application Engineer"
-  description="Technical articles about Enterprise AI, on-prem LLM deployment, RAG, and solution architecture."
+  title="Bruce Cheng — Writing"
+  description="Things I build, learn, and think about. AI engineering, dev tools, and whatever else is on my mind."
   isHomepage={true}
 >
-  <div class="mx-auto max-w-6xl px-6 py-12 md:py-20">
+  <div class="mx-auto max-w-[90rem] px-6 py-12 md:py-20">
     <!-- Header -->
     <div class="mb-10 max-w-2xl">
-      <p class="editorial-kicker" id="articles-kicker">Knowledge Base</p>
+      <p class="editorial-kicker" id="articles-kicker">
+        <span class="tab-label-en">Blog</span>
+        <span class="tab-label-zh hidden">部落格</span>
+      </p>
       <h1 class="mt-3 text-4xl font-semibold tracking-tight text-gray-900 md:text-5xl" id="articles-title">
-        Articles
+        <span class="tab-label-en">Writing</span>
+        <span class="tab-label-zh hidden">文章</span>
       </h1>
       <p class="mt-5 text-lg leading-8 text-gray-600" id="articles-subtitle">
-        Explore my deep dives and practices in AI deployment, workflow design, and engineering.
+        <span class="tab-label-en">Things I build, learn, and think about.</span>
+        <span class="tab-label-zh hidden">工作、學習、生活中的紀錄與想法。</span>
       </p>
     </div>
 
@@ -437,11 +446,15 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
     const sidebarLatestLabel = document.getElementById('sidebar-latest-label');
     const sidebarTagsLabel = document.getElementById('sidebar-tags-label');
 
-    if (kicker) kicker.textContent = isZh ? '知識庫' : 'Knowledge Base';
-    if (title) title.textContent = isZh ? '技術文章' : 'Articles';
-    if (subtitle) subtitle.textContent = isZh
-      ? '探索我在 AI 部署、流程設計與工程實踐的深度分享。'
-      : 'Explore my deep dives and practices in AI deployment, workflow design, and engineering.';
+    if (kicker) {
+      // kicker is now rendered with tab-label-en/zh spans; handled by tab toggle below
+    }
+    if (title) {
+      // title is now rendered with tab-label-en/zh spans; handled by tab toggle below
+    }
+    if (subtitle) {
+      // subtitle is now rendered with tab-label-en/zh spans; handled by tab toggle below
+    }
     if (sidebarCategoriesLabel) sidebarCategoriesLabel.textContent = isZh ? '分類' : 'Categories';
     if (sidebarLatestLabel) sidebarLatestLabel.textContent = isZh ? '最新文章' : 'Latest';
     if (sidebarTagsLabel) sidebarTagsLabel.textContent = isZh ? '標籤' : 'Tags';

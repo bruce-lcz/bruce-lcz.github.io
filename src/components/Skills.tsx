@@ -5,7 +5,7 @@ export const Skills = () => {
     const { config, language } = useLanguage();
 
     return (
-        <section className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20" id="capability-map">
+        <section className="mx-auto max-w-[90rem] scroll-mt-24 px-6 py-20" id="capability-map">
             <div className="mb-12 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
                 <div>
                     <p className="editorial-kicker">{language === 'zh' ? '能力視角' : 'Capability View'}</p>

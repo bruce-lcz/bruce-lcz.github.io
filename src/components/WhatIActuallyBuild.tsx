@@ -51,7 +51,7 @@ export const WhatIActuallyBuild = () => {
         ];
 
     return (
-        <section className="mx-auto max-w-6xl scroll-mt-24 py-10 md:py-14" id="what-i-build">
+        <section className="mx-auto max-w-[90rem] scroll-mt-24 py-10 md:py-14" id="what-i-build">
             <div className="rounded-[32px] border border-white/80 bg-white/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur md:p-8">
                 <div className="mb-8 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
                     <div>

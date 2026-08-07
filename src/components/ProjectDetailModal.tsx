@@ -140,7 +140,7 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                         exit={{ opacity: 0, scale: 0.97, y: 20 }}
                         transition={{ duration: 0.2 }}
                         onClick={(event) => event.stopPropagation()}
-                        className="relative flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-[28px] bg-white shadow-2xl"
+                        className="relative flex max-h-[92vh] w-full max-w-[90rem] flex-col overflow-hidden rounded-[28px] bg-white shadow-2xl"
                     >
                         <button
                             type="button"

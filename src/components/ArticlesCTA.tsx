@@ -15,7 +15,7 @@ export const ArticlesCTA: React.FC<ArticlesCTAProps> = ({ articles }) => {
     const latestArticle = articles[0];
 
     return (
-        <section className="mx-auto max-w-6xl px-6 -mt-4 mb-2 relative z-20">
+        <section className="mx-auto max-w-[90rem] px-6 -mt-4 mb-2 relative z-20">
             <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}

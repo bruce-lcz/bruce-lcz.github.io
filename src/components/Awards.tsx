@@ -6,7 +6,7 @@ export const Awards = () => {
     const { config, language } = useLanguage();
 
     return (
-        <section className="mx-auto max-w-6xl px-6 py-20">
+        <section className="mx-auto max-w-[90rem] px-6 py-20">
             <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
                     <p className="editorial-kicker">{language === 'zh' ? '認證' : 'Recognition'}</p>

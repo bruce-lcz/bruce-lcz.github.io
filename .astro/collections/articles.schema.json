@@ -26,18 +26,23 @@
         "case-study",
         "architecture-note",
         "technical-guide",
-        "research-note"
+        "research-note",
+        "essay",
+        "note",
+        "tutorial",
+        "review"
       ]
     },
     "category": {
       "type": "string",
       "enum": [
-        "enterprise-ai",
-        "on-prem-llm",
+        "ai-engineering",
         "rag-document-ai",
-        "multimodal-ai",
-        "ai-agents",
-        "solution-architecture"
+        "solution-architecture",
+        "dev-tools",
+        "life",
+        "learning",
+        "thoughts"
       ]
     },
     "tags": {

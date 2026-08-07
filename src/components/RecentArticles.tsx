@@ -21,7 +21,7 @@ export const RecentArticles: React.FC<RecentArticlesProps> = ({ articles }) => {
     if (!articles || articles.length === 0) return null;
 
     return (
-        <section id="articles" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
+        <section id="articles" className="mx-auto max-w-[90rem] scroll-mt-24 px-6 py-20">
             <div className="rounded-[32px] border border-white/80 bg-white/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur md:p-8">
                 <div className="mb-8 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
                     <div>

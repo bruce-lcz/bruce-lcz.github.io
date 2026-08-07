@@ -55,7 +55,19 @@ export default {
                     '0%': { opacity: '0', transform: 'translateY(20px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' },
                 }
-            }
+            },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        'blockquote p:first-of-type::before': {
+                            content: 'none',
+                        },
+                        'blockquote p:last-of-type::after': {
+                            content: 'none',
+                        },
+                    },
+                },
+            },
         },
     },
     plugins: [

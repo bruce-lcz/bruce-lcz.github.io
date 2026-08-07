@@ -6,7 +6,7 @@ export const Education = () => {
     const { config, language } = useLanguage();
 
     return (
-        <section className="mx-auto max-w-6xl bg-white/55 px-6 py-20">
+        <section className="mx-auto max-w-[90rem] bg-white/55 px-6 py-20">
             <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
                     <p className="editorial-kicker">{language === 'zh' ? '背景' : 'Background'}</p>

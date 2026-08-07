@@ -39,7 +39,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: 'easeOut' }}
-                className="relative mx-auto max-w-7xl"
+                className="relative mx-auto max-w-[90rem]"
             >
                 <div className="editorial-surface rounded-[36px] px-6 py-8 md:px-10 md:py-12 lg:px-12 lg:py-14">
                     <div className="mb-8 flex items-center justify-between gap-4">

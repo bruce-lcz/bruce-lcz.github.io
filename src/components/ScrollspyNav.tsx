@@ -147,7 +147,7 @@ export const ScrollspyNav = () => {
                 aria-label="Section navigation"
                 className="sticky top-0 z-20 border-y border-gray-200/70 bg-white/80 backdrop-blur md:hidden"
             >
-                <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-6 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                <div className="mx-auto flex max-w-[90rem] gap-2 overflow-x-auto px-6 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     {sections.map((section) => {
                         const isActive = activeSection === section.id;
 

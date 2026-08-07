@@ -51,7 +51,7 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
     };
 
     return (
-        <section className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20" id="projects">
+        <section className="mx-auto max-w-[90rem] scroll-mt-24 px-6 py-20" id="projects">
             <div className="mb-12 grid gap-5 lg:grid-cols-[max-content_minmax(0,1fr)] lg:items-end">
                 <div>
                     <p className="editorial-kicker">{language === 'zh' ? '作品集' : 'Portfolio'}</p>

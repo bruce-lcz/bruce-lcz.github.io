@@ -15,14 +15,22 @@ const articles = defineCollection({
       'architecture-note',
       'technical-guide',
       'research-note',
+      'essay',
+      'note',
+      'tutorial',
+      'review',
     ]),
     category: z.enum([
-      'enterprise-ai',
-      'on-prem-llm',
+      // AI & Engineering
+      'ai-engineering',
       'rag-document-ai',
-      'multimodal-ai',
-      'ai-agents',
       'solution-architecture',
+      // Dev & Tools
+      'dev-tools',
+      // Personal
+      'life',
+      'learning',
+      'thoughts',
     ]),
     tags: z.array(z.string()),
     cover: z.string().optional(),
