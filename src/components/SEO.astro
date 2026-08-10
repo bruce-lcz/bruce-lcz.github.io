@@ -9,18 +9,24 @@ export interface Props {
   tags?: string[];
   type?: string;
   author?: string;
+  lang?: 'en' | 'zh';
+  alternateEn?: string;
+  alternateZh?: string;
 }
 
 const {
   title = "Bruce Cheng",
   description = "Bruce Cheng - Portfolio & Knowledge Base",
-  image = "/hero-top-refinement.png",
+  image = "/assets/avatar.png",
   article = false,
   publishedAt,
   updatedAt,
   tags = [],
   type = "website",
   author = "Bruce Cheng",
+  lang = 'en',
+  alternateEn,
+  alternateZh,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -40,6 +46,7 @@ const jsonLd = article
       },
       datePublished: publishedAt ? publishedAt.toISOString() : undefined,
       dateModified: updatedAt ? updatedAt.toISOString() : (publishedAt ? publishedAt.toISOString() : undefined),
+      inLanguage: lang === 'zh' ? 'zh-TW' : 'en',
     }
   : {
       "@context": "https://schema.org",
@@ -62,12 +69,16 @@ const jsonLd = article
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+{alternateEn && <link rel="alternate" hreflang="en" href={new URL(alternateEn, Astro.site)} />}
+{alternateZh && <link rel="alternate" hreflang="zh-TW" href={new URL(alternateZh, Astro.site)} />}
+{alternateEn && <link rel="alternate" hreflang="x-default" href={new URL(alternateEn, Astro.site)} />}
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <meta name="author" content={author} />
+<meta property="og:locale" content={lang === 'zh' ? 'zh_TW' : 'en_US'} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />

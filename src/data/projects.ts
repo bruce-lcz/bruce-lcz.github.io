@@ -1,13 +1,13 @@
 import { UnifiedProject } from './types';
 
 export const PROJECT_ORDER: string[] = [
-    'asc-merge-c-generator',
     'pixart-genai-hub',
     'legal-contract-comparison',
+    'auo-yield',
+    'auo-assistant',
     'patent-translation-service',
     'auto-minutes-system',
-    'auo-assistant',
-    'auo-yield',
+    'asc-merge-c-generator',
     'personal-gym-tracker-v2',
     'auo-pm',
     'address-normalization',

@@ -74,4 +74,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   update404Lang();
   window.addEventListener('storage', update404Lang);
+  window.addEventListener('languagechange', update404Lang);
 </script>

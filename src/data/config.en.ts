@@ -5,11 +5,11 @@ import { UNIFIED_PROJECTS } from './projects';
 export const configEn: Config = {
     identity: {
         name: PERSONAL_INFO.name,
-        role: 'AI Application Engineer / AI Solution Builder',
-        tagline: 'Connecting models, tools, data flows, and user interfaces into AI workflows that support legal, engineering, manufacturing, and knowledge work.',
+        role: 'AI Application Engineer | Enterprise GenAI & Workflow Productization',
+        tagline: 'Building secure, production-ready AI workflows and internal products for legal, engineering, manufacturing, and knowledge work.',
         about: [
-            'Tool choices depend on the task. On-prem models, OCR, ASR, RAG, agents, and APIs are selected only when they help solve the actual workflow problem.',
-            'My work sits between requirement framing, tool composition, workflow design, and internal productization — with a focus on making the result usable by real teams.',
+            'I select on-prem models, OCR, ASR, RAG, agents, and APIs only when they solve the actual workflow problem under real security and operating constraints.',
+            'My work spans requirement framing, system composition, validation, and internal productization — with a focus on delivering workflows teams can trust and use repeatedly.',
         ],
         email: PERSONAL_INFO.email,
         avatar: PERSONAL_INFO.avatar,
@@ -34,9 +34,9 @@ export const configEn: Config = {
             description: 'I work across Legal, R&D, and internal knowledge scenarios, turning high-constraint AI requests into internal workflows and products teams can actually use.',
             techStack: ['Python', 'FastAPI', 'vLLM', 'Workflow Design', 'Internal Productization'],
             achievements: [
-                'Shipped legal document comparison and patent translation workflows for sensitive internal document handling.',
-                'Built a meeting intelligence workflow that turned internal audio into structured minutes and summaries.',
-                'Designed an internal GenAI workspace that made model access, multimodal analysis, and engineering support easier to adopt.',
+                'Delivered reusable on-prem workflows for legal document comparison, patent translation, meeting intelligence, and engineering file processing under strict data-security constraints.',
+                'Designed a human-reviewable document intelligence workflow with OCR, LLM restructuring, consistency checks, and diff-based review for sensitive legal documents.',
+                'Designed an internal GenAI workspace that made model access, multimodal analysis, and engineering support easier for teams to adopt repeatedly.',
             ],
             relatedProjectIds: ['pixart-genai-hub', 'legal-contract-comparison', 'patent-translation-service', 'auto-minutes-system'],
         },
@@ -54,9 +54,9 @@ export const configEn: Config = {
             description: 'Built manufacturing-facing AI systems that supported decision-making, process optimization, and operational workflows rather than model experiments in isolation.',
             techStack: ['Python', 'SQL', 'Databricks', 'Streamlit', 'FastAPI', 'Agent Workflows'],
             achievements: [
-                'Turned cross-factory variability into explainable optimization recommendations engineers could act on.',
-                'Evolved a manufacturing assistant from retrieval into a domain-aware decision-support workflow.',
-                'Built a maintenance planning workflow that connected predictive signals to scheduling decisions.',
+                'Improved yield by 1.43%, reduced defects by 12.62%, and saved approximately 300 man-hours monthly through cross-factory optimization and explainable recommendations.',
+                'Evolved a manufacturing assistant from retrieval into a domain-aware decision-support workflow with SQL/API tools and process-knowledge reasoning.',
+                'Reduced defect-prediction RMSE by 20% and saved approximately 90 man-hours monthly through an LSTM-based preventive-maintenance workflow.',
             ],
             relatedProjectIds: ['auo-assistant', 'auo-yield', 'auo-pm'],
         },
@@ -143,10 +143,10 @@ export const configEn: Config = {
             category: 'AI System Composition',
             description: 'How I combine model capabilities, tools, and verification into workable systems.',
             items: [
-                'LLM API / internal model integration',
+                'On-premise LLM serving and internal model integration',
                 'RAG / agent / tool calling',
                 'OCR / ASR / document parsing when needed',
-                'Validation and fallback design',
+                'Human review, validation, and fallback design',
             ],
         },
         {

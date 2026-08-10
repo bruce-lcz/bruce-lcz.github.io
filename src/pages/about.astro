@@ -5,15 +5,18 @@ import { getCollection } from 'astro:content';
 import { isPublished, sortArticles } from '../utils/articles';
 
 const allArticles = await getCollection('articles');
-const visibleArticles = sortArticles(allArticles.filter(isPublished)).slice(0, 3);
-const recentArticles = visibleArticles.map(a => ({
+const visibleArticles = sortArticles(allArticles.filter(isPublished));
+const recentArticles = (['en', 'zh'] as const)
+  .flatMap((lang) => visibleArticles.filter((article) => article.data.lang === lang).slice(0, 3))
+  .map(a => ({
   id: a.id,
   title: a.data.title,
   description: a.data.description,
   publishedAt: a.data.publishedAt.toISOString(),
   category: a.data.category,
   tags: a.data.tags,
-  cover: a.data.cover
+  cover: a.data.cover,
+  lang: a.data.lang,
 }));
 ---
 
@@ -21,5 +24,5 @@ const recentArticles = visibleArticles.map(a => ({
   title="About — Bruce Cheng | AI Application Engineer"
   description="AI Application Engineer working on LLM, RAG, and AI workflow design. Also writes about dev tools, learning, and life."
 >
-  <App client:only="react" recentArticles={recentArticles} />
+  <App client:load recentArticles={recentArticles} />
 </BaseLayout>

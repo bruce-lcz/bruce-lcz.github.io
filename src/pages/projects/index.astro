@@ -2,6 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { UNIFIED_PROJECTS } from '../../data/projects';
 import { COMPANIES } from '../../data/common';
+import { ProjectThumbnailVisual } from '../../components/ProjectThumbnailVisual';
+
+const companyFilterLabels: Record<string, string> = {
+  pixart: 'PixArt',
+  auo: 'AUO',
+  sinica: 'Intern',
+};
 ---
 
 <BaseLayout
@@ -26,9 +33,9 @@ import { COMPANIES } from '../../data/common';
         <span class="proj-tab-en">All</span>
         <span class="proj-tab-zh hidden">全部</span>
       </button>
-      {Object.entries(COMPANIES).map(([id, meta]) => (
+      {Object.entries(COMPANIES).filter(([id]) => id !== 'yuntech').map(([id]) => (
         <button type="button" class="project-cat-tab rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 transition-all hover:border-gray-300 hover:text-gray-900" data-company={id}>
-          {id.charAt(0).toUpperCase() + id.slice(1)}
+          {companyFilterLabels[id] ?? id.charAt(0).toUpperCase() + id.slice(1)}
         </button>
       ))}
     </div>
@@ -42,12 +49,16 @@ import { COMPANIES } from '../../data/common';
           data-company={project.companyId || 'personal'}
         >
           {/* Hero Image */}
-          <div class="relative aspect-[16/10] w-full overflow-hidden bg-gray-50">
-            {project.heroImage ? (
-              <img 
-                src={project.heroImage} 
+          <div class="relative aspect-[2/1] w-full overflow-hidden bg-gray-50">
+            {project.visualType ? (
+              <div class="h-full w-full transition-transform duration-500 group-hover:scale-[1.025]">
+                <ProjectThumbnailVisual visualType={project.visualType} />
+              </div>
+            ) : project.heroImage ? (
+              <img
+                src={project.heroImage}
                 alt=""
-                class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             ) : (
               <div class="flex h-full items-center justify-center bg-gradient-to-br from-primary/5 via-blue-50 to-indigo-50">
@@ -56,15 +67,6 @@ import { COMPANIES } from '../../data/common';
                 </svg>
               </div>
             )}
-            
-            {/* Badges */}
-            <div class="absolute left-4 top-4 flex flex-wrap gap-2">
-              {project.heroBadges?.slice(0, 2).map(badge => (
-                <span class="rounded-full bg-white/90 px-2.5 py-1 text-[0.65rem] font-semibold text-gray-700 shadow-sm backdrop-blur-md">
-                  {badge}
-                </span>
-              ))}
-            </div>
           </div>
 
           {/* Content */}
@@ -154,4 +156,5 @@ import { COMPANIES } from '../../data/common';
 
   updateProjectsPageLang();
   window.addEventListener('storage', updateProjectsPageLang);
+  window.addEventListener('languagechange', updateProjectsPageLang);
 </script>

@@ -17,19 +17,30 @@ export interface Props {
   isHomepage?: boolean;
   hideNavbar?: boolean;
   hideFooter?: boolean;
+  lang?: 'en' | 'zh';
+  alternateEn?: string;
+  alternateZh?: string;
 }
 
 const {
   isHomepage = false,
   hideNavbar = false,
   hideFooter = false,
+  lang,
+  alternateEn,
+  alternateZh,
   ...seoProps
 } = Astro.props;
 ---
 
-<html lang="zh-TW">
+<html
+  lang={lang === 'zh' ? 'zh-TW' : 'en'}
+  data-content-language={lang}
+  data-alternate-en={alternateEn}
+  data-alternate-zh={alternateZh}
+>
   <head>
-    <SEO {...seoProps} />
+    <SEO {...seoProps} lang={lang} alternateEn={alternateEn} alternateZh={alternateZh} />
 
   </head>
   <body class="bg-white text-gray-900 min-h-screen flex flex-col antialiased">
@@ -40,5 +51,22 @@ const {
     </main>
 
     {!hideFooter && <Footer />}
+
+    <script>
+      function syncDocumentLanguage() {
+        const contentLanguage = document.documentElement.dataset.contentLanguage;
+        if (contentLanguage === 'en' || contentLanguage === 'zh') {
+          localStorage.setItem('language', contentLanguage);
+          document.documentElement.lang = contentLanguage === 'zh' ? 'zh-TW' : 'en';
+          return;
+        }
+        const language = localStorage.getItem('language');
+        document.documentElement.lang = language === 'zh' ? 'zh-TW' : 'en';
+      }
+
+      syncDocumentLanguage();
+      window.addEventListener('storage', syncDocumentLanguage);
+      window.addEventListener('languagechange', syncDocumentLanguage);
+    </script>
   </body>
 </html>

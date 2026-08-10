@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const articles = defineCollection({
@@ -35,6 +35,8 @@ const articles = defineCollection({
     tags: z.array(z.string()),
     cover: z.string().optional(),
     coverAlt: z.string().optional(),
+    lang: z.enum(['en', 'zh']),
+    translationKey: z.string(),
   }),
 });
 

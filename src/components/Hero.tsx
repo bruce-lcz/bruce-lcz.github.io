@@ -3,31 +3,33 @@ import { BookOpen, FileText, Github, Linkedin, Mail } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const Hero = () => {
-    const { config, language, toggleLanguage } = useLanguage();
+    const { config, language } = useLanguage();
     const { identity, links } = config;
     const isZh = language === 'zh';
-    const heroTitle = isZh ? '把複雜需求做成 AI 解決方案' : 'Building AI solutions for complex requirements.';
+    const heroTitle = isZh
+        ? '把企業 AI 從模糊需求，做成能上線、能驗證、有人持續使用的內部產品'
+        : 'Turning enterprise AI needs into secure, production-ready internal products.';
 
     const editorialNotes = language === 'zh'
         ? [
-            '我擅長把需求、資料與限制整理成可落地的 AI 應用，讓模型能力接上實際使用流程。',
-            '根據限制拆解需求，組合合適方案，將 AI 能力設計成團隊能採用的流程與內部產品。',
+            '我將需求、資料與限制整理成能落地的 AI 應用，讓模型能力真正接上日常工作流程。',
+            '從需求釐清、系統設計、驗證機制到上線交付，我把 AI 能力做成團隊願意持續採用的 workflow 與內部產品。',
         ]
         : [
             'I turn requirements, data, and constraints into practical AI applications that connect model capabilities with real usage flows.',
-            'I break down requirements through constraints, combine the right tools, and shape AI capabilities into workflows and internal products teams can adopt.',
+            'From requirement framing and system design to validation and delivery, I shape AI capabilities into workflows and internal products teams can adopt repeatedly.',
         ];
 
     const signalCards = language === 'zh'
         ? [
-            { label: '核心重點', value: '需求拆解、流程設計、內部 AI 產品化' },
-            { label: '工作方式', value: '依照真實限制挑對模型、工具、資料流、驗證與介面' },
-            { label: '代表產出', value: '內部 AI 解決方案、文件智能處理與決策支援應用' },
+            { label: '可驗證成果', value: '良率 +1.43%・缺陷 −12.62%' },
+            { label: '營運效益', value: '每月節省約 390 工時' },
+            { label: '可靠交付', value: 'On-prem AI・人工覆核・驗證機制' },
         ]
         : [
-            { label: 'Core Focus', value: 'Requirement framing, workflow design, and internal AI product building' },
-            { label: 'Working Mode', value: 'Choose the right combination of models, tools, data flow, validation, and interface for the real constraint' },
-            { label: 'Representative Outputs', value: 'Internal AI tools, document intelligence, and decision-support applications' },
+            { label: 'Verified Impact', value: '+1.43% yield · −12.62% defects' },
+            { label: 'Operational Value', value: '~390 man-hours saved monthly' },
+            { label: 'Trusted Delivery', value: 'On-prem AI · human review · validation' },
         ];
 
     return (

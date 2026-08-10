@@ -7,9 +7,9 @@ media_folder: "public/images"
 public_folder: "/images"
 
 collections:
-  - name: "articles"
-    label: "Articles"
-    folder: "src/content/articles"
+  - name: "articles-en"
+    label: "Articles (English)"
+    folder: "src/content/articles/en"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -18,9 +18,30 @@ collections:
       - {label: "Published At", name: "publishedAt", widget: "datetime"}
       - {label: "Updated At", name: "updatedAt", widget: "datetime", required: false}
       - {label: "Draft", name: "draft", widget: "boolean", default: false}
-      - {label: "Type", name: "type", widget: "select", options: ["case-study", "architecture-note", "technical-guide", "research-note"]}
-      - {label: "Category", name: "category", widget: "select", options: ["enterprise-ai", "on-prem-llm", "rag-document-ai", "multimodal-ai", "ai-agents", "solution-architecture"]}
+      - {label: "Type", name: "type", widget: "select", options: ["case-study", "architecture-note", "technical-guide", "research-note", "essay", "note", "tutorial", "review"]}
+      - {label: "Category", name: "category", widget: "select", options: ["ai-engineering", "rag-document-ai", "solution-architecture", "dev-tools", "life", "learning", "thoughts"]}
       - {label: "Tags", name: "tags", widget: "list", default: []}
       - {label: "Cover Image", name: "cover", widget: "image", required: false}
       - {label: "Cover Alt Text", name: "coverAlt", widget: "string", required: false}
+      - {label: "Language", name: "lang", widget: "hidden", default: "en"}
+      - {label: "Translation Key", name: "translationKey", widget: "string", hint: "Use the same value for the Chinese and English versions."}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "articles-zh"
+    label: "文章（中文）"
+    folder: "src/content/articles/zh"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "標題", name: "title", widget: "string"}
+      - {label: "摘要", name: "description", widget: "string"}
+      - {label: "發布時間", name: "publishedAt", widget: "datetime"}
+      - {label: "更新時間", name: "updatedAt", widget: "datetime", required: false}
+      - {label: "草稿", name: "draft", widget: "boolean", default: false}
+      - {label: "類型", name: "type", widget: "select", options: ["case-study", "architecture-note", "technical-guide", "research-note", "essay", "note", "tutorial", "review"]}
+      - {label: "分類", name: "category", widget: "select", options: ["ai-engineering", "rag-document-ai", "solution-architecture", "dev-tools", "life", "learning", "thoughts"]}
+      - {label: "標籤", name: "tags", widget: "list", default: []}
+      - {label: "封面圖片", name: "cover", widget: "image", required: false}
+      - {label: "封面替代文字", name: "coverAlt", widget: "string", required: false}
+      - {label: "Language", name: "lang", widget: "hidden", default: "zh"}
+      - {label: "翻譯配對 Key", name: "translationKey", widget: "string", hint: "中英文版本請填寫相同值。"}
       - {label: "Body", name: "body", widget: "markdown"}

@@ -80,8 +80,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
-  let currentDoc = 'resume'; // 'resume' or 'cv'
-
   function updateResumePageLang() {
     const lang = localStorage.getItem('language') || 'en';
     const isZh = lang === 'zh';
@@ -109,7 +107,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   function switchTab(docType: string) {
-    currentDoc = docType;
     const tabResume = document.getElementById('tab-resume');
     const tabCv = document.getElementById('tab-cv');
     const pdfViewer = document.getElementById('pdf-viewer');
@@ -151,6 +148,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   document.addEventListener('DOMContentLoaded', () => {
     updateResumePageLang();
     window.addEventListener('storage', updateResumePageLang);
+    window.addEventListener('languagechange', updateResumePageLang);
 
     const tabResume = document.getElementById('tab-resume');
     const tabCv = document.getElementById('tab-cv');

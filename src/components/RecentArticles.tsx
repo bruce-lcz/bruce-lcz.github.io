@@ -9,6 +9,7 @@ export interface ArticlePreview {
     category: string;
     tags: string[];
     cover?: string;
+    lang: 'en' | 'zh';
 }
 
 interface RecentArticlesProps {
@@ -34,13 +35,13 @@ export const RecentArticles: React.FC<RecentArticlesProps> = ({ articles }) => {
                     </div>
                     <p className="max-w-[42rem] text-[0.98rem] leading-7 text-gray-600">
                         {language === 'zh'
-                            ? '探索我在 AI 部署、流程設計與工程實踐的深度分享。'
+                            ? '分享 AI 導入、workflow 設計與工程實作中的觀察與方法。'
                             : 'Explore my deep dives and practices in AI deployment, workflow design, and engineering.'}
                     </p>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {articles.map((article, index) => (
+                    {articles.map((article) => (
                         <a
                             key={article.id}
                             href={`/articles/${article.id}`}

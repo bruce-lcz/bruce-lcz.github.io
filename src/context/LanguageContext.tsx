@@ -42,7 +42,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
         // Listen for changes from outside React (e.g. Navbar)
         window.addEventListener('storage', loadLang);
-        return () => window.removeEventListener('storage', loadLang);
+        window.addEventListener('languagechange', loadLang);
+        return () => {
+            window.removeEventListener('storage', loadLang);
+            window.removeEventListener('languagechange', loadLang);
+        };
     }, []);
 
     const config = language === 'zh' ? configZh : configEn;

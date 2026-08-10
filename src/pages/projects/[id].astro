@@ -246,4 +246,5 @@ const { project } = Astro.props;
 
   updateProjectDetailPageLang();
   window.addEventListener('storage', updateProjectDetailPageLang);
+  window.addEventListener('languagechange', updateProjectDetailPageLang);
 </script>

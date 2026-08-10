@@ -61,7 +61,7 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                 </div>
                 <p className={`max-w-none text-base leading-7 text-gray-600 lg:justify-self-end ${language === 'zh' ? 'lg:whitespace-nowrap' : ''}`}>
                     {language === 'zh'
-                        ? '把模糊需求、限制條件與使用情境，整理成團隊可採用的內部工具與 AI 應用專案。'
+                        ? '將模糊需求、限制條件與使用情境，轉化為團隊願意採用的內部工具與 AI 應用。'
                         : 'Turning ambiguous requirements, constraints, and usage scenarios into internal tools and AI applications teams can actually adopt.'}
                 </p>
             </div>

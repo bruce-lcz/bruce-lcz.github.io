@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
     email: 'bruce.zheng0814@gmail.com',
     avatar: '/assets/avatar.png',
     taglineEn: 'Turning complex requirements into AI tools teams can use.',
-    taglineZh: '???????????? AI ??',
+    taglineZh: '將複雜需求轉化為團隊真正用得上的 AI 工具。',
 };
 
 export const SOCIAL_LINKS = {

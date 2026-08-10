@@ -270,4 +270,5 @@ const years = Object.keys(groupedItems).sort((a, b) => parseInt(b) - parseInt(a)
 
   updateTimelinePageLang();
   window.addEventListener('storage', updateTimelinePageLang);
+  window.addEventListener('languagechange', updateTimelinePageLang);
 </script>

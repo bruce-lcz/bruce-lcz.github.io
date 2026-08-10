@@ -13,12 +13,12 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { href: '/', labelEn: 'Blog', labelZh: '部落格' },
-  { href: '/about', labelEn: 'About', labelZh: '關於我' },
-  { href: '/resume', labelEn: 'Resume & CV', labelZh: '履歷與 CV' },
-  { href: '/uses', labelEn: 'Tech Stack', labelZh: '技術棧' },
-  { href: '/projects', labelEn: 'Projects', labelZh: '專案' },
-  { href: '/timeline', labelEn: 'Timeline', labelZh: '時間軸' },
+  { href: '/', labelEn: 'Blog', labelZh: 'Blog' },
+  { href: '/about', labelEn: 'About', labelZh: 'About' },
+  { href: '/resume', labelEn: 'Resume & CV', labelZh: 'Resume & CV' },
+  { href: '/uses', labelEn: 'Tech Stack', labelZh: 'Tech Stack' },
+  { href: '/projects', labelEn: 'Projects', labelZh: 'Projects' },
+  { href: '/timeline', labelEn: 'Timeline', labelZh: 'Timeline' },
 ];
 ---
 
@@ -230,13 +230,21 @@ const navItems: NavItem[] = [
 
   // ── Language toggle (syncs with localStorage used by React app) ──
   function getCurrentLang(): string {
-    return localStorage.getItem('language') || 'en';
+    return document.documentElement.dataset.contentLanguage || localStorage.getItem('language') || 'en';
   }
 
   function setLang(lang: string) {
     localStorage.setItem('language', lang);
+    const pageLang = document.documentElement.dataset.contentLanguage;
+    const alternate = lang === 'zh'
+      ? document.documentElement.dataset.alternateZh
+      : document.documentElement.dataset.alternateEn;
+    if (pageLang && pageLang !== lang && alternate) {
+      window.location.href = alternate;
+      return;
+    }
     applyLang(lang);
-    window.dispatchEvent(new Event('storage'));
+    window.dispatchEvent(new Event('languagechange'));
   }
 
   function applyLang(lang: string) {

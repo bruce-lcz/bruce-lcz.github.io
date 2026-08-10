@@ -11,10 +11,16 @@ const visibleArticles = sortArticles(allArticles.filter(isPublished));
 const categories = [...new Set(visibleArticles.map(a => a.data.category))];
 
 // Category counts
-const categoryCounts: Record<string, number> = {};
+const categoryCounts: Record<string, { en: number; zh: number }> = {};
 for (const article of visibleArticles) {
-  categoryCounts[article.data.category] = (categoryCounts[article.data.category] || 0) + 1;
+  categoryCounts[article.data.category] ??= { en: 0, zh: 0 };
+  const articleLang = article.data.lang as 'en' | 'zh';
+  categoryCounts[article.data.category][articleLang] += 1;
 }
+const languageCounts = {
+  en: visibleArticles.filter((article) => article.data.lang === 'en').length,
+  zh: visibleArticles.filter((article) => article.data.lang === 'zh').length,
+};
 
 // All tags with counts
 const tagCounts: Record<string, number> = {};
@@ -122,6 +128,7 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
               href={`/articles/${article.id}`}
               class="article-card group flex flex-col rounded-[28px] border border-gray-200 bg-white p-0 shadow-[0_14px_34px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(15,23,42,0.1)] hover:border-gray-300 overflow-hidden"
               data-category={article.data.category}
+              data-language={article.data.lang}
               data-tags={article.data.tags.join(',')}
               data-title={article.data.title.toLowerCase()}
               data-description={article.data.description.toLowerCase()}
@@ -146,7 +153,9 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
                 )}
                 <!-- Category badge on image -->
                 <span class="absolute top-4 left-4 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200/50 px-3 py-1 text-xs font-semibold text-primary shadow-sm">
-                  {categoryLabels[article.data.category]?.en || article.data.category}
+                  {article.data.lang === 'zh'
+                    ? categoryLabels[article.data.category]?.zh || article.data.category
+                    : categoryLabels[article.data.category]?.en || article.data.category}
                 </span>
               </div>
 
@@ -155,7 +164,7 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
                 <!-- Date -->
                 <div class="flex items-center gap-3 text-xs text-gray-400 mb-3">
                   <time datetime={article.data.publishedAt.toISOString()} class="font-mono tracking-tight">
-                    {article.data.publishedAt.toLocaleDateString('en-US', {
+                    {article.data.publishedAt.toLocaleDateString(article.data.lang === 'zh' ? 'zh-TW' : 'en-US', {
                       year: 'numeric',
                       month: 'short',
                       day: 'numeric',
@@ -219,7 +228,10 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
                   <span class="tab-label-en">All Articles</span>
                   <span class="tab-label-zh hidden">全部文章</span>
                 </span>
-                <span class="text-xs font-semibold tabular-nums rounded-full bg-primary/10 text-primary px-2 py-0.5">{visibleArticles.length}</span>
+                <span class="text-xs font-semibold tabular-nums rounded-full bg-primary/10 text-primary px-2 py-0.5">
+                  <span class="tab-label-en">{languageCounts.en}</span>
+                  <span class="tab-label-zh hidden">{languageCounts.zh}</span>
+                </span>
               </button>
               {categories.map((cat) => (
                 <button
@@ -231,7 +243,10 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
                     <span class="tab-label-en">{categoryLabels[cat]?.en || cat}</span>
                     <span class="tab-label-zh hidden">{categoryLabels[cat]?.zh || cat}</span>
                   </span>
-                  <span class="text-xs font-semibold tabular-nums rounded-full bg-gray-100 text-gray-500 px-2 py-0.5">{categoryCounts[cat]}</span>
+                  <span class="text-xs font-semibold tabular-nums rounded-full bg-gray-100 text-gray-500 px-2 py-0.5">
+                    <span class="tab-label-en">{categoryCounts[cat].en}</span>
+                    <span class="tab-label-zh hidden">{categoryCounts[cat].zh}</span>
+                  </span>
                 </button>
               ))}
             </nav>
@@ -246,16 +261,17 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
                   <a
                     href={`/articles/${article.id}`}
                     class="group flex items-start gap-3 rounded-xl p-2.5 -mx-2.5 transition-all hover:bg-gray-50"
+                    data-latest-language={article.data.lang}
                   >
                     <span class="mt-0.5 shrink-0 flex h-6 w-6 items-center justify-center rounded-lg bg-gray-100 text-[0.65rem] font-bold text-gray-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
-                      {i + 1}
+                      <span class="latest-rank">{i + 1}</span>
                     </span>
                     <div class="min-w-0">
                       <p class="text-sm font-medium leading-snug text-gray-800 group-hover:text-primary transition-colors line-clamp-2">
                         {article.data.title}
                       </p>
                       <time class="mt-1 block text-[0.7rem] font-mono text-gray-400" datetime={article.data.publishedAt.toISOString()}>
-                        {article.data.publishedAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        {article.data.publishedAt.toLocaleDateString(article.data.lang === 'zh' ? 'zh-TW' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </time>
                     </div>
                   </a>
@@ -269,7 +285,7 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
             <div class="rounded-[24px] border border-gray-200 bg-white p-5 shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
               <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gray-400 mb-4" id="sidebar-tags-label">Tags</p>
               <div class="flex flex-wrap gap-2">
-                {topTags.map(([tag, count]) => (
+                {topTags.map(([tag]) => (
                   <button
                     type="button"
                     class="tag-filter-btn rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-600 transition-all hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
@@ -308,12 +324,14 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
       const tags = el.dataset.tags ? el.dataset.tags.split(',') : [];
       const title = el.dataset.title || '';
       const description = el.dataset.description || '';
+      const language = el.dataset.language;
+      const currentLanguage = localStorage.getItem('language') || 'en';
       
       const matchCategory = currentCategory === 'all' || category === currentCategory;
       const matchTag = !currentTag || tags.includes(currentTag);
       const matchSearch = !searchQuery || title.includes(searchQuery) || description.includes(searchQuery) || tags.some(t => t.includes(searchQuery));
       
-      const isVisible = matchCategory && matchTag && matchSearch;
+      const isVisible = language === currentLanguage && matchCategory && matchTag && matchSearch;
       el.style.display = isVisible ? '' : 'none';
       
       if (isVisible) visibleCount++;
@@ -463,6 +481,18 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
     document.querySelectorAll('.tab-label-en').forEach(el => el.classList.toggle('hidden', isZh));
     document.querySelectorAll('.tab-label-zh').forEach(el => el.classList.toggle('hidden', !isZh));
 
+    let latestRank = 0;
+    document.querySelectorAll('[data-latest-language]').forEach((item) => {
+      const el = item as HTMLElement;
+      const visible = el.dataset.latestLanguage === lang;
+      el.classList.toggle('hidden', !visible);
+      if (visible) {
+        latestRank += 1;
+        const rank = el.querySelector('.latest-rank');
+        if (rank) rank.textContent = String(latestRank);
+      }
+    });
+
     // Update search placeholder
     const searchInput = document.getElementById('article-search') as HTMLInputElement;
     if (searchInput) {
@@ -477,4 +507,5 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
 
   updateArticlesPageLang();
   window.addEventListener('storage', updateArticlesPageLang);
+  window.addEventListener('languagechange', updateArticlesPageLang);
 </script>

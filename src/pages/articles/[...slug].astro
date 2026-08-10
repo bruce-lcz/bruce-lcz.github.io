@@ -1,22 +1,29 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { isPublished, sortArticles } from '../../utils/articles';
+import { getTranslation, isPublished, sortArticles } from '../../utils/articles';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
   const allArticles = await getCollection('articles');
   const visibleArticles = sortArticles(allArticles.filter(isPublished));
 
-  return visibleArticles.map((entry: CollectionEntry<'articles'>, index: number) => ({
-    params: { slug: entry.id },
-    props: {
-      entry,
-      prevArticle: index < visibleArticles.length - 1 ? visibleArticles[index + 1] : null,
-      nextArticle: index > 0 ? visibleArticles[index - 1] : null,
-      allArticles: visibleArticles,
-    },
-  }));
+  return visibleArticles.map((entry: CollectionEntry<'articles'>) => {
+    const sameLanguageArticles = visibleArticles.filter(
+      (article) => article.data.lang === entry.data.lang,
+    );
+    const index = sameLanguageArticles.findIndex((article) => article.id === entry.id);
+
+    return {
+      params: { slug: entry.id },
+      props: {
+        entry,
+        prevArticle: index < sameLanguageArticles.length - 1 ? sameLanguageArticles[index + 1] : null,
+        nextArticle: index > 0 ? sameLanguageArticles[index - 1] : null,
+        allArticles: visibleArticles,
+      },
+    };
+  });
 }
 
 type Props = {
@@ -28,16 +35,18 @@ type Props = {
 
 const { entry, prevArticle, nextArticle, allArticles } = Astro.props;
 const { Content, headings } = await render(entry);
+const translation = getTranslation(entry, allArticles);
 
 // Find related articles (same category, excluding current)
 const relatedArticles = allArticles
-  .filter(a => a.data.category === entry.data.category && a.id !== entry.id)
+  .filter(a => a.data.lang === entry.data.lang && a.data.category === entry.data.category && a.id !== entry.id)
   .slice(0, 3);
 
 // Estimate reading time (rough: ~400 chars/min for Chinese, ~200 words/min for English)
 const body = entry.body || '';
-const charCount = body.length;
-const readingTime = Math.max(1, Math.ceil(charCount / 400));
+const readingTime = entry.data.lang === 'zh'
+  ? Math.max(1, Math.ceil(body.length / 400))
+  : Math.max(1, Math.ceil(body.trim().split(/\s+/).length / 200));
 ---
 
 <ArticleLayout
@@ -54,6 +63,7 @@ const readingTime = Math.max(1, Math.ceil(charCount / 400));
     tags: a.data.tags,
   }))}
   readingTime={readingTime}
+  translation={translation ? { id: translation.id, lang: translation.data.lang } : null}
 >
   <Content />
 </ArticleLayout>

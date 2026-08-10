@@ -9,17 +9,17 @@ export const WhatIActuallyBuild = () => {
             {
                 index: '01',
                 title: '把模糊需求拆成流程',
-                body: '把一句「可不可以用 AI 做？」拆成資料來源、限制條件、模型能力、工具流程與使用者介面。',
+                body: '把一句「這件事能不能用 AI 做？」釐清成資料來源、限制條件、模型能力、工具流程與使用者介面。',
             },
             {
                 index: '02',
                 title: '組合工具，不只調模型',
-                body: '根據任務需要組合 OCR、ASR、RAG、Agent、API、資料庫與驗證邏輯，完成可用流程。',
+                body: '依任務需要組合 OCR、ASR、RAG、Agent、API、資料庫與驗證機制，完成可用的 workflow。',
             },
             {
                 index: '03',
                 title: '把實驗做成內部產品',
-                body: '把一次性的 AI prototype 包裝成團隊能持續使用的 Web App 或 workflow。',
+                body: '把一次性的 AI prototype 打磨成團隊能持續使用的 Web App 或 workflow。',
             },
             {
                 index: '04',
@@ -62,7 +62,7 @@ export const WhatIActuallyBuild = () => {
                     </div>
                     <p className="max-w-[42rem] text-[0.98rem] leading-7 text-gray-600">
                         {language === 'zh'
-                            ? '重點不是單一模型或單一工具，而是如何把需求拆清楚，再把合適的能力組成一個能被真實使用者採用的 workflow。'
+                            ? '重點不在單一模型或工具，而在釐清需求後，組合合適能力，做成真實使用者願意採用的 workflow。'
                             : 'The point is not a single model or a single tool. It is how ambiguous needs are framed, composed, and turned into workflows people can actually use.'}
                     </p>
                 </div>

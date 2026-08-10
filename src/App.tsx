@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { Hero } from './components/Hero';
 import { WhatIActuallyBuild } from './components/WhatIActuallyBuild';
 import { Projects } from './components/Projects';
@@ -20,6 +19,7 @@ interface HomeProps {
 const Home = ({ recentArticles = [] }: HomeProps) => {
     const { config, language } = useLanguage();
     const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+    const localizedArticles = recentArticles.filter((article) => article.lang === language);
 
     const selectedProject = selectedProjectId
         ? config.projects?.find((project) => project.id === selectedProjectId) ?? null
@@ -28,17 +28,17 @@ const Home = ({ recentArticles = [] }: HomeProps) => {
     return (
         <div className="min-h-screen bg-[radial-gradient(circle_at_top,#eef4ff,transparent_28%),linear-gradient(180deg,#f8fafc_0%,#ffffff_26%,#f8fafc_100%)] text-gray-900">
             <Hero />
-            <ArticlesCTA articles={recentArticles} />
             <ScrollspyNav />
 
             <main className="relative z-10 pb-20">
                 <WhatIActuallyBuild />
-                <RecentArticles articles={recentArticles} />
                 <Projects onProjectSelect={setSelectedProjectId} />
                 <Experience onProjectSelect={setSelectedProjectId} />
                 <Skills />
                 <Education />
                 <Awards />
+                <ArticlesCTA articles={localizedArticles} />
+                <RecentArticles articles={localizedArticles} />
             </main>
 
             <ProjectDetailModal
@@ -59,11 +59,7 @@ interface AppProps {
 function App({ recentArticles = [] }: AppProps) {
     return (
         <LanguageProvider>
-            <Router>
-                <Routes>
-                    <Route path="/" element={<Home recentArticles={recentArticles} />} />
-                </Routes>
-            </Router>
+            <Home recentArticles={recentArticles} />
         </LanguageProvider>
     );
 }

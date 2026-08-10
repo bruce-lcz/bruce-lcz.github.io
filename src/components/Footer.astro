@@ -10,7 +10,7 @@
           Bruce Cheng
         </a>
         <p class="mt-4 max-w-xs text-sm leading-7 text-gray-500" id="footer-tagline">
-          Building AI solutions for complex requirements.
+          Building secure, production-ready AI workflows and internal products.
         </p>
       </div>
 
@@ -87,18 +87,18 @@
     const copyright = document.getElementById('footer-copyright');
 
     if (tagline) tagline.textContent = isZh
-      ? '把複雜需求做成 AI 解決方案。'
-      : 'Building AI solutions for complex requirements.';
-    if (linksLabel) linksLabel.textContent = isZh ? '快速連結' : 'Quick Links';
-    if (connectLabel) connectLabel.textContent = isZh ? '社群' : 'Connect';
-    if (linkArticles) linkArticles.textContent = isZh ? '文章' : 'Articles';
-    if (linkAbout) linkAbout.textContent = isZh ? '關於我' : 'About';
-    if (linkResume) linkResume.textContent = isZh ? '履歷與 CV' : 'Resume & CV';
-    if (linkUses) linkUses.textContent = isZh ? '技術棧' : 'Tech Stack';
-    if (linkProjects) linkProjects.textContent = isZh ? '專案' : 'Projects';
-    if (linkTimeline) linkTimeline.textContent = isZh ? '時間軸' : 'Timeline';
+      ? '將複雜需求落地為團隊真正用得上的 AI 解決方案。'
+      : 'Building secure, production-ready AI workflows and internal products.';
+    if (linksLabel) linksLabel.textContent = 'Quick Links';
+    if (connectLabel) connectLabel.textContent = isZh ? '聯絡方式' : 'Connect';
+    if (linkArticles) linkArticles.textContent = 'Articles';
+    if (linkAbout) linkAbout.textContent = 'About';
+    if (linkResume) linkResume.textContent = 'Resume & CV';
+    if (linkUses) linkUses.textContent = 'Tech Stack';
+    if (linkProjects) linkProjects.textContent = 'Projects';
+    if (linkTimeline) linkTimeline.textContent = 'Timeline';
     if (copyright) copyright.textContent = isZh
-      ? `© ${new Date().getFullYear()} Bruce Cheng. 以清楚、實際、可用的方式設計與交付。`
+      ? `© ${new Date().getFullYear()} Bruce Cheng. 以清楚、務實且可用的方式設計與交付。`
       : `© ${new Date().getFullYear()} Bruce Cheng. Built with clarity, usefulness, and engineering care.`;
   }
 
@@ -106,4 +106,5 @@
 
   // Listen for storage changes from other components
   window.addEventListener('storage', updateFooterLang);
+  window.addEventListener('languagechange', updateFooterLang);
 </script>

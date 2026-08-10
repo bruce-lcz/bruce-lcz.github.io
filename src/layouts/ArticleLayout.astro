@@ -12,6 +12,8 @@ export interface Props {
     tags: string[];
     cover?: string;
     coverAlt?: string;
+    lang: 'en' | 'zh';
+    translationKey: string;
   };
   headings: { depth: number; slug: string; text: string }[];
   prevArticle?: { id: string; title: string } | null;
@@ -25,17 +27,28 @@ export interface Props {
     tags: string[];
   }[];
   readingTime?: number;
+  translation?: { id: string; lang: 'en' | 'zh' } | null;
 }
 
-const { frontmatter, headings, prevArticle, nextArticle, relatedArticles = [], readingTime } = Astro.props;
+const { frontmatter, headings, prevArticle, nextArticle, relatedArticles = [], readingTime, translation } = Astro.props;
+const isZh = frontmatter.lang === 'zh';
+const currentPath = Astro.url.pathname;
+const translationPath = translation ? `/articles/${translation.id}/` : undefined;
+const alternateEn = frontmatter.lang === 'en' ? currentPath : translationPath;
+const alternateZh = frontmatter.lang === 'zh' ? currentPath : translationPath;
 
 const categoryLabels: Record<string, { en: string; zh: string }> = {
+  'ai-engineering': { en: 'AI Engineering', zh: 'AI 工程' },
   'enterprise-ai': { en: 'Enterprise AI', zh: '企業 AI' },
   'on-prem-llm': { en: 'On-Prem LLM', zh: '地端 LLM' },
   'rag-document-ai': { en: 'RAG & Document AI', zh: 'RAG 與文件 AI' },
   'multimodal-ai': { en: 'Multimodal AI', zh: '多模態 AI' },
   'ai-agents': { en: 'AI Agents', zh: 'AI Agent' },
   'solution-architecture': { en: 'Solution Architecture', zh: '解決方案架構' },
+  'dev-tools': { en: 'Dev & Tools', zh: '開發與工具' },
+  'life': { en: 'Life', zh: '生活' },
+  'learning': { en: 'Learning', zh: '學習筆記' },
+  'thoughts': { en: 'Thoughts', zh: '雜談' },
 };
 ---
 
@@ -47,6 +60,9 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
   updatedAt={frontmatter.updatedAt}
   image={frontmatter.cover}
   tags={frontmatter.tags}
+  lang={frontmatter.lang}
+  alternateEn={alternateEn}
+  alternateZh={alternateZh}
 >
   <div class="mx-auto max-w-7xl px-6 py-8 md:py-12">
     <div class="flex flex-col lg:flex-row lg:justify-center gap-12 xl:gap-20">
@@ -54,23 +70,31 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
       <div class="w-full min-w-0 max-w-3xl">
         <!-- Breadcrumb -->
         <nav class="mb-8 flex items-center gap-2 text-sm text-gray-400" aria-label="Breadcrumb">
-          <a href="/" class="hover:text-primary transition-colors" id="breadcrumb-home">Home</a>
+          <a href="/" class="hover:text-primary transition-colors">{isZh ? '首頁' : 'Home'}</a>
           <svg class="w-3.5 h-3.5 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
-          <a href="/articles" class="hover:text-primary transition-colors" id="breadcrumb-articles">Articles</a>
+          <a href="/" class="hover:text-primary transition-colors">{isZh ? '文章' : 'Articles'}</a>
           <svg class="w-3.5 h-3.5 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
-          <span class="text-gray-600 capitalize truncate max-w-[200px]">{categoryLabels[frontmatter.category]?.en || frontmatter.category.replace(/-/g, ' ')}</span>
+          <span class="text-gray-600 capitalize truncate max-w-[200px]">{categoryLabels[frontmatter.category]?.[frontmatter.lang] || frontmatter.category.replace(/-/g, ' ')}</span>
         </nav>
 
         <!-- Article Header -->
         <header class="mb-10">
-          <div class="mb-4">
+          <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
             <span class="inline-flex items-center rounded-full border border-primary/15 bg-primary/8 px-3 py-1 text-xs font-semibold text-primary">
-              {categoryLabels[frontmatter.category]?.en || frontmatter.category}
+              {categoryLabels[frontmatter.category]?.[frontmatter.lang] || frontmatter.category}
             </span>
+            {translation && (
+              <a
+                href={`/articles/${translation.id}`}
+                class="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-600 transition-colors hover:border-primary/30 hover:text-primary"
+              >
+                {translation.lang === 'zh' ? '閱讀中文版' : 'Read in English'}
+              </a>
+            )}
           </div>
 
           <h1 class="text-3xl font-semibold leading-tight tracking-tight text-gray-900 md:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
@@ -83,7 +107,7 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
 
           <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-400">
             <time datetime={frontmatter.publishedAt.toISOString()} class="font-mono tracking-tight">
-              {frontmatter.publishedAt.toLocaleDateString('en-US', {
+              {frontmatter.publishedAt.toLocaleDateString(isZh ? 'zh-TW' : 'en-US', {
                 year: 'numeric',
                 month: 'short',
                 day: 'numeric',
@@ -97,7 +121,7 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                   </svg>
                   <time datetime={frontmatter.updatedAt.toISOString()}>
-                    {frontmatter.updatedAt.toLocaleDateString('en-US', {
+                    {frontmatter.updatedAt.toLocaleDateString(isZh ? 'zh-TW' : 'en-US', {
                       year: 'numeric',
                       month: 'short',
                       day: 'numeric',
@@ -113,7 +137,7 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span id="reading-time-label">{readingTime} min read</span>
+                  <span>{isZh ? `${readingTime} 分鐘閱讀` : `${readingTime} min read`}</span>
                 </span>
               </>
             )}
@@ -160,7 +184,7 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
         >
           <!-- Mobile TOC -->
           <div class="lg:hidden mb-8">
-            <TableOfContents headings={headings} />
+            <TableOfContents headings={headings} lang={frontmatter.lang} />
           </div>
 
           <slot />
@@ -175,7 +199,7 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
                 class="group flex flex-col rounded-[20px] border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
               >
                 <span class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gray-400 mb-2" id="prev-label">
-                  ← Previous
+                  {isZh ? '← 上一篇' : '← Previous'}
                 </span>
                 <span class="text-sm font-medium text-gray-800 group-hover:text-primary transition-colors line-clamp-2">
                   {prevArticle.title}
@@ -189,7 +213,7 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
                 class="group flex flex-col items-end text-right rounded-[20px] border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
               >
                 <span class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gray-400 mb-2" id="next-label">
-                  Next →
+                  {isZh ? '下一篇 →' : 'Next →'}
                 </span>
                 <span class="text-sm font-medium text-gray-800 group-hover:text-primary transition-colors line-clamp-2">
                   {nextArticle.title}
@@ -202,9 +226,9 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
         <!-- Related Articles -->
         {relatedArticles.length > 0 && (
           <section class="mt-16 border-t border-gray-200 pt-10">
-            <p class="editorial-kicker mb-3" id="related-kicker">Related Articles</p>
+            <p class="editorial-kicker mb-3">{isZh ? '相關文章' : 'Related Articles'}</p>
             <h3 class="text-2xl font-semibold tracking-tight text-gray-900 mb-8" id="related-title">
-              More on this topic
+              {isZh ? '更多相同主題' : 'More on this topic'}
             </h3>
             <div class="grid gap-6 sm:grid-cols-2">
               {relatedArticles.map((article) => (
@@ -214,7 +238,7 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
                 >
                   <div class="flex items-center gap-2 text-xs text-gray-400 mb-3">
                     <time datetime={article.publishedAt.toISOString()} class="font-mono tracking-tight">
-                      {article.publishedAt.toLocaleDateString('en-US', {
+                      {article.publishedAt.toLocaleDateString(isZh ? 'zh-TW' : 'en-US', {
                         year: 'numeric',
                         month: 'short',
                         day: 'numeric',
@@ -237,13 +261,10 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
       <!-- Desktop TOC sidebar -->
       <aside class="hidden lg:block w-56 shrink-0">
         <div class="sticky top-24">
-          <TableOfContents headings={headings} />
+          <TableOfContents headings={headings} lang={frontmatter.lang} />
         </div>
       </aside>
     </div>
-  </div>v>
-      </section>
-    )}
   </div>
 
   <!-- Mermaid rendering -->
@@ -293,35 +314,6 @@ const categoryLabels: Record<string, { en: string; zh: string }> = {
     renderMermaid();
   </script>
 
-  <!-- Language sync -->
-  <script>
-    function updateArticleLayoutLang() {
-      const lang = localStorage.getItem('language') || 'en';
-      const isZh = lang === 'zh';
-
-      const breadcrumbHome = document.getElementById('breadcrumb-home');
-      const breadcrumbArticles = document.getElementById('breadcrumb-articles');
-      const readingTimeLabel = document.getElementById('reading-time-label');
-      const prevLabel = document.getElementById('prev-label');
-      const nextLabel = document.getElementById('next-label');
-      const relatedKicker = document.getElementById('related-kicker');
-      const relatedTitle = document.getElementById('related-title');
-
-      if (breadcrumbHome) breadcrumbHome.textContent = isZh ? '首頁' : 'Home';
-      if (breadcrumbArticles) breadcrumbArticles.textContent = isZh ? '文章' : 'Articles';
-      if (readingTimeLabel) {
-        const minutes = readingTimeLabel.textContent?.match(/\d+/)?.[0] || '1';
-        readingTimeLabel.textContent = isZh ? `${minutes} 分鐘閱讀` : `${minutes} min read`;
-      }
-      if (prevLabel) prevLabel.textContent = isZh ? '← 上一篇' : '← Previous';
-      if (nextLabel) nextLabel.textContent = isZh ? '下一篇 →' : 'Next →';
-      if (relatedKicker) relatedKicker.textContent = isZh ? '相關文章' : 'Related Articles';
-      if (relatedTitle) relatedTitle.textContent = isZh ? '更多相同主題' : 'More on this topic';
-    }
-
-    updateArticleLayoutLang();
-    window.addEventListener('storage', updateArticleLayoutLang);
-  </script>
 </BaseLayout>
 
 <style>
