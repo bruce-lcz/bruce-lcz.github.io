@@ -26,6 +26,10 @@ export async function getStaticPaths() {
   });
 }
 
+// Retain the generated article paths so old links receive a redirect, but do
+// not render article content while the blog is disabled.
+return Astro.redirect('/about/', 301);
+
 type Props = {
   entry: CollectionEntry<'articles'>;
   prevArticle: CollectionEntry<'articles'> | null;

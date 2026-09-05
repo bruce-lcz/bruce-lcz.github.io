@@ -13,7 +13,6 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { href: '/', labelEn: 'Blog', labelZh: 'Blog' },
   { href: '/about', labelEn: 'About', labelZh: 'About' },
   { href: '/resume', labelEn: 'Resume & CV', labelZh: 'Resume & CV' },
   { href: '/uses', labelEn: 'Tech Stack', labelZh: 'Tech Stack' },
@@ -31,7 +30,7 @@ const navItems: NavItem[] = [
 >
   <div class="mx-auto max-w-[90rem] flex items-center justify-between px-6 h-16">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 group">
+    <a href="/about/" class="flex items-center gap-2 group">
       <span class="font-display text-lg font-semibold tracking-tight text-gray-900 transition-colors group-hover:text-primary">
         Bruce Cheng
       </span>
@@ -40,9 +39,7 @@ const navItems: NavItem[] = [
     <!-- Desktop Nav -->
     <div class="hidden md:flex items-center gap-1">
       {navItems.map((item) => {
-        const isActive = item.href === '/'
-          ? currentPath === '/'
-          : currentPath.startsWith(item.href) && item.href !== '/';
+        const isActive = currentPath.startsWith(item.href);
         return (
           <a
             href={item.href}
@@ -133,9 +130,7 @@ const navItems: NavItem[] = [
   >
     <div class="px-6 py-4 space-y-1">
       {navItems.map((item) => {
-        const isActive = item.href === '/'
-          ? currentPath === '/'
-          : currentPath.startsWith(item.href) && item.href !== '/';
+        const isActive = currentPath.startsWith(item.href);
         return (
           <a
             href={item.href}

@@ -4,6 +4,10 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { isPublished, sortArticles } from '../utils/articles';
 
+// The blog is temporarily disabled. Keep the public root useful by sending
+// visitors to the portfolio introduction instead of the article index.
+return Astro.redirect('/about/', 301);
+
 const allArticles = await getCollection('articles');
 const visibleArticles = sortArticles(allArticles.filter(isPublished));
 
