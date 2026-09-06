@@ -4,9 +4,9 @@ export const PERSONAL_INFO = {
     name: 'Bruce Cheng',
     nameZh: 'Bruce Cheng',
     email: 'bruce.zheng0814@gmail.com',
-    avatar: '/assets/avatar.png',
-    taglineEn: 'Turning complex requirements into AI tools teams can use.',
-    taglineZh: '???????????? AI ??',
+    avatar: '/assets/avatar-320.webp',
+    taglineEn: 'Turning complex enterprise requirements into secure AI systems teams can use.',
+    taglineZh: '將複雜的企業需求轉化為團隊真正用得上的可靠 AI 系統。',
 };
 
 export const SOCIAL_LINKS = {

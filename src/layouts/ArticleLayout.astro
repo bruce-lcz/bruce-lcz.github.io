@@ -1,0 +1,334 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    publishedAt: Date;
+    updatedAt?: Date;
+    category: string;
+    tags: string[];
+    cover?: string;
+    coverAlt?: string;
+    lang: 'en' | 'zh';
+    translationKey: string;
+  };
+  headings: { depth: number; slug: string; text: string }[];
+  prevArticle?: { id: string; title: string } | null;
+  nextArticle?: { id: string; title: string } | null;
+  relatedArticles?: {
+    id: string;
+    title: string;
+    description: string;
+    publishedAt: Date;
+    category: string;
+    tags: string[];
+  }[];
+  readingTime?: number;
+  translation?: { id: string; lang: 'en' | 'zh' } | null;
+}
+
+const { frontmatter, headings, prevArticle, nextArticle, relatedArticles = [], readingTime, translation } = Astro.props;
+const isZh = frontmatter.lang === 'zh';
+const currentPath = Astro.url.pathname;
+const translationPath = translation ? `/articles/${translation.id}/` : undefined;
+const alternateEn = frontmatter.lang === 'en' ? currentPath : translationPath;
+const alternateZh = frontmatter.lang === 'zh' ? currentPath : translationPath;
+
+const categoryLabels: Record<string, { en: string; zh: string }> = {
+  'ai-engineering': { en: 'AI Engineering', zh: 'AI 工程' },
+  'enterprise-ai': { en: 'Enterprise AI', zh: '企業 AI' },
+  'on-prem-llm': { en: 'On-Prem LLM', zh: '地端 LLM' },
+  'rag-document-ai': { en: 'RAG & Document AI', zh: 'RAG 與文件 AI' },
+  'multimodal-ai': { en: 'Multimodal AI', zh: '多模態 AI' },
+  'ai-agents': { en: 'AI Agents', zh: 'AI Agent' },
+  'solution-architecture': { en: 'Solution Architecture', zh: '解決方案架構' },
+  'dev-tools': { en: 'Dev & Tools', zh: '開發與工具' },
+  'life': { en: 'Life', zh: '生活' },
+  'learning': { en: 'Learning', zh: '學習筆記' },
+  'thoughts': { en: 'Thoughts', zh: '雜談' },
+};
+---
+
+<BaseLayout
+  title={`${frontmatter.title} | Bruce Cheng`}
+  description={frontmatter.description}
+  article={true}
+  publishedAt={frontmatter.publishedAt}
+  updatedAt={frontmatter.updatedAt}
+  image={frontmatter.cover}
+  tags={frontmatter.tags}
+  lang={frontmatter.lang}
+  alternateEn={alternateEn}
+  alternateZh={alternateZh}
+>
+  <div class="mx-auto max-w-7xl px-6 py-8 md:py-12">
+    <div class="flex flex-col lg:flex-row lg:justify-center gap-12 xl:gap-20">
+      <!-- Article Main Column -->
+      <div class="w-full min-w-0 max-w-3xl">
+        <!-- Breadcrumb -->
+        <nav class="mb-8 flex items-center gap-2 text-sm text-gray-400" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-primary transition-colors">{isZh ? '首頁' : 'Home'}</a>
+          <svg class="w-3.5 h-3.5 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+          <a href="/" class="hover:text-primary transition-colors">{isZh ? '文章' : 'Articles'}</a>
+          <svg class="w-3.5 h-3.5 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+          <span class="text-gray-600 capitalize truncate max-w-[200px]">{categoryLabels[frontmatter.category]?.[frontmatter.lang] || frontmatter.category.replace(/-/g, ' ')}</span>
+        </nav>
+
+        <!-- Article Header -->
+        <header class="mb-10">
+          <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <span class="inline-flex items-center rounded-full border border-primary/15 bg-primary/8 px-3 py-1 text-xs font-semibold text-primary">
+              {categoryLabels[frontmatter.category]?.[frontmatter.lang] || frontmatter.category}
+            </span>
+            {translation && (
+              <a
+                href={`/articles/${translation.id}`}
+                class="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-600 transition-colors hover:border-primary/30 hover:text-primary"
+              >
+                {translation.lang === 'zh' ? '閱讀中文版' : 'Read in English'}
+              </a>
+            )}
+          </div>
+
+          <h1 class="text-3xl font-semibold leading-tight tracking-tight text-gray-900 md:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+            {frontmatter.title}
+          </h1>
+
+          <p class="mt-5 text-lg leading-8 text-gray-600">
+            {frontmatter.description}
+          </p>
+
+          <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-400">
+            <time datetime={frontmatter.publishedAt.toISOString()} class="font-mono tracking-tight">
+              {frontmatter.publishedAt.toLocaleDateString(isZh ? 'zh-TW' : 'en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </time>
+            {frontmatter.updatedAt && (
+              <>
+                <span class="text-gray-300">·</span>
+                <span class="flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  <time datetime={frontmatter.updatedAt.toISOString()}>
+                    {frontmatter.updatedAt.toLocaleDateString(isZh ? 'zh-TW' : 'en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </time>
+                </span>
+              </>
+            )}
+            {readingTime && (
+              <>
+                <span class="text-gray-300">·</span>
+                <span class="flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>{isZh ? `${readingTime} 分鐘閱讀` : `${readingTime} min read`}</span>
+                </span>
+              </>
+            )}
+          </div>
+
+          <!-- Tags -->
+          <div class="mt-6 flex flex-wrap gap-2">
+            {frontmatter.tags.map((tag) => (
+              <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-500">
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          <!-- Cover image -->
+          {frontmatter.cover && (
+            <div class="mt-8 overflow-hidden rounded-[20px] border border-gray-200 shadow-[0_12px_32px_rgba(15,23,42,0.06)]">
+              <img
+                src={frontmatter.cover}
+                alt={frontmatter.coverAlt || frontmatter.title}
+                class="w-full h-auto"
+              />
+            </div>
+          )}
+        </header>
+
+        <!-- Article Body -->
+        <article class="article-prose prose prose-blue max-w-none
+          prose-headings:font-display prose-headings:tracking-tight prose-headings:text-gray-900
+          prose-h2:text-2xl prose-h2:font-semibold prose-h2:mt-12 prose-h2:mb-5 prose-h2:pb-3 prose-h2:border-b prose-h2:border-gray-100
+          prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-8 prose-h3:mb-4
+          prose-p:text-gray-700 prose-p:leading-[1.85]
+          prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+          prose-strong:text-gray-900 prose-strong:font-semibold
+          prose-blockquote:border-l-4 prose-blockquote:border-primary/60 prose-blockquote:bg-primary/[0.05] prose-blockquote:rounded-r-xl prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:not-italic prose-blockquote:text-gray-700
+          prose-code:text-primary prose-code:bg-primary/[0.06] prose-code:rounded-md prose-code:px-1.5 prose-code:py-0.5 prose-code:before:content-[''] prose-code:after:content-[''] prose-code:font-normal prose-code:text-[0.875em]
+          prose-pre:bg-gray-900 prose-pre:rounded-2xl prose-pre:border prose-pre:border-gray-800 prose-pre:shadow-lg
+          prose-img:rounded-xl prose-img:border prose-img:border-gray-200 prose-img:shadow-sm
+          prose-table:text-sm
+          prose-th:bg-gray-50 prose-th:font-semibold prose-th:text-gray-700
+          prose-td:border-gray-200
+          prose-li:text-gray-700
+          prose-hr:border-gray-200"
+        >
+          <!-- Mobile TOC -->
+          <div class="lg:hidden mb-8">
+            <TableOfContents headings={headings} lang={frontmatter.lang} />
+          </div>
+
+          <slot />
+        </article>
+
+        <!-- Prev/Next Navigation -->
+        {(prevArticle || nextArticle) && (
+          <nav class="mt-16 grid gap-4 sm:grid-cols-2 border-t border-gray-200 pt-10" aria-label="Article navigation">
+            {prevArticle ? (
+              <a
+                href={`/articles/${prevArticle.id}`}
+                class="group flex flex-col rounded-[20px] border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
+              >
+                <span class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gray-400 mb-2" id="prev-label">
+                  {isZh ? '← 上一篇' : '← Previous'}
+                </span>
+                <span class="text-sm font-medium text-gray-800 group-hover:text-primary transition-colors line-clamp-2">
+                  {prevArticle.title}
+                </span>
+              </a>
+            ) : <div />}
+
+            {nextArticle ? (
+              <a
+                href={`/articles/${nextArticle.id}`}
+                class="group flex flex-col items-end text-right rounded-[20px] border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
+              >
+                <span class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gray-400 mb-2" id="next-label">
+                  {isZh ? '下一篇 →' : 'Next →'}
+                </span>
+                <span class="text-sm font-medium text-gray-800 group-hover:text-primary transition-colors line-clamp-2">
+                  {nextArticle.title}
+                </span>
+              </a>
+            ) : <div />}
+          </nav>
+        )}
+
+        <!-- Related Articles -->
+        {relatedArticles.length > 0 && (
+          <section class="mt-16 border-t border-gray-200 pt-10">
+            <p class="editorial-kicker mb-3">{isZh ? '相關文章' : 'Related Articles'}</p>
+            <h3 class="text-2xl font-semibold tracking-tight text-gray-900 mb-8" id="related-title">
+              {isZh ? '更多相同主題' : 'More on this topic'}
+            </h3>
+            <div class="grid gap-6 sm:grid-cols-2">
+              {relatedArticles.map((article) => (
+                <a
+                  href={`/articles/${article.id}`}
+                  class="group rounded-[20px] border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
+                >
+                  <div class="flex items-center gap-2 text-xs text-gray-400 mb-3">
+                    <time datetime={article.publishedAt.toISOString()} class="font-mono tracking-tight">
+                      {article.publishedAt.toLocaleDateString(isZh ? 'zh-TW' : 'en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
+                    </time>
+                  </div>
+                  <h4 class="text-base font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2 mb-2">
+                    {article.title}
+                  </h4>
+                  <p class="text-sm text-gray-500 line-clamp-2">
+                    {article.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+
+      <!-- Desktop TOC sidebar -->
+      <aside class="hidden lg:block w-56 shrink-0">
+        <div class="sticky top-24">
+          <TableOfContents headings={headings} lang={frontmatter.lang} />
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Mermaid rendering -->
+  <script>
+    // Render Mermaid diagrams client-side
+    // Astro/Shiki renders mermaid blocks as: <pre data-language="mermaid" class="astro-code ..."><code>...</code></pre>
+    async function renderMermaid() {
+      const mermaidPreBlocks = document.querySelectorAll('pre[data-language="mermaid"]');
+      if (mermaidPreBlocks.length === 0) return;
+
+      // Dynamically import mermaid
+      // @ts-ignore
+      const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: 'neutral',
+        themeVariables: {
+          primaryColor: '#e8f0fe',
+          primaryBorderColor: '#1a73e8',
+          primaryTextColor: '#202124',
+          lineColor: '#5f6368',
+          secondaryColor: '#f1f3f4',
+          tertiaryColor: '#f8f9fa',
+        },
+        fontFamily: 'Inter, -apple-system, sans-serif',
+      });
+
+      for (let i = 0; i < mermaidPreBlocks.length; i++) {
+        const preEl = mermaidPreBlocks[i] as HTMLElement;
+        // Extract text content from the code element inside the pre
+        const codeEl = preEl.querySelector('code');
+        const mermaidCode = codeEl?.textContent || preEl.textContent || '';
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-diagram my-6 flex justify-center overflow-x-auto rounded-2xl border border-gray-200 bg-gray-50/50 p-6';
+
+        try {
+          const { svg } = await mermaid.render(`mermaid-${i}`, mermaidCode.trim());
+          container.innerHTML = svg;
+          preEl.replaceWith(container);
+        } catch (e) {
+          console.warn('Mermaid render error:', e);
+        }
+      }
+    }
+
+    renderMermaid();
+  </script>
+
+</BaseLayout>
+
+<style>
+  /* Mermaid diagram styling */
+  .mermaid-diagram :global(svg) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Override nested code inside pre (code blocks should keep dark theme) */
+  .article-prose :global(pre code) {
+    background: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    font-size: inherit !important;
+  }
+</style>

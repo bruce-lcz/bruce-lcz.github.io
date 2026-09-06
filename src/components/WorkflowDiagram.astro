@@ -1,0 +1,223 @@
+---
+import * as React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import * as LucideIcons from 'lucide-react';
+import type { WorkflowDefinition, WorkflowIconName, WorkflowThemeName } from '../data/workflows';
+
+interface Props {
+  workflow: WorkflowDefinition;
+  label: string;
+  labelZh?: string;
+}
+
+const { workflow, label, labelZh } = Astro.props;
+
+const themes: Record<WorkflowThemeName, {
+  backgroundStart: string;
+  backgroundEnd: string;
+  panelStroke: string;
+  nodeStart: string;
+  nodeEnd: string;
+  nodeStroke: string;
+  accent: string;
+  iconStroke: string;
+  title: string;
+  subtitle: string;
+  tagFill: string;
+  tagText: string;
+}> = {
+  indigo: {
+    backgroundStart: '#11162A',
+    backgroundEnd: '#20284A',
+    panelStroke: '#6366F1',
+    nodeStart: '#252B50',
+    nodeEnd: '#181E3A',
+    nodeStroke: '#818CF8',
+    accent: '#A5B4FC',
+    iconStroke: '#C7D2FE',
+    title: '#EEF2FF',
+    subtitle: '#C7D2FE',
+    tagFill: '#1E2546',
+    tagText: '#E0E7FF',
+  },
+  teal: {
+    backgroundStart: '#041E1E',
+    backgroundEnd: '#112C2B',
+    panelStroke: '#14B8A6',
+    nodeStart: '#134E4A',
+    nodeEnd: '#042F2E',
+    nodeStroke: '#2DD4BF',
+    accent: '#5EEAD4',
+    iconStroke: '#99F6E4',
+    title: '#F0FDFA',
+    subtitle: '#99F6E4',
+    tagFill: '#042F2E',
+    tagText: '#CCFBF1',
+  },
+  cyan: {
+    backgroundStart: '#081E2E',
+    backgroundEnd: '#0C344E',
+    panelStroke: '#0284C7',
+    nodeStart: '#0E486E',
+    nodeEnd: '#07293E',
+    nodeStroke: '#38BDF8',
+    accent: '#7DD3FC',
+    iconStroke: '#BAE6FD',
+    title: '#F0F9FF',
+    subtitle: '#BAE6FD',
+    tagFill: '#07293E',
+    tagText: '#E0F2FE',
+  },
+  amber: {
+    backgroundStart: '#231B17',
+    backgroundEnd: '#2A211C',
+    panelStroke: '#A16207',
+    nodeStart: '#3B2F22',
+    nodeEnd: '#241E1A',
+    nodeStroke: '#D97706',
+    accent: '#FCD34D',
+    iconStroke: '#FDE68A',
+    title: '#FFFBEB',
+    subtitle: '#FCD34D',
+    tagFill: '#2D241E',
+    tagText: '#FEF3C7',
+  },
+  slate: {
+    backgroundStart: '#111821',
+    backgroundEnd: '#19232D',
+    panelStroke: '#334252',
+    nodeStart: '#1E2833',
+    nodeEnd: '#18212A',
+    nodeStroke: '#3A4E62',
+    accent: '#5AD7F7',
+    iconStroke: '#87E6FB',
+    title: '#EAF1F8',
+    subtitle: '#AAB8C6',
+    tagFill: '#18212B',
+    tagText: '#E7EEF6',
+  },
+};
+
+const theme = themes[workflow.theme];
+
+/**
+ * Render the selected Lucide icon once at build time and reuse its SVG children
+ * inside the diagram's single root SVG. This keeps every node on one outline
+ * system without shipping a client-side icon bundle for a static illustration.
+ */
+const renderWorkflowIcon = (iconName: WorkflowIconName, color: string) => {
+  const Icon = (LucideIcons as unknown as Record<WorkflowIconName, typeof LucideIcons.Activity>)[iconName];
+  const markup = renderToStaticMarkup(React.createElement(Icon, {
+    size: 28,
+    strokeWidth: 1.8,
+    color,
+    'aria-hidden': true,
+    focusable: false,
+  }));
+  return markup.replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '');
+};
+
+const centers = [190, 402, 614, 826, 1038, 1250];
+const nodeWidth = 188;
+const nodeY = 188;
+const nodeHeight = 136;
+const pillGap = 16;
+const pillWidths = workflow.tags.map((tag) => Math.min(360, Math.max(156, Math.ceil(tag.length * 8.2 + 48))));
+const pillX = workflow.tags.reduce<number[]>((positions, _tag, index) => {
+  const previous = index === 0 ? 72 : positions[index - 1] + pillWidths[index - 1] + pillGap;
+  positions.push(previous);
+  return positions;
+}, []);
+const slug = label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'project';
+const titleId = `workflow-${slug}-title`;
+const descriptionId = `workflow-${slug}-description`;
+const description = workflow.steps.map((step) => step.subtitle ? `${step.title} (${step.subtitle})` : step.title).join(' → ');
+const descriptionZh = (workflow.stepsZh ?? workflow.steps).map((step) => step.subtitle ? `${step.title} (${step.subtitle})` : step.title).join(' → ');
+---
+
+<div class="workflow-diagram w-full overflow-hidden rounded-2xl" data-workflow-diagram>
+  <svg
+    viewBox="0 0 1440 480"
+    role="img"
+    aria-labelledby={`${titleId} ${descriptionId}`}
+    preserveAspectRatio="xMidYMid meet"
+    class="block h-auto w-full"
+  >
+    <title id={titleId}>{label} workflow diagram</title>
+    <desc id={descriptionId}>{description}{labelZh ? ` / ${labelZh}：${descriptionZh}` : ''}</desc>
+
+    <defs>
+      <linearGradient id={`${slug}-background`} x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse">
+        <stop stop-color={theme.backgroundStart} />
+        <stop offset="1" stop-color={theme.backgroundEnd} />
+      </linearGradient>
+      <linearGradient id={`${slug}-node`} x1="0" y1="0" x2="0" y2="136" gradientUnits="userSpaceOnUse">
+        <stop stop-color={theme.nodeStart} />
+        <stop offset="1" stop-color={theme.nodeEnd} />
+      </linearGradient>
+      <filter id={`${slug}-glow`} x="-20%" y="-80%" width="140%" height="260%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+
+    <rect x="24" y="24" width="1392" height="432" rx="36" fill={`url(#${slug}-background)`} />
+    <rect x="24" y="24" width="1392" height="432" rx="36" fill="none" stroke={theme.panelStroke} stroke-width="1.5" />
+
+    <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle">
+      {workflow.tags.map((tag, index) => (
+        <g>
+          <rect x={pillX[index]} y="58" width={pillWidths[index]} height="42" rx="21" fill={theme.tagFill} stroke={theme.panelStroke} />
+          <text x={pillX[index] + pillWidths[index] / 2} y="85" fill={theme.tagText}>
+            <tspan class="proj-en">{tag}</tspan>
+            <tspan class="proj-zh hidden">{workflow.tagsZh?.[index] ?? tag}</tspan>
+          </text>
+        </g>
+      ))}
+    </g>
+
+    <g>
+      {workflow.steps.map((step, index) => (
+        <g>
+          <rect x={centers[index] - nodeWidth / 2} y={nodeY} width={nodeWidth} height={nodeHeight} rx="26" fill={`url(#${slug}-node)`} stroke={theme.nodeStroke} stroke-width="1.5" />
+          <rect x={centers[index] - 22} y="204" width="44" height="44" rx="12" fill={theme.tagFill} stroke={theme.accent} stroke-width="1.5" />
+          <g
+            transform={`translate(${centers[index] - 14} 212)`}
+            aria-hidden="true"
+            fill="none"
+            stroke={theme.iconStroke}
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.8"
+            set:html={renderWorkflowIcon(step.icon, theme.iconStroke)}
+          />
+          <text x={centers[index]} y="278" fill={theme.title} font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">
+            <tspan class="proj-en">{step.title}</tspan>
+            <tspan class="proj-zh hidden">{workflow.stepsZh?.[index]?.title ?? step.title}</tspan>
+          </text>
+          {step.subtitle && <text x={centers[index]} y="303" fill={theme.subtitle} font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" text-anchor="middle">
+            <tspan class="proj-en">{step.subtitle}</tspan>
+            <tspan class="proj-zh hidden">{workflow.stepsZh?.[index]?.subtitle ?? step.subtitle}</tspan>
+          </text>}
+        </g>
+      ))}
+    </g>
+
+    <g fill={theme.accent} stroke={theme.accent} stroke-width="3.5" stroke-linecap="round" filter={`url(#${slug}-glow)`}>
+      {workflow.steps.slice(0, -1).map((_step, index) => {
+        const start = centers[index] + nodeWidth / 2 + 5;
+        const shaftEnd = centers[index + 1] - nodeWidth / 2 - 11;
+        const tip = centers[index + 1] - nodeWidth / 2 - 5;
+        return (
+          <g>
+            <path d={`M ${start} 256 H ${shaftEnd}`} fill="none" />
+            <path d={`M ${tip} 256 L ${tip - 12} 249 V 263 Z`} stroke="none" />
+          </g>
+        );
+      })}
+    </g>
+  </svg>
+</div>

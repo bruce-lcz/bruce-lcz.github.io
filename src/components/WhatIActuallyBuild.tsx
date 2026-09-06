@@ -1,57 +1,91 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const WhatIActuallyBuild = () => {
     const { language } = useLanguage();
-    const isZh = language === 'zh';
 
-    const notes = isZh
+    const cards = language === 'zh'
         ? [
-            { eyebrow: '01 / 問題', title: '先找出流程卡在哪裡', body: '在選模型之前，我會先確認使用者在等什麼、要做什麼判斷，以及資訊在哪個環節遺失。' },
-            { eyebrow: '02 / 工具', title: '依限制選擇技術', body: 'OCR、RAG、Agent 或 LLM API 沒有固定答案；資料敏感度、準確性、速度與維護成本會決定技術組合。' },
-            { eyebrow: '03 / 導入', title: '把導入納入產品設計', body: '除了功能可用，介面、驗證機制、權限與既有操作習慣，也會直接影響一套工具能否進入日常工作。' },
+            {
+                index: '01',
+                title: '把模糊需求拆成流程',
+                body: '把一句「這件事能不能用 AI 做？」釐清成資料來源、限制條件、模型能力、工具流程與使用者體驗。',
+            },
+            {
+                index: '02',
+                title: '組合工具，不只調模型',
+                body: '依任務需要組合 OCR、ASR、RAG、Agent、API、資料庫與驗證機制，完成真正可用的流程。',
+            },
+            {
+                index: '03',
+                title: '把實驗做成內部產品',
+                body: '把一次性的 AI 原型打磨成團隊能持續使用的 Web App 或內部流程。',
+            },
+            {
+                index: '04',
+                title: '讓 AI 支援真實判斷',
+                body: '結合法務、研發、製造與營運情境，讓 AI 不只是生成文字，而是支援實際工作。',
+            },
         ]
         : [
-            { eyebrow: '01 / Problem', title: 'Locate the bottleneck first', body: 'Before choosing a model, I identify what users are waiting for, which decisions they need to make, and where information is being lost.' },
-            { eyebrow: '02 / Tools', title: 'Choose technology by constraint', body: 'OCR, RAG, agents, and LLM APIs are options, not defaults. Data sensitivity, accuracy, latency, and maintenance determine the stack.' },
-            { eyebrow: '03 / Adoption', title: 'Design for rollout from the start', body: 'Interfaces, validation, access control, and existing work habits matter as much as whether the core function works.' },
+            {
+                index: '01',
+                title: 'Clarify Where AI Helps',
+                body: 'Turn a vague “Can we use AI here?” into a clearer picture of the data, constraints, tool flow, and user interaction involved.',
+            },
+            {
+                index: '02',
+                title: 'Put the Right Tools Together',
+                body: 'Combine models, APIs, retrieval, parsing, validation, and interfaces based on what the workflow actually needs.',
+            },
+            {
+                index: '03',
+                title: 'Make Internal Workflows Reusable',
+                body: 'Turn one-off AI prototypes into internal tools, web apps, or workflows that teams can use repeatedly.',
+            },
+            {
+                index: '04',
+                title: 'Support Work That Needs Judgment',
+                body: 'Apply AI in legal, engineering, manufacturing, and operations contexts where the output needs to support real decisions.',
+            },
         ];
 
     return (
-        <section className="mx-auto max-w-6xl scroll-mt-28 px-6 py-20 md:py-28" id="notes">
-            <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
-                <div>
-                    <div className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
-                        <Sparkles className="h-3.5 w-3.5" />
-                        {isZh ? '工作原則' : 'Working principles'}
+        <section className="mx-auto max-w-[90rem] scroll-mt-24 py-10 md:py-14" id="what-i-build">
+            <div className="rounded-[32px] border border-white/80 bg-white/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur md:p-8">
+                <div className="mb-8 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
+                    <div>
+                        <p className="editorial-kicker">{language === 'zh' ? '能力面向' : 'Capabilities'}</p>
+                        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
+                            {language === 'zh' ? 'AI 應用與工具化案例' : 'AI Applications and Tooling Cases'}
+                        </h2>
                     </div>
-                    <h2 className="mt-6 text-4xl font-medium leading-tight tracking-[-0.035em] text-gray-950 md:text-5xl">
-                        {isZh ? '我怎麼把 AI 需求做成產品' : 'How I turn AI requests into products'}
-                    </h2>
-                    <p className="mt-6 max-w-md text-base leading-8 text-gray-600">
-                        {isZh ? '從釐清問題、選擇技術，到最後進入實際工作流程。' : 'From defining the problem and choosing the stack to fitting the result into day-to-day work.'}
+                    <p className="max-w-[42rem] text-[0.98rem] leading-7 text-gray-600">
+                        {language === 'zh'
+                            ? '重點不在單一模型或工具，而在釐清需求後組合合適能力，做成真實使用者願意採用的流程。'
+                            : 'The point is not a single model or a single tool. It is how ambiguous needs are framed, composed, and turned into workflows people can actually use.'}
                     </p>
                 </div>
 
-                <div className="divide-y divide-gray-200 border-y border-gray-200">
-                    {notes.map((note, index) => (
+                <div className="grid gap-6 md:grid-cols-2">
+                    {cards.map((card, index) => (
                         <motion.article
-                            key={note.title}
-                            initial={{ opacity: 0, y: 14 }}
+                            key={card.title}
+                            initial={false}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.35 }}
-                            transition={{ duration: 0.4, delay: index * 0.06 }}
-                            className="group grid gap-4 py-8 md:grid-cols-[150px_1fr] md:py-10"
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.35, delay: index * 0.06 }}
+                            className="rounded-[28px] border border-gray-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] p-6 shadow-[0_16px_38px_rgba(15,23,42,0.05)]"
                         >
-                            <p className="pt-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">{note.eyebrow}</p>
-                            <div>
-                                <h3 className="flex items-start justify-between gap-4 text-2xl font-medium tracking-tight text-gray-900">
-                                    {note.title}
-                                    <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-gray-300 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
-                                </h3>
-                                <p className="mt-3 max-w-2xl text-base leading-8 text-gray-600">{note.body}</p>
-                            </div>
+                            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-primary/80">
+                                {card.index}
+                            </p>
+                            <h3 className="mt-3 text-[1.55rem] font-semibold tracking-tight text-gray-900 md:text-[1.7rem]">
+                                {card.title}
+                            </h3>
+                            <p className="mt-3 max-w-[32rem] text-[0.95rem] leading-[1.75] text-gray-600 md:text-[1rem]">
+                                {card.body}
+                            </p>
                         </motion.article>
                     ))}
                 </div>

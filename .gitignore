@@ -85,6 +85,7 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+.astro/
 
 # Gatsby files
 .cache/
@@ -124,9 +125,18 @@ docs/
 .github/skills/
 
 # Local build / verification artifacts
+/output/
 temp-build*/
 temp-edge-profile/
 temp-chrome-profile/
 
 # Local image drafts
 /*.png
+
+# Local source material and processing workspaces
+/VLM_投影片解析測試案例_咖啡店營運.pptx
+/VLM_投影片解析測試案例_咖啡店營運/
+/_slide_render/
+/pptx-unzip-20260808/
+/pptx-work/
+/tmp/

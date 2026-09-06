@@ -1,0 +1,141 @@
+---
+import '../index.css';
+import SEO from '../components/SEO.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+  publishedAt?: Date;
+  updatedAt?: Date;
+  tags?: string[];
+  type?: string;
+  author?: string;
+  isHomepage?: boolean;
+  hideNavbar?: boolean;
+  hideFooter?: boolean;
+  lang?: 'en' | 'zh';
+  alternateEn?: string;
+  alternateZh?: string;
+  robots?: string;
+}
+
+const {
+  isHomepage = false,
+  hideNavbar = false,
+  hideFooter = false,
+  lang,
+  alternateEn,
+  alternateZh,
+  ...seoProps
+} = Astro.props;
+---
+
+<html
+  lang={lang === 'zh' ? 'zh-TW' : 'en'}
+  data-content-language={lang}
+  data-alternate-en={alternateEn}
+  data-alternate-zh={alternateZh}
+>
+  <head>
+    <SEO {...seoProps} lang={lang} alternateEn={alternateEn} alternateZh={alternateZh} />
+
+  </head>
+  <body class="bg-white text-gray-900 min-h-screen flex flex-col antialiased">
+    {!hideNavbar && <Navbar isHomepage={isHomepage} />}
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    {!hideFooter && <Footer />}
+
+    <script>
+      function syncDocumentLanguage() {
+        const contentLanguage = document.documentElement.dataset.contentLanguage;
+        if (contentLanguage === 'en' || contentLanguage === 'zh') {
+          localStorage.setItem('language', contentLanguage);
+          document.documentElement.lang = contentLanguage === 'zh' ? 'zh-TW' : 'en';
+          return;
+        }
+        const language = localStorage.getItem('language');
+        document.documentElement.lang = language === 'zh' ? 'zh-TW' : 'en';
+      }
+
+      syncDocumentLanguage();
+      window.addEventListener('storage', syncDocumentLanguage);
+      window.addEventListener('languagechange', syncDocumentLanguage);
+
+      // Keep the homepage section navigation useful even before its React island hydrates.
+      function setupScrollspyFallback() {
+        const links = Array.from(document.querySelectorAll<HTMLElement>('[data-scrollspy-link]'));
+        const sectionIds = [...new Set(
+          links
+            .map((link) => link.dataset.scrollspyLink)
+            .filter((id): id is string => Boolean(id)),
+        )];
+        const sections = sectionIds
+          .map((id) => document.getElementById(id))
+          .filter((section): section is HTMLElement => Boolean(section));
+
+        if (links.length === 0 || sections.length === 0) {
+          return;
+        }
+
+        const updateActiveSection = () => {
+          const focusLine = Math.min(window.innerHeight * 0.26, 220);
+          const positions = sections.map((section) => {
+            const rect = section.getBoundingClientRect();
+            return {
+              section,
+              top: rect.top,
+              bottom: rect.bottom,
+              distance: Math.abs(rect.top - focusLine),
+            };
+          });
+          const sectionAtFocusLine = positions.find(({ top, bottom }) => top <= focusLine && bottom >= focusLine);
+          const activeSection = sectionAtFocusLine
+            ?? positions.filter(({ bottom }) => bottom >= 0).sort((a, b) => a.distance - b.distance)[0]
+            ?? positions[0];
+
+          if (!activeSection) {
+            return;
+          }
+
+          links.forEach((link) => {
+            const isActive = link.dataset.scrollspyLink === activeSection.section.id;
+            if (isActive) {
+              link.dataset.scrollspyActive = 'true';
+            } else {
+              link.removeAttribute('data-scrollspy-active');
+            }
+          });
+        };
+
+        let ticking = false;
+        const onScroll = () => {
+          if (ticking) {
+            return;
+          }
+
+          ticking = true;
+          window.requestAnimationFrame(() => {
+            updateActiveSection();
+            ticking = false;
+          });
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        window.addEventListener('load', onScroll);
+        window.addEventListener('hashchange', onScroll);
+        window.addEventListener('languagechange', onScroll);
+      }
+
+      setupScrollspyFallback();
+    </script>
+  </body>
+</html>

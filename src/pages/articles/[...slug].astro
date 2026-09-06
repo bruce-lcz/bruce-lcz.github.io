@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((entry: CollectionEntry<'articles'>) => ({
+    params: { slug: entry.id },
+    props: { title: entry.data.title },
+  }));
+}
+
+const { title } = Astro.props as { title: string };
+---
+
+<BaseLayout
+  title={`${title} — temporarily unavailable`}
+  description="This article is temporarily unavailable while the writing section is being refreshed."
+  robots="noindex, nofollow"
+>
+  <section class="mx-auto flex min-h-[60vh] max-w-2xl items-center px-6 py-24">
+    <div class="w-full rounded-[32px] border border-gray-200 bg-white p-8 text-center shadow-[0_18px_48px_rgba(15,23,42,0.06)] sm:p-12">
+      <p class="editorial-kicker">Writing / 部落格</p>
+      <h1 class="mt-4 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
+        This article is temporarily unavailable
+      </h1>
+      <p class="mx-auto mt-5 max-w-xl text-base leading-8 text-gray-600">
+        The writing section is being refreshed. Please return to the portfolio to explore current projects and experience.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a
+          href="/"
+          class="inline-flex min-h-11 items-center justify-center rounded-full bg-gray-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        >
+          Back to portfolio
+        </a>
+        <a
+          href="/articles/"
+          class="inline-flex min-h-11 items-center justify-center rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        >
+          Writing status
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

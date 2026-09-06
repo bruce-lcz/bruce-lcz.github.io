@@ -1,0 +1,68 @@
+<svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#041E1E"/>
+      <stop offset="1" stop-color="#112C2B"/>
+    </linearGradient>
+    <linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#134E4A"/>
+      <stop offset="1" stop-color="#042F2E"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/>
+  <rect x="24" y="24" width="1392" height="432" rx="36" stroke="#115E59" stroke-width="1.5"/>
+  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif">
+    <rect x="72" y="60" width="190" height="40" rx="20" fill="#042F2E" stroke="#14B8A6"/>
+    <rect x="278" y="60" width="190" height="40" rx="20" fill="#042F2E" stroke="#14B8A6"/>
+    <rect x="484" y="60" width="190" height="40" rx="20" fill="#042F2E" stroke="#14B8A6"/>
+    <text x="100" y="85" fill="#CCFBF1" font-size="14" font-weight="600">Technical Datasheet LLM</text>
+    <text x="312" y="85" fill="#CCFBF1" font-size="14" font-weight="600">Multimodal VLM Review</text>
+    <text x="528" y="85" fill="#CCFBF1" font-size="14" font-weight="600">Web · CLI · MCP Core</text>
+  </g>
+  <g filter="url(#glow)" stroke="#2DD4BF" stroke-width="4" stroke-linecap="round">
+    <path d="M280 240H324"/><path d="M492 240H536"/><path d="M704 240H748"/><path d="M916 240H960"/><path d="M1128 240H1172"/>
+  </g>
+  <g fill="#2DD4BF">
+    <path d="M324 240L312 233V247L324 240Z"/><path d="M536 240L524 233V247L536 240Z"/><path d="M748 240L736 233V247L748 240Z"/><path d="M960 240L948 233V247L960 240Z"/><path d="M1172 240L1160 233V247L1172 240Z"/>
+  </g>
+  <g fill="url(#node)" stroke="#14B8A6">
+    <rect x="76" y="184" width="204" height="112" rx="26"/><rect x="288" y="184" width="204" height="112" rx="26"/><rect x="500" y="184" width="204" height="112" rx="26"/><rect x="712" y="184" width="204" height="112" rx="26"/><rect x="924" y="184" width="204" height="112" rx="26"/><rect x="1136" y="184" width="204" height="112" rx="26"/>
+  </g>
+  <g fill="#042F2E" stroke="#2DD4BF">
+    <rect x="156" y="198" width="44" height="44" rx="12"/><rect x="368" y="198" width="44" height="44" rx="12"/><rect x="580" y="198" width="44" height="44" rx="12"/><rect x="792" y="198" width="44" height="44" rx="12"/><rect x="1004" y="198" width="44" height="44" rx="12"/><rect x="1216" y="198" width="44" height="44" rx="12"/>
+  </g>
+  <g fill="none" stroke="#5EEAD4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- DOCX Ingestion -->
+    <path d="M170 208H186L192 214V232H170V208Z"/><path d="M186 208V214H192"/><path d="M175 220H187M175 225H183"/>
+    <!-- Token chunker -->
+    <rect x="375" y="210" width="12" height="10" rx="2"/><rect x="391" y="210" width="12" height="10" rx="2"/><rect x="375" y="222" width="28" height="8" rx="2"/>
+    <!-- Parallel LLM + Vision -->
+    <circle cx="602" cy="220" r="9"/><path d="M598 220L601 223L606 217"/><path d="M596 211C598 209 606 209 608 211"/>
+    <!-- Global consistency -->
+    <path d="M802 214L814 226M814 214L802 226"/><circle cx="814" cy="220" r="10"/>
+    <!-- Location mapping -->
+    <circle cx="1026" cy="220" r="4"/><circle cx="1026" cy="220" r="10"/><path d="M1026 206V210M1026 230V234M1012 220H1016M1036 220H1040"/>
+    <!-- Multi-surface export -->
+    <rect x="1225" y="210" width="26" height="20" rx="3"/><path d="M1229 220H1247M1238 210V230"/>
+  </g>
+  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" fill="#F0FDFA" font-size="20" font-weight="700">
+    <text x="100" y="272">DOCX Ingest</text>
+    <text x="322" y="272">Token Chunker</text>
+    <text x="528" y="272">Dual LLM/VLM</text>
+    <text x="736" y="272">Consistency</text>
+    <text x="948" y="272">Location Map</text>
+    <text x="1152" y="272">Multi-Surface</text>
+  </g>
+  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" fill="#99F6E4" font-size="12">
+    <text x="96" y="288">Tables &amp; EMF Vectors</text>
+    <text x="325" y="288">Header-Preserving</text>
+    <text x="522" y="288">Pinouts &amp; Electricals</text>
+    <text x="742" y="288">Cross-Doc Pass</text>
+    <text x="946" y="288">Exact Section / Cell</text>
+    <text x="1156" y="288">Web / CLI / MCP</text>
+  </g>
+</svg>

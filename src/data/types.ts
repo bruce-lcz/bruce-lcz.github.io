@@ -24,6 +24,14 @@ export interface ProjectMedia {
     caption?: string;
 }
 
+export interface ProjectTimeline {
+    start: string;
+    end?: string;
+    status: 'ongoing' | 'completed';
+    group: 'platform' | 'delivery' | 'side-project';
+    featured?: boolean;
+}
+
 export interface NarrativeSection {
     context?: string[];
     constraint?: string[];
@@ -37,6 +45,7 @@ export interface DetailedProject extends NarrativeSection {
     title: string;
     coreValueLine?: string;
     category: string;
+    timeline: ProjectTimeline;
     visualType?:
         | 'asc-merge-c-generator'
         | 'legal-comparison'
@@ -47,7 +56,11 @@ export interface DetailedProject extends NarrativeSection {
         | 'manufacturing-assistant'
         | 'yield-optimization'
         | 'preventive-maintenance'
-        | 'address-normalization';
+        | 'address-normalization'
+        | 'workforce-analytics'
+        | 'datasheet-review'
+        | 'llm-telemetry'
+        | 'evidence-qa';
     role: string;
     company?: string;
     period: string;
@@ -99,6 +112,7 @@ export interface UnifiedProject {
     id: string;
     category: string;
     period: string;
+    timeline: ProjectTimeline;
     visualType?: DetailedProject['visualType'];
     companyId?: string;
     heroBadges?: string[];

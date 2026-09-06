@@ -1,12 +1,7 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Plus } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import type { DetailedProject } from '../data/types';
-
-interface ProjectsProps {
-    onProjectSelect: (projectId: string) => void;
-}
 
 const categoryStyles: Record<string, string> = {
     work: 'bg-primary-50 text-primary',
@@ -16,21 +11,18 @@ const categoryStyles: Record<string, string> = {
     auo: 'bg-sky-50 text-sky-700',
 };
 
-export const Projects = ({ onProjectSelect }: ProjectsProps) => {
+export const Projects = () => {
     const { config, language } = useLanguage();
-    const [showAll, setShowAll] = useState(false);
-    const [featuredProject, ...allOtherProjects] = config.projects ?? [];
-    const otherProjects = showAll ? allOtherProjects : allOtherProjects.slice(0, 3);
+    // Keep the homepage focused; the complete catalogue lives on /projects/.
+    const [featuredProject, ...otherProjects] = (config.projects ?? []).slice(0, 5);
 
     const getCategoryClassName = (category: string) => categoryStyles[category.toLowerCase()] ?? 'bg-gray-100 text-gray-700';
 
-    const beforeLabel = language === 'zh' ? '問題' : 'The problem';
-    const afterLabel = language === 'zh' ? '做法' : 'What I changed';
+    const beforeLabel = language === 'zh' ? '原本痛點' : 'Pain Point';
+    const afterLabel = language === 'zh' ? '解法設計' : 'Solution Design';
 
     const getCoreValueLine = (project: DetailedProject) =>
         project.coreValueLine ?? (project.cardTags ?? project.heroBadges ?? project.techStack).slice(0, 2).join(' · ');
-
-    const getPeriod = (period: string) => language === 'zh' ? period.replace('Present', '至今') : period;
 
     const renderSolutionSummary = (summary?: string) => {
         if (!summary) {
@@ -56,34 +48,34 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
     };
 
     return (
-        <section className="mx-auto max-w-6xl scroll-mt-28 px-6 py-20 md:py-28" id="work">
+        <section className="mx-auto max-w-[90rem] scroll-mt-24 px-6 py-20" id="projects">
             <div className="mb-12 grid gap-5 lg:grid-cols-[max-content_minmax(0,1fr)] lg:items-end">
                 <div>
-                    <p className="editorial-kicker">{language === 'zh' ? '精選作品' : 'Selected work'}</p>
+                    <p className="editorial-kicker">{language === 'zh' ? '作品集' : 'Portfolio'}</p>
                     <h2 className="mt-3 text-4xl font-semibold tracking-tight text-gray-900">
-                        {language === 'zh' ? '從需求到交付的專案案例' : 'Selected projects, from brief to delivery'}
+                        {language === 'zh' ? '專案案例' : 'Case Studies'}
                     </h2>
                 </div>
                 <p className={`max-w-none text-base leading-7 text-gray-600 lg:justify-self-end ${language === 'zh' ? 'lg:whitespace-nowrap' : ''}`}>
                     {language === 'zh'
-                        ? '涵蓋企業內部工具、文件處理、製造決策支援與個人產品。'
-                        : 'Internal tools, document systems, manufacturing decision support, and a personal product.'}
+                        ? '將模糊需求、限制條件與使用情境，轉成團隊願意採用的內部工具與 AI 應用。'
+                        : 'Turning ambiguous requirements, constraints, and usage scenarios into internal tools and AI applications teams can actually adopt.'}
                 </p>
             </div>
 
             {featuredProject && (
-                <motion.button
-                    type="button"
-                    onClick={() => onProjectSelect(featuredProject.id)}
-                    initial={{ opacity: 0, y: 18 }}
+                <motion.a
+                    href={`/projects/${featuredProject.id}/`}
+                    aria-label={`${language === 'zh' ? '查看專案：' : 'View project: '}${featuredProject.title}`}
+                    initial={false}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.45 }}
-                    className="group relative mb-8 w-full overflow-hidden rounded-[32px] border border-gray-200 bg-[linear-gradient(135deg,#ffffff_0%,#f8fbff_45%,#eef4ff_100%)] p-8 text-left shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_28px_85px_rgba(15,23,42,0.12)]"
+                    className="group relative mb-8 block w-full overflow-hidden rounded-[32px] border border-gray-200 bg-[linear-gradient(135deg,#ffffff_0%,#f8fbff_45%,#eef4ff_100%)] p-8 text-left shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_28px_85px_rgba(15,23,42,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                     <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#1a73e8,rgba(79,70,229,0.78),transparent)] opacity-75" />
                     <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-primary/10 blur-3xl transition-transform duration-300 group-hover:scale-110" />
-                    <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)]">
+                    <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.7fr)]">
                         <div>
                             <div className="flex flex-wrap items-center gap-3">
                                 <span className="rounded-full border border-primary/15 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
@@ -126,26 +118,19 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col overflow-hidden rounded-[26px] border border-white/70 bg-white/80 shadow-[0_16px_36px_rgba(15,23,42,0.06)]">
-                            {featuredProject.heroImage && (
-                                <div className="border-b border-gray-100 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.12),transparent_45%),#f8fafc] p-5">
-                                    <img src={featuredProject.heroImage} alt="" className="aspect-[16/10] w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" />
-                                </div>
-                            )}
-                            <div className="flex flex-1 flex-col justify-between p-5">
+                        <div className="flex flex-col justify-between rounded-[26px] border border-white/70 bg-white/80 p-5 shadow-[0_16px_36px_rgba(15,23,42,0.06)]">
                             <div className="space-y-4">
                                 <div>
                                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gray-500">
-                                        {language === 'zh' ? '我的角色' : 'My role'}
+                                        {language === 'zh' ? '角色定位' : 'Role'}
                                     </p>
                                     <p className="mt-2 text-sm leading-6 text-gray-700">
                                         {featuredProject.role}
                                     </p>
-                                    <p className="mt-1 text-xs text-gray-400">{getPeriod(featuredProject.period)}</p>
                                 </div>
                                 <div>
                                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gray-500">
-                                        {language === 'zh' ? '專案重點' : 'Project focus'}
+                                        {language === 'zh' ? '流程重點' : 'Workflow Signals'}
                                     </p>
                                     <div className="mt-3 flex flex-wrap gap-2">
                                         {(featuredProject.cardTags ?? featuredProject.techStack.slice(0, 4)).map((tag) => (
@@ -158,26 +143,25 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                             </div>
 
                             <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary">
-                                {language === 'zh' ? '查看完整案例' : 'View case study'}
-                                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                            </div>
+                                {language === 'zh' ? '查看專案細節' : 'Open project detail'}
+                                <ArrowUpRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </div>
                         </div>
                     </div>
-                </motion.button>
+                </motion.a>
             )}
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-2">
                 {otherProjects.map((project, index) => (
-                    <motion.button
+                    <motion.a
                         key={project.id}
-                        type="button"
-                        onClick={() => onProjectSelect(project.id)}
-                        initial={{ opacity: 0, y: 18 }}
+                        href={`/projects/${project.id}/`}
+                        aria-label={`${language === 'zh' ? '查看專案：' : 'View project: '}${project.title}`}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.35, delay: index * 0.05 }}
-                        className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)] p-6 text-left shadow-[0_18px_45px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_22px_60px_rgba(15,23,42,0.08)]"
+                        className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)] p-6 text-left shadow-[0_18px_45px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_22px_60px_rgba(15,23,42,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#1a73e8,rgba(79,70,229,0.72),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-70" />
 
@@ -185,14 +169,8 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                             <span className={`rounded-full px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] ${getCategoryClassName(project.category)}`}>
                                 {project.category}
                             </span>
-                            <ArrowUpRight className="h-5 w-5 shrink-0 text-gray-400 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                            <ArrowUpRight aria-hidden="true" className="h-5 w-5 shrink-0 text-gray-400 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
                         </div>
-
-                        {project.heroImage && (
-                            <div className="relative -mx-6 mt-5 border-y border-gray-100 bg-[linear-gradient(145deg,#f8fafc,#eef4ff)] px-5 py-3">
-                                <img src={project.heroImage} alt="" className="aspect-[16/9] w-full object-contain transition-transform duration-500 group-hover:scale-[1.025]" />
-                            </div>
-                        )}
 
                         <h3 className="relative mt-6 text-2xl font-semibold tracking-normal text-gray-900 transition-colors group-hover:text-primary">
                             {project.title}
@@ -203,16 +181,29 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                         </p>
 
                         <p className="relative mt-3 text-sm leading-7 text-gray-600">
-                            {project.shortDescription ?? project.oneLineSummary ?? project.summary}
+                            {project.summary ?? project.oneLineSummary ?? project.shortDescription}
                         </p>
 
-                        <div className="relative mt-5 border-l-2 border-primary/20 pl-4">
-                            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-primary">{afterLabel}</p>
-                            <p className="mt-2 text-sm leading-6 text-gray-700">{renderSolutionSummary(project.afterSummary)}</p>
+                        <div className="relative mt-5 grid gap-3">
+                            <div className="rounded-[18px] border border-gray-200 bg-gray-50/85 p-4">
+                                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                                    {beforeLabel}
+                                </p>
+                                <p className="mt-2 text-sm leading-6 text-gray-700">
+                                    {project.beforeSummary}
+                                </p>
+                            </div>
+                            <div className="rounded-[18px] border border-primary/15 bg-primary-50/70 p-4">
+                                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-primary">
+                                    {afterLabel}
+                                </p>
+                                <p className="mt-2 text-sm leading-6 text-gray-700">
+                                    {renderSolutionSummary(project.afterSummary)}
+                                </p>
+                            </div>
                         </div>
 
-                        <div className="relative mt-auto border-t border-gray-100 pt-4">
-                            <p className="mb-3 text-xs text-gray-400">{getPeriod(project.period)}</p>
+                        <div className="relative mt-6 border-t border-gray-100 pt-4">
                             <div className="flex flex-wrap gap-2">
                                 {(project.cardTags ?? project.techStack.slice(0, 3)).map((tag) => (
                                     <span key={tag} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-600">
@@ -221,18 +212,19 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                                 ))}
                             </div>
                         </div>
-                    </motion.button>
+                    </motion.a>
                 ))}
             </div>
 
-            {!showAll && allOtherProjects.length > 3 && (
-                <div className="mt-10 flex justify-center">
-                    <button type="button" onClick={() => setShowAll(true)} className="personal-button personal-button-light">
-                        <Plus className="h-4 w-4" />
-                        {language === 'zh' ? `再看 ${allOtherProjects.length - 3} 個作品` : `View ${allOtherProjects.length - 3} more projects`}
-                    </button>
-                </div>
-            )}
+            <div className="mt-12 flex justify-center">
+                <a
+                    href="/projects"
+                    className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm transition-all hover:border-gray-300 hover:bg-gray-50 hover:shadow-md"
+                >
+                    {language === 'zh' ? '查看所有專案' : 'View all case studies'}
+                    <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                </a>
+            </div>
         </section>
     );
 };

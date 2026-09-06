@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404: Page Not Found | Bruce Cheng">
+  <div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-6 py-24">
+    <!-- Decorative 404 -->
+    <div class="relative mb-8">
+      <span class="text-[8rem] font-display font-bold tracking-tighter text-gray-100 leading-none select-none">
+        404
+      </span>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
+          <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 16.318A4.486 4.486 0 0012.016 15a4.486 4.486 0 00-3.198 1.318M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="text-2xl font-semibold tracking-tight text-gray-900 mb-3" id="not-found-title">
+      Page not found
+    </h1>
+    <p class="text-gray-500 mb-10 max-w-md text-sm leading-7" id="not-found-desc">
+      The page you're looking for may have been moved, renamed, or is temporarily unavailable.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <a href="/"
+        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800"
+        id="not-found-home"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="/projects"
+        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:text-gray-900"
+        id="not-found-projects"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+        </svg>
+        <span>Projects</span>
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  function update404Lang() {
+    const lang = localStorage.getItem('language') || 'en';
+    const isZh = lang === 'zh';
+
+    const title = document.getElementById('not-found-title');
+    const desc = document.getElementById('not-found-desc');
+    const homeBtn = document.getElementById('not-found-home');
+    const projectsBtn = document.getElementById('not-found-projects');
+
+    if (title) title.textContent = isZh ? '找不到這個頁面' : 'Page not found';
+    if (desc) desc.textContent = isZh
+      ? '你要找的頁面可能已被移除、重新命名，或暫時無法使用。'
+      : "The page you're looking for may have been moved, renamed, or is temporarily unavailable.";
+    if (homeBtn) {
+      const span = homeBtn.querySelector('span');
+      if (span) span.textContent = isZh ? '返回首頁' : 'Home';
+    }
+    if (projectsBtn) {
+      const span = projectsBtn.querySelector('span');
+      if (span) span.textContent = isZh ? '查看專案' : 'Projects';
+    }
+  }
+
+  update404Lang();
+  window.addEventListener('storage', update404Lang);
+  window.addEventListener('languagechange', update404Lang);
+</script>

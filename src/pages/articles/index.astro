@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Articles temporarily unavailable — Bruce Cheng"
+  description="Bruce Cheng's articles are temporarily unavailable while the writing section is being refreshed."
+  type="website"
+  robots="noindex, nofollow"
+>
+  <section class="mx-auto flex min-h-[60vh] max-w-2xl items-center px-6 py-24">
+    <div class="w-full rounded-[32px] border border-gray-200 bg-white p-8 text-center shadow-[0_18px_48px_rgba(15,23,42,0.06)] sm:p-12">
+      <p class="editorial-kicker">Writing / 部落格</p>
+      <h1 class="mt-4 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
+        Articles are temporarily unavailable
+      </h1>
+      <p class="mx-auto mt-5 max-w-xl text-base leading-8 text-gray-600">
+        The writing section is being refreshed. Please return to the portfolio to explore current projects and experience.
+      </p>
+      <p class="mx-auto mt-3 max-w-xl text-sm leading-7 text-gray-500">
+        文章區目前暫停開放，網站正在整理中。你可以先查看專案案例與工作經驗。
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a
+          href="/"
+          class="inline-flex min-h-11 items-center justify-center rounded-full bg-gray-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        >
+          Back to portfolio
+        </a>
+        <a
+          href="/projects/"
+          class="inline-flex min-h-11 items-center justify-center rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        >
+          View projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const lang = localStorage.getItem('language') || 'en';
+    if (lang === 'zh') {
+      document.querySelector('h1')?.replaceChildren(document.createTextNode('文章區目前暫停開放'));
+      const paragraphs = document.querySelectorAll('section p');
+      paragraphs[1]?.replaceChildren(document.createTextNode('文章區正在整理中，歡迎先查看專案案例與工作經驗。'));
+      paragraphs[2]?.remove();
+      const buttons = document.querySelectorAll('section a');
+      if (buttons[0]) buttons[0].textContent = '返回作品集';
+      if (buttons[1]) buttons[1].textContent = '查看專案';
+    }
+  </script>
+</BaseLayout>

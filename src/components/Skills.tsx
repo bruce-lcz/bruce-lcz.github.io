@@ -5,7 +5,7 @@ export const Skills = () => {
     const { config, language } = useLanguage();
 
     return (
-        <section className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20" id="capability-map">
+        <section className="mx-auto max-w-[90rem] scroll-mt-24 px-6 py-20" id="capability-map">
             <div className="mb-12 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
                 <div>
                     <p className="editorial-kicker">{language === 'zh' ? '能力視角' : 'Capability View'}</p>
@@ -15,13 +15,13 @@ export const Skills = () => {
                 </div>
                 <p className="max-w-2xl text-base leading-7 text-gray-600">
                     {language === 'zh'
-                        ? '依照需求分析、系統整合、產品實作與應用領域，整理我實際使用的能力。'
-                        : 'Capabilities organized by requirement analysis, system integration, product implementation, and application domain.'}
+                        ? '這裡不只是技能清單，而是呈現我如何把技術用在需求拆解、系統整合、產品開發與各領域的實際流程中。'
+                        : 'This is not a disconnected tag wall. It is a map of how I place technical choices inside requirement framing, system composition, product implementation, and domain workflows.'}
                 </p>
             </div>
 
             <motion.div
-                initial="hidden"
+                initial={false}
                 animate="show"
                 variants={{
                     hidden: { opacity: 0 },
@@ -37,6 +37,7 @@ export const Skills = () => {
                 {config.skills.map((skillGroup) => (
                     <motion.article
                         key={skillGroup.category}
+                        initial={false}
                         variants={{
                             hidden: { opacity: 0, y: 16 },
                             show: { opacity: 1, y: 0 },
