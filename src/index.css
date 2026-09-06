@@ -21,6 +21,11 @@
     @apply bg-white text-gray-900 antialiased;
   }
 
+  img,
+  svg {
+    max-width: 100%;
+  }
+
   ::selection {
     @apply bg-primary-50 text-primary;
   }
@@ -70,5 +75,13 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  [style*='opacity'],
+  [style*='transform'] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

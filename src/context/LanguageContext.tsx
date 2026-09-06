@@ -26,16 +26,36 @@ interface LanguageProviderProps {
     children: ReactNode;
 }
 
+const getInitialLanguage = (): Language => {
+    if (typeof window === 'undefined') {
+        return 'en';
+    }
+
+    const savedLang = window.localStorage.getItem('language');
+    return savedLang === 'zh' ? 'zh' : 'en';
+};
+
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-    const [language, setLanguageState] = useState<Language>('en');
+    const [language, setLanguageState] = useState<Language>(getInitialLanguage);
 
     useEffect(() => {
-        // Load persisted language preference
-        const savedLang = localStorage.getItem('language') as Language;
-        if (savedLang === 'en' || savedLang === 'zh') {
-            setLanguageState(savedLang);
-        }
-        // Removed browser detection to enforce English default unless saved
+        const loadLang = () => {
+            const savedLang = localStorage.getItem('language') as Language;
+            if (savedLang === 'en' || savedLang === 'zh') {
+                setLanguageState(savedLang);
+            }
+        };
+
+        // Load persisted language preference initially
+        loadLang();
+
+        // Listen for changes from outside React (e.g. Navbar)
+        window.addEventListener('storage', loadLang);
+        window.addEventListener('languagechange', loadLang);
+        return () => {
+            window.removeEventListener('storage', loadLang);
+            window.removeEventListener('languagechange', loadLang);
+        };
     }, []);
 
     const config = language === 'zh' ? configZh : configEn;

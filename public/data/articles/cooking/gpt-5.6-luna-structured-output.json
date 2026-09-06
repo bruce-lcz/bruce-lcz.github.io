@@ -1,0 +1,759 @@
+{
+  "model_claimed": "gpt-5.6-luna",
+  "slides": [
+    {
+      "slide_number": 1,
+      "title": "尖峰時段，客人等太久了",
+      "subtitle": "先測數字、範圍、時間條件與不起眼的小字備註。",
+      "text_blocks": [
+        {
+          "text": "VLM 讀得出文字，就代表它看懂影片了嗎？",
+          "role": "other"
+        },
+        {
+          "text": "目前狀況",
+          "role": "label"
+        },
+        {
+          "text": "平日下午 12:00–14:00",
+          "role": "body"
+        },
+        {
+          "text": "平均等待時間",
+          "role": "label"
+        },
+        {
+          "text": "12 分鐘",
+          "role": "body"
+        },
+        {
+          "text": "改善目標",
+          "role": "label"
+        },
+        {
+          "text": "四週內",
+          "role": "body"
+        },
+        {
+          "text": "將平均等待時間降低至",
+          "role": "body"
+        },
+        {
+          "text": "≤ 8 分鐘",
+          "role": "body"
+        },
+        {
+          "text": "資料不包含外送訂單。",
+          "role": "footer"
+        },
+        {
+          "text": "01 / 06",
+          "role": "footer"
+        }
+      ],
+      "numbers": [
+        {
+          "raw_text": "12:00–14:00",
+          "value": null,
+          "operator": null,
+          "unit": null,
+          "meaning": "平日下午時段"
+        },
+        {
+          "raw_text": "12 分鐘",
+          "value": 12,
+          "operator": null,
+          "unit": "分鐘",
+          "meaning": "平均等待時間"
+        },
+        {
+          "raw_text": "≤ 8 分鐘",
+          "value": 8,
+          "operator": "≤",
+          "unit": "分鐘",
+          "meaning": "改善目標：平均等待時間"
+        },
+        {
+          "raw_text": "四週內",
+          "value": 4,
+          "operator": null,
+          "unit": "週",
+          "meaning": "改善目標期限"
+        }
+      ],
+      "time_ranges": [
+        {
+          "raw_text": "平日下午 12:00–14:00",
+          "start": "12:00",
+          "end": "14:00",
+          "meaning": "目前狀況適用時段"
+        }
+      ],
+      "visual_relations": [],
+      "tables": [],
+      "conditions": [
+        {
+          "field": "平均等待時間",
+          "operator": "≤",
+          "value": 8,
+          "unit": "分鐘",
+          "scope": "四週內",
+          "status": "改善目標"
+        }
+      ],
+      "actions": [],
+      "options": [],
+      "decisions": [],
+      "success_conditions": [],
+      "notes": [
+        "資料不包含外送訂單。"
+      ],
+      "uncertain_items": []
+    },
+    {
+      "slide_number": 2,
+      "title": "一杯咖啡，是怎麼送到客人手上的？",
+      "subtitle": "兩條訂單來源流；另有一條回頭的付款失敗流程。",
+      "text_blocks": [
+        {
+          "text": "現場顧客",
+          "role": "label"
+        },
+        {
+          "text": "櫃台點餐",
+          "role": "label"
+        },
+        {
+          "text": "付款",
+          "role": "label"
+        },
+        {
+          "text": "付款失敗 → 返回付款",
+          "role": "label"
+        },
+        {
+          "text": "咖啡師製作",
+          "role": "label"
+        },
+        {
+          "text": "取餐區",
+          "role": "label"
+        },
+        {
+          "text": "線上訂單",
+          "role": "label"
+        },
+        {
+          "text": "系統確認",
+          "role": "label"
+        },
+        {
+          "text": "注意：靠近不代表相連，箭頭方向才是流程關係。",
+          "role": "footer"
+        },
+        {
+          "text": "02 / 06",
+          "role": "footer"
+        }
+      ],
+      "numbers": [],
+      "time_ranges": [],
+      "visual_relations": [
+        {
+          "source": "現場顧客",
+          "target": "櫃台點餐",
+          "direction": "右",
+          "relationship": "流程"
+        },
+        {
+          "source": "櫃台點餐",
+          "target": "付款",
+          "direction": "右",
+          "relationship": "流程"
+        },
+        {
+          "source": "付款",
+          "target": "咖啡師製作",
+          "direction": "右下",
+          "relationship": "流程"
+        },
+        {
+          "source": "咖啡師製作",
+          "target": "取餐區",
+          "direction": "右",
+          "relationship": "流程"
+        },
+        {
+          "source": "線上訂單",
+          "target": "系統確認",
+          "direction": "右",
+          "relationship": "流程"
+        },
+        {
+          "source": "系統確認",
+          "target": "咖啡師製作",
+          "direction": "右上",
+          "relationship": "流程"
+        },
+        {
+          "source": "付款失敗",
+          "target": "付款",
+          "direction": "向上",
+          "relationship": "付款失敗後返回付款；虛線箭頭"
+        }
+      ],
+      "tables": [],
+      "conditions": [],
+      "actions": [],
+      "options": [],
+      "decisions": [],
+      "success_conditions": [],
+      "notes": [
+        "注意：靠近不代表相連，箭頭方向才是流程關係。"
+      ],
+      "uncertain_items": []
+    },
+    {
+      "slide_number": 3,
+      "title": "哪些飲品最容易塞單？",
+      "subtitle": "測表格的列、欄、數字與狀態是否仍能正確歸屬。",
+      "text_blocks": [
+        {
+          "text": "VLM 讀得出文字，就代表它看懂影片了嗎？",
+          "role": "other"
+        },
+        {
+          "text": "飲品",
+          "role": "label"
+        },
+        {
+          "text": "售價",
+          "role": "label"
+        },
+        {
+          "text": "平均製作時間",
+          "role": "label"
+        },
+        {
+          "text": "尖峰時段狀態",
+          "role": "label"
+        },
+        {
+          "text": "美式咖啡",
+          "role": "body"
+        },
+        {
+          "text": "拿鐵",
+          "role": "body"
+        },
+        {
+          "text": "手沖咖啡",
+          "role": "body"
+        },
+        {
+          "text": "冰茶",
+          "role": "body"
+        },
+        {
+          "text": "刻意混用整數與小數，「暫停供應」不等於「缺貨」。",
+          "role": "footer"
+        },
+        {
+          "text": "03 / 06",
+          "role": "footer"
+        }
+      ],
+      "numbers": [
+        {
+          "raw_text": "NT$80",
+          "value": 80,
+          "operator": null,
+          "unit": "NT$",
+          "meaning": "美式咖啡售價"
+        },
+        {
+          "raw_text": "2 分鐘",
+          "value": 2,
+          "operator": null,
+          "unit": "分鐘",
+          "meaning": "美式咖啡平均製作時間"
+        },
+        {
+          "raw_text": "NT$120",
+          "value": 120,
+          "operator": null,
+          "unit": "NT$",
+          "meaning": "拿鐵售價"
+        },
+        {
+          "raw_text": "4 分鐘",
+          "value": 4,
+          "operator": null,
+          "unit": "分鐘",
+          "meaning": "拿鐵平均製作時間"
+        },
+        {
+          "raw_text": "NT$160",
+          "value": 160,
+          "operator": null,
+          "unit": "NT$",
+          "meaning": "手沖咖啡售價"
+        },
+        {
+          "raw_text": "7 分鐘",
+          "value": 7,
+          "operator": null,
+          "unit": "分鐘",
+          "meaning": "手沖咖啡平均製作時間"
+        },
+        {
+          "raw_text": "NT$90",
+          "value": 90,
+          "operator": null,
+          "unit": "NT$",
+          "meaning": "冰茶售價"
+        },
+        {
+          "raw_text": "1.5 分鐘",
+          "value": 1.5,
+          "operator": null,
+          "unit": "分鐘",
+          "meaning": "冰茶平均製作時間"
+        }
+      ],
+      "time_ranges": [],
+      "visual_relations": [],
+      "tables": [
+        {
+          "columns": [
+            "飲品",
+            "售價",
+            "平均製作時間",
+            "尖峰時段狀態"
+          ],
+          "rows": [
+            [
+              "美式咖啡",
+              "NT$80",
+              "2 分鐘",
+              "正常"
+            ],
+            [
+              "拿鐵",
+              "NT$120",
+              "4 分鐘",
+              "容易塞單"
+            ],
+            [
+              "手沖咖啡",
+              "NT$160",
+              "7 分鐘",
+              "暫停供應"
+            ],
+            [
+              "冰茶",
+              "NT$90",
+              "1.5 分鐘",
+              "正常"
+            ]
+          ]
+        }
+      ],
+      "conditions": [],
+      "actions": [],
+      "options": [],
+      "decisions": [],
+      "success_conditions": [],
+      "notes": [
+        "刻意混用整數與小數，「暫停供應」不等於「缺貨」。"
+      ],
+      "uncertain_items": []
+    },
+    {
+      "slide_number": 4,
+      "title": "訂單太多時，要啟動什麼規則？",
+      "subtitle": "少一個符號、少一段備註，結論就可能不同。",
+      "text_blocks": [
+        {
+          "text": "當待製作訂單 ≥ 10 杯 時：",
+          "role": "body"
+        },
+        {
+          "text": "1. 暫停接受手沖咖啡訂單",
+          "role": "body"
+        },
+        {
+          "text": "2. 第二位咖啡師加入製作",
+          "role": "body"
+        },
+        {
+          "text": "3. 系統顯示預估等待時間 15 分鐘",
+          "role": "body"
+        },
+        {
+          "text": "計算範圍",
+          "role": "label"
+        },
+        {
+          "text": "不包含已完成但尚未取餐的訂單",
+          "role": "note"
+        },
+        {
+          "text": "備註：目前僅於週六、週日試行，尚未正式實施。",
+          "role": "footer"
+        },
+        {
+          "text": "04 / 06",
+          "role": "footer"
+        }
+      ],
+      "numbers": [
+        {
+          "raw_text": "≥ 10 杯",
+          "value": 10,
+          "operator": "≥",
+          "unit": "杯",
+          "meaning": "啟動規則的待製作訂單數量"
+        },
+        {
+          "raw_text": "15 分鐘",
+          "value": 15,
+          "operator": null,
+          "unit": "分鐘",
+          "meaning": "系統顯示的預估等待時間"
+        }
+      ],
+      "time_ranges": [],
+      "visual_relations": [],
+      "tables": [],
+      "conditions": [
+        {
+          "field": "待製作訂單",
+          "operator": "≥",
+          "value": 10,
+          "unit": "杯",
+          "scope": "計算範圍不包含已完成但尚未取餐的訂單",
+          "status": "試行"
+        }
+      ],
+      "actions": [
+        "暫停接受手沖咖啡訂單",
+        "第二位咖啡師加入製作",
+        "系統顯示預估等待時間 15 分鐘"
+      ],
+      "options": [],
+      "decisions": [],
+      "success_conditions": [],
+      "notes": [
+        "不包含已完成但尚未取餐的訂單。",
+        "目前僅於週六、週日試行，尚未正式實施。"
+      ],
+      "uncertain_items": []
+    },
+    {
+      "slide_number": 5,
+      "title": "要買機器，還是多請一個人？",
+      "subtitle": "最快的方案，不一定是最後的選擇。",
+      "text_blocks": [
+        {
+          "text": "VLM 讀得出文字，就代表它看懂影片了嗎？",
+          "role": "other"
+        },
+        {
+          "text": "評估原則：先以四週內可執行的方案為優先。",
+          "role": "note"
+        },
+        {
+          "text": "重點：以可執行性和風險一起判斷，不只比較等待時間。",
+          "role": "footer"
+        },
+        {
+          "text": "05 / 06",
+          "role": "footer"
+        }
+      ],
+      "numbers": [
+        {
+          "raw_text": "NT$120,000",
+          "value": 120000,
+          "operator": null,
+          "unit": "NT$",
+          "meaning": "增加一台咖啡機成本"
+        },
+        {
+          "raw_text": "7 分鐘",
+          "value": 7,
+          "operator": null,
+          "unit": "分鐘",
+          "meaning": "增加一台咖啡機預估等待時間"
+        },
+        {
+          "raw_text": "每月 NT$35,000",
+          "value": 35000,
+          "operator": null,
+          "unit": "NT$/月",
+          "meaning": "增加一位尖峰人員成本"
+        },
+        {
+          "raw_text": "8 分鐘",
+          "value": 8,
+          "operator": null,
+          "unit": "分鐘",
+          "meaning": "增加一位尖峰人員預估等待時間"
+        },
+        {
+          "raw_text": "NT$0",
+          "value": 0,
+          "operator": null,
+          "unit": "NT$",
+          "meaning": "減少飲品品項成本"
+        },
+        {
+          "raw_text": "9 分鐘",
+          "value": 9,
+          "operator": null,
+          "unit": "分鐘",
+          "meaning": "減少飲品品項預估等待時間"
+        },
+        {
+          "raw_text": "四週內",
+          "value": 4,
+          "operator": null,
+          "unit": "週",
+          "meaning": "評估原則的執行期限"
+        }
+      ],
+      "time_ranges": [],
+      "visual_relations": [],
+      "tables": [
+        {
+          "columns": [
+            "方案",
+            "成本",
+            "預估等待時間",
+            "風險",
+            "評估"
+          ],
+          "rows": [
+            [
+              "增加一台咖啡機",
+              "NT$120,000",
+              "7 分鐘",
+              "空間不足",
+              "暫不採用"
+            ],
+            [
+              "增加一位尖峰人員",
+              "每月 NT$35,000",
+              "8 分鐘",
+              "招募時間",
+              "建議試行"
+            ],
+            [
+              "減少飲品品項",
+              "NT$0",
+              "9 分鐘",
+              "顧客選擇減少",
+              "不採用"
+            ]
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "field": "方案可執行性",
+          "operator": null,
+          "value": "四週內可執行",
+          "unit": null,
+          "scope": "評估原則",
+          "status": "優先"
+        }
+      ],
+      "actions": [],
+      "options": [
+        {
+          "name": "增加一台咖啡機",
+          "attributes": {
+            "成本": "NT$120,000",
+            "預估等待時間": "7 分鐘"
+          },
+          "risk": "空間不足",
+          "evaluation": "暫不採用"
+        },
+        {
+          "name": "增加一位尖峰人員",
+          "attributes": {
+            "成本": "每月 NT$35,000",
+            "預估等待時間": "8 分鐘"
+          },
+          "risk": "招募時間",
+          "evaluation": "建議試行"
+        },
+        {
+          "name": "減少飲品品項",
+          "attributes": {
+            "成本": "NT$0",
+            "預估等待時間": "9 分鐘"
+          },
+          "risk": "顧客選擇減少",
+          "evaluation": "不採用"
+        }
+      ],
+      "decisions": [],
+      "success_conditions": [],
+      "notes": [
+        "評估原則：先以四週內可執行的方案為優先。",
+        "重點：以可執行性和風險一起判斷，不只比較等待時間。"
+      ],
+      "uncertain_items": []
+    },
+    {
+      "slide_number": 6,
+      "title": "最後決定怎麼做？",
+      "subtitle": "用跨頁資訊整合出一個有條件、可驗證的決策。",
+      "text_blocks": [
+        {
+          "text": "決定",
+          "role": "label"
+        },
+        {
+          "text": "自 9 月 1 日起，試行增加一位尖峰人員四週",
+          "role": "body"
+        },
+        {
+          "text": "四週試行成功條件",
+          "role": "label"
+        },
+        {
+          "text": "平均等待時間",
+          "role": "label"
+        },
+        {
+          "text": "< 8 分鐘",
+          "role": "body"
+        },
+        {
+          "text": "顧客抱怨數",
+          "role": "label"
+        },
+        {
+          "text": "不得增加",
+          "role": "body"
+        },
+        {
+          "text": "人事成本",
+          "role": "label"
+        },
+        {
+          "text": "每月不超過 NT$40,000",
+          "role": "body"
+        },
+        {
+          "text": "四週後再評估：是否正式導入。",
+          "role": "footer"
+        },
+        {
+          "text": "06 / 06",
+          "role": "footer"
+        }
+      ],
+      "numbers": [
+        {
+          "raw_text": "9 月 1 日",
+          "value": null,
+          "operator": null,
+          "unit": null,
+          "meaning": "試行開始日期"
+        },
+        {
+          "raw_text": "四週",
+          "value": 4,
+          "operator": null,
+          "unit": "週",
+          "meaning": "試行期間"
+        },
+        {
+          "raw_text": "< 8 分鐘",
+          "value": 8,
+          "operator": "<",
+          "unit": "分鐘",
+          "meaning": "平均等待時間成功條件"
+        },
+        {
+          "raw_text": "每月不超過 NT$40,000",
+          "value": 40000,
+          "operator": "≤",
+          "unit": "NT$/月",
+          "meaning": "人事成本成功條件"
+        }
+      ],
+      "time_ranges": [],
+      "visual_relations": [],
+      "tables": [],
+      "conditions": [
+        {
+          "field": "平均等待時間",
+          "operator": "<",
+          "value": 8,
+          "unit": "分鐘",
+          "scope": "四週試行",
+          "status": "成功條件"
+        },
+        {
+          "field": "顧客抱怨數",
+          "operator": null,
+          "value": "不得增加",
+          "unit": null,
+          "scope": "四週試行",
+          "status": "成功條件"
+        },
+        {
+          "field": "人事成本",
+          "operator": "≤",
+          "value": 40000,
+          "unit": "NT$/月",
+          "scope": "四週試行",
+          "status": "成功條件"
+        }
+      ],
+      "actions": [
+        "增加一位尖峰人員",
+        "試行四週",
+        "四週後再評估是否正式導入"
+      ],
+      "options": [],
+      "decisions": [
+        {
+          "decision": "試行增加一位尖峰人員四週",
+          "status": "正式決定；試行",
+          "effective_date": "9 月 1 日",
+          "duration": "四週"
+        }
+      ],
+      "success_conditions": [
+        {
+          "metric": "平均等待時間",
+          "operator": "<",
+          "value": 8,
+          "unit": "分鐘"
+        },
+        {
+          "metric": "顧客抱怨數",
+          "operator": null,
+          "value": "不得增加",
+          "unit": null
+        },
+        {
+          "metric": "人事成本",
+          "operator": "≤",
+          "value": 40000,
+          "unit": "NT$/月"
+        }
+      ],
+      "notes": [
+        "四週後再評估：是否正式導入。"
+      ],
+      "uncertain_items": []
+    }
+  ]
+}

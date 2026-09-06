@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { ExternalLink, X } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import { useLanguage } from '../context/LanguageContext';
 import { DetailedProject } from '../data/types';
@@ -37,12 +37,55 @@ const markdownComponents: Components = {
 
 export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailModalProps) => {
     const { config, language } = useLanguage();
+    const dialogRef = useRef<HTMLDivElement>(null);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
+    const onCloseRef = useRef(onClose);
+    onCloseRef.current = onClose;
 
     useEffect(() => {
-        document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+        if (!isOpen) return;
+
+        const previousOverflow = document.body.style.overflow;
+        const previousFocus = document.activeElement as HTMLElement | null;
+        document.body.style.overflow = 'hidden';
+
+        const focusableSelector = [
+            'a[href]',
+            'button:not([disabled])',
+            'input:not([disabled])',
+            'select:not([disabled])',
+            'textarea:not([disabled])',
+            '[tabindex]:not([tabindex="-1"])',
+        ].join(',');
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                onCloseRef.current();
+                return;
+            }
+
+            if (event.key !== 'Tab' || !dialogRef.current) return;
+            const focusable = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(focusableSelector));
+            if (focusable.length === 0) return;
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        requestAnimationFrame(() => closeButtonRef.current?.focus());
 
         return () => {
-            document.body.style.overflow = 'unset';
+            document.body.style.overflow = previousOverflow;
+            window.removeEventListener('keydown', handleKeyDown);
+            if (previousFocus?.isConnected) previousFocus.focus();
         };
     }, [isOpen]);
 
@@ -66,11 +109,11 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
         constraint: language === 'zh' ? '限制條件' : 'Constraint',
         myRole: language === 'zh' ? '我的角色' : 'My Role',
         systemDesign: language === 'zh' ? '系統設計' : 'System Design',
-        outcome: language === 'zh' ? '成果結果' : 'Outcome',
-        problemSolved: language === 'zh' ? '解決問題' : 'Problem Solved',
+        outcome: language === 'zh' ? '成果' : 'Outcome',
+        problemSolved: language === 'zh' ? '解決的問題' : 'Problem Solved',
         implementationHighlights: language === 'zh' ? '實作重點' : 'Implementation Highlights',
-        impact: language === 'zh' ? '影響與價值' : 'Impact',
-        techStack: language === 'zh' ? '技術組成' : 'Tech Stack',
+        impact: language === 'zh' ? '帶來的價值' : 'Impact',
+        techStack: language === 'zh' ? '技術與工具' : 'Tech Stack',
         repository: language === 'zh' ? 'GitHub 原始碼' : 'GitHub Repository',
         heroVisual: project.visualType
             ? (language === 'zh' ? '產品預覽' : 'Product Preview')
@@ -140,11 +183,18 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                         exit={{ opacity: 0, scale: 0.97, y: 20 }}
                         transition={{ duration: 0.2 }}
                         onClick={(event) => event.stopPropagation()}
-                        className="relative flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-[28px] bg-white shadow-2xl"
+                        ref={dialogRef}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="project-dialog-title"
+                        tabIndex={-1}
+                        className="relative flex max-h-[92vh] w-full max-w-[90rem] flex-col overflow-hidden rounded-[28px] bg-white shadow-2xl"
                     >
                         <button
                             type="button"
                             onClick={onClose}
+                            ref={closeButtonRef}
+                            aria-label={language === 'zh' ? '關閉專案詳情' : 'Close project details'}
                             className="absolute right-4 top-4 z-20 rounded-full border border-white/10 bg-black/20 p-2 text-white transition-colors hover:bg-white/10"
                         >
                             <X className="h-5 w-5" />
@@ -157,7 +207,7 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
                                 <div className="relative grid items-center gap-8 px-6 py-10 md:px-10 md:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,520px)]">
                                     <div className="order-1 space-y-6">
                                         <div className="space-y-4">
-                                            <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-white md:text-4xl lg:text-[2.75rem] lg:leading-[1.05]">
+                                            <h1 id="project-dialog-title" className="max-w-3xl text-3xl font-semibold tracking-tight text-white md:text-4xl lg:text-[2.75rem] lg:leading-[1.05]">
                                                 {project.title}
                                             </h1>
 

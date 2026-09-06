@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { UNIFIED_PROJECTS } from '../../data/projects';
+import { COMPANIES } from '../../data/common';
+import { ProjectThumbnailVisual } from '../../components/ProjectThumbnailVisual';
+
+const companyFilterLabels: Record<string, { en: string; zh: string }> = {
+  pixart: { en: 'PixArt', zh: 'PixArt' },
+  auo: { en: 'AUO', zh: 'AUO' },
+  sinica: { en: 'Intern', zh: '實習' },
+};
+---
+
+<BaseLayout
+  title="Projects — Bruce Cheng | Enterprise AI Applications & LLM Systems"
+  description="Case studies of enterprise AI applications, LLM systems, and workflows I have designed and built."
+>
+  <div class="mx-auto max-w-[90rem] px-4 py-10 sm:px-6 sm:py-12 md:py-20">
+    <!-- Header -->
+    <div class="mb-16 max-w-2xl">
+      <p class="editorial-kicker" id="projects-kicker">Case Studies</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight text-gray-900 md:text-5xl" id="projects-title">
+        Projects
+      </h1>
+      <p class="mt-5 text-lg leading-8 text-gray-600" id="projects-subtitle">
+        A selection of enterprise AI applications, LLM systems, and workflows I've designed and built.
+      </p>
+    </div>
+
+    <!-- Filter (client-side) -->
+    <div class="mb-10 flex flex-wrap gap-2" id="project-filters">
+      <button type="button" aria-pressed="true" class="project-cat-tab min-h-11 rounded-full border border-primary/20 bg-primary/8 px-4 py-2 text-sm font-medium text-primary transition-all" data-company="all">
+        <span class="proj-tab-en">All</span>
+        <span class="proj-tab-zh hidden">全部</span>
+      </button>
+      {Object.entries(COMPANIES).filter(([id]) => id !== 'yuntech').map(([id]) => (
+        <button type="button" aria-pressed="false" class="project-cat-tab min-h-11 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 transition-all hover:border-gray-300 hover:text-gray-900" data-company={id}>
+          <span class="proj-tab-en">{companyFilterLabels[id]?.en ?? id.charAt(0).toUpperCase() + id.slice(1)}</span>
+          <span class="proj-tab-zh hidden">{companyFilterLabels[id]?.zh ?? id.charAt(0).toUpperCase() + id.slice(1)}</span>
+        </button>
+      ))}
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10">
+      {UNIFIED_PROJECTS.map((project) => (
+        <a
+          href={`/projects/${project.id}`}
+          class="project-card group flex min-w-0 flex-col overflow-hidden rounded-[28px] border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_20px_50px_rgba(15,23,42,0.1)]"
+          data-company={project.companyId || 'personal'}
+        >
+          {/* Hero Image */}
+          <div class="relative aspect-[2/1] w-full overflow-hidden bg-gray-50">
+            {project.visualType ? (
+              <div aria-hidden="true" class="h-full w-full transition-transform duration-500 group-hover:scale-[1.025]">
+                <ProjectThumbnailVisual visualType={project.visualType} />
+              </div>
+            ) : project.heroImage ? (
+              <img
+                src={project.heroImage}
+                alt=""
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            ) : (
+              <div class="flex h-full items-center justify-center bg-gradient-to-br from-primary/5 via-blue-50 to-indigo-50">
+                <svg class="h-12 w-12 text-primary/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+                </svg>
+              </div>
+            )}
+          </div>
+
+          {/* Content */}
+          <div class="flex min-w-0 flex-1 flex-col p-5 sm:p-6">
+            <div class="mb-3 flex min-w-0 items-center justify-between gap-3">
+              <span class="min-w-0 truncate text-xs font-medium text-gray-500">
+                <span class="proj-title-en">{project.translations.en.company || 'Personal'}</span>
+                <span class="proj-title-zh hidden">{project.translations.zh.company || '個人專案'}</span>
+              </span>
+              <span class="shrink-0 font-mono text-xs text-gray-600">{project.period}</span>
+            </div>
+
+            <h3 class="mb-3 break-words text-xl font-semibold leading-tight tracking-tight text-gray-900 transition-colors group-hover:text-primary">
+              <span class="proj-title-en">{project.translations.en.title}</span>
+              <span class="proj-title-zh hidden">{project.translations.zh.title}</span>
+            </h3>
+
+            <p class="mb-6 flex-1 text-sm leading-relaxed text-gray-600 line-clamp-2">
+              <span class="proj-desc-en">{project.translations.en.shortDescription}</span>
+              <span class="proj-desc-zh hidden">{project.translations.zh.shortDescription}</span>
+            </p>
+
+            {/* Tech Stack */}
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-gray-100 mt-auto">
+              {project.techStack.slice(0, 4).map(tech => (
+                <span class="rounded-full border border-gray-100 bg-gray-50 px-2 py-0.5 text-xs font-medium text-gray-500">
+                  {tech}
+                </span>
+              ))}
+              {project.techStack.length > 4 && (
+                <span class="px-1 py-0.5 text-xs text-gray-600">+{project.techStack.length - 4}</span>
+              )}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // --- Category filtering ---
+  const allCards = document.querySelectorAll('.project-card');
+
+  document.querySelectorAll('.project-cat-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const company = (tab as HTMLElement).dataset.company || 'all';
+
+      // Update UI
+      document.querySelectorAll('.project-cat-tab').forEach((t) => {
+        const isActive = (t as HTMLElement).dataset.company === company;
+        t.setAttribute('aria-pressed', String(isActive));
+        t.className = isActive
+          ? 'project-cat-tab rounded-full border border-primary/20 bg-primary/8 px-4 py-2 text-sm font-medium text-primary transition-all'
+          : 'project-cat-tab rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 transition-all hover:border-gray-300 hover:text-gray-900';
+      });
+
+      // Filter cards
+      allCards.forEach((card) => {
+        const cardCompany = (card as HTMLElement).dataset.company;
+        (card as HTMLElement).style.display = company === 'all' || cardCompany === company ? '' : 'none';
+      });
+    });
+  });
+
+  // --- Language sync ---
+  function updateProjectsPageLang() {
+    const lang = localStorage.getItem('language') || 'en';
+    const isZh = lang === 'zh';
+
+    const kicker = document.getElementById('projects-kicker');
+    const title = document.getElementById('projects-title');
+    const subtitle = document.getElementById('projects-subtitle');
+
+    if (kicker) kicker.textContent = isZh ? '案例研究' : 'Case Studies';
+    if (title) title.textContent = isZh ? '專案' : 'Projects';
+    if (subtitle) subtitle.textContent = isZh
+      ? '我設計與建構的企業 AI 應用、LLM 系統與實際工作流程。'
+      : 'A selection of enterprise AI applications, LLM systems, and workflows I\'ve designed and built.';
+
+    document.querySelectorAll('.proj-tab-en').forEach(el => el.classList.toggle('hidden', isZh));
+    document.querySelectorAll('.proj-tab-zh').forEach(el => el.classList.toggle('hidden', !isZh));
+    document.querySelectorAll('.proj-title-en').forEach(el => el.classList.toggle('hidden', isZh));
+    document.querySelectorAll('.proj-title-zh').forEach(el => el.classList.toggle('hidden', !isZh));
+    document.querySelectorAll('.proj-desc-en').forEach(el => el.classList.toggle('hidden', isZh));
+    document.querySelectorAll('.proj-desc-zh').forEach(el => el.classList.toggle('hidden', !isZh));
+  }
+
+  updateProjectsPageLang();
+  window.addEventListener('storage', updateProjectsPageLang);
+  window.addEventListener('languagechange', updateProjectsPageLang);
+</script>

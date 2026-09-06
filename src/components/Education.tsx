@@ -6,7 +6,7 @@ export const Education = () => {
     const { config, language } = useLanguage();
 
     return (
-        <section className="mx-auto max-w-6xl bg-white/55 px-6 py-20">
+        <section className="mx-auto max-w-[90rem] bg-white/55 px-6 py-20">
             <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
                     <p className="editorial-kicker">{language === 'zh' ? '背景' : 'Background'}</p>
@@ -20,7 +20,7 @@ export const Education = () => {
                 {config.education.map((education, index) => (
                     <motion.article
                         key={`${education.school}-${education.degree}`}
-                        initial={{ opacity: 0, y: 16 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.35, delay: index * 0.08 }}
@@ -29,11 +29,11 @@ export const Education = () => {
                         <div className="flex items-start gap-4">
                             {education.logo ? (
                                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-gray-200 bg-white p-2">
-                                    <img src={education.logo} alt={education.school} className="h-full w-full object-contain" />
+                                    <img src={education.logo} alt={education.school} loading="lazy" className="h-full w-full object-contain" />
                                 </div>
                             ) : (
                                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary-50 text-primary">
-                                    <GraduationCap className="h-6 w-6" />
+                                    <GraduationCap aria-hidden="true" className="h-6 w-6" />
                                 </div>
                             )}
 
@@ -47,7 +47,7 @@ export const Education = () => {
                                 <p className="mt-1 text-sm leading-6 text-gray-600">
                                     {education.field}
                                 </p>
-                                <p className="mt-2 text-sm text-gray-400">
+                                <p className="mt-2 text-sm text-gray-600">
                                     {education.period}
                                 </p>
                             </div>
@@ -55,7 +55,7 @@ export const Education = () => {
 
                         {education.thesis && (
                             <div className="mt-5 border-t border-dashed border-gray-200 pt-4">
-                                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-gray-400">
+                                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-gray-600">
                                     {language === 'zh' ? '論文 / 研究' : 'Thesis / Research'}
                                 </p>
                                 <p className="mt-3 text-sm italic leading-7 text-gray-600">

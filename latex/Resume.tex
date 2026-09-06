@@ -1,0 +1,176 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez (Modified for Bruce Cheng)
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{iftex}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\ifPDFTeX
+  \input{glyphtounicode}
+\fi
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.55in}
+\addtolength{\textheight}{1.1in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\ifPDFTeX
+  \pdfgentounicode=1
+\fi
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Bruce Cheng} \\ \vspace{1pt}
+    \small AI Application Engineer $|$ Enterprise AI Architecture \& LLM Systems \\ \vspace{1pt}
+    \small \href{mailto:bruce.zheng0814@gmail.com}{\underline{bruce.zheng0814@gmail.com}} $|$
+    \href{https://linkedin.com/in/bruce-lcz}{\underline{linkedin.com/in/bruce-lcz}} $|$
+    \href{https://github.com/bruce-lcz}{\underline{github.com/bruce-lcz}}
+\end{center}
+
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Information Engineer (Generative AI / LLM Projects)}{Aug. 2025 -- Present}
+      {PixArt Imaging Inc.}{Hsinchu, Taiwan}
+      \resumeItemListStart
+        \resumeItem{Own end-to-end delivery of on-prem GenAI solutions for Legal, R\&D, and engineering teams under strict semiconductor security constraints.}
+        \resumeItem{Designed a shared internal GenAI workspace around vLLM serving, document/image utilities, and task-oriented AI flows for engineering adoption.}
+        \resumeItem{Delivered secure analytics and document-intelligence systems using guarded NL2SQL, multimodal review, evidence-grounded RAG, role-scoped access, and auditability.}
+        \resumeItem{Productionized legal, patent, meeting-intelligence, and engineering automation workflows using local LLMs, OCR/ASR, Python-based tools, and validation logic.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {AI Engineer / Project Leader}{Aug. 2021 -- Aug. 2025}
+      {AUO Corporation - Advanced Manufacturing Center}{Taichung, Taiwan}
+      \resumeItemListStart
+        \resumeItem{Led AI projects connecting models, data pipelines, explainability, and internal tools to manufacturing workflows.}
+        \resumeItem{Improved yield by 1.43\%, reduced defects by 12.62\%, and saved approx. 300 man-hours monthly through Golden Path optimization and LIME analysis.}
+        \resumeItem{Evolved an intelligent assistant from RAG into a tool-using agent workflow with SQL/API access.}
+        \resumeItem{Reduced preventive-maintenance prediction RMSE by 20\% and saved approx. 90 man-hours monthly with LSTM and a custom trend-consistency objective.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Research Intern}{Feb. 2019 -- Jul. 2019}
+      {Academia Sinica - GIS Center}{Taipei, Taiwan}
+      \resumeItemListStart
+        \resumeItem{Built a web-based Taiwan address normalization workflow; awarded Best Student Paper at TGIS Conference.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Work-Hour Review \& Insights Platform} $|$ \emph{NL2SQL, Data Integration, Query Engine, FastAPI}}{2026}
+          \resumeItemListStart
+            \resumeItem{Built manager-scoped work-hour review dashboards and evidence-grounded NL2SQL using legacy-data ETL, historical organization snapshots, isolated read-only query views, and audit logs.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Multimodal Technical Document Review} $|$ \emph{VLM, MCP, Multimodal Pipeline, FastAPI}}{2026}
+          \resumeItemListStart
+            \resumeItem{Preserved technical datasheet structure while combining multimodal analysis with Web, CLI, and MCP interfaces for reusable engineering review.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{LLM Gateway \& Operations Platform} $|$ \emph{LLM Gateway, Model Routing, Usage Metering}}{2025 -- 2026}
+          \resumeItemListStart
+            \resumeItem{Built an internal LLM gateway that unified model access, API key management, routing, and usage metering, with centralized dashboards for usage, cost, and service operations.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Evidence-Grounded Technical Knowledge} $|$ \emph{VLM, RAG, Vector Search, Knowledge Extraction}}{2026}
+          \resumeItemListStart
+            \resumeItem{Designed a VLM-assisted, human-reviewed RAG workflow with source-cited retrieval and exact page-level evidence traceability.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Generative AI \& LLM Systems}{: On-Prem LLM Serving, vLLM, RAG, Agent \& Tool-Calling Workflows, Multimodal / VLM, OCR / ASR, Prompt \& Validation Design} \\
+     \textbf{AI System \& Solution Design}{: Enterprise AI Architecture, Workflow Orchestration, API / Tool Integration, Security \& Reliability Design} \\
+     \textbf{Backend \& Data Engineering}{: Python, FastAPI, REST APIs, SQL, Docker, ETL / Data Pipelines, Databricks} \\
+     \textbf{Applied Machine Learning}{: Time-Series Forecasting, LSTM, Explainable AI, Optimization}
+    }}
+ \end{itemize}
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {National Yunlin University of Science and Technology}{Yunlin, Taiwan}
+      {Master of Science in Industrial Engineering and Management}{2019 -- 2021}
+    \resumeSubheading
+      {National Yunlin University of Science and Technology}{Yunlin, Taiwan}
+      {Bachelor of Science in Industrial Engineering and Management}{2015 -- 2019}
+  \resumeSubHeadingListEnd
+
+\end{document}

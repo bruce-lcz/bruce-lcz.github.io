@@ -1,0 +1,329 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { configEn } from '../data/config.en';
+import { configZh } from '../data/config.zh';
+import { UNIFIED_PROJECTS } from '../data/projects';
+
+type TimelineProject = (typeof UNIFIED_PROJECTS)[number];
+
+const projectById = new Map(UNIFIED_PROJECTS.map((project) => [project.id, project]));
+const linkedProjectIds = new Set<string>();
+
+function sortProjects(projects: TimelineProject[]) {
+  return [...projects].sort((a, b) => {
+    if (a.timeline.status !== b.timeline.status) {
+      return a.timeline.status === 'ongoing' ? -1 : 1;
+    }
+
+    const startOrder = b.timeline.start.localeCompare(a.timeline.start);
+    if (startOrder !== 0) return startOrder;
+
+    return (b.timeline.end ?? b.timeline.start).localeCompare(a.timeline.end ?? a.timeline.start);
+  });
+}
+
+const experienceEntries = configEn.experience.map((experience, index) => {
+  const projects = (experience.relatedProjectIds ?? [])
+    .map((id) => projectById.get(id))
+    .filter((project): project is TimelineProject => Boolean(project?.timeline.featured));
+
+  (experience.relatedProjectIds ?? []).forEach((id) => linkedProjectIds.add(id));
+
+  const sortedProjects = sortProjects(projects);
+
+  return {
+    dataEn: experience,
+    dataZh: configZh.experience[index],
+    platformProjects: sortedProjects.filter((project) => project.timeline.group === 'platform'),
+    deliveryProjects: sortedProjects.filter((project) => project.timeline.group === 'delivery'),
+  };
+});
+
+const sideProjects = sortProjects(
+  UNIFIED_PROJECTS.filter(
+    (project) => project.timeline.featured && (project.timeline.group === 'side-project' || !linkedProjectIds.has(project.id)),
+  ),
+);
+
+const educationEntries = configEn.education.map((education, index) => ({
+  dataEn: education,
+  dataZh: configZh.education[index],
+}));
+
+const awardEntries = configEn.awards.map((award, index) => ({
+  dataEn: award,
+  dataZh: configZh.awards[index],
+}));
+
+function getProjectPeriodZh(period: string) {
+  return period.replace(/Present/g, '至今');
+}
+---
+
+<BaseLayout
+  title="Timeline — Bruce Cheng | Journey"
+  description="Bruce Cheng's professional journey across enterprise AI architecture, LLM systems, experience, education, and key projects."
+>
+  <div class="mx-auto max-w-5xl px-5 py-12 sm:px-6 md:py-20">
+    <header class="max-w-3xl">
+      <p class="editorial-kicker" id="timeline-kicker">Journey</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight text-gray-900 md:text-5xl" id="timeline-title">
+        Timeline
+      </h1>
+      <p class="mt-5 text-lg leading-8 text-gray-600" id="timeline-subtitle">
+        A chronological overview of my career, education, and the projects that shaped my enterprise AI practice.
+      </p>
+    </header>
+
+    <section class="mt-14 md:mt-20" aria-labelledby="career-heading">
+      <div class="mb-7 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary">01</p>
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900" id="career-heading">
+            <span class="tl-en">Career chapters</span>
+            <span class="tl-zh hidden">職涯歷程</span>
+          </h2>
+        </div>
+        <p class="max-w-md text-sm leading-6 text-gray-500">
+          <span class="tl-en">Roles are the main timeline; projects sit inside the chapter where they were delivered.</span>
+          <span class="tl-zh hidden">以職務為主軸，整理各階段的工作與實際交付專案。</span>
+        </p>
+      </div>
+
+      <div class="relative space-y-8 border-l border-gray-200 pl-6 md:space-y-10 md:pl-10">
+        {experienceEntries.map((entry) => (
+          <article class="relative">
+            <span class="absolute -left-[1.9rem] top-7 h-3 w-3 rounded-full bg-primary ring-4 ring-white md:-left-[2.9rem]" aria-hidden="true"></span>
+            <div class="rounded-3xl border border-gray-200 bg-white p-5 shadow-[0_16px_45px_rgba(15,23,42,0.05)] sm:p-7">
+              <div class="flex flex-col gap-4 border-b border-gray-100 pb-5 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+                <div>
+                  <p class="text-xs font-mono font-medium tracking-wide text-primary">
+                    <span class="tl-en">{entry.dataEn.period}</span>
+                    <span class="tl-zh hidden">{entry.dataZh.period}</span>
+                  </p>
+                  <h3 class="mt-2 text-xl font-semibold tracking-tight text-gray-900">
+                    <span class="tl-en">{entry.dataEn.role}</span>
+                    <span class="tl-zh hidden">{entry.dataZh.role}</span>
+                  </h3>
+                  <p class="mt-1 text-sm font-medium text-gray-500">
+                    <span class="tl-en">{entry.dataEn.company}</span>
+                    <span class="tl-zh hidden">{entry.dataZh.company}</span>
+                  </p>
+                </div>
+                <span class="inline-flex w-fit items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                  <span class="tl-en">{entry.dataEn.type === 'current' ? 'Current role' : 'Previous role'}</span>
+                  <span class="tl-zh hidden">{entry.dataEn.type === 'current' ? '目前職務' : '過往職務'}</span>
+                </span>
+              </div>
+
+              <p class="mt-5 text-sm leading-7 text-gray-600">
+                <span class="tl-en">{entry.dataEn.description}</span>
+                <span class="tl-zh hidden">{entry.dataZh.description}</span>
+              </p>
+
+              {entry.platformProjects.length > 0 && (
+                <div class="mt-7">
+                  <div class="flex items-center gap-3">
+                    <h4 class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-900">
+                      <span class="tl-en">Ongoing platform</span>
+                      <span class="tl-zh hidden">持續建設中的平台</span>
+                    </h4>
+                    <span class="h-px flex-1 bg-gray-100" aria-hidden="true"></span>
+                  </div>
+                  <ul class="mt-3 space-y-2">
+                    {entry.platformProjects.map((project) => (
+                      <li>
+                        <a
+                          href={`/projects/${project.id}`}
+                          class="group flex min-h-11 flex-col gap-1 rounded-2xl border border-primary/15 bg-primary-50/60 px-4 py-3 transition-colors hover:border-primary/35 hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:grid sm:grid-cols-[9rem_minmax(0,1fr)_auto] sm:items-center sm:gap-4"
+                        >
+                          <span class="tl-project-period text-xs font-mono text-primary" data-period-en={project.period} data-period-zh={getProjectPeriodZh(project.period)}>{project.period}</span>
+                          <span class="min-w-0">
+                            <span class="block text-sm font-semibold text-gray-900 group-hover:text-primary">
+                              <span class="tl-en">{project.translations.en.title}</span>
+                              <span class="tl-zh hidden">{project.translations.zh.title}</span>
+                            </span>
+                            <span class="mt-1 block text-xs leading-5 text-gray-600">
+                              <span class="tl-en">{project.translations.en.shortDescription}</span>
+                              <span class="tl-zh hidden">{project.translations.zh.shortDescription}</span>
+                            </span>
+                          </span>
+                          <svg class="h-4 w-4 shrink-0 text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-primary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h7.69L10.22 6.03a.75.75 0 111.06-1.06l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 01-1.06 1.06l3.22-3.22H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
+                          </svg>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {entry.deliveryProjects.length > 0 && (
+                <div class="mt-7">
+                  <div class="flex items-center gap-3">
+                    <h4 class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-900">
+                      <span class="tl-en">Selected deliveries</span>
+                      <span class="tl-zh hidden">主要交付專案</span>
+                    </h4>
+                    <span class="h-px flex-1 bg-gray-100" aria-hidden="true"></span>
+                  </div>
+                  <ul class="mt-3 space-y-2">
+                    {entry.deliveryProjects.map((project) => (
+                      <li>
+                        <a
+                          href={`/projects/${project.id}`}
+                          class="group flex min-h-11 flex-col gap-1 rounded-2xl border border-gray-200 bg-gray-50/70 px-4 py-3 transition-colors hover:border-gray-300 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:grid sm:grid-cols-[9rem_minmax(0,1fr)_auto] sm:items-center sm:gap-4"
+                        >
+                          <span class="tl-project-period text-xs font-mono text-gray-500" data-period-en={project.period} data-period-zh={getProjectPeriodZh(project.period)}>{project.period}</span>
+                          <span class="min-w-0">
+                            <span class="block text-sm font-semibold text-gray-900 group-hover:text-primary">
+                              <span class="tl-en">{project.translations.en.title}</span>
+                              <span class="tl-zh hidden">{project.translations.zh.title}</span>
+                            </span>
+                            <span class="mt-1 block text-xs leading-5 text-gray-600">
+                              <span class="tl-en">{project.translations.en.shortDescription}</span>
+                              <span class="tl-zh hidden">{project.translations.zh.shortDescription}</span>
+                            </span>
+                          </span>
+                          <svg class="h-4 w-4 shrink-0 text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-primary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h7.69L10.22 6.03a.75.75 0 111.06-1.06l4.5 4.5a.75.75 0 010 1.06l4.5 4.5a.75.75 0 01-1.06-1.06l3.22-3.22H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
+                          </svg>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {sideProjects.length > 0 && (
+      <section class="mt-16 md:mt-20" aria-labelledby="side-projects-heading">
+        <div class="mb-7 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">02</p>
+            <h2 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900" id="side-projects-heading">
+              <span class="tl-en">Side projects</span>
+              <span class="tl-zh hidden">個人專案</span>
+            </h2>
+          </div>
+          <p class="max-w-md text-sm leading-6 text-gray-500">
+            <span class="tl-en">Independent work that runs alongside the main career chapters.</span>
+            <span class="tl-zh hidden">與主要職涯經歷並行的獨立實作。</span>
+          </p>
+        </div>
+        <ul class="space-y-2">
+          {sideProjects.map((project) => (
+            <li>
+              <a
+                href={`/projects/${project.id}`}
+                class="group flex min-h-11 flex-col gap-1 rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-sm transition-colors hover:border-emerald-300 hover:bg-emerald-50/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:grid sm:grid-cols-[9rem_minmax(0,1fr)_auto] sm:items-center sm:gap-4"
+              >
+                <span class="tl-project-period text-xs font-mono text-gray-500" data-period-en={project.period} data-period-zh={getProjectPeriodZh(project.period)}>{project.period}</span>
+                <span class="min-w-0">
+                  <span class="block text-sm font-semibold text-gray-900 group-hover:text-primary">
+                    <span class="tl-en">{project.translations.en.title}</span>
+                    <span class="tl-zh hidden">{project.translations.zh.title}</span>
+                  </span>
+                  <span class="mt-1 block text-xs leading-5 text-gray-600">
+                    <span class="tl-en">{project.translations.en.shortDescription}</span>
+                    <span class="tl-zh hidden">{project.translations.zh.shortDescription}</span>
+                  </span>
+                </span>
+                <svg class="h-4 w-4 shrink-0 text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-primary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h7.69L10.22 6.03a.75.75 0 111.06-1.06l4.5 4.5a.75.75 0 010 1.06l3.22-3.22H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section class="mt-16 grid gap-12 border-t border-gray-200 pt-12 md:mt-20 md:grid-cols-2 md:gap-10" aria-labelledby="milestones-heading">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">03</p>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900" id="milestones-heading">
+          <span class="tl-en">Education</span>
+          <span class="tl-zh hidden">學歷</span>
+        </h2>
+        <div class="mt-6 space-y-6">
+          {educationEntries.map((entry) => (
+            <article class="border-l-2 border-indigo-100 pl-4">
+              <p class="text-xs font-mono text-indigo-700">
+                <span class="tl-en">{entry.dataEn.period}</span>
+                <span class="tl-zh hidden">{entry.dataZh.period}</span>
+              </p>
+              <h3 class="mt-2 text-base font-semibold text-gray-900">
+                <span class="tl-en">{entry.dataEn.degree} in {entry.dataEn.field}</span>
+                <span class="tl-zh hidden">{entry.dataZh.degree}｜{entry.dataZh.field}</span>
+              </h3>
+              <p class="mt-1 text-sm text-gray-500">
+                <span class="tl-en">{entry.dataEn.school}</span>
+                <span class="tl-zh hidden">{entry.dataZh.school}</span>
+              </p>
+              <p class="mt-3 text-sm leading-6 text-gray-600">
+                <span class="tl-en">{entry.dataEn.thesis}</span>
+                <span class="tl-zh hidden">{entry.dataZh.thesis}</span>
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div aria-labelledby="awards-heading">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-600">04</p>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900" id="awards-heading">
+          <span class="tl-en">Recognition</span>
+          <span class="tl-zh hidden">獎項與肯定</span>
+        </h2>
+        <ul class="mt-6 space-y-3">
+          {awardEntries.map((entry) => (
+            <li class="rounded-2xl border border-amber-100 bg-amber-50/50 p-4">
+              <p class="text-xs font-mono text-amber-700">{entry.dataEn.year}</p>
+              <p class="mt-1 text-sm font-semibold text-gray-900">
+                <span class="tl-en">{entry.dataEn.title}</span>
+                <span class="tl-zh hidden">{entry.dataZh.title}</span>
+              </p>
+              <p class="mt-1 text-xs leading-5 text-gray-600">
+                <span class="tl-en">{entry.dataEn.organization}</span>
+                <span class="tl-zh hidden">{entry.dataZh.organization}</span>
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  function updateTimelinePageLang() {
+    const lang = localStorage.getItem('language') || 'en';
+    const isZh = lang === 'zh';
+
+    const kicker = document.getElementById('timeline-kicker');
+    const title = document.getElementById('timeline-title');
+    const subtitle = document.getElementById('timeline-subtitle');
+
+    if (kicker) kicker.textContent = isZh ? '旅程' : 'Journey';
+    if (title) title.textContent = isZh ? '職涯時間軸' : 'Timeline';
+    if (subtitle) subtitle.textContent = isZh
+      ? '以職涯經歷、學歷與主要專案，整理我在企業 AI 領域的工作軌跡。'
+      : 'A chronological overview of my career, education, and the projects that shaped my enterprise AI practice.';
+
+    document.querySelectorAll('.tl-en').forEach((element) => element.classList.toggle('hidden', isZh));
+    document.querySelectorAll('.tl-zh').forEach((element) => element.classList.toggle('hidden', !isZh));
+    document.querySelectorAll('.tl-project-period').forEach((element) => {
+      const period = isZh ? element.getAttribute('data-period-zh') : element.getAttribute('data-period-en');
+      if (period) element.textContent = period;
+    });
+  }
+
+  updateTimelinePageLang();
+  window.addEventListener('storage', updateTimelinePageLang);
+  window.addEventListener('languagechange', updateTimelinePageLang);
+</script>

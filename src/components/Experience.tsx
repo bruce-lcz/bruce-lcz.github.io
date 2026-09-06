@@ -1,16 +1,12 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Briefcase, CalendarDays } from 'lucide-react';
+import { Briefcase, CalendarDays } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
-interface ExperienceProps {
-    onProjectSelect?: (projectId: string) => void;
-}
-
-export const Experience = ({ onProjectSelect }: ExperienceProps) => {
+export const Experience = () => {
     const { config, language } = useLanguage();
 
     return (
-        <section className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20" id="experience">
+        <section className="mx-auto max-w-[90rem] scroll-mt-24 px-6 py-20" id="experience">
             <div className="mb-12 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
                 <div>
                     <p className="editorial-kicker">{language === 'zh' ? '經歷' : 'Experience'}</p>
@@ -20,7 +16,7 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                 </div>
                 <p className="max-w-2xl text-base leading-7 text-gray-600">
                     {language === 'zh'
-                        ? '這些經歷的共同主軸，不是做過哪些模型，而是我如何逐步把 AI 從分析工具推進成 workflow 與內部產品。'
+                        ? '這些經歷的共同點，不在於用了哪些模型，而在於如何把 AI 從分析工具，逐步做成團隊實際使用的流程與內部產品。'
                         : 'These roles are less about isolated model work and more about how AI moved from analysis support toward workflow design and internal productization.'}
                 </p>
             </div>
@@ -29,7 +25,7 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                 {config.experience.map((job, index) => (
                     <motion.article
                         key={job.id}
-                        initial={{ opacity: 0, y: 18 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.4, delay: index * 0.08 }}
@@ -66,11 +62,11 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                                         </h3>
                                         <div className="mt-3 flex flex-col gap-2 text-sm text-gray-500 md:flex-row md:flex-wrap md:items-center md:gap-5">
                                             <span className="inline-flex items-center gap-2 font-medium text-gray-700">
-                                                <Briefcase className="h-4 w-4 text-primary" />
+                                                <Briefcase aria-hidden="true" className="h-4 w-4 text-primary" />
                                                 {job.company}
                                             </span>
                                             <span className="inline-flex items-center gap-2">
-                                                <CalendarDays className="h-4 w-4 text-gray-400" />
+                                                <CalendarDays aria-hidden="true" className="h-4 w-4 text-gray-400" />
                                                 {job.period}
                                             </span>
                                         </div>
@@ -90,7 +86,7 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                                 </p>
 
                                 <div className="space-y-3">
-                                    <p className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-gray-400">
+                                    <p className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-gray-600">
                                         {language === 'zh' ? '重點成果' : 'Highlights'}
                                     </p>
                                     <ul className="space-y-3">
@@ -103,50 +99,6 @@ export const Experience = ({ onProjectSelect }: ExperienceProps) => {
                                     </ul>
                                 </div>
                             </div>
-
-                            {job.relatedProjectIds && job.relatedProjectIds.length > 0 && onProjectSelect && (
-                                <div className="mt-7 border-t border-dashed border-gray-200 pt-6">
-                                    <div className="mb-4 flex items-center justify-between gap-4">
-                                        <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500">
-                                            {language === 'zh' ? '相關專案' : 'Related Projects'}
-                                        </h4>
-                                        <span className="text-xs text-gray-400">
-                                            {language === 'zh' ? '可展開查看' : 'Open for details'}
-                                        </span>
-                                    </div>
-
-                                    <div className="grid gap-3 md:grid-cols-2">
-                                        {job.relatedProjectIds.map((projectId) => {
-                                            const project = config.projects?.find((item) => item.id === projectId);
-
-                                            if (!project) {
-                                                return null;
-                                            }
-
-                                            return (
-                                                <button
-                                                    key={projectId}
-                                                    type="button"
-                                                    onClick={() => onProjectSelect(projectId)}
-                                                    className="group rounded-[22px] border border-gray-200 bg-gray-50/85 p-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:bg-white hover:shadow-[0_14px_34px_rgba(15,23,42,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                                                >
-                                                    <div className="flex items-start justify-between gap-4">
-                                                        <div>
-                                                            <h5 className="text-sm font-semibold text-gray-900">
-                                                                {project.title}
-                                                            </h5>
-                                                            <p className="mt-2 text-sm leading-6 text-gray-600">
-                                                                {project.shortDescription}
-                                                            </p>
-                                                        </div>
-                                                        <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 text-gray-400 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
-                                                    </div>
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            )}
 
                             <div className="mt-6 flex flex-wrap gap-2">
                                 {job.techStack.map((tech) => (
