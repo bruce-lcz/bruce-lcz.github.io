@@ -113,7 +113,7 @@ export const ProjectDetailModal = ({ isOpen, onClose, project }: ProjectDetailMo
         problemSolved: language === 'zh' ? '解決的問題' : 'Problem Solved',
         implementationHighlights: language === 'zh' ? '實作重點' : 'Implementation Highlights',
         impact: language === 'zh' ? '帶來的價值' : 'Impact',
-        techStack: language === 'zh' ? 'Tech Stack' : 'Tech Stack',
+        techStack: language === 'zh' ? '技術與工具' : 'Tech Stack',
         repository: language === 'zh' ? 'GitHub 原始碼' : 'GitHub Repository',
         heroVisual: project.visualType
             ? (language === 'zh' ? '產品預覽' : 'Product Preview')

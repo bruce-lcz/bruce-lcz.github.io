@@ -15,13 +15,13 @@ export const Skills = () => {
                 </div>
                 <p className="max-w-2xl text-base leading-7 text-gray-600">
                     {language === 'zh'
-                        ? '這裡不是把技能當成標籤牆，而是呈現我如何把技術放進需求拆解、系統組合、產品實作與 domain workflow 中。'
+                        ? '這裡不只是技能清單，而是呈現我如何把技術用在需求拆解、系統整合、產品開發與各領域的實際流程中。'
                         : 'This is not a disconnected tag wall. It is a map of how I place technical choices inside requirement framing, system composition, product implementation, and domain workflows.'}
                 </p>
             </div>
 
             <motion.div
-                initial="hidden"
+                initial={false}
                 animate="show"
                 variants={{
                     hidden: { opacity: 0 },
@@ -37,6 +37,7 @@ export const Skills = () => {
                 {config.skills.map((skillGroup) => (
                     <motion.article
                         key={skillGroup.category}
+                        initial={false}
                         variants={{
                             hidden: { opacity: 0, y: 16 },
                             show: { opacity: 1, y: 0 },

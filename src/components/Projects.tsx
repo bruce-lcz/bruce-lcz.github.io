@@ -3,10 +3,6 @@ import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import type { DetailedProject } from '../data/types';
 
-interface ProjectsProps {
-    onProjectSelect: (projectId: string) => void;
-}
-
 const categoryStyles: Record<string, string> = {
     work: 'bg-primary-50 text-primary',
     research: 'bg-slate-100 text-slate-700',
@@ -15,9 +11,10 @@ const categoryStyles: Record<string, string> = {
     auo: 'bg-sky-50 text-sky-700',
 };
 
-export const Projects = ({ onProjectSelect }: ProjectsProps) => {
+export const Projects = () => {
     const { config, language } = useLanguage();
-    const [featuredProject, ...otherProjects] = config.projects ?? [];
+    // Keep the homepage focused; the complete catalogue lives on /projects/.
+    const [featuredProject, ...otherProjects] = (config.projects ?? []).slice(0, 5);
 
     const getCategoryClassName = (category: string) => categoryStyles[category.toLowerCase()] ?? 'bg-gray-100 text-gray-700';
 
@@ -61,20 +58,20 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                 </div>
                 <p className={`max-w-none text-base leading-7 text-gray-600 lg:justify-self-end ${language === 'zh' ? 'lg:whitespace-nowrap' : ''}`}>
                     {language === 'zh'
-                        ? '將模糊需求、限制條件與使用情境，轉化為團隊願意採用的內部工具與 AI 應用。'
+                        ? '將模糊需求、限制條件與使用情境，轉成團隊願意採用的內部工具與 AI 應用。'
                         : 'Turning ambiguous requirements, constraints, and usage scenarios into internal tools and AI applications teams can actually adopt.'}
                 </p>
             </div>
 
             {featuredProject && (
-                <motion.button
-                    type="button"
-                    onClick={() => onProjectSelect(featuredProject.id)}
-                    initial={{ opacity: 0, y: 18 }}
+                <motion.a
+                    href={`/projects/${featuredProject.id}/`}
+                    aria-label={`${language === 'zh' ? '查看專案：' : 'View project: '}${featuredProject.title}`}
+                    initial={false}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.45 }}
-                    className="group relative mb-8 w-full overflow-hidden rounded-[32px] border border-gray-200 bg-[linear-gradient(135deg,#ffffff_0%,#f8fbff_45%,#eef4ff_100%)] p-8 text-left shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_28px_85px_rgba(15,23,42,0.12)]"
+                    className="group relative mb-8 block w-full overflow-hidden rounded-[32px] border border-gray-200 bg-[linear-gradient(135deg,#ffffff_0%,#f8fbff_45%,#eef4ff_100%)] p-8 text-left shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_28px_85px_rgba(15,23,42,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                     <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#1a73e8,rgba(79,70,229,0.78),transparent)] opacity-75" />
                     <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-primary/10 blur-3xl transition-transform duration-300 group-hover:scale-110" />
@@ -147,24 +144,24 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
 
                             <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary">
                                 {language === 'zh' ? '查看專案細節' : 'Open project detail'}
-                                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                <ArrowUpRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </div>
                         </div>
                     </div>
-                </motion.button>
+                </motion.a>
             )}
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-2">
                 {otherProjects.map((project, index) => (
-                    <motion.button
+                    <motion.a
                         key={project.id}
-                        type="button"
-                        onClick={() => onProjectSelect(project.id)}
-                        initial={{ opacity: 0, y: 18 }}
+                        href={`/projects/${project.id}/`}
+                        aria-label={`${language === 'zh' ? '查看專案：' : 'View project: '}${project.title}`}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.35, delay: index * 0.05 }}
-                        className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)] p-6 text-left shadow-[0_18px_45px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_22px_60px_rgba(15,23,42,0.08)]"
+                        className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)] p-6 text-left shadow-[0_18px_45px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_22px_60px_rgba(15,23,42,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#1a73e8,rgba(79,70,229,0.72),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-70" />
 
@@ -172,7 +169,7 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                             <span className={`rounded-full px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] ${getCategoryClassName(project.category)}`}>
                                 {project.category}
                             </span>
-                            <ArrowUpRight className="h-5 w-5 shrink-0 text-gray-400 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                            <ArrowUpRight aria-hidden="true" className="h-5 w-5 shrink-0 text-gray-400 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
                         </div>
 
                         <h3 className="relative mt-6 text-2xl font-semibold tracking-normal text-gray-900 transition-colors group-hover:text-primary">
@@ -215,7 +212,7 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                                 ))}
                             </div>
                         </div>
-                    </motion.button>
+                    </motion.a>
                 ))}
             </div>
 
@@ -225,7 +222,7 @@ export const Projects = ({ onProjectSelect }: ProjectsProps) => {
                     className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm transition-all hover:border-gray-300 hover:bg-gray-50 hover:shadow-md"
                 >
                     {language === 'zh' ? '查看所有專案' : 'View all case studies'}
-                    <ArrowUpRight className="h-4 w-4" />
+                    <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
                 </a>
             </div>
         </section>

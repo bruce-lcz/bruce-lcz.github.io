@@ -20,19 +20,19 @@ export const Awards = () => {
                 {config.awards.map((award, index) => (
                     <motion.article
                         key={`${award.year}-${award.title}`}
-                        initial={{ opacity: 0, x: -14 }}
+                        initial={false}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.32, delay: index * 0.06 }}
                         className="grid gap-4 rounded-[26px] border border-gray-200 bg-white p-6 shadow-[0_14px_34px_rgba(15,23,42,0.05)] md:grid-cols-[80px_1fr]"
                     >
-                        <div className="text-2xl font-semibold tracking-tight text-gray-400">
+                        <div className="text-2xl font-semibold tracking-tight text-gray-600">
                             {award.year}
                         </div>
 
                         <div className="flex items-start gap-4">
                             <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-50 text-amber-600">
-                                <Trophy className="h-4 w-4" />
+                                <Trophy aria-hidden="true" className="h-4 w-4" />
                             </div>
                             <div>
                                 <h3 className="text-lg font-semibold text-gray-900">

@@ -28,7 +28,7 @@ const configs: Record<VisualType, ThumbnailConfig> = {
     },
     'yield-optimization': {
         eyebrow: 'Yield Intelligence',
-        signal: '+8.4% yield',
+        signal: '+1.43% yield',
         shell: 'from-[#062d2a] via-[#064e3b] to-[#0f3d38]',
         accent: 'bg-emerald-300 text-emerald-950',
         glow: 'bg-emerald-300/25',
@@ -81,6 +81,34 @@ const configs: Record<VisualType, ThumbnailConfig> = {
         shell: 'from-[#172033] via-[#134e4a] to-[#155e75]',
         accent: 'bg-teal-300 text-teal-950',
         glow: 'bg-teal-300/25',
+    },
+    'workforce-analytics': {
+        eyebrow: 'Work-Hour Review',
+        signal: 'Manager Review',
+        shell: 'from-[#0f172a] via-[#1e1b4b] to-[#2e1065]',
+        accent: 'bg-indigo-300 text-indigo-950',
+        glow: 'bg-indigo-400/25',
+    },
+    'datasheet-review': {
+        eyebrow: 'Datasheet Review',
+        signal: 'Multimodal VLM',
+        shell: 'from-[#172033] via-[#1e293b] to-[#042f2e]',
+        accent: 'bg-teal-300 text-teal-950',
+        glow: 'bg-teal-400/25',
+    },
+    'llm-telemetry': {
+        eyebrow: 'LLMOps Telemetry',
+        signal: 'Live Metrics',
+        shell: 'from-[#0f172a] via-[#0c4a6e] to-[#082f49]',
+        accent: 'bg-cyan-300 text-cyan-950',
+        glow: 'bg-cyan-400/25',
+    },
+    'evidence-qa': {
+        eyebrow: 'Grounded RAG',
+        signal: 'Source Cited',
+        shell: 'from-[#1c1917] via-[#292524] to-[#44403c]',
+        accent: 'bg-amber-300 text-amber-950',
+        glow: 'bg-amber-400/25',
     },
 };
 
@@ -142,7 +170,7 @@ const YieldVisual = () => (
             </svg>
         </div>
         <div className="flex flex-col justify-center rounded-2xl border border-emerald-200/15 bg-emerald-200/10 p-4 text-center">
-            <strong className="text-2xl font-semibold text-emerald-200 sm:text-4xl">+8.4%</strong>
+            <strong className="text-2xl font-semibold text-emerald-200 sm:text-4xl">+1.43%</strong>
             <span className="mt-2 text-[0.6rem] uppercase tracking-[0.18em] text-emerald-100/60 sm:text-xs">Yield</span>
         </div>
     </div>
@@ -212,6 +240,172 @@ const AddressVisual = () => (
     </div>
 );
 
+const WorkforceVisual = () => (
+    <div className="grid h-full grid-cols-[1.16fr_0.84fr] gap-3 sm:gap-4">
+        <div className="flex flex-col rounded-2xl border border-indigo-300/20 bg-black/30 p-3.5">
+            <div className="flex items-start justify-between gap-2">
+                <div>
+                    <div className="text-[0.58rem] uppercase tracking-[0.14em] text-indigo-200/60">2026 / 03</div>
+                    <div className="mt-1 text-[0.72rem] font-semibold text-white sm:text-sm">Monthly Hours Review</div>
+                </div>
+                <span className="rounded-full border border-amber-300/30 bg-amber-400/15 px-2 py-0.5 text-[0.52rem] font-medium text-amber-200">3 pending</span>
+            </div>
+            <div className="my-3">
+                <div className="mb-1.5 flex items-center justify-between text-[0.58rem] text-indigo-100/70">
+                    <span>Review progress</span><span className="font-mono text-emerald-300">39 / 42 complete</span>
+                </div>
+                <div className="h-1.5 overflow-hidden rounded-full bg-white/10"><div className="h-full w-[93%] rounded-full bg-gradient-to-r from-indigo-400 to-emerald-300" /></div>
+            </div>
+            <div className="space-y-1.5 border-t border-white/10 pt-2">
+                <div className="flex items-center justify-between rounded-lg bg-white/[0.05] px-2 py-1.5 text-[0.55rem] text-white/75"><span>Overtime to review</span><span className="font-mono text-amber-200">12.5 h</span></div>
+                <div className="flex items-center justify-between rounded-lg bg-white/[0.05] px-2 py-1.5 text-[0.55rem] text-white/75"><span>Missing punch</span><span className="font-mono text-amber-200">1 record</span></div>
+            </div>
+        </div>
+        <div className="flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.06] p-3.5">
+            <div>
+                <div className="text-[0.58rem] uppercase tracking-[0.12em] text-white/50">Monthly summary</div>
+                <div className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl">1,624<span className="ml-1 text-xs font-medium text-indigo-200/70">hrs</span></div>
+                <div className="mt-1 text-[0.55rem] text-emerald-300">+2.8% vs last month</div>
+            </div>
+            <div className="space-y-1.5 border-t border-white/10 pt-2 text-[0.55rem]">
+                <div className="flex justify-between text-white/60"><span>Regular hours</span><span className="font-mono text-white/85">1,556 h</span></div>
+                <div className="flex justify-between text-white/60"><span>Overtime</span><span className="font-mono text-white/85">68 h</span></div>
+                <div className="mt-2 rounded-lg border border-emerald-300/20 bg-emerald-400/10 px-2 py-1 text-center font-medium text-emerald-200">Manager approval pending</div>
+            </div>
+        </div>
+    </div>
+);
+
+const DatasheetVisual = () => (
+    <div className="grid h-full grid-cols-[1fr_1fr] gap-3 sm:gap-4">
+        <div className="flex flex-col rounded-2xl border border-white/10 bg-black/25 p-3.5">
+            <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
+                <span className="text-[0.6rem] font-medium text-white/70">DS_Sensor_v3.docx</span>
+                <span className="rounded bg-teal-400/20 px-1.5 py-0.5 text-[0.55rem] text-teal-300">DOCX</span>
+            </div>
+            <div className="space-y-2 flex-1">
+                <div className="text-[0.6rem] font-semibold text-teal-200">§ 4.2 Electrical Specs</div>
+                <div className="rounded border border-white/10 bg-white/[0.04] p-1.5 space-y-1">
+                    <div className="flex justify-between text-[0.55rem] font-mono text-white/60 pb-1 border-b border-white/5">
+                        <span>Param</span><span>Min</span><span>Max</span><span>Unit</span>
+                    </div>
+                    <div className="flex justify-between text-[0.52rem] font-mono text-white/80">
+                        <span>VDD</span><span>1.71</span><span>3.6</span><span className="text-amber-300">V</span>
+                    </div>
+                    <div className="flex justify-between text-[0.52rem] font-mono text-white/80">
+                        <span>IDD</span><span>-</span><span>12.5</span><span className="text-amber-300">mA</span>
+                    </div>
+                </div>
+                <div className="flex items-center gap-1.5 text-[0.55rem] text-white/50">
+                    <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
+                    <span>EMF vector figure converted</span>
+                </div>
+            </div>
+        </div>
+        <div className="flex flex-col justify-between rounded-2xl border border-teal-300/20 bg-teal-950/30 p-3.5 text-teal-100">
+            <div className="flex items-center justify-between">
+                <span className="text-[0.6rem] font-semibold uppercase tracking-wider text-teal-300">Review Findings</span>
+                <span className="rounded-full bg-teal-400/20 px-2 py-0.5 text-[0.55rem] font-medium text-teal-200">2 flagged</span>
+            </div>
+            <div className="space-y-2 my-2">
+                <div className="rounded-xl border border-amber-400/25 bg-amber-500/10 p-2 text-[0.58rem] leading-relaxed">
+                    <span className="font-semibold text-amber-300">Sec 4.2 Table 2: </span>
+                    <span className="text-white/80">Unit mismatch ('uA' vs 'mA' in register map)</span>
+                </div>
+                <div className="rounded-xl border border-teal-400/20 bg-teal-500/10 p-2 text-[0.58rem] leading-relaxed">
+                    <span className="font-semibold text-teal-300">Fig 3 (Pinout): </span>
+                    <span className="text-white/80">VLM confirmed pin label matches text</span>
+                </div>
+            </div>
+            <div className="text-[0.55rem] text-teal-200/60 text-right">Web · CLI · MCP Ready</div>
+        </div>
+    </div>
+);
+
+const LLMTelemetryVisual = () => (
+    <div className="grid h-full grid-cols-[1.1fr_0.9fr] gap-3 sm:gap-4">
+        <div className="flex flex-col justify-between rounded-2xl border border-white/10 bg-black/30 p-3.5">
+            <div className="flex items-center justify-between text-[0.6rem] text-cyan-200/70">
+                <span>GPU Cluster Telemetry</span>
+                <span className="flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />Syncing</span>
+            </div>
+            <div className="my-2 space-y-2">
+                <div>
+                    <div className="flex justify-between text-[0.55rem] text-white/60 mb-1">
+                        <span>vLLM Worker 01 (H100)</span>
+                        <span className="font-mono text-cyan-300">88% Load</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+                        <div className="h-full w-[88%] rounded-full bg-cyan-400" />
+                    </div>
+                </div>
+                <div>
+                    <div className="flex justify-between text-[0.55rem] text-white/60 mb-1">
+                        <span>vLLM Worker 02 (A100)</span>
+                        <span className="font-mono text-cyan-300">64% Load</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+                        <div className="h-full w-[64%] rounded-full bg-cyan-400" />
+                    </div>
+                </div>
+            </div>
+            <div className="flex justify-between text-[0.55rem] text-white/50 pt-2 border-t border-white/10">
+                <span>Watermark: 23:45:00</span>
+                <span className="text-cyan-300 font-mono">0.82s avg TTFT</span>
+            </div>
+        </div>
+        <div className="flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.06] p-3.5">
+            <div>
+                <div className="text-[0.6rem] uppercase tracking-wider text-white/50">Weekly Token Volume</div>
+                <div className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl">28.4M</div>
+                <div className="text-[0.55rem] text-cyan-300">+14.2% vs last week</div>
+            </div>
+            <div className="space-y-1 text-[0.55rem] text-white/70 pt-2 border-t border-white/10">
+                <div className="flex justify-between"><span>Persisted Tokens</span><span className="font-mono text-white">92%</span></div>
+                <div className="flex justify-between"><span>Estimated Tokens</span><span className="font-mono text-white/60">8%</span></div>
+                <div className="flex justify-between text-cyan-200"><span>Weekly PDF</span><span>Automated</span></div>
+            </div>
+        </div>
+    </div>
+);
+
+const EvidenceQAVisual = () => (
+    <div className="grid h-full grid-cols-[0.9fr_1.1fr] gap-3 sm:gap-4">
+        <div className="flex flex-col justify-between rounded-2xl border border-white/10 bg-black/35 p-3.5">
+            <div className="flex items-center justify-between text-[0.6rem] text-amber-200/80">
+                <span>Troubleshoot_Flow.pptx</span>
+                <span className="rounded bg-amber-400/20 px-1.5 py-0.5 text-[0.55rem] text-amber-300">Page 14</span>
+            </div>
+            <div className="my-2 rounded-xl border border-dashed border-amber-300/30 bg-amber-400/5 p-2 text-center">
+                <div className="text-[0.6rem] font-semibold text-amber-200">VLM Visual Extraction</div>
+                <div className="mt-1 space-y-1 text-[0.52rem] text-white/70">
+                    <div>[Flowchart Box] Step 3: Check VDDIO</div>
+                    <div className="text-amber-300/90">Rule: Voltage &lt; 1.6V triggers E-04</div>
+                </div>
+            </div>
+            <div className="flex items-center justify-between text-[0.55rem] text-white/50">
+                <span>Native Text + Page Image</span>
+                <span className="text-emerald-400 font-semibold">Matched</span>
+            </div>
+        </div>
+        <div className="flex flex-col justify-between rounded-2xl border border-amber-400/20 bg-amber-950/20 p-3.5">
+            <div>
+                <div className="flex items-center justify-between">
+                    <span className="text-[0.6rem] font-semibold uppercase tracking-wider text-amber-300">Evidenced Claim</span>
+                    <span className="rounded-full bg-emerald-400/20 px-2 py-0.5 text-[0.55rem] font-medium text-emerald-300">Confidence 98%</span>
+                </div>
+                <div className="mt-2 rounded-xl border border-white/10 bg-black/30 p-2 text-[0.6rem] text-white/90 leading-relaxed">
+                    "When VDDIO drops below 1.6V during calibration, register 0x0A triggers fault code E-04."
+                </div>
+            </div>
+            <div className="pt-2 border-t border-amber-400/15 flex items-center justify-between text-[0.55rem]">
+                <span className="text-amber-200/70">Source: Slide 14, Sec 2</span>
+                <span className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-white/80">Chroma Indexed</span>
+            </div>
+        </div>
+    </div>
+);
+
 const visuals: Record<VisualType, ReactNode> = {
     'genai-workspace': <GenAIVisual />,
     'legal-comparison': <LegalVisual />,
@@ -223,6 +417,10 @@ const visuals: Record<VisualType, ReactNode> = {
     'gym-tracker': <GymVisual />,
     'preventive-maintenance': <MaintenanceVisual />,
     'address-normalization': <AddressVisual />,
+    'workforce-analytics': <WorkforceVisual />,
+    'datasheet-review': <DatasheetVisual />,
+    'llm-telemetry': <LLMTelemetryVisual />,
+    'evidence-qa': <EvidenceQAVisual />,
 };
 
 export const ProjectThumbnailVisual = ({ visualType }: { visualType: VisualType }) => {

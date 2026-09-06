@@ -27,7 +27,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="flex flex-col sm:flex-row gap-3">
       <a href="/"
-        class="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800"
+        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800"
         id="not-found-home"
       >
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -35,14 +35,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </svg>
         <span>Home</span>
       </a>
-      <a href="/articles"
-        class="inline-flex items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:text-gray-900"
-        id="not-found-articles"
+      <a href="/projects"
+        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:text-gray-900"
+        id="not-found-projects"
       >
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
         </svg>
-        <span>Blog</span>
+        <span>Projects</span>
       </a>
     </div>
   </div>
@@ -56,19 +56,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const title = document.getElementById('not-found-title');
     const desc = document.getElementById('not-found-desc');
     const homeBtn = document.getElementById('not-found-home');
-    const articlesBtn = document.getElementById('not-found-articles');
+    const projectsBtn = document.getElementById('not-found-projects');
 
     if (title) title.textContent = isZh ? '找不到這個頁面' : 'Page not found';
     if (desc) desc.textContent = isZh
-      ? '你所尋找的頁面可能已被移除、重新命名，或是暫時無法使用。'
+      ? '你要找的頁面可能已被移除、重新命名，或暫時無法使用。'
       : "The page you're looking for may have been moved, renamed, or is temporarily unavailable.";
     if (homeBtn) {
       const span = homeBtn.querySelector('span');
       if (span) span.textContent = isZh ? '返回首頁' : 'Home';
     }
-    if (articlesBtn) {
-      const span = articlesBtn.querySelector('span');
-      if (span) span.textContent = isZh ? '部落格' : 'Blog';
+    if (projectsBtn) {
+      const span = projectsBtn.querySelector('span');
+      if (span) span.textContent = isZh ? '查看專案' : 'Projects';
     }
   }
 

@@ -125,6 +125,7 @@ docs/
 .github/skills/
 
 # Local build / verification artifacts
+/output/
 temp-build*/
 temp-edge-profile/
 temp-chrome-profile/

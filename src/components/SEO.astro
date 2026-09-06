@@ -12,12 +12,13 @@ export interface Props {
   lang?: 'en' | 'zh';
   alternateEn?: string;
   alternateZh?: string;
+  robots?: string;
 }
 
 const {
   title = "Bruce Cheng",
   description = "Bruce Cheng - Portfolio & Knowledge Base",
-  image = "/assets/avatar.png",
+  image = "/assets/og-image.png",
   article = false,
   publishedAt,
   updatedAt,
@@ -27,6 +28,7 @@ const {
   lang = 'en',
   alternateEn,
   alternateZh,
+  robots,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -43,6 +45,18 @@ const jsonLd = article
       author: {
         "@type": "Person",
         name: author,
+        jobTitle: "AI Application Engineer",
+        sameAs: [
+          "https://github.com/bruce-lcz",
+          "https://www.linkedin.com/in/bruce-lcz",
+        ],
+        knowsAbout: [
+          "Enterprise AI Architecture",
+          "LLM Systems",
+          "RAG",
+          "Multimodal AI",
+          "Workflow Productization",
+        ],
       },
       datePublished: publishedAt ? publishedAt.toISOString() : undefined,
       dateModified: updatedAt ? updatedAt.toISOString() : (publishedAt ? publishedAt.toISOString() : undefined),
@@ -57,6 +71,18 @@ const jsonLd = article
       author: {
         "@type": "Person",
         name: author,
+        jobTitle: "AI Application Engineer",
+        sameAs: [
+          "https://github.com/bruce-lcz",
+          "https://www.linkedin.com/in/bruce-lcz",
+        ],
+        knowsAbout: [
+          "Enterprise AI Architecture",
+          "LLM Systems",
+          "RAG",
+          "Multimodal AI",
+          "Workflow Productization",
+        ],
       },
     };
 ---
@@ -78,6 +104,7 @@ const jsonLd = article
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <meta name="author" content={author} />
+{robots && <meta name="robots" content={robots} />}
 <meta property="og:locale" content={lang === 'zh' ? 'zh_TW' : 'en_US'} />
 
 <!-- Open Graph / Facebook -->

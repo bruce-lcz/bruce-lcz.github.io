@@ -16,107 +16,147 @@ export interface ToolCategory {
 export const USES: ToolCategory[] = [
   {
     id: 'ai-llm',
-    titleEn: 'AI & LLM Tools',
-    titleZh: 'AI 與 LLM 工具',
-    descriptionEn: 'Models, frameworks, and tools for building AI applications.',
-    descriptionZh: '用於建置 AI 應用的模型、框架與工具。',
+    titleEn: 'Generative AI & LLM Systems',
+    titleZh: '生成式 AI 與 LLM 系統',
+    descriptionEn: 'Build practical, verifiable GenAI workflows around models, retrieval, tools, and multimodal inputs.',
+    descriptionZh: '圍繞模型、檢索、工具與多模態輸入，建立實用且可驗證的 GenAI 流程。',
     tools: [
       {
+        name: 'On-Prem LLM Serving',
+        descriptionEn: 'Deploy and operate language models within private, security-conscious environments.',
+        descriptionZh: '在重視資料安全的私有環境中部署與維運語言模型。'
+      },
+      {
         name: 'vLLM',
-        descriptionEn: 'High-throughput and memory-efficient LLM serving engine. Essential for on-prem deployments.',
-        descriptionZh: '高吞吐量、低記憶體使用的 LLM serving engine，適合地端部署。'
+        descriptionEn: 'High-throughput, memory-efficient inference for production LLM serving.',
+        descriptionZh: '用於正式環境 LLM 服務的高吞吐量、記憶體高效推論引擎。'
       },
       {
-        name: 'OpenAI API',
-        descriptionEn: 'The standard for cloud-based LLM capabilities, used when data privacy constraints allow.',
-        descriptionZh: '資料隱私與使用條件允許時採用的雲端 LLM API。'
+        name: 'RAG',
+        descriptionEn: 'Ground model responses in retrievable, source-cited enterprise knowledge.',
+        descriptionZh: '以可檢索且可追溯來源的企業知識，讓模型回答有所依據。'
       },
       {
-        name: 'Open WebUI',
-        descriptionEn: 'Extensible frontend for LLMs, great for internal productization with custom tools.',
-        descriptionZh: '可擴充的 LLM 前端介面，適合結合自訂工具並做成內部產品。'
+        name: 'Agent & Tool-Calling Workflows',
+        descriptionEn: 'Connect models with tools, APIs, and structured multi-step task flows.',
+        descriptionZh: '串接模型、工具與 API，建立結構化的多步驟任務流程。'
       },
       {
-        name: 'LangChain',
-        descriptionEn: 'Framework for developing applications powered by language models.',
-        descriptionZh: '用於開發 LLM application 的框架。'
+        name: 'Multimodal / VLM',
+        descriptionEn: 'Analyze text, images, and document layouts in unified AI workflows.',
+        descriptionZh: '在整合式 AI 流程中分析文字、圖片與文件版面。'
+      },
+      {
+        name: 'OCR / ASR',
+        descriptionEn: 'Convert document images and speech into structured, processable content.',
+        descriptionZh: '將文件影像與語音轉換為可供流程處理的結構化內容。'
+      },
+      {
+        name: 'Prompt & Validation Design',
+        descriptionEn: 'Design prompts and verification checks for reliable, testable outputs.',
+        descriptionZh: '設計提示與驗證機制，確保輸出可靠且可測試。'
       }
     ]
   },
   {
-    id: 'backend',
-    titleEn: 'Backend & Data',
-    titleZh: 'Backend 與資料工程',
-    descriptionEn: 'Languages and frameworks for building APIs and processing data.',
-    descriptionZh: '用於建置 API、處理資料與實作服務邏輯的語言與框架。',
+    id: 'ai-system-design',
+    titleEn: 'AI System & Solution Design',
+    titleZh: 'AI 系統與解決方案設計',
+    descriptionEn: 'Design secure, reliable enterprise AI systems that connect workflows, APIs, tools, and users.',
+    descriptionZh: '設計能串接流程、API、工具與使用者的安全可靠企業級 AI 系統。',
+    tools: [
+      {
+        name: 'Enterprise AI Architecture',
+        descriptionEn: 'Shape production AI systems around business, security, and operational constraints.',
+        descriptionZh: '依據業務、資安與營運限制，規劃可上線的企業 AI 系統。'
+      },
+      {
+        name: 'Workflow Orchestration',
+        descriptionEn: 'Coordinate models, data, tools, and human review across end-to-end processes.',
+        descriptionZh: '在端到端流程中協調模型、資料、工具與人工審核。'
+      },
+      {
+        name: 'API / Tool Integration',
+        descriptionEn: 'Integrate AI capabilities with existing services, systems, and internal tools.',
+        descriptionZh: '將 AI 能力與既有服務、系統及內部工具整合。'
+      },
+      {
+        name: 'Security & Reliability Design',
+        descriptionEn: 'Build authorization, validation, observability, and failure handling into AI solutions.',
+        descriptionZh: '將權限控管、驗證、可觀測性與錯誤處理納入 AI 解決方案。'
+      }
+    ]
+  },
+  {
+    id: 'backend-data',
+    titleEn: 'Backend & Data Engineering',
+    titleZh: '後端與資料工程',
+    descriptionEn: 'Implement dependable services and data pipelines that make AI workflows usable in production.',
+    descriptionZh: '實作可靠的服務與資料管線，讓 AI 流程能在正式環境中穩定運作。',
     tools: [
       {
         name: 'Python',
-        descriptionEn: 'My primary language for AI, data processing, and backend logic.',
-        descriptionZh: '我用於 AI、資料處理與 backend 邏輯的主要語言。'
+        descriptionEn: 'Primary language for AI applications, automation, data processing, and backend services.',
+        descriptionZh: '用於 AI 應用、自動化、資料處理與後端服務的主要語言。'
       },
       {
         name: 'FastAPI',
-        descriptionEn: 'Fast, modern web framework for building APIs with Python.',
-        descriptionZh: '用 Python 建置 API 的快速、現代 Web framework。'
+        descriptionEn: 'Build typed, high-performance Python APIs for AI and data services.',
+        descriptionZh: '用於建置具型別、高效能的 Python AI 與資料服務 API。'
+      },
+      {
+        name: 'REST APIs',
+        descriptionEn: 'Design predictable service interfaces for system and tool integration.',
+        descriptionZh: '設計清楚可預期的服務介面，支援系統與工具整合。'
+      },
+      {
+        name: 'SQL',
+        descriptionEn: 'Query, transform, and validate operational and analytical data.',
+        descriptionZh: '查詢、轉換並驗證營運與分析資料。'
+      },
+      {
+        name: 'Docker',
+        descriptionEn: 'Package services into consistent, reproducible deployment environments.',
+        descriptionZh: '將服務封裝為一致且可重現的部署環境。'
+      },
+      {
+        name: 'ETL / Data Pipelines',
+        descriptionEn: 'Move and transform data reliably across legacy and modern systems.',
+        descriptionZh: '在舊有與現代系統之間可靠地搬移與轉換資料。'
       },
       {
         name: 'Databricks',
-        descriptionEn: 'Unified data analytics platform for massive scale data engineering.',
-        descriptionZh: '用於大規模資料工程與分析的整合平台。'
-      },
-      {
-        name: 'PostgreSQL',
-        descriptionEn: 'Reliable, powerful open-source relational database.',
-        descriptionZh: '可靠、強大的開源關聯式資料庫。'
+        descriptionEn: 'Develop large-scale data engineering, analytics, and machine-learning workflows.',
+        descriptionZh: '開發大規模資料工程、分析與機器學習流程。'
       }
     ]
   },
   {
-    id: 'frontend',
-    titleEn: 'Frontend & UI',
-    titleZh: 'Frontend 與 UI',
-    descriptionEn: 'Tools for building internal tools and user interfaces.',
-    descriptionZh: '用於建置內部工具與使用者介面的 framework 與工具。',
+    id: 'applied-ml',
+    titleEn: 'Applied Machine Learning',
+    titleZh: '應用機器學習',
+    descriptionEn: 'Apply predictive modeling and optimization to operational and manufacturing problems.',
+    descriptionZh: '將預測建模與最佳化方法應用於營運與製造問題。',
     tools: [
       {
-        name: 'React',
-        descriptionEn: 'Component-based UI library, used for complex interactive features.',
-        descriptionZh: '以元件為核心的 UI library，適合複雜互動功能。'
+        name: 'Time-Series Forecasting',
+        descriptionEn: 'Model temporal patterns to support predictive maintenance and operational planning.',
+        descriptionZh: '建模隨時間變化的模式，支援預防性維護與營運規劃。'
       },
       {
-        name: 'Astro',
-        descriptionEn: 'Fast web framework for content-driven websites (like this one).',
-        descriptionZh: '適合內容型網站的高效 Web framework（本網站即以此建置）。'
+        name: 'LSTM',
+        descriptionEn: 'Develop sequence models for time-dependent prediction tasks.',
+        descriptionZh: '針對時間相依的預測任務開發序列模型。'
       },
       {
-        name: 'Tailwind CSS',
-        descriptionEn: 'Utility-first CSS framework for rapid UI development.',
-        descriptionZh: '採 utility-first 方式的 CSS framework，適合快速開發 UI。'
+        name: 'Explainable AI',
+        descriptionEn: 'Translate model behavior into evidence engineers and decision-makers can act on.',
+        descriptionZh: '把模型行為轉成工程師與決策者可以採取行動的依據。'
       },
       {
-        name: 'Streamlit',
-        descriptionEn: 'Fastest way to build and share data apps using Python.',
-        descriptionZh: '用 Python 快速建立與分享 data app 的工具。'
-      }
-    ]
-  },
-  {
-    id: 'development',
-    titleEn: 'Development & Workflow',
-    titleZh: '開發工具與 Workflow',
-    descriptionEn: 'My daily drivers for getting work done.',
-    descriptionZh: '我日常開發與協作時使用的核心工具。',
-    tools: [
-      {
-        name: 'Docker',
-        descriptionEn: 'Containerization for consistent environments from dev to prod.',
-        descriptionZh: '容器化工具，確保從開發到 production 環境的一致性。'
-      },
-      {
-        name: 'Git / GitHub',
-        descriptionEn: 'Version control and collaboration.',
-        descriptionZh: '版本控制與團隊協作平台。'
+        name: 'Optimization',
+        descriptionEn: 'Turn model insights and operational constraints into actionable parameter recommendations.',
+        descriptionZh: '把模型洞察與營運限制轉成可執行的參數建議。'
       }
     ]
   }

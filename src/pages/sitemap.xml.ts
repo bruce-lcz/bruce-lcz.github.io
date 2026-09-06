@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
+import { UNIFIED_PROJECTS } from '../data/projects';
 
-const staticPaths = ['about/', 'resume/', 'uses/', 'projects/', 'timeline/'];
+const staticPaths = ['', 'resume/', 'uses/', 'projects/', 'timeline/'];
 
 function escapeXml(value: string) {
   return value
@@ -13,7 +14,10 @@ function escapeXml(value: string) {
 
 export const GET: APIRoute = async ({ site }) => {
   const base = site ?? new URL('https://bruce-lcz.github.io');
-  const paths = staticPaths;
+  const paths = [
+    ...staticPaths,
+    ...UNIFIED_PROJECTS.map((project) => `projects/${project.id}/`),
+  ];
   const urls = paths.map((path) => new URL(path, base).toString());
 
   const body = urls

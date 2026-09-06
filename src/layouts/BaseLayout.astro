@@ -20,6 +20,7 @@ export interface Props {
   lang?: 'en' | 'zh';
   alternateEn?: string;
   alternateZh?: string;
+  robots?: string;
 }
 
 const {
@@ -67,6 +68,74 @@ const {
       syncDocumentLanguage();
       window.addEventListener('storage', syncDocumentLanguage);
       window.addEventListener('languagechange', syncDocumentLanguage);
+
+      // Keep the homepage section navigation useful even before its React island hydrates.
+      function setupScrollspyFallback() {
+        const links = Array.from(document.querySelectorAll<HTMLElement>('[data-scrollspy-link]'));
+        const sectionIds = [...new Set(
+          links
+            .map((link) => link.dataset.scrollspyLink)
+            .filter((id): id is string => Boolean(id)),
+        )];
+        const sections = sectionIds
+          .map((id) => document.getElementById(id))
+          .filter((section): section is HTMLElement => Boolean(section));
+
+        if (links.length === 0 || sections.length === 0) {
+          return;
+        }
+
+        const updateActiveSection = () => {
+          const focusLine = Math.min(window.innerHeight * 0.26, 220);
+          const positions = sections.map((section) => {
+            const rect = section.getBoundingClientRect();
+            return {
+              section,
+              top: rect.top,
+              bottom: rect.bottom,
+              distance: Math.abs(rect.top - focusLine),
+            };
+          });
+          const sectionAtFocusLine = positions.find(({ top, bottom }) => top <= focusLine && bottom >= focusLine);
+          const activeSection = sectionAtFocusLine
+            ?? positions.filter(({ bottom }) => bottom >= 0).sort((a, b) => a.distance - b.distance)[0]
+            ?? positions[0];
+
+          if (!activeSection) {
+            return;
+          }
+
+          links.forEach((link) => {
+            const isActive = link.dataset.scrollspyLink === activeSection.section.id;
+            if (isActive) {
+              link.dataset.scrollspyActive = 'true';
+            } else {
+              link.removeAttribute('data-scrollspy-active');
+            }
+          });
+        };
+
+        let ticking = false;
+        const onScroll = () => {
+          if (ticking) {
+            return;
+          }
+
+          ticking = true;
+          window.requestAnimationFrame(() => {
+            updateActiveSection();
+            ticking = false;
+          });
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        window.addEventListener('load', onScroll);
+        window.addEventListener('hashchange', onScroll);
+        window.addEventListener('languagechange', onScroll);
+      }
+
+      setupScrollspyFallback();
     </script>
   </body>
 </html>

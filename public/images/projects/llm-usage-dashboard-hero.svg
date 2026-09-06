@@ -1,0 +1,68 @@
+<svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#081E2E"/>
+      <stop offset="1" stop-color="#0C344E"/>
+    </linearGradient>
+    <linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E486E"/>
+      <stop offset="1" stop-color="#07293E"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/>
+  <rect x="24" y="24" width="1392" height="432" rx="36" stroke="#0284C7" stroke-width="1.5"/>
+  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif">
+    <rect x="72" y="60" width="190" height="40" rx="20" fill="#07293E" stroke="#0284C7"/>
+    <rect x="278" y="60" width="190" height="40" rx="20" fill="#07293E" stroke="#0284C7"/>
+    <rect x="484" y="60" width="200" height="40" rx="20" fill="#07293E" stroke="#0284C7"/>
+    <text x="110" y="85" fill="#E0F2FE" font-size="14" font-weight="600">LLMOps Telemetry</text>
+    <text x="308" y="85" fill="#E0F2FE" font-size="14" font-weight="600">Read-Only Replication</text>
+    <text x="515" y="85" fill="#E0F2FE" font-size="14" font-weight="600">Automated Weekly Reports</text>
+  </g>
+  <g filter="url(#glow)" stroke="#38BDF8" stroke-width="4" stroke-linecap="round">
+    <path d="M280 240H324"/><path d="M492 240H536"/><path d="M704 240H748"/><path d="M916 240H960"/><path d="M1128 240H1172"/>
+  </g>
+  <g fill="#38BDF8">
+    <path d="M324 240L312 233V247L324 240Z"/><path d="M536 240L524 233V247L536 240Z"/><path d="M748 240L736 233V247L748 240Z"/><path d="M960 240L948 233V247L960 240Z"/><path d="M1172 240L1160 233V247L1172 240Z"/>
+  </g>
+  <g fill="url(#node)" stroke="#0284C7">
+    <rect x="76" y="184" width="204" height="112" rx="26"/><rect x="288" y="184" width="204" height="112" rx="26"/><rect x="500" y="184" width="204" height="112" rx="26"/><rect x="712" y="184" width="204" height="112" rx="26"/><rect x="924" y="184" width="204" height="112" rx="26"/><rect x="1136" y="184" width="204" height="112" rx="26"/>
+  </g>
+  <g fill="#07293E" stroke="#38BDF8">
+    <rect x="156" y="198" width="44" height="44" rx="12"/><rect x="368" y="198" width="44" height="44" rx="12"/><rect x="580" y="198" width="44" height="44" rx="12"/><rect x="792" y="198" width="44" height="44" rx="12"/><rect x="1004" y="198" width="44" height="44" rx="12"/><rect x="1216" y="198" width="44" height="44" rx="12"/>
+  </g>
+  <g fill="none" stroke="#7DD3FC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Source Gateways -->
+    <rect x="168" y="212" width="20" height="8" rx="2"/><rect x="168" y="222" width="20" height="8" rx="2"/><circle cx="184" cy="216" r="1" fill="#7DD3FC"/><circle cx="184" cy="226" r="1" fill="#7DD3FC"/>
+    <!-- Read-only sync worker -->
+    <path d="M380 216A8 8 0 1 1 396 226"/><path d="M396 216V226H386"/>
+    <!-- PostgreSQL analytical store -->
+    <ellipse cx="602" cy="214" rx="10" ry="4"/><path d="M592 214V226C592 228 596 230 602 230C608 230 612 228 612 226V214"/>
+    <!-- Supervisor portal -->
+    <rect x="800" y="210" width="28" height="20" rx="3"/><circle cx="814" cy="218" r="4"/><path d="M806 228C806 225 810 224 814 224C818 224 822 225 822 228"/>
+    <!-- Export Worker -->
+    <path d="M1026 210V224M1020 218L1026 224L1032 218"/><path d="M1016 228H1036"/>
+    <!-- Weekly PDF report -->
+    <path d="M1230 208H1244L1248 213V232H1230V208Z"/><path d="M1234 218H1244M1234 223H1242"/>
+  </g>
+  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" fill="#F0F9FF" font-size="20" font-weight="700">
+    <text x="100" y="272">Multi-Sources</text>
+    <text x="328" y="272">Idempotent Sync</text>
+    <text x="526" y="272">PostgreSQL</text>
+    <text x="736" y="272">Supervisor Web</text>
+    <text x="946" y="272">Async Export</text>
+    <text x="1152" y="272">Weekly Reports</text>
+  </g>
+  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" fill="#BAE6FD" font-size="12">
+    <text x="94" y="288">Gateways &amp; GPU Mon</text>
+    <text x="326" y="288">Locking &amp; Watermarks</text>
+    <text x="520" y="288">Minute &amp; Rollup Marts</text>
+    <text x="746" y="288">Token Attribution</text>
+    <text x="956" y="288">Queued CSV/XLSX</text>
+    <text x="1156" y="288">Scheduled PDF/HTML</text>
+  </g>
+</svg>

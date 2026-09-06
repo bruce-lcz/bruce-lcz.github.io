@@ -26,8 +26,17 @@ interface LanguageProviderProps {
     children: ReactNode;
 }
 
+const getInitialLanguage = (): Language => {
+    if (typeof window === 'undefined') {
+        return 'en';
+    }
+
+    const savedLang = window.localStorage.getItem('language');
+    return savedLang === 'zh' ? 'zh' : 'en';
+};
+
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-    const [language, setLanguageState] = useState<Language>('en');
+    const [language, setLanguageState] = useState<Language>(getInitialLanguage);
 
     useEffect(() => {
         const loadLang = () => {

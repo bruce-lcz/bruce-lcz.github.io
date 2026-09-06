@@ -1,28 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import App from '../App';
-import { getCollection } from 'astro:content';
-import { isPublished, sortArticles } from '../utils/articles';
-
-const allArticles = await getCollection('articles');
-const visibleArticles = sortArticles(allArticles.filter(isPublished));
-const recentArticles = (['en', 'zh'] as const)
-  .flatMap((lang) => visibleArticles.filter((article) => article.data.lang === lang).slice(0, 3))
-  .map(a => ({
-  id: a.id,
-  title: a.data.title,
-  description: a.data.description,
-  publishedAt: a.data.publishedAt.toISOString(),
-  category: a.data.category,
-  tags: a.data.tags,
-  cover: a.data.cover,
-  lang: a.data.lang,
-}));
+// Keep the former About URL as a backwards-compatible alias for the public
+// portfolio homepage. The root route is now the canonical entry point.
+return Astro.redirect('/', 301);
 ---
-
-<BaseLayout
-  title="About — Bruce Cheng | AI Application Engineer"
-  description="AI Application Engineer working on LLM, RAG, and AI workflow design. Also writes about dev tools, learning, and life."
->
-  <App client:load recentArticles={recentArticles} />
-</BaseLayout>

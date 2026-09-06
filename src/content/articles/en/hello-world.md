@@ -54,7 +54,7 @@ Some articles will be comprehensive. Others may be no more than an idea still ta
 
 ## About Me
 
-I am Bruce. My current focus is AI applications—connecting LLMs, RAG, and agents to real enterprise workflows.
+I am Bruce. My current focus is enterprise AI applications—connecting LLM systems, RAG, agents, and multimodal workflows to real work under practical security and operating constraints.
 
 I spent four years in manufacturing and now continue to work on AI adoption across legal, R&D, and knowledge-work scenarios. I often care more about permissions, data quality, user habits, maintenance costs, and failure handling than model leaderboards.
 
