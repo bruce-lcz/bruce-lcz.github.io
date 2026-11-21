@@ -34,13 +34,13 @@ export const configEn: Config = {
             },
             role: 'Information Engineer (Generative AI / LLM Projects)',
             period: 'Aug 2025 - Present',
-            description: 'I act as self-PM in a lean 2-person GenAI team across Legal, R&D, HR, and engineering — assessing legacy systems, evaluating technical feasibility, planning adoption, and owning end-to-end delivery to leadership milestones.',
+            description: 'I independently architect, develop, and deliver internal GenAI and LLM systems end-to-end — partnering directly with R&D, Legal, HR, and engineering teams to assess existing workflows, evaluate technical feasibility, and ship reliable tools.',
             techStack: ['Python', 'FastAPI', 'vLLM', 'LLMOps', 'Prompt Engineering'],
             achievements: [
-                'Act as self-PM across Legal, R&D, HR, and engineering scenarios — assessing legacy workflows, evaluating technical feasibility, planning adoption strategies, and leading end-to-end delivery to leadership milestones.',
+                'Independently architect, develop, and deliver internal GenAI / LLM systems end-to-end, partnering with R&D, Legal, HR, and engineering teams to assess existing workflows and evaluate technical feasibility.',
                 'Designed a shared internal GenAI workspace and LLM Gateway (vLLM, OpenAI-compatible APIs, model routing, API key governance, LLMOps telemetry) for coding, document review, and technical analysis.',
-                'Delivered privacy-first analytics and document-intelligence systems spanning guarded NL2SQL (server-enforced RBAC, isolated read-only SQLite snapshots, audit logs), multimodal semiconductor datasheet review, and page-traceable ChromaDB RAG.',
-                'Productionized sensitive legal and patent workflows using OCR, local LLMs, Prompt Engineering (clause/paragraph extraction, staged proofreading, terminology rules), and validation checks — relieving Legal and R&D teams of repetitive manual review so they can focus on higher-value core work.',
+                'Delivered secure internal analytics and document systems spanning natural-language SQL (NL2SQL) restricted to read-only manager-scoped access with audit logs, multimodal IC datasheet review, and page-cited ChromaDB RAG.',
+                'Productionized sensitive legal and patent workflows using OCR, local LLMs, Prompt Engineering (clause/paragraph extraction, staged proofreading, terminology rules), and validation checks — helping R&D and legal/admin teams offload repetitive manual proofreading to focus on core work.',
                 'Automated engineering and meeting workflows with reusable Python tools, including robust file-processing pipelines, ASR, speaker-aware segmentation, and structured summarization.',
                 'Proactively drove enterprise GenAI enablement, knowledge transfer, and LLM inference optimization — turning usage telemetry and 20+ 1-on-1 consultations into company-announced Prompt Engineering, OpenCode, context-compression, and prefix-caching (KV cache / TTFT) guides.',
             ],
@@ -51,11 +51,11 @@ export const configEn: Config = {
                 },
                 {
                     tag: 'new',
-                    text: 'Delivered privacy-first analytics and document-intelligence systems spanning guarded NL2SQL (server-enforced RBAC, isolated SQLite snapshots, audit logs), multimodal semiconductor datasheet review, and page-traceable ChromaDB RAG.',
+                    text: 'Delivered secure internal analytics and document systems spanning natural-language SQL (NL2SQL) restricted to read-only manager-scoped access with audit logs, multimodal IC datasheet review, and page-cited ChromaDB RAG.',
                 },
                 {
                     tag: 'improved',
-                    text: 'Productionized legal and patent workflows using OCR, local LLMs, Prompt Engineering (clause/paragraph extraction, staged proofreading, terminology rules), and validation checks — offloading manual review for Legal and R&D teams to focus on higher-value core work.',
+                    text: 'Productionized sensitive legal and patent workflows using OCR, local LLMs, Prompt Engineering (clause/paragraph extraction, staged proofreading, terminology rules), and validation checks — helping R&D and legal/admin teams offload manual proofreading to focus on core work.',
                 },
                 {
                     tag: 'impact',
@@ -63,7 +63,7 @@ export const configEn: Config = {
                 },
                 {
                     tag: 'impact',
-                    text: 'Served as self-PM driving enterprise GenAI enablement, knowledge transfer, and LLM optimization — turning telemetry and 20+ 1-on-1 consultations into company-announced Prompt Engineering, OpenCode, context-compression, and KV-cache / TTFT guides.',
+                    text: 'Independently drove enterprise GenAI enablement, knowledge transfer, and LLM optimization — turning telemetry and 20+ 1-on-1 consultations into company-announced Prompt Engineering, OpenCode, context-compression, and KV-cache / TTFT guides.',
                 },
             ],
             relatedProjectIds: [
@@ -234,7 +234,7 @@ export const configEn: Config = {
             items: [
                 'Enterprise AI Architecture',
                 'LLMOps / MLOps Deployment',
-                'AI Security & Data Privacy (Air-Gapped, RBAC, Guardrails, Audit Logging)',
+                'AI Security & Data Privacy (Offline Deployment, Access Control, Audit Logging)',
                 'Feasibility & Adoption Strategy',
                 'Technical Project Leadership',
                 'Technical Enablement & Knowledge Transfer',

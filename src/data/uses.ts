@@ -102,8 +102,8 @@ export const USES: ToolCategory[] = [
       },
       {
         name: 'AI Security & Data Privacy',
-        descriptionEn: 'Enforce server-side RBAC, isolated read-only SQLite snapshots, SQL whitelisting, air-gapped processing, and audit logging.',
-        descriptionZh: '落實伺服器端 RBAC 權限隔離、唯讀暫存 SQLite 快照、SQL 白名單、離線處理與查詢稽核日誌。'
+        descriptionEn: 'Enforce role-scoped read-only access, query isolation from production databases, air-gapped deployment, and audit logging.',
+        descriptionZh: '確保封閉內網離線部署、依權限限制唯讀存取自身管轄資料、不直接寫入正式資料庫並保留查詢紀錄。'
       },
       {
         name: 'Technical Project Leadership & Feasibility Analysis',
