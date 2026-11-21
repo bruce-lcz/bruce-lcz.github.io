@@ -1,101 +1,171 @@
-<svg width="1440" height="520" viewBox="0 0 1440 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="120" y1="40" x2="1310" y2="450" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#111821"/>
-      <stop offset="1" stop-color="#19232D"/>
+    <linearGradient id="bg-asc-merge-c-generator" x1="40" y1="20" x2="1400" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="0.52" stop-color="#F0F9FF"/>
+      <stop offset="1" stop-color="#EFF6FF"/>
     </linearGradient>
-    <linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1E2833"/>
-      <stop offset="1" stop-color="#18212A"/>
+    <linearGradient id="topbar-asc-merge-c-generator" x1="20" y1="20" x2="1100" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A73E8"/>
+      <stop offset="0.6" stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#60A5FA" stop-opacity="0"/>
     </linearGradient>
-    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
-      <feGaussianBlur stdDeviation="10" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    <linearGradient id="card-hi-asc-merge-c-generator" x1="0" y1="148" x2="0" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EFF6FF"/>
+    </linearGradient>
+    <pattern id="grid-asc-merge-c-generator" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#CBD5E1" stroke-opacity="0.38" stroke-width="1"/>
+    </pattern>
+    <clipPath id="panel-asc-merge-c-generator">
+      <rect x="20" y="20" width="1400" height="440" rx="30"/>
+    </clipPath>
   </defs>
-  <rect x="24" y="24" width="1392" height="472" rx="36" fill="url(#bg)"/>
-  <rect x="72" y="60" width="186" height="40" rx="20" fill="#18212B" stroke="#344454"/>
-  <rect x="276" y="60" width="210" height="40" rx="20" fill="#18212B" stroke="#344454"/>
-  <rect x="504" y="60" width="232" height="40" rx="20" fill="#18212B" stroke="#344454"/>
-  <g font-family="Segoe UI, Arial, sans-serif" fill="#E7EEF6" font-size="15" font-weight="600">
-    <text x="105" y="86">Open WebUI Tool</text>
-    <text x="320" y="86">Encoding Fallback</text>
-    <text x="540" y="86">Downloadable Export</text>
-  </g>
 
-  <g stroke="#4B5B6B" stroke-width="4" stroke-linecap="round">
-    <path d="M212 260H292"/>
-    <path d="M448 260H534"/>
-    <path d="M694 260H782"/>
-    <path d="M942 260H1028"/>
-    <path d="M1188 260H1248"/>
+  <g clip-path="url(#panel-asc-merge-c-generator)">
+    <rect x="20" y="20" width="1400" height="440" rx="30" fill="url(#bg-asc-merge-c-generator)"/>
+    <rect x="20" y="20" width="1400" height="440" fill="url(#grid-asc-merge-c-generator)"/>
+    <rect x="20" y="20" width="1400" height="4" fill="url(#topbar-asc-merge-c-generator)"/>
   </g>
-  <g stroke="#7DD3FC" stroke-width="4" stroke-linecap="round" filter="url(#glow)">
-    <path d="M292 260H338"/>
-    <path d="M782 260H828"/>
-    <path d="M1028 260H1074"/>
-  </g>
+  <rect x="20" y="20" width="1400" height="440" rx="30" stroke="#E2E8F0" stroke-width="1.5"/>
 
+  <!-- Header Row -->
+  <circle cx="62" cy="76" r="5" fill="#1A73E8"/>
+  <text x="78" y="81" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.2" fill="#475569">FILE-TO-CODE TOOL · OPEN WEBUI PIPELINE</text>
+
+  
+  <rect x="899" y="58" width="136" height="34" rx="17" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.2"/>
+  <text x="967" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#1A73E8">Open WebUI Tool</text>
+  
+  <rect x="1045" y="58" width="150" height="34" rx="17" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.2"/>
+  <text x="1120" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#1A73E8">Raw-Byte Fallback</text>
+  
+  <rect x="1205" y="58" width="179" height="34" rx="17" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.2"/>
+  <text x="1294.5" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#1A73E8">Downloadable C Export</text>
+  
+
+  <!-- 6-Step Workflow Cards -->
+  
   <g>
-    <rect x="96" y="200" width="136" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
-    <rect x="332" y="200" width="136" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
-    <rect x="574" y="200" width="136" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
-    <rect x="822" y="200" width="136" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
-    <rect x="1068" y="200" width="136" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
-    <rect x="1252" y="200" width="112" height="120" rx="28" fill="url(#node)" stroke="#334250"/>
+    <rect x="56" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="74" y="166" width="42" height="42" rx="12" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1.2"/>
+    <g transform="translate(84 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line>
+    </g>
+    
+    <text x="236" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">01</text>
+    <text x="74" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Upload ASC</text>
+    
+    <text x="74" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Single or Multi-File</text>
+    
   </g>
-
-  <g font-family="Segoe UI, Arial, sans-serif" fill="#EAF1F8" font-size="24" font-weight="700" transform="translate(0, 10)">
-    <text x="122" y="272">Upload</text>
-    <text x="367" y="272">Read</text>
-    <text x="600" y="272">Merge</text>
-    <text x="855" y="272">Generate</text>
-    <text x="1097" y="272">Export</text>
-    <text x="1275" y="272">Link</text>
+  
+  <g stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M259 246H275"/>
+    <path d="M270 241L275 246L270 251" fill="none"/>
   </g>
-
-  <g font-family="Segoe UI, Arial, sans-serif" fill="#93A6B8" font-size="14" transform="translate(0, 10)">
-    <text x="114" y="296">ASC files</text>
-    <text x="350" y="296">Raw bytes</text>
-    <text x="592" y="296">Ordered append</text>
-    <text x="844" y="296">C init code</text>
-    <text x="1087" y="296">.c / merged .asc</text>
-    <text x="1273" y="296">Nginx</text>
+  
+  <g>
+    <rect x="282" y="148" width="198" height="196" rx="20" fill="url(#card-hi-asc-merge-c-generator)" stroke="#93C5FD" stroke-width="1.8"/>
+    <rect x="300" y="166" width="42" height="42" rx="12" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.2"/>
+    <g transform="translate(310 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="14" width="4" height="6" rx="2"></rect><rect x="6" y="4" width="4" height="6" rx="2"></rect><path d="M6 20h4"></path><path d="M14 10h4"></path><path d="M6 14h2v6"></path><path d="M14 4h2v6"></path>
+    </g>
+    
+    <rect x="373" y="174" width="65" height="22" rx="11" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="405.5" y="188.5" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#1A73E8">Tool Call</text>
+    
+    <text x="462" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">02</text>
+    <text x="300" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">asc_read</text>
+    
+    <text x="300" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">CP950 / Big5 / UTF-8</text>
+    
   </g>
-
-  <g transform="translate(0, -20)">
-    <rect x="122" y="226" width="32" height="42" rx="6" fill="#0F1720" stroke="#4B5B6B"/>
-    <rect x="162" y="234" width="36" height="8" rx="4" fill="#38BDF8"/>
-    <rect x="162" y="248" width="42" height="7" rx="3.5" fill="#5B7084"/>
-    <rect x="162" y="261" width="28" height="7" rx="3.5" fill="#5B7084"/>
-
-    <rect x="360" y="228" width="78" height="14" rx="7" fill="#38BDF8" fill-opacity="0.18" stroke="#38BDF8" stroke-opacity="0.5"/>
-    <rect x="360" y="250" width="58" height="8" rx="4" fill="#5B7084"/>
-    <rect x="360" y="264" width="44" height="8" rx="4" fill="#5B7084"/>
-
-    <rect x="602" y="226" width="80" height="18" rx="9" fill="#22C55E" fill-opacity="0.16" stroke="#22C55E" stroke-opacity="0.45"/>
-    <rect x="602" y="254" width="62" height="8" rx="4" fill="#5B7084"/>
-    <rect x="602" y="268" width="76" height="8" rx="4" fill="#5B7084"/>
-
-    <rect x="852" y="226" width="76" height="18" rx="9" fill="#F59E0B" fill-opacity="0.16" stroke="#F59E0B" stroke-opacity="0.5"/>
-    <rect x="852" y="254" width="54" height="8" rx="4" fill="#5B7084"/>
-    <rect x="852" y="268" width="68" height="8" rx="4" fill="#5B7084"/>
-
-    <rect x="1094" y="226" width="82" height="18" rx="9" fill="#38BDF8" fill-opacity="0.18" stroke="#38BDF8" stroke-opacity="0.5"/>
-    <rect x="1094" y="254" width="58" height="8" rx="4" fill="#5B7084"/>
-    <rect x="1094" y="268" width="70" height="8" rx="4" fill="#5B7084"/>
-
-    <circle cx="1308" cy="246" r="16" fill="#0F1720" stroke="#38BDF8" stroke-opacity="0.7"/>
-    <path d="M1302 246H1314" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
-    <path d="M1308 240V252" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
-    <rect x="1280" y="266" width="56" height="8" rx="4" fill="#5B7084"/>
+  
+  <g stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M485 246H501"/>
+    <path d="M496 241L501 246L496 251" fill="none"/>
   </g>
-
-  <rect x="96" y="372" width="1268" height="66" rx="22" fill="#121921" stroke="#2F3D4A"/>
-  <g font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#A9BAC8">
-    <text x="126" y="413">ASC upload → raw-byte read → encoding normalization → ordered merge → C code generation → downloadable internal artifact</text>
+  
+  <g>
+    <rect x="508" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="526" y="166" width="42" height="42" rx="12" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1.2"/>
+    <g transform="translate(536 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="8" height="8" x="2" y="2" rx="2"></rect><path d="M14 2c1.1 0 2 .9 2 2v4c0 1.1-.9 2-2 2"></path><path d="M20 2c1.1 0 2 .9 2 2v4c0 1.1-.9 2-2 2"></path><path d="M10 18H5c-1.7 0-3-1.3-3-3v-1"></path><polyline points="7 21 10 18 7 15"></polyline><rect width="8" height="8" x="14" y="14" rx="2"></rect>
+    </g>
+    
+    <text x="688" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">03</text>
+    <text x="526" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Ordered Merge</text>
+    
+    <text x="526" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Append Init Sequence</text>
+    
   </g>
+  
+  <g stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M711 246H727"/>
+    <path d="M722 241L727 246L722 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="734" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="752" y="166" width="42" height="42" rx="12" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1.2"/>
+    <g transform="translate(762 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 18 3-3-3-3"></path><path d="m5 12-3 3 3 3"></path>
+    </g>
+    
+    <text x="914" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">04</text>
+    <text x="752" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Generate C</text>
+    
+    <text x="752" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Confirmed Output Format</text>
+    
+  </g>
+  
+  <g stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M937 246H953"/>
+    <path d="M948 241L953 246L948 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="960" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="978" y="166" width="42" height="42" rx="12" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1.2"/>
+    <g transform="translate(988 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line>
+    </g>
+    
+    <text x="1140" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">05</text>
+    <text x="978" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">asc_export</text>
+    
+    <text x="978" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">.c &amp; Merged .asc</text>
+    
+  </g>
+  
+  <g stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1163 246H1179"/>
+    <path d="M1174 241L1179 246L1174 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="1186" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="1204" y="166" width="42" height="42" rx="12" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1.2"/>
+    <g transform="translate(1214 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line>
+    </g>
+    
+    <text x="1366" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">06</text>
+    <text x="1204" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Nginx Link</text>
+    
+    <text x="1204" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Direct Artifact</text>
+    
+    <text x="1204" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Delivery</text>
+    
+  </g>
+  
+
+  <!-- Footer Takeaway Bar -->
+  <rect x="56" y="382" width="1328" height="50" rx="16" fill="#FFFFFF" fill-opacity="0.92" stroke="#E2E8F0" stroke-width="1.2"/>
+  <circle cx="76" cy="407" r="3.5" fill="#1A73E8"/>
+  <text x="90" y="412" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#475569">Native Open WebUI tool calling prevents preview garbling and delivers ready-to-download C &amp; ASC artifacts.</text>
+
+  <rect x="1093" y="392" width="275" height="30" rx="15" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="1230.5" y="411" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#1D4ED8">6-Encoding Fallback · Nginx Delivery</text>
 </svg>

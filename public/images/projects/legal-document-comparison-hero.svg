@@ -1,49 +1,179 @@
 <svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#111821"/>
-      <stop offset="1" stop-color="#19232D"/>
+    <linearGradient id="bg-legal-contract-comparison" x1="40" y1="20" x2="1400" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="0.52" stop-color="#FFF1F2"/>
+      <stop offset="1" stop-color="#FFE4E6"/>
     </linearGradient>
-    <linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1E2833"/>
-      <stop offset="1" stop-color="#18212A"/>
+    <linearGradient id="topbar-legal-contract-comparison" x1="20" y1="20" x2="1100" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F43F5E"/>
+      <stop offset="0.6" stop-color="#F472B6"/>
+      <stop offset="1" stop-color="#F472B6" stop-opacity="0"/>
     </linearGradient>
-    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
-      <feGaussianBlur stdDeviation="10" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="card-hi-legal-contract-comparison" x1="0" y1="148" x2="0" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFF1F2"/>
+    </linearGradient>
+    <pattern id="grid-legal-contract-comparison" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#CBD5E1" stroke-opacity="0.38" stroke-width="1"/>
+    </pattern>
+    <clipPath id="panel-legal-contract-comparison">
+      <rect x="20" y="20" width="1400" height="440" rx="30"/>
+    </clipPath>
   </defs>
-  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/>
-  <rect x="24" y="24" width="1392" height="432" rx="36" stroke="#2A3643"/>
-  <g font-family="Segoe UI, Arial, sans-serif">
-    <rect x="72" y="60" width="128" height="40" rx="20" fill="#18212B" stroke="#344454"/>
-    <rect x="216" y="60" width="152" height="40" rx="20" fill="#18212B" stroke="#344454"/>
-    <rect x="384" y="60" width="176" height="40" rx="20" fill="#18212B" stroke="#344454"/>
-    <text x="107" y="86" fill="#E7EEF6" font-size="15" font-weight="600">On-Prem</text>
-    <text x="255" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Confidential</text>
-    <text x="424" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Zero-Omission</text>
+
+  <g clip-path="url(#panel-legal-contract-comparison)">
+    <rect x="20" y="20" width="1400" height="440" rx="30" fill="url(#bg-legal-contract-comparison)"/>
+    <rect x="20" y="20" width="1400" height="440" fill="url(#grid-legal-contract-comparison)"/>
+    <rect x="20" y="20" width="1400" height="4" fill="url(#topbar-legal-contract-comparison)"/>
   </g>
-  <g filter="url(#glow)" stroke="#5AD7F7" stroke-width="4" stroke-linecap="round">
-    <path d="M292 240H356"/><path d="M504 240H568"/><path d="M716 240H780"/><path d="M928 240H992"/><path d="M1140 240H1204"/>
+  <rect x="20" y="20" width="1400" height="440" rx="30" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Header Row -->
+  <circle cx="62" cy="76" r="5" fill="#F43F5E"/>
+  <text x="78" y="81" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.2" fill="#475569">CONTRACT COMPARISON · REVIEW ARCHITECTURE</text>
+
+  
+  <rect x="855" y="58" width="172" height="34" rx="17" fill="#FFFFFF" stroke="#FECDD3" stroke-width="1.2"/>
+  <text x="941" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#BE123C">On-Prem Confidential</text>
+  
+  <rect x="1037" y="58" width="194" height="34" rx="17" fill="#FFFFFF" stroke="#FECDD3" stroke-width="1.2"/>
+  <text x="1134" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#BE123C">OCR + Consistency Check</text>
+  
+  <rect x="1241" y="58" width="143" height="34" rx="17" fill="#FFFFFF" stroke="#FECDD3" stroke-width="1.2"/>
+  <text x="1312.5" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#BE123C">Dual-Pane Review</text>
+  
+
+  <!-- 6-Step Workflow Cards -->
+  
+  <g>
+    <rect x="56" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="74" y="166" width="42" height="42" rx="12" fill="#FFF1F2" stroke="#FFE4E6" stroke-width="1.2"/>
+    <g transform="translate(84 176) scale(0.92)" fill="none" stroke="#BE123C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15.5 2H8.6c-.4 0-.8.2-1.1.5-.3.3-.5.7-.5 1.1v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8c.4 0 .8-.2 1.1-.5.3-.3.5-.7.5-1.1V6.5L15.5 2z"></path><path d="M3 7.6v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8"></path><path d="M15 2v5h5"></path>
+    </g>
+    
+    <text x="236" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">01</text>
+    <text x="74" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Contract Pair</text>
+    
+    <text x="74" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Original DOCX &amp; Signed</text>
+    
+    <text x="74" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Scan</text>
+    
   </g>
-  <g fill="#5AD7F7">
-    <path d="M356 240L343 232V248L356 240Z"/><path d="M568 240L555 232V248L568 240Z"/><path d="M780 240L767 232V248L780 240Z"/><path d="M992 240L979 232V248L992 240Z"/><path d="M1204 240L1191 232V248L1204 240Z"/>
+  
+  <g stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M259 246H275"/>
+    <path d="M270 241L275 246L270 251" fill="none"/>
   </g>
-  <g fill="url(#node)" stroke="#334252">
-    <rect x="88" y="184" width="204" height="112" rx="26"/><rect x="300" y="184" width="204" height="112" rx="26"/><rect x="512" y="184" width="204" height="112" rx="26"/><rect x="724" y="184" width="204" height="112" rx="26"/><rect x="936" y="184" width="204" height="112" rx="26"/><rect x="1148" y="184" width="204" height="112" rx="26"/>
+  
+  <g>
+    <rect x="282" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="300" y="166" width="42" height="42" rx="12" fill="#FFF1F2" stroke="#FFE4E6" stroke-width="1.2"/>
+    <g transform="translate(310 176) scale(0.92)" fill="none" stroke="#BE123C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M7 8h8"></path><path d="M7 12h10"></path><path d="M7 16h6"></path>
+    </g>
+    
+    <text x="462" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">02</text>
+    <text x="300" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Parse &amp; OCR</text>
+    
+    <text x="300" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Noise, Stamps &amp; Layout</text>
+    
   </g>
-  <g fill="#141C25" stroke="#3A4E62">
-    <rect x="154" y="198" width="44" height="44" rx="12"/><rect x="366" y="198" width="44" height="44" rx="12"/><rect x="578" y="198" width="44" height="44" rx="12"/><rect x="790" y="198" width="44" height="44" rx="12"/><rect x="1002" y="198" width="44" height="44" rx="12"/><rect x="1214" y="198" width="44" height="44" rx="12"/>
+  
+  <g stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M485 246H501"/>
+    <path d="M496 241L501 246L496 251" fill="none"/>
   </g>
-  <g fill="none" stroke="#87E6FB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="166" y="206" width="20" height="26" rx="3"/><path d="M171 214H181M171 220H181"/>
-    <rect x="375" y="210" width="26" height="18" rx="4"/><path d="M365 234H411"/>
-    <circle cx="600" cy="220" r="10"/><path d="M595 220L599 224L606 216"/>
-    <path d="M803 210L812 220L803 230"/><path d="M815 210L824 220L815 230"/>
-    <circle cx="1024" cy="220" r="10" stroke="#F59E0B"/><path d="M1018 220H1030M1024 214V226" stroke="#F59E0B"/>
-    <circle cx="1236" cy="214" r="7"/><path d="M1236 221V232"/><path d="M1227 232H1245"/>
+  
+  <g>
+    <rect x="508" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="526" y="166" width="42" height="42" rx="12" fill="#FFF1F2" stroke="#FFE4E6" stroke-width="1.2"/>
+    <g transform="translate(536 176) scale(0.92)" fill="none" stroke="#BE123C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path>
+    </g>
+    
+    <text x="688" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">03</text>
+    <text x="526" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Text Validation</text>
+    
+    <text x="526" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Structure &amp;</text>
+    
+    <text x="526" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Completeness</text>
+    
   </g>
-  <g font-family="Segoe UI, Arial, sans-serif" fill="#EAF1F8" font-size="24" font-weight="700">
-    <text x="137" y="272">Input Docs</text><text x="370" y="272">OCR</text><text x="547" y="272">Validation</text><text x="754" y="272">LLM Compare</text><text x="974" y="272">Diff Review</text><text x="1194" y="272">Reviewer</text>
+  
+  <g stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M711 246H727"/>
+    <path d="M722 241L727 246L722 251" fill="none"/>
   </g>
+  
+  <g>
+    <rect x="734" y="148" width="198" height="196" rx="20" fill="url(#card-hi-legal-contract-comparison)" stroke="#FDA4AF" stroke-width="1.8"/>
+    <rect x="752" y="166" width="42" height="42" rx="12" fill="#FFE4E6" stroke="#FDA4AF" stroke-width="1.2"/>
+    <g transform="translate(762 176) scale(0.92)" fill="none" stroke="#BE123C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><path d="M11 18H8a2 2 0 0 1-2-2V9"></path>
+    </g>
+    
+    <rect x="813" y="174" width="77" height="22" rx="11" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1"/>
+    <text x="851.5" y="188.5" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#BE123C">Diff Engine</text>
+    
+    <text x="914" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">04</text>
+    <text x="752" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">LLM Compare</text>
+    
+    <text x="752" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Clause-Level Diff</text>
+    
+    <text x="752" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Detection</text>
+    
+  </g>
+  
+  <g stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M937 246H953"/>
+    <path d="M948 241L953 246L948 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="960" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="978" y="166" width="42" height="42" rx="12" fill="#FFF1F2" stroke="#FFE4E6" stroke-width="1.2"/>
+    <g transform="translate(988 176) scale(0.92)" fill="none" stroke="#BE123C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><path d="M12 13V7"></path><path d="M9 10h6"></path><path d="M9 17h6"></path>
+    </g>
+    
+    <text x="1140" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">05</text>
+    <text x="978" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Dual-Pane UI</text>
+    
+    <text x="978" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Side-by-Side Context</text>
+    
+    <text x="978" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">View</text>
+    
+  </g>
+  
+  <g stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1163 246H1179"/>
+    <path d="M1174 241L1179 246L1174 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="1186" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="1204" y="166" width="42" height="42" rx="12" fill="#FFF1F2" stroke="#FFE4E6" stroke-width="1.2"/>
+    <g transform="translate(1214 176) scale(0.92)" fill="none" stroke="#BE123C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline>
+    </g>
+    
+    <text x="1366" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">06</text>
+    <text x="1204" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Legal Sign-Off</text>
+    
+    <text x="1204" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Human-in-the-Loop</text>
+    
+    <text x="1204" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Decision</text>
+    
+  </g>
+  
+
+  <!-- Footer Takeaway Bar -->
+  <rect x="56" y="382" width="1328" height="50" rx="16" fill="#FFFFFF" fill-opacity="0.92" stroke="#E2E8F0" stroke-width="1.2"/>
+  <circle cx="76" cy="407" r="3.5" fill="#F43F5E"/>
+  <text x="90" y="412" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#475569">Keeps sensitive contracts strictly on-prem while pairing AI comparison with text checks and dual-pane human review.</text>
+
+  <rect x="1107" y="392" width="261" height="30" rx="15" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1"/>
+  <text x="1237.5" y="411" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#9F1239">Zero External Cloud · Human Review</text>
 </svg>

@@ -1,68 +1,173 @@
 <svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#041E1E"/>
-      <stop offset="1" stop-color="#112C2B"/>
+    <linearGradient id="bg-ds-grammar-chk" x1="40" y1="20" x2="1400" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="0.52" stop-color="#F0FDFA"/>
+      <stop offset="1" stop-color="#ECFDF5"/>
     </linearGradient>
-    <linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#134E4A"/>
-      <stop offset="1" stop-color="#042F2E"/>
+    <linearGradient id="topbar-ds-grammar-chk" x1="20" y1="20" x2="1100" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14B8A6"/>
+      <stop offset="0.6" stop-color="#10B981"/>
+      <stop offset="1" stop-color="#10B981" stop-opacity="0"/>
     </linearGradient>
-    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
-      <feGaussianBlur stdDeviation="10" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="card-hi-ds-grammar-chk" x1="0" y1="148" x2="0" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F0FDFA"/>
+    </linearGradient>
+    <pattern id="grid-ds-grammar-chk" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#CBD5E1" stroke-opacity="0.38" stroke-width="1"/>
+    </pattern>
+    <clipPath id="panel-ds-grammar-chk">
+      <rect x="20" y="20" width="1400" height="440" rx="30"/>
+    </clipPath>
   </defs>
-  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/>
-  <rect x="24" y="24" width="1392" height="432" rx="36" stroke="#115E59" stroke-width="1.5"/>
-  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif">
-    <rect x="72" y="60" width="190" height="40" rx="20" fill="#042F2E" stroke="#14B8A6"/>
-    <rect x="278" y="60" width="190" height="40" rx="20" fill="#042F2E" stroke="#14B8A6"/>
-    <rect x="484" y="60" width="190" height="40" rx="20" fill="#042F2E" stroke="#14B8A6"/>
-    <text x="100" y="85" fill="#CCFBF1" font-size="14" font-weight="600">Technical Datasheet LLM</text>
-    <text x="312" y="85" fill="#CCFBF1" font-size="14" font-weight="600">Multimodal VLM Review</text>
-    <text x="528" y="85" fill="#CCFBF1" font-size="14" font-weight="600">Web · CLI · MCP Core</text>
+
+  <g clip-path="url(#panel-ds-grammar-chk)">
+    <rect x="20" y="20" width="1400" height="440" rx="30" fill="url(#bg-ds-grammar-chk)"/>
+    <rect x="20" y="20" width="1400" height="440" fill="url(#grid-ds-grammar-chk)"/>
+    <rect x="20" y="20" width="1400" height="4" fill="url(#topbar-ds-grammar-chk)"/>
   </g>
-  <g filter="url(#glow)" stroke="#2DD4BF" stroke-width="4" stroke-linecap="round">
-    <path d="M280 240H324"/><path d="M492 240H536"/><path d="M704 240H748"/><path d="M916 240H960"/><path d="M1128 240H1172"/>
+  <rect x="20" y="20" width="1400" height="440" rx="30" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Header Row -->
+  <circle cx="62" cy="76" r="5" fill="#14B8A6"/>
+  <text x="78" y="81" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.2" fill="#475569">DATASHEET REVIEW · MULTIMODAL PIPELINE</text>
+
+  
+  <rect x="869" y="58" width="194" height="34" rx="17" fill="#FFFFFF" stroke="#99F6E4" stroke-width="1.2"/>
+  <text x="966" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F766E">Technical Datasheet LLM</text>
+  
+  <rect x="1073" y="58" width="129" height="34" rx="17" fill="#FFFFFF" stroke="#99F6E4" stroke-width="1.2"/>
+  <text x="1137.5" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F766E">Multimodal VLM</text>
+  
+  <rect x="1212" y="58" width="172" height="34" rx="17" fill="#FFFFFF" stroke="#99F6E4" stroke-width="1.2"/>
+  <text x="1298" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F766E">Web · CLI · MCP Core</text>
+  
+
+  <!-- 6-Step Workflow Cards -->
+  
+  <g>
+    <rect x="56" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="74" y="166" width="42" height="42" rx="12" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="1.2"/>
+    <g transform="translate(84 176) scale(0.92)" fill="none" stroke="#0F766E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M2 15h10"></path><path d="m9 18 3-3-3-3"></path>
+    </g>
+    
+    <text x="236" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">01</text>
+    <text x="74" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">DOCX Ingest</text>
+    
+    <text x="74" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Tables &amp; EMF/WMF</text>
+    
+    <text x="74" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Vectors</text>
+    
   </g>
-  <g fill="#2DD4BF">
-    <path d="M324 240L312 233V247L324 240Z"/><path d="M536 240L524 233V247L536 240Z"/><path d="M748 240L736 233V247L748 240Z"/><path d="M960 240L948 233V247L960 240Z"/><path d="M1172 240L1160 233V247L1172 240Z"/>
+  
+  <g stroke="#2DD4BF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M259 246H275"/>
+    <path d="M270 241L275 246L270 251" fill="none"/>
   </g>
-  <g fill="url(#node)" stroke="#14B8A6">
-    <rect x="76" y="184" width="204" height="112" rx="26"/><rect x="288" y="184" width="204" height="112" rx="26"/><rect x="500" y="184" width="204" height="112" rx="26"/><rect x="712" y="184" width="204" height="112" rx="26"/><rect x="924" y="184" width="204" height="112" rx="26"/><rect x="1136" y="184" width="204" height="112" rx="26"/>
+  
+  <g>
+    <rect x="282" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="300" y="166" width="42" height="42" rx="12" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="1.2"/>
+    <g transform="translate(310 176) scale(0.92)" fill="none" stroke="#0F766E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 3h5v5"></path><path d="M8 3H3v5"></path><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"></path><path d="m15 9 6-6"></path>
+    </g>
+    
+    <text x="462" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">02</text>
+    <text x="300" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Token Chunker</text>
+    
+    <text x="300" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Header &amp; Path Preserved</text>
+    
   </g>
-  <g fill="#042F2E" stroke="#2DD4BF">
-    <rect x="156" y="198" width="44" height="44" rx="12"/><rect x="368" y="198" width="44" height="44" rx="12"/><rect x="580" y="198" width="44" height="44" rx="12"/><rect x="792" y="198" width="44" height="44" rx="12"/><rect x="1004" y="198" width="44" height="44" rx="12"/><rect x="1216" y="198" width="44" height="44" rx="12"/>
+  
+  <g stroke="#2DD4BF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M485 246H501"/>
+    <path d="M496 241L501 246L496 251" fill="none"/>
   </g>
-  <g fill="none" stroke="#5EEAD4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <!-- DOCX Ingestion -->
-    <path d="M170 208H186L192 214V232H170V208Z"/><path d="M186 208V214H192"/><path d="M175 220H187M175 225H183"/>
-    <!-- Token chunker -->
-    <rect x="375" y="210" width="12" height="10" rx="2"/><rect x="391" y="210" width="12" height="10" rx="2"/><rect x="375" y="222" width="28" height="8" rx="2"/>
-    <!-- Parallel LLM + Vision -->
-    <circle cx="602" cy="220" r="9"/><path d="M598 220L601 223L606 217"/><path d="M596 211C598 209 606 209 608 211"/>
-    <!-- Global consistency -->
-    <path d="M802 214L814 226M814 214L802 226"/><circle cx="814" cy="220" r="10"/>
-    <!-- Location mapping -->
-    <circle cx="1026" cy="220" r="4"/><circle cx="1026" cy="220" r="10"/><path d="M1026 206V210M1026 230V234M1012 220H1016M1036 220H1040"/>
-    <!-- Multi-surface export -->
-    <rect x="1225" y="210" width="26" height="20" rx="3"/><path d="M1229 220H1247M1238 210V230"/>
+  
+  <g>
+    <rect x="508" y="148" width="198" height="196" rx="20" fill="url(#card-hi-ds-grammar-chk)" stroke="#5EEAD4" stroke-width="1.8"/>
+    <rect x="526" y="166" width="42" height="42" rx="12" fill="#CCFBF1" stroke="#5EEAD4" stroke-width="1.2"/>
+    <g transform="translate(536 176) scale(0.92)" fill="none" stroke="#0F766E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 4.5a2.5 2.5 0 0 0-4.96-.46 2.5 2.5 0 0 0-1.98 3 2.5 2.5 0 0 0-1.32 4.24 3 3 0 0 0 .34 5.58 2.5 2.5 0 0 0 2.96 3.08 2.5 2.5 0 0 0 4.91.05L12 20V4.5Z"></path><path d="M16 8V5c0-1.1.9-2 2-2"></path><path d="M12 13h4"></path><path d="M12 18h6a2 2 0 0 1 2 2v1"></path><path d="M12 8h8"></path><path d="M20.5 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"></path><path d="M16.5 13a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"></path><path d="M20.5 21a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"></path><path d="M18.5 3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"></path>
+    </g>
+    
+    <rect x="593" y="174" width="71" height="22" rx="11" fill="#F0FDFA" stroke="#99F6E4" stroke-width="1"/>
+    <text x="628.5" y="188.5" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#0F766E">Multimodal</text>
+    
+    <text x="688" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">03</text>
+    <text x="526" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Dual LLM / VLM</text>
+    
+    <text x="526" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Specs, Units &amp; Pinouts</text>
+    
   </g>
-  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" fill="#F0FDFA" font-size="20" font-weight="700">
-    <text x="100" y="272">DOCX Ingest</text>
-    <text x="322" y="272">Token Chunker</text>
-    <text x="528" y="272">Dual LLM/VLM</text>
-    <text x="736" y="272">Consistency</text>
-    <text x="948" y="272">Location Map</text>
-    <text x="1152" y="272">Multi-Surface</text>
+  
+  <g stroke="#2DD4BF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M711 246H727"/>
+    <path d="M722 241L727 246L722 251" fill="none"/>
   </g>
-  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" fill="#99F6E4" font-size="12">
-    <text x="96" y="288">Tables &amp; EMF Vectors</text>
-    <text x="325" y="288">Header-Preserving</text>
-    <text x="522" y="288">Pinouts &amp; Electricals</text>
-    <text x="742" y="288">Cross-Doc Pass</text>
-    <text x="946" y="288">Exact Section / Cell</text>
-    <text x="1156" y="288">Web / CLI / MCP</text>
+  
+  <g>
+    <rect x="734" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="752" y="166" width="42" height="42" rx="12" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="1.2"/>
+    <g transform="translate(762 176) scale(0.92)" fill="none" stroke="#0F766E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><path d="M11 18H8a2 2 0 0 1-2-2V9"></path>
+    </g>
+    
+    <text x="914" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">04</text>
+    <text x="752" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Global Pass</text>
+    
+    <text x="752" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Terminology &amp; Noise</text>
+    
+    <text x="752" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Filter</text>
+    
   </g>
+  
+  <g stroke="#2DD4BF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M937 246H953"/>
+    <path d="M948 241L953 246L948 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="960" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="978" y="166" width="42" height="42" rx="12" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="1.2"/>
+    <g transform="translate(988 176) scale(0.92)" fill="none" stroke="#0F766E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle>
+    </g>
+    
+    <text x="1140" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">05</text>
+    <text x="978" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Location Map</text>
+    
+    <text x="978" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Section, Cell &amp; Fig Ref</text>
+    
+  </g>
+  
+  <g stroke="#2DD4BF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1163 246H1179"/>
+    <path d="M1174 241L1179 246L1174 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="1186" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="1204" y="166" width="42" height="42" rx="12" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="1.2"/>
+    <g transform="translate(1214 176) scale(0.92)" fill="none" stroke="#0F766E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"></path><path d="M10 19v-3.96 3.15"></path><path d="M7 19h5"></path><rect width="6" height="10" x="16" y="12" rx="2"></rect>
+    </g>
+    
+    <text x="1366" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">06</text>
+    <text x="1204" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Multi-Surface</text>
+    
+    <text x="1204" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Web / CLI / MCP &amp; XLSX</text>
+    
+  </g>
+  
+
+  <!-- Footer Takeaway Bar -->
+  <rect x="56" y="382" width="1328" height="50" rx="16" fill="#FFFFFF" fill-opacity="0.92" stroke="#E2E8F0" stroke-width="1.2"/>
+  <circle cx="76" cy="407" r="3.5" fill="#14B8A6"/>
+  <text x="90" y="412" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#475569">Shared grammar_checker core pairs token-bounded chunking with headless EMF conversion and traceable coordinates.</text>
+
+  <rect x="1093" y="392" width="275" height="30" rx="15" fill="#F0FDFA" stroke="#99F6E4" stroke-width="1"/>
+  <text x="1230.5" y="411" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#115E59">On-Prem Intranet · Excel / MD Export</text>
 </svg>

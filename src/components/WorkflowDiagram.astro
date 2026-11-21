@@ -12,212 +12,296 @@ interface Props {
 
 const { workflow, label, labelZh } = Astro.props;
 
-const themes: Record<WorkflowThemeName, {
-  backgroundStart: string;
-  backgroundEnd: string;
-  panelStroke: string;
-  nodeStart: string;
-  nodeEnd: string;
-  nodeStroke: string;
-  accent: string;
-  iconStroke: string;
-  title: string;
-  subtitle: string;
-  tagFill: string;
-  tagText: string;
-}> = {
+interface ThemeTokens {
+  shell: string;
+  topBar: string;
+  glow: string;
+  dot: string;
+  pill: string;
+  iconBox: string;
+  iconBoxHighlight: string;
+  iconHex: string;
+  highlightCard: string;
+  highlightBadge: string;
+  arrow: string;
+  boundaryBadge: string;
+}
+
+const themes: Record<WorkflowThemeName, ThemeTokens> = {
   indigo: {
-    backgroundStart: '#11162A',
-    backgroundEnd: '#20284A',
-    panelStroke: '#6366F1',
-    nodeStart: '#252B50',
-    nodeEnd: '#181E3A',
-    nodeStroke: '#818CF8',
-    accent: '#A5B4FC',
-    iconStroke: '#C7D2FE',
-    title: '#EEF2FF',
-    subtitle: '#C7D2FE',
-    tagFill: '#1E2546',
-    tagText: '#E0E7FF',
+    shell: 'from-[#f8fafc] via-[#f1f5f9] to-[#eef4ff]',
+    topBar: 'from-indigo-500 via-primary to-transparent',
+    glow: 'bg-indigo-300/25',
+    dot: 'bg-indigo-500',
+    pill: 'border-indigo-200/90 bg-white/95 text-indigo-700',
+    iconBox: 'border-indigo-100 bg-indigo-50/80',
+    iconBoxHighlight: 'border-indigo-200 bg-indigo-100/80',
+    iconHex: '#4338ca',
+    highlightCard: 'border-indigo-300/90 bg-gradient-to-b from-white to-indigo-50/70 shadow-[0_12px_30px_rgba(79,70,229,0.08)] ring-1 ring-indigo-200/70',
+    highlightBadge: 'border-indigo-200 bg-indigo-50 text-indigo-700',
+    arrow: 'text-indigo-400',
+    boundaryBadge: 'border-indigo-200/80 bg-indigo-50/80 text-indigo-800',
   },
   teal: {
-    backgroundStart: '#041E1E',
-    backgroundEnd: '#112C2B',
-    panelStroke: '#14B8A6',
-    nodeStart: '#134E4A',
-    nodeEnd: '#042F2E',
-    nodeStroke: '#2DD4BF',
-    accent: '#5EEAD4',
-    iconStroke: '#99F6E4',
-    title: '#F0FDFA',
-    subtitle: '#99F6E4',
-    tagFill: '#042F2E',
-    tagText: '#CCFBF1',
+    shell: 'from-[#f8fafc] via-[#f0fdfa] to-[#ecfdf5]',
+    topBar: 'from-teal-500 via-emerald-500 to-transparent',
+    glow: 'bg-teal-300/25',
+    dot: 'bg-teal-500',
+    pill: 'border-teal-200/90 bg-white/95 text-teal-700',
+    iconBox: 'border-teal-100 bg-teal-50/80',
+    iconBoxHighlight: 'border-teal-200 bg-teal-100/80',
+    iconHex: '#0f766e',
+    highlightCard: 'border-teal-300/90 bg-gradient-to-b from-white to-teal-50/70 shadow-[0_12px_30px_rgba(13,148,136,0.08)] ring-1 ring-teal-200/70',
+    highlightBadge: 'border-teal-200 bg-teal-50 text-teal-700',
+    arrow: 'text-teal-400',
+    boundaryBadge: 'border-teal-200/80 bg-teal-50/80 text-teal-800',
   },
-  cyan: {
-    backgroundStart: '#081E2E',
-    backgroundEnd: '#0C344E',
-    panelStroke: '#0284C7',
-    nodeStart: '#0E486E',
-    nodeEnd: '#07293E',
-    nodeStroke: '#38BDF8',
-    accent: '#7DD3FC',
-    iconStroke: '#BAE6FD',
-    title: '#F0F9FF',
-    subtitle: '#BAE6FD',
-    tagFill: '#07293E',
-    tagText: '#E0F2FE',
+  sky: {
+    shell: 'from-[#f8fafc] via-[#f0f9ff] to-[#e0f2fe]',
+    topBar: 'from-sky-500 via-cyan-500 to-transparent',
+    glow: 'bg-sky-300/25',
+    dot: 'bg-sky-500',
+    pill: 'border-sky-200/90 bg-white/95 text-sky-700',
+    iconBox: 'border-sky-100 bg-sky-50/80',
+    iconBoxHighlight: 'border-sky-200 bg-sky-100/80',
+    iconHex: '#0369a1',
+    highlightCard: 'border-sky-300/90 bg-gradient-to-b from-white to-sky-50/70 shadow-[0_12px_30px_rgba(2,132,199,0.08)] ring-1 ring-sky-200/70',
+    highlightBadge: 'border-sky-200 bg-sky-50 text-sky-700',
+    arrow: 'text-sky-400',
+    boundaryBadge: 'border-sky-200/80 bg-sky-50/80 text-sky-800',
   },
   amber: {
-    backgroundStart: '#231B17',
-    backgroundEnd: '#2A211C',
-    panelStroke: '#A16207',
-    nodeStart: '#3B2F22',
-    nodeEnd: '#241E1A',
-    nodeStroke: '#D97706',
-    accent: '#FCD34D',
-    iconStroke: '#FDE68A',
-    title: '#FFFBEB',
-    subtitle: '#FCD34D',
-    tagFill: '#2D241E',
-    tagText: '#FEF3C7',
+    shell: 'from-[#f8fafc] via-[#fffbeb] to-[#fef3c7]/60',
+    topBar: 'from-amber-500 via-orange-400 to-transparent',
+    glow: 'bg-amber-300/25',
+    dot: 'bg-amber-500',
+    pill: 'border-amber-200/90 bg-white/95 text-amber-800',
+    iconBox: 'border-amber-100 bg-amber-50/80',
+    iconBoxHighlight: 'border-amber-200 bg-amber-100/80',
+    iconHex: '#b45309',
+    highlightCard: 'border-amber-300/90 bg-gradient-to-b from-white to-amber-50/75 shadow-[0_12px_30px_rgba(217,119,6,0.08)] ring-1 ring-amber-200/70',
+    highlightBadge: 'border-amber-200 bg-amber-50 text-amber-800',
+    arrow: 'text-amber-500',
+    boundaryBadge: 'border-amber-200/80 bg-amber-50/80 text-amber-800',
   },
-  slate: {
-    backgroundStart: '#111821',
-    backgroundEnd: '#19232D',
-    panelStroke: '#334252',
-    nodeStart: '#1E2833',
-    nodeEnd: '#18212A',
-    nodeStroke: '#3A4E62',
-    accent: '#5AD7F7',
-    iconStroke: '#87E6FB',
-    title: '#EAF1F8',
-    subtitle: '#AAB8C6',
-    tagFill: '#18212B',
-    tagText: '#E7EEF6',
+  violet: {
+    shell: 'from-[#f8fafc] via-[#f5f3ff] to-[#eef2ff]',
+    topBar: 'from-violet-500 via-indigo-500 to-transparent',
+    glow: 'bg-violet-300/25',
+    dot: 'bg-violet-500',
+    pill: 'border-violet-200/90 bg-white/95 text-violet-700',
+    iconBox: 'border-violet-100 bg-violet-50/80',
+    iconBoxHighlight: 'border-violet-200 bg-violet-100/80',
+    iconHex: '#6d28d9',
+    highlightCard: 'border-violet-300/90 bg-gradient-to-b from-white to-violet-50/70 shadow-[0_12px_30px_rgba(124,58,237,0.08)] ring-1 ring-violet-200/70',
+    highlightBadge: 'border-violet-200 bg-violet-50 text-violet-700',
+    arrow: 'text-violet-400',
+    boundaryBadge: 'border-violet-200/80 bg-violet-50/80 text-violet-800',
+  },
+  blue: {
+    shell: 'from-[#f8fafc] via-[#f0f9ff] to-[#eff6ff]',
+    topBar: 'from-primary via-blue-400 to-transparent',
+    glow: 'bg-blue-300/25',
+    dot: 'bg-primary',
+    pill: 'border-blue-200/90 bg-white/95 text-primary',
+    iconBox: 'border-blue-100 bg-blue-50/80',
+    iconBoxHighlight: 'border-blue-200 bg-blue-100/80',
+    iconHex: '#1a73e8',
+    highlightCard: 'border-blue-300/90 bg-gradient-to-b from-white to-blue-50/70 shadow-[0_12px_30px_rgba(26,115,232,0.08)] ring-1 ring-blue-200/70',
+    highlightBadge: 'border-blue-200 bg-blue-50 text-primary',
+    arrow: 'text-blue-400',
+    boundaryBadge: 'border-blue-200/80 bg-blue-50/80 text-primary',
+  },
+  rose: {
+    shell: 'from-[#f8fafc] via-[#fff1f2]/80 to-[#ffe4e6]/50',
+    topBar: 'from-rose-500 via-pink-400 to-transparent',
+    glow: 'bg-rose-300/25',
+    dot: 'bg-rose-500',
+    pill: 'border-rose-200/90 bg-white/95 text-rose-700',
+    iconBox: 'border-rose-100 bg-rose-50/80',
+    iconBoxHighlight: 'border-rose-200 bg-rose-100/80',
+    iconHex: '#be123c',
+    highlightCard: 'border-rose-300/90 bg-gradient-to-b from-white to-rose-50/70 shadow-[0_12px_30px_rgba(225,29,72,0.08)] ring-1 ring-rose-200/70',
+    highlightBadge: 'border-rose-200 bg-rose-50 text-rose-700',
+    arrow: 'text-rose-400',
+    boundaryBadge: 'border-rose-200/80 bg-rose-50/80 text-rose-800',
+  },
+  cyan: {
+    shell: 'from-[#f8fafc] via-[#ecfeff]/75 to-[#eef4ff]',
+    topBar: 'from-cyan-600 via-sky-500 to-transparent',
+    glow: 'bg-cyan-300/25',
+    dot: 'bg-cyan-600',
+    pill: 'border-cyan-200/90 bg-white/95 text-cyan-800',
+    iconBox: 'border-cyan-100 bg-cyan-50/80',
+    iconBoxHighlight: 'border-cyan-200 bg-cyan-100/80',
+    iconHex: '#0e7490',
+    highlightCard: 'border-cyan-300/90 bg-gradient-to-b from-white to-cyan-50/70 shadow-[0_12px_30px_rgba(8,145,178,0.08)] ring-1 ring-cyan-200/70',
+    highlightBadge: 'border-cyan-200 bg-cyan-50 text-cyan-800',
+    arrow: 'text-cyan-500',
+    boundaryBadge: 'border-cyan-200/80 bg-cyan-50/80 text-cyan-800',
+  },
+  emerald: {
+    shell: 'from-[#f8fafc] via-[#ecfdf5]/85 to-[#f0fdfa]',
+    topBar: 'from-emerald-500 via-teal-500 to-transparent',
+    glow: 'bg-emerald-300/25',
+    dot: 'bg-emerald-500',
+    pill: 'border-emerald-200/90 bg-white/95 text-emerald-700',
+    iconBox: 'border-emerald-100 bg-emerald-50/80',
+    iconBoxHighlight: 'border-emerald-200 bg-emerald-100/80',
+    iconHex: '#047857',
+    highlightCard: 'border-emerald-300/90 bg-gradient-to-b from-white to-emerald-50/70 shadow-[0_12px_30px_rgba(16,185,129,0.08)] ring-1 ring-emerald-200/70',
+    highlightBadge: 'border-emerald-200 bg-emerald-50 text-emerald-700',
+    arrow: 'text-emerald-500',
+    boundaryBadge: 'border-emerald-200/80 bg-emerald-50/80 text-emerald-800',
+  },
+  orange: {
+    shell: 'from-[#f8fafc] via-[#fffbeb]/85 to-[#ffedd5]/50',
+    topBar: 'from-orange-500 via-amber-500 to-transparent',
+    glow: 'bg-orange-300/25',
+    dot: 'bg-orange-500',
+    pill: 'border-orange-200/90 bg-white/95 text-orange-700',
+    iconBox: 'border-orange-100 bg-orange-50/80',
+    iconBoxHighlight: 'border-orange-200 bg-orange-100/80',
+    iconHex: '#c2410c',
+    highlightCard: 'border-orange-300/90 bg-gradient-to-b from-white to-orange-50/70 shadow-[0_12px_30px_rgba(234,88,12,0.08)] ring-1 ring-orange-200/70',
+    highlightBadge: 'border-orange-200 bg-orange-50 text-orange-700',
+    arrow: 'text-orange-400',
+    boundaryBadge: 'border-orange-200/80 bg-orange-50/80 text-orange-800',
   },
 };
 
 const theme = themes[workflow.theme];
 
 /**
- * Render the selected Lucide icon once at build time and reuse its SVG children
- * inside the diagram's single root SVG. This keeps every node on one outline
- * system without shipping a client-side icon bundle for a static illustration.
+ * Render each selected Lucide icon once at build time so every step card uses
+ * the exact same outline icon system without shipping a client JS icon bundle.
  */
 const renderWorkflowIcon = (iconName: WorkflowIconName, color: string) => {
   const Icon = (LucideIcons as unknown as Record<WorkflowIconName, typeof LucideIcons.Activity>)[iconName];
-  const markup = renderToStaticMarkup(React.createElement(Icon, {
-    size: 28,
-    strokeWidth: 1.8,
+  return renderToStaticMarkup(React.createElement(Icon, {
+    size: 20,
+    strokeWidth: 1.9,
     color,
     'aria-hidden': true,
     focusable: false,
   }));
-  return markup.replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '');
 };
 
-const centers = [190, 402, 614, 826, 1038, 1250];
-const nodeWidth = 188;
-const nodeY = 188;
-const nodeHeight = 136;
-const pillGap = 16;
-const pillWidths = workflow.tags.map((tag) => Math.min(360, Math.max(156, Math.ceil(tag.length * 8.2 + 48))));
-const pillX = workflow.tags.reduce<number[]>((positions, _tag, index) => {
-  const previous = index === 0 ? 72 : positions[index - 1] + pillWidths[index - 1] + pillGap;
-  positions.push(previous);
-  return positions;
-}, []);
-const slug = label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'project';
-const titleId = `workflow-${slug}-title`;
-const descriptionId = `workflow-${slug}-description`;
-const description = workflow.steps.map((step) => step.subtitle ? `${step.title} (${step.subtitle})` : step.title).join(' → ');
-const descriptionZh = (workflow.stepsZh ?? workflow.steps).map((step) => step.subtitle ? `${step.title} (${step.subtitle})` : step.title).join(' → ');
+const summaryEn = workflow.steps.map((step) => `${step.title} (${step.subtitle})`).join(' → ');
+const summaryZh = workflow.stepsZh.map((step) => `${step.title} (${step.subtitle})`).join(' → ');
+const regionAriaLabel = `${label} workflow diagram: ${summaryEn}${labelZh ? ` / ${labelZh}：${summaryZh}` : ''}`;
 ---
 
-<div class="workflow-diagram w-full overflow-hidden rounded-2xl" data-workflow-diagram>
-  <svg
-    viewBox="0 0 1440 480"
-    role="img"
-    aria-labelledby={`${titleId} ${descriptionId}`}
-    preserveAspectRatio="xMidYMid meet"
-    class="block h-auto w-full"
-  >
-    <title id={titleId}>{label} workflow diagram</title>
-    <desc id={descriptionId}>{description}{labelZh ? ` / ${labelZh}：${descriptionZh}` : ''}</desc>
+<div
+  class={`workflow-diagram relative overflow-hidden rounded-[28px] border border-gray-200/90 bg-gradient-to-br ${theme.shell} p-5 text-slate-900 shadow-[0_18px_50px_rgba(15,23,42,0.06)] sm:p-7 xl:p-8`}
+  role="region"
+  aria-label={regionAriaLabel}
+  data-workflow-diagram
+>
+  <div class={`pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-85 ${theme.topBar}`} />
+  <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(203,213,225,0.42)_1px,transparent_1px),linear-gradient(to_bottom,rgba(203,213,225,0.42)_1px,transparent_1px)] bg-[size:1.75rem_1.75rem] [mask-image:radial-gradient(ellipse_88%_82%_at_50%_35%,#000_60%,transparent_100%)]" />
+  <div class={`pointer-events-none absolute -right-14 -top-14 h-52 w-52 rounded-full blur-3xl ${theme.glow}`} />
 
-    <defs>
-      <linearGradient id={`${slug}-background`} x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse">
-        <stop stop-color={theme.backgroundStart} />
-        <stop offset="1" stop-color={theme.backgroundEnd} />
-      </linearGradient>
-      <linearGradient id={`${slug}-node`} x1="0" y1="0" x2="0" y2="136" gradientUnits="userSpaceOnUse">
-        <stop stop-color={theme.nodeStart} />
-        <stop offset="1" stop-color={theme.nodeEnd} />
-      </linearGradient>
-      <filter id={`${slug}-glow`} x="-20%" y="-80%" width="140%" height="260%">
-        <feGaussianBlur stdDeviation="5" result="blur" />
-        <feMerge>
-          <feMergeNode in="blur" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-    </defs>
+  <div class="relative z-10">
+    <!-- Top Header Row -->
+    <div class="mb-5 flex flex-col gap-3 sm:mb-6 lg:flex-row lg:items-center lg:justify-between">
+      <div class="flex min-w-0 items-center gap-2.5">
+        <span class={`h-2.5 w-2.5 shrink-0 rounded-full ${theme.dot}`} aria-hidden="true" />
+        <p class="min-w-0 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 sm:text-[0.75rem]">
+          <span class="proj-en">{workflow.eyebrow}</span>
+          <span class="proj-zh hidden">{workflow.eyebrowZh}</span>
+        </p>
+      </div>
 
-    <rect x="24" y="24" width="1392" height="432" rx="36" fill={`url(#${slug}-background)`} />
-    <rect x="24" y="24" width="1392" height="432" rx="36" fill="none" stroke={theme.panelStroke} stroke-width="1.5" />
+      <div class="flex flex-wrap gap-2">
+        {workflow.tags.map((tag, index) => (
+          <span class={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold shadow-sm ${theme.pill}`}>
+            <span class="proj-en">{tag}</span>
+            <span class="proj-zh hidden">{workflow.tagsZh[index] ?? tag}</span>
+          </span>
+        ))}
+      </div>
+    </div>
 
-    <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle">
-      {workflow.tags.map((tag, index) => (
-        <g>
-          <rect x={pillX[index]} y="58" width={pillWidths[index]} height="42" rx="21" fill={theme.tagFill} stroke={theme.panelStroke} />
-          <text x={pillX[index] + pillWidths[index] / 2} y="85" fill={theme.tagText}>
-            <tspan class="proj-en">{tag}</tspan>
-            <tspan class="proj-zh hidden">{workflow.tagsZh?.[index] ?? tag}</tspan>
-          </text>
-        </g>
-      ))}
-    </g>
-
-    <g>
-      {workflow.steps.map((step, index) => (
-        <g>
-          <rect x={centers[index] - nodeWidth / 2} y={nodeY} width={nodeWidth} height={nodeHeight} rx="26" fill={`url(#${slug}-node)`} stroke={theme.nodeStroke} stroke-width="1.5" />
-          <rect x={centers[index] - 22} y="204" width="44" height="44" rx="12" fill={theme.tagFill} stroke={theme.accent} stroke-width="1.5" />
-          <g
-            transform={`translate(${centers[index] - 14} 212)`}
-            aria-hidden="true"
-            fill="none"
-            stroke={theme.iconStroke}
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.8"
-            set:html={renderWorkflowIcon(step.icon, theme.iconStroke)}
-          />
-          <text x={centers[index]} y="278" fill={theme.title} font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">
-            <tspan class="proj-en">{step.title}</tspan>
-            <tspan class="proj-zh hidden">{workflow.stepsZh?.[index]?.title ?? step.title}</tspan>
-          </text>
-          {step.subtitle && <text x={centers[index]} y="303" fill={theme.subtitle} font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" text-anchor="middle">
-            <tspan class="proj-en">{step.subtitle}</tspan>
-            <tspan class="proj-zh hidden">{workflow.stepsZh?.[index]?.subtitle ?? step.subtitle}</tspan>
-          </text>}
-        </g>
-      ))}
-    </g>
-
-    <g fill={theme.accent} stroke={theme.accent} stroke-width="3.5" stroke-linecap="round" filter={`url(#${slug}-glow)`}>
-      {workflow.steps.slice(0, -1).map((_step, index) => {
-        const start = centers[index] + nodeWidth / 2 + 5;
-        const shaftEnd = centers[index + 1] - nodeWidth / 2 - 11;
-        const tip = centers[index + 1] - nodeWidth / 2 - 5;
+    <!-- 6-Step Architecture Pipeline -->
+    <ol class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:gap-5">
+      {workflow.steps.map((step, index) => {
+        const stepZh = workflow.stepsZh[index];
+        const stepNumber = String(index + 1).padStart(2, '0');
         return (
-          <g>
-            <path d={`M ${start} 256 H ${shaftEnd}`} fill="none" />
-            <path d={`M ${tip} 256 L ${tip - 12} 249 V 263 Z`} stroke="none" />
-          </g>
+          <li class="relative flex min-w-0">
+            <div
+              class={`flex w-full min-w-0 flex-col justify-between rounded-2xl border p-4 transition-colors ${
+                step.highlight
+                  ? theme.highlightCard
+                  : 'border-slate-200/90 bg-white/95 shadow-[0_8px_24px_rgba(15,23,42,0.04)]'
+              }`}
+            >
+              <div>
+                <div class="flex items-start justify-between gap-2">
+                  <span
+                    class={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${
+                      step.highlight ? theme.iconBoxHighlight : theme.iconBox
+                    }`}
+                    aria-hidden="true"
+                    set:html={renderWorkflowIcon(step.icon, theme.iconHex)}
+                  />
+
+                  <div class="flex flex-wrap items-center justify-end gap-1.5">
+                    {(step.highlight || step.badge) && (
+                      <span class={`rounded-full border px-2 py-0.5 text-[0.65rem] font-semibold leading-tight ${theme.highlightBadge}`}>
+                        <span class="proj-en">{step.badge ?? 'Core'}</span>
+                        <span class="proj-zh hidden">{stepZh?.badge ?? step.badge ?? '核心'}</span>
+                      </span>
+                    )}
+                    <span class="font-mono text-[0.7rem] font-semibold text-slate-400">
+                      {stepNumber}
+                    </span>
+                  </div>
+                </div>
+
+                <h3 class="mt-3.5 text-sm font-semibold leading-snug text-gray-900">
+                  <span class="proj-en">{step.title}</span>
+                  <span class="proj-zh hidden">{stepZh?.title ?? step.title}</span>
+                </h3>
+              </div>
+
+              <p class="mt-1 text-xs leading-relaxed text-gray-600">
+                <span class="proj-en">{step.subtitle}</span>
+                <span class="proj-zh hidden">{stepZh?.subtitle ?? step.subtitle}</span>
+              </p>
+            </div>
+
+            {index < workflow.steps.length - 1 && (
+              <div
+                class={`pointer-events-none hidden xl:flex xl:w-5 xl:items-center xl:justify-center xl:absolute xl:-right-5 xl:top-1/2 xl:-translate-y-1/2 ${theme.arrow}`}
+                aria-hidden="true"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                  <path d="M1.5 8H13.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+                  <path d="M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            )}
+          </li>
         );
       })}
-    </g>
-  </svg>
+    </ol>
+
+    <!-- Footer Takeaway Strip -->
+    <div class="mt-5 flex flex-col gap-3 rounded-2xl border border-slate-200/85 bg-white/85 px-4 py-3 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex min-w-0 items-start gap-2.5 sm:items-center">
+        <span class={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full sm:mt-0 ${theme.dot}`} aria-hidden="true" />
+        <p class="min-w-0 text-xs leading-5 text-slate-600">
+          <span class="proj-en">{workflow.footerNote}</span>
+          <span class="proj-zh hidden">{workflow.footerNoteZh}</span>
+        </p>
+      </div>
+
+      <span class={`inline-flex shrink-0 items-center self-start rounded-full border px-3 py-1 font-mono text-[0.7rem] font-semibold sm:self-center ${theme.boundaryBadge}`}>
+        <span class="proj-en">{workflow.boundaryBadge}</span>
+        <span class="proj-zh hidden">{workflow.boundaryBadgeZh}</span>
+      </span>
+    </div>
+  </div>
 </div>
