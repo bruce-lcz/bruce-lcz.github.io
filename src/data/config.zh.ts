@@ -23,6 +23,9 @@ export const configZh: Config = {
         {
             id: 'pixart',
             type: 'current',
+            version: 'v3.0',
+            releaseTag: 'Latest',
+            releaseSummary: '跨入 IC 設計應用場景：把生硬的 LLM 技術，打磨成法務、研發與工程團隊日常順手好用的內部產品。',
             company: 'PixArt Imaging Inc.',
             companyMeta: {
                 ...COMPANIES.pixart,
@@ -31,13 +34,37 @@ export const configZh: Config = {
             },
             role: '資訊工程師（生成式 AI／LLM 專案）',
             period: '2025 年 8 月－至今',
-            description: '我負責法務、研發、工程與內部知識應用的端到端交付，把限制多、脈絡複雜的 AI 需求，轉成團隊真正用得上的內部流程與產品。',
-            techStack: ['Python', 'FastAPI', 'vLLM', '流程設計', '內部產品化'],
+            description: '在兩人編制的精實 GenAI 團隊中獨立擔任每個專案的 PM，直接與法務、研發、人資與工程團隊對接，評估既有系統與技術可行性、規劃導入策略並定期向主管匯報里程碑，完成端到端系統交付。',
+            techStack: ['Python', 'FastAPI', 'vLLM', 'LLMOps', 'Prompt Engineering'],
             achievements: [
-                '以 vLLM 模型服務、文件／圖片工具與任務導向流程，設計共享的內部 GenAI 工作區，支援程式輔助、文件審查與技術分析。',
-                '交付含權限隔離的 NL2SQL、多模態技術審查、LLM 營運報表，以及每頁都能追溯來源的 RAG 系統。',
-                '結合 OCR、地端 LLM、分階段重整／校稿、術語處理與驗證機制，將敏感法務與專利流程產品化，並支援離線處理。',
+                '在兩人 GenAI 團隊中獨立擔任各專案 PM，與法務、研發、人資及工程團隊對接，負責既有流程評估、技術可行性分析、導入規劃與端到端交付，並向主管匯報進度。',
+                '建置共享內部 GenAI 工作區與 LLM Gateway（vLLM、OpenAI-compatible API、模型路由、API Key 管理與 LLMOps 遙測），支援程式輔助、文件審查與技術分析。',
+                '交付以資安與隱私保護為核心的分析與文件系統，涵蓋伺服器端權限隔離 NL2SQL（隔離唯讀 SQLite 快照與稽核日誌）、多模態半導體規格書審查與頁級溯源 ChromaDB RAG。',
+                '結合 OCR、地端 LLM、Prompt Engineering（法務條文／段落萃取、分階段規格書校對、術語一致性規則）與驗證機制，將敏感法務與專利流程產品化——協助法務與研發同仁分擔繁瑣的人工校對與比對作業，專注於更高價值的核心工作。',
                 '以可重複使用的 Python 工具自動化工程與會議流程，涵蓋檔案處理、ASR、講者分段與結構化摘要。',
+                '從 LLM 平台監控指標與 20+ 位同仁一對一技術諮詢主動發掘痛點，獨立建置全公司公告之 Prompt Engineering、OpenCode 雙語教材、Context 壓縮實務範例與 Prefix Caching（KV Cache／TTFT）推論優化指南。',
+            ],
+            changelog: [
+                {
+                    tag: 'new',
+                    text: '建置共享內部 GenAI 工作區與 LLM Gateway（vLLM、OpenAI-compatible API、模型路由、API Key 管理與 LLMOps 遙測），支援程式輔助、文件審查與技術分析。',
+                },
+                {
+                    tag: 'new',
+                    text: '交付以隱私保護為核心的分析與文件系統，涵蓋權限隔離 NL2SQL（隔離快照與稽核日誌）、多模態規格書審查與頁級溯源 ChromaDB RAG。',
+                },
+                {
+                    tag: 'improved',
+                    text: '結合 OCR、地端 LLM、Prompt Engineering（法務條文／段落萃取、規格書兩階段審查與術語規則）與驗證機制，將法務與專利流程產品化——分擔法務與研發團隊繁瑣的人工校對工作，釋放時間專注於核心任務。',
+                },
+                {
+                    tag: 'impact',
+                    text: '以可重複使用的 Python 工具自動化工程與會議流程，涵蓋檔案處理、ASR、講者分段與結構化摘要。',
+                },
+                {
+                    tag: 'impact',
+                    text: '獨立規劃並推動全公司 GenAI 賦能、知識轉移與 LLM 推論優化，將監控數據與 20+ 位同仁諮詢轉化為全公司公告之 Prompt Engineering、OpenCode 雙語教材、Context 壓縮與 KV Cache／TTFT 優化指南。',
+                },
             ],
             relatedProjectIds: [
                 'pixart-genai-hub',
@@ -45,6 +72,7 @@ export const configZh: Config = {
                 'ds-grammar-chk',
                 'llm-usage-dashboard',
                 'issue-kb',
+                'genai-enablement',
                 'legal-contract-comparison',
                 'patent-translation-service',
                 'auto-minutes-system',
@@ -54,6 +82,9 @@ export const configZh: Config = {
         {
             id: 'auo',
             type: 'past',
+            version: 'v2.0',
+            releaseTag: 'LTS',
+            releaseSummary: '從學術研究走進製造現場：讓 AI 不再只是實驗室跑分，而是真正幫產線提升良率、省下時間的日常工具。',
             company: 'AUO Corporation－先進製造中心',
             companyMeta: {
                 ...COMPANIES.auo,
@@ -62,19 +93,45 @@ export const configZh: Config = {
             },
             role: 'AI 工程師／專案負責人',
             period: '2021 年 8 月－2025 年 8 月',
-            description: '建置面向製造現場的 AI 系統，支援決策、製程優化與營運流程；重點不只是模型實驗，而是讓成果真正進入日常工作。',
-            techStack: ['Python', 'SQL', 'Databricks', 'Streamlit', 'FastAPI', 'Agent 流程'],
+            description: '於後兩年（2023–2025）擔任專案負責人（Project Leader），帶領工程師與實習生從需求界定、技術可行性分析到跨廠部署，打造支援製造決策與營運優化的 AI 系統。',
+            techStack: ['Python', 'Azure OpenAI', 'LangGraph', 'PyTorch', 'SQL', 'Databricks', 'FastAPI'],
             achievements: [
-                '透過跨廠最佳化與可解釋建議，提升良率 1.43%、降低缺陷 12.62%，每月約節省 300 人時。',
-                '把製造助理從單純檢索，發展成能使用 SQL／API 工具與製程知識協助判斷的流程。',
-                '以 LSTM 預測與保養規劃流程降低缺陷預測 RMSE 20%，每月約節省 90 人時。',
+                '於後兩年（2023–2025）擔任 Project Leader，帶領工程師與實習生完成跨廠 AI 專案的需求界定、技術可行性評估與正式環境落地。',
+                '透過跨廠 Golden Path 最佳化與 LIME 可解釋分析，提升良率 1.43%、降低缺陷 12.62%，每月約節省 300 人時。',
+                '將串接 Azure OpenAI 的製造助理從單純 RAG 檢索，升級為具備 SQL／API 工具呼叫與製程知識推理的 LangGraph Agent 流程。',
+                '以 PyTorch LSTM 搭配自訂趨勢一致性損失函數打造預防保養預測流程，降低缺陷預測 RMSE 20%，每月約節省 90 人時。',
                 '獲選智慧製造三級菁英人才；預防保養成果並獲核准為公司內部防禦性專利。',
+            ],
+            changelog: [
+                {
+                    tag: 'new',
+                    text: '於後兩年（2023–2025）擔任 Project Leader，帶領工程師與實習生完成跨廠 AI 專案的需求界定、技術可行性評估與正式環境落地。',
+                },
+                {
+                    tag: 'impact',
+                    text: '透過跨廠 Golden Path 最佳化與 LIME 可解釋分析，提升良率 1.43%、降低缺陷 12.62%，每月約節省 300 人時。',
+                },
+                {
+                    tag: 'improved',
+                    text: '將串接 Azure OpenAI 的製造助理從單純 RAG 檢索，升級為具備 SQL／API 工具呼叫與製程知識推理的 LangGraph Agent 流程。',
+                },
+                {
+                    tag: 'improved',
+                    text: '以 PyTorch LSTM 搭配自訂趨勢一致性損失函數打造預防保養流程，降低缺陷預測 RMSE 20%，每月約節省 90 人時。',
+                },
+                {
+                    tag: 'new',
+                    text: '獲選智慧製造三級菁英人才；預防保養成果並獲核准為公司內部防禦性專利。',
+                },
             ],
             relatedProjectIds: ['auo-assistant', 'auo-yield', 'auo-pm'],
         },
         {
             id: 'academia-sinica',
             type: 'past',
+            version: 'v1.0',
+            releaseTag: 'Initial Release',
+            releaseSummary: '初代版本上線：第一次與真實世界格式混亂的地址資料交手，建立資料清理與 Web 驗證的基礎功。',
             company: '中央研究院－GIS 中心',
             companyMeta: {
                 ...COMPANIES.sinica,
@@ -88,6 +145,16 @@ export const configZh: Config = {
             achievements: [
                 '建立地址正規化流程，以及支援異質資料集的資料結構。',
                 '獲得 TGIS 2019 最佳學生論文獎。',
+            ],
+            changelog: [
+                {
+                    tag: 'new',
+                    text: '建立地址正規化流程，以及支援異質資料集的資料結構。',
+                },
+                {
+                    tag: 'impact',
+                    text: '獲得 TGIS 2019 最佳學生論文獎。',
+                },
             ],
             relatedProjectIds: ['address-normalization'],
         },
@@ -112,6 +179,8 @@ export const configZh: Config = {
             degree: '碩士',
             field: '工業工程與管理',
             period: '2019 - 2021',
+            version: 'v0.2',
+            releaseTag: 'Beta',
             thesis: '基於 R-tree 與 SPACE-MDL-LSTM 之大範圍人流預測效率改善研究',
             logo: COMPANIES.yuntech.logo,
         },
@@ -120,6 +189,8 @@ export const configZh: Config = {
             degree: '學士',
             field: '工業工程與管理',
             period: '2015 - 2019',
+            version: 'v0.1',
+            releaseTag: 'Alpha',
             thesis: '彈性生產流程之機台派工最佳化研究',
             logo: COMPANIES.yuntech.logo,
         },
@@ -144,23 +215,56 @@ export const configZh: Config = {
     skills: [
         {
             category: '生成式 AI 與 LLM 系統',
-            description: '圍繞模型、檢索、工具與多模態輸入，建立實用且可驗證的 GenAI 流程。',
-            items: ['地端 LLM 服務', 'vLLM', 'RAG', 'Agent 與工具呼叫流程', '多模態／VLM', 'OCR／ASR', '提示與驗證設計'],
+            description: '圍繞 OpenAI／vLLM API、向量檢索、工具整合與多模態輸入，建立實用且可驗證的 GenAI 流程。',
+            items: [
+                'OpenAI／Azure OpenAI 與 OpenAI-compatible API',
+                '地端 LLM 服務（vLLM）',
+                'Prompt 與 Context 工程',
+                'RAG',
+                '向量資料庫（ChromaDB）',
+                'Agent 工作流程（LangGraph、MCP）',
+                '多模態／VLM',
+                'OCR／ASR',
+                '輸出驗證設計',
+            ],
         },
         {
-            category: 'AI 系統與解決方案設計',
-            description: '設計能串接流程、API、工具與使用者的安全可靠企業級 AI 系統。',
-            items: ['企業級 AI 架構', '流程編排', 'API／工具整合', '資安與可靠性設計'],
+            category: 'AI 架構、LLMOps 與資安治理',
+            description: '從技術可行性評估、獨立專案帶領到安全與隱私防護設計，落地可維運的企業級 AI 系統。',
+            items: [
+                '企業級 AI 架構',
+                'LLMOps／MLOps 系統部署',
+                'AI 安全與資料隱私（內網隔離、RBAC、Guardrails、稽核日誌）',
+                '技術可行性與導入策略規劃',
+                '技術專案管理與帶領',
+                '技術賦能與知識轉移',
+            ],
         },
         {
             category: '後端與資料工程',
-            description: '實作可靠的服務與資料管線，讓 AI 流程能在正式環境中穩定運作。',
-            items: ['Python', 'FastAPI', 'REST API', 'SQL', 'Docker', 'ETL／資料管線', 'Databricks'],
+            description: '實作可靠的後端服務與資料管線，並搭配 AI 輔助 Web 介面整合交付，讓 AI 流程能在正式環境穩定運作。',
+            items: [
+                'Python',
+                'FastAPI',
+                'REST API',
+                'SQL',
+                'PostgreSQL',
+                'Docker',
+                'ETL／資料管線',
+                'Databricks',
+                'AI 輔助 Web 介面整合與交付（React／TypeScript）',
+            ],
         },
         {
-            category: '應用機器學習',
-            description: '將預測建模與最佳化方法應用於營運與製造問題。',
-            items: ['時間序列預測', 'LSTM', '可解釋 AI', '最佳化'],
+            category: '模型優化與應用機器學習',
+            description: '調校 LLM 推論延遲，並將自訂目標函數建模應用於營運與製造問題。',
+            items: [
+                'LLM 推論優化（KV Cache／Prefix Caching／TTFT）',
+                'PyTorch',
+                '自訂損失函數優化',
+                '時間序列預測（LSTM）',
+                '可解釋 AI（LIME）',
+            ],
         },
     ],
 };

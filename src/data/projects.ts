@@ -5,6 +5,7 @@ export const PROJECT_ORDER: string[] = [
     'ds-grammar-chk',
     'llm-usage-dashboard',
     'issue-kb',
+    'genai-enablement',
     'pixart-genai-hub',
     'legal-contract-comparison',
     'patent-translation-service',
@@ -166,7 +167,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
         visualType: 'datasheet-review',
         heroBadges: ['Multimodal Document Review', 'Technical Datasheet LLM', 'Web / CLI / MCP Interface', 'Format-Preserving Parsing'],
         heroImage: '/images/projects/ds-grammar-chk-hero.svg',
-        techStack: ['Python', 'FastAPI', 'OpenAI / VLM', 'python-docx', 'MCP Protocol', 'Docker', 'Openpyxl', 'Asynchronous Workers'],
+        techStack: ['Python', 'FastAPI', 'OpenAI-compatible API / VLM', 'Prompt Engineering', 'python-docx', 'MCP Protocol', 'Docker', 'Openpyxl', 'Asynchronous Workers'],
         translations: {
             en: {
                 title: 'Multimodal Technical Document Review',
@@ -585,6 +586,153 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
         },
     },
     {
+        id: 'genai-enablement',
+        category: 'PixArt',
+        period: '2025/11 - Present',
+        timeline: { start: '2025-11', status: 'ongoing', group: 'platform', featured: true },
+        companyId: 'pixart',
+        visualType: 'genai-enablement',
+        heroBadges: ['LLM Inference Optimization', 'Prompt & Context Engineering', 'Developer Enablement', 'Knowledge Transfer'],
+        heroImage: '/images/projects/genai-enablement-hero.svg',
+        techStack: ['vLLM', 'KV Cache / Prefix Caching', 'Prompt Engineering', 'Context Engineering', 'OpenCode & Skills', 'AI Coding Workflows', 'LLM Observability', 'Technical Enablement'],
+        translations: {
+            en: {
+                title: 'Enterprise GenAI Enablement & LLM Performance Optimization',
+                coreValueLine: 'LLM Observability · Prefix Caching & KV Reuse · OpenCode & Prompt Best Practices',
+                role: 'AI Application Engineer',
+                company: 'PixArt Imaging Inc.',
+                shortDescription: 'Turned LLM usage telemetry and 20+ 1-on-1 consultations into company-announced bilingual guides on OpenCode, context management, and prefix-caching inference optimization.',
+                description: 'A data-driven enterprise enablement initiative connecting LLM platform observability, KV-cache optimization methodology, and hands-on developer guidance into reusable internal resources.',
+                keyFeatures: [
+                    'LLM telemetry and consultation analysis identifying long-context growth, repeated input patterns, API errors, and timeouts',
+                    'Bilingual (Traditional Chinese & English) self-learning web guides covering General LLM Usage, OpenCode setup, Skills, and troubleshooting',
+                    'Prompt Caching & Inference Optimization guides detailing Prefill/Decode, KV Cache, Automatic Prefix Caching, Cache Hit/Miss, and TTFT verification methods',
+                    'Practical Context Compression examples and prompt structure comparisons tailored for AI coding workflows and agent-based workflow exploration',
+                ],
+                challenges: [
+                    'Platform logs and daily user questions revealed recurring bottlenecks around prompt structure, unmanaged context accumulation, model selection, and repeated prefill overhead.',
+                    'Underlying LLM inference concepts like KV caching and prefix stability had to be translated into concrete, actionable habits for engineers across diverse technical environments.',
+                ],
+                summary: 'Closed the loop from LLM observability to developer enablement—translating platform telemetry and 20+ 1-on-1 consultations into company-wide learning resources, context-compression workflows, and prefix-caching optimization guides.',
+                beforeSummary: 'Users relied on ad-hoc prompts and trial-and-error in AI coding workflows, leading to oversized context windows, repeated prefill overhead, API timeouts, and recurring 1-on-1 support requests.',
+                afterSummary: 'Combined LLM monitoring insights with 20+ 1-on-1 consultations to publish management-announced bilingual web guides covering prompt engineering, context compression, OpenCode Skills, and prefix-caching verification methods.',
+                context: [
+                    'While operating internal GenAI platforms and AI coding tools across R&D and non-engineering teams, telemetry (token usage, context length, API errors, timeouts) highlighted clear usability and efficiency gaps.',
+                    'Users needed practical guidance on structuring prompts, decomposing tasks, choosing models, and managing context in real AI coding workflows.',
+                    'Beyond individual troubleshooting, the organization needed standardized, maintainable self-learning materials to establish foundational readiness for future internal training.',
+                ],
+                constraint: [
+                    'Materials had to stay accurate across different user roles—covering both general enterprise users and R&D workstation environments in Traditional Chinese and English.',
+                    'Inference optimization guidance needed to reflect real-world vLLM and prefix-caching constraints, including cache eviction, GPU memory limits, concurrent load, and dynamic context changes.',
+                    'Scope boundaries were kept transparent: optimization work focused on reproducible guidelines, prompt comparisons, and verification methodology rather than claiming unverified production speedup numbers.',
+                ],
+                myRole: [
+                    'Analyzed LLM platform metrics alongside direct user questions to pinpoint systemic workflow bottlenecks and propose a proactive knowledge-sharing plan to management.',
+                    'Authored and structured the General LLM Usage and bilingual OpenCode Skills learning resources as web-based self-learning documentation.',
+                    'Designed the Prompt Caching and Context Compression materials, connecting `Prefill`/`Decode` and `KV Cache` mechanics directly to everyday prompt design and validation methods.',
+                    'Provided 1-on-1 technical consultations to 20+ employees and explored candidate scenarios for agent-based workflows.',
+                ],
+                systemDesign: [
+                    'Observability & Discovery: Correlate token consumption, context length, API error, and timeout metrics with 1-on-1 user consultations to isolate recurring failure patterns.',
+                    'Inference Optimization Framework: Separate stable prompt prefixes (system instructions, tool schemas, shared docs) from dynamic task inputs to maximize `Automatic Prefix Caching` reuse.',
+                    'Verification Methodology: Define evaluation criteria comparing `Prefix Cache Hit Rate`, `TTFT`, `End-to-End Latency`, and prompt-processing efficiency across prompt layouts.',
+                    'Context & Workflow Playbooks: Pair `Context Compression` demonstrations with task decomposition, model selection, and `OpenCode Skills` usage conventions.',
+                    'Company-Wide Rollout: Publish maintainable bilingual web guides reviewed and officially announced company-wide by management.',
+                ],
+                implementationHighlights: [
+                    'Built prompt-structure comparison examples contrasting volatile prefixes against cache-friendly layouts (`System + Tools + Shared Context` followed by dynamic task tails).',
+                    'Documented practical Context Compression workflows that preserve essential task state during long AI coding sessions without carrying unnecessary history.',
+                    'Delivered bilingual (ZH/EN) OpenCode guides spanning workstation setup, Skills usage, security guardrails, and step-by-step troubleshooting.',
+                    'Compiled recurring insights from 20+ 1-on-1 employee consultations into reusable self-service web documentation and candidate agent-workflow evaluations.',
+                ],
+                outcome: [
+                    'General LLM Usage and OpenCode Skills materials were reviewed by management and officially announced company-wide for self-service reference.',
+                    'Completed 20+ 1-on-1 technical consultations helping colleagues refine AI coding workflows, prompt clarity, context hygiene, and agent-workflow feasibility.',
+                    'Delivered complete Prompt Caching & Inference Optimization guides with actionable best practices and TTFT/Hit-Rate verification methods.',
+                    'Established a data-driven improvement loop (LLM Observability → Performance Optimization → Developer Enablement → Knowledge Transfer) and built the curriculum foundation for future internal training.',
+                ],
+                problemSolved: [
+                    'Eliminated repetitive 1-on-1 explanations for common OpenCode configuration, prompt structuring, and long-context timeout issues by turning them into web-based self-learning guides.',
+                    'Bridged the gap between low-level LLM serving behavior (`KV Cache`, `Prefill` overhead) and day-to-day user prompting habits.',
+                    'Created standardized, durable reference documentation ready to support future internal GenAI training and team knowledge transfer.',
+                ],
+                impact: [
+                    'Established a data-driven enablement loop connecting LLM observability directly to developer productivity and knowledge transfer.',
+                    'Raised organizational awareness of how prompt structure, context management, and prefix caching affect inference latency and reliability.',
+                    'Laid the documented curriculum foundation for future formal workshops, team onboarding, and cross-functional AI adoption.',
+                ],
+                cardTags: ['LLM Performance Optimization', 'Prompt & Context Engineering', 'OpenCode Enablement', 'Knowledge Transfer'],
+            },
+            zh: {
+                title: '企業 GenAI 技術賦能與 LLM 推論效能優化',
+                coreValueLine: 'LLM 使用監控 · Prefix Cache 與推論優化 · OpenCode 與雙語知識轉移',
+                role: 'AI 應用工程師',
+                company: 'PixArt Imaging Inc.',
+                shortDescription: '結合 LLM 平台監控指標與超過 20 位同仁的一對一技術諮詢，獨立規劃並完成全公司公告的 GenAI／OpenCode 雙語教材、Context 壓縮實務範例與 Prefix Caching 推論效能優化指南。',
+                description: '將 LLM 平台可觀測性（Observability）、KV Cache 推論最佳實踐與實務開發諮詢串成工程改善閉環，轉化為全公司可自主查閱的技術賦能資源。',
+                keyFeatures: [
+                    '整合平台監控指標（Token 用量、Context 長度、API 錯誤、Timeout）與日常諮詢，主動識別共通操作與效能瓶頸',
+                    '撰寫繁體中文與英文雙語網頁教材，涵蓋 General LLM Usage、OpenCode 操作設定、Skills 應用與疑難排解',
+                    '規劃 Prompt Caching 與推論效能優化教材，完整拆解 Prefill／Decode、KV Cache、Automatic Prefix Caching 與 TTFT 驗證方法',
+                    '建立 Context Compression 實務示範與 Prompt 結構對照範例，並與使用者共同探索 Agent-based Workflow 潛在場景',
+                ],
+                challenges: [
+                    '從後台監控與使用者提問發現，長對話 Context 無限膨脹、前綴結構變動與模型選用不當，容易造成重複 Prefill 計算與 Timeout。',
+                    '需要把底層的 KV Cache、Cache Eviction 與 GPU 記憶體限制，轉譯成一般使用者與研發工程師都能實際操作的 Prompt 與工作流程規範。',
+                ],
+                summary: '串聯 LLM 可觀測性、推論效能優化與開發者賦能，將平台遙測與 20+ 位同仁一對一技術諮詢轉化為全公司公告的雙語學習資源與最佳實踐指南。',
+                beforeSummary: '同仁在日常使用 LLM 與 AI Coding 工具時多仰賴零散嘗試，容易遇到長上下文累積、重複 Prefill 負擔、Timeout 與重複性的個別提問。',
+                afterSummary: '結合監控數據與 20+ 次一對一諮詢，完成並由主管全公司公告雙語 GenAI／OpenCode 網頁教材，並補齊 Context 壓縮範例與 Prefix Caching 效能驗證方法。',
+                context: [
+                    '在維運內部 GenAI 平台與 AI Coding 工具期間，透過觀察 Token 消耗、Context 長度、API Error 與 Timeout 等遙測數據，發現使用者在操作習慣與流程設計上仍有優化空間。',
+                    '研發工作站與一般部門使用者對工具設定、Prompt 設計、任務拆解與結果驗證各有不同門檻，需要分眾且可重複查閱的技術指南。',
+                    '除了單點技術支援外，組織需要可持續維護的標準化教材，為後續企業內部知識共享與正式團隊培訓奠定基礎。',
+                ],
+                constraint: [
+                    '教材必須兼顧不同技術背景與作業環境，提供繁中與英文雙語版本並支援安全使用規範與問題排查。',
+                    '推論優化建議需符合 vLLM 與地端部署限制，明確說明 Cache Eviction、不同 Request 前綴差異、GPU 記憶體上限與併發負載等影響因素。',
+                    '嚴守成果界線：此專案聚焦於教材建置、Prompt 結構比較設計與效能驗證方法建立，不虛構未經實測的 Cache Hit Rate 提升百分比或正式課程人數。',
+                ],
+                myRole: [
+                    '交叉分析 LLM 平台使用監控指標與使用者實際問題，主動辨識改善機會並向主管提出企業 GenAI 賦能與知識共享規劃。',
+                    '獨立規劃並撰寫 General LLM Usage 與 OpenCode Skills 雙語教材，整理為可自主學習的網頁化內部文件。',
+                    '設計 Prompt Caching 與 Context Compression 技術教材，將 `Prefill`/`Decode`、`KV Cache` 與 `TTFT` 概念轉化為可執行的 Prompt 組織規範與驗證步驟。',
+                    '提供超過 20 位同仁一對一技術諮詢，檢視既有 AI Coding Workflow 並討論可導入 Agent-based Workflow 的任務場景。',
+                ],
+                systemDesign: [
+                    '遙測與問題診斷：彙整 Token 用量、Context 長度、API 錯誤／逾時紀錄與諮詢回饋，識別系統性瓶頸。',
+                    'Prefix Cache 結構優化：將固定共用的 `System + Tools + Shared Docs` 置於前綴，並與動態任務指令分離，提高 `Automatic Prefix Caching` 重用穩定性。',
+                    '效能驗證方法設計：建立針對 `Prefix Cache Hit Rate`、`TTFT`、`End-to-End Latency` 與 Prompt Processing 效率的對照驗證準則。',
+                    '上下文與工作流程規範：建立 `Context Compression` 實務操作範例，搭配任務拆解、模型選擇與 `OpenCode Skills` 使用指引。',
+                    '全公司知識轉移：將網頁化教材提交主管審閱，透過正式公告發布至全公司供自主查閱與重複利用。',
+                ],
+                implementationHighlights: [
+                    '設計固定指令與動態任務的 Prompt 結構對照範例，清楚說明微調前綴順序如何影響 `KV Cache` 命中與重複 Prefill 成本。',
+                    '整理 AI Coding 長對話的 `Context Compression` 實務案例，示範如何在保留關鍵任務脈絡下有效管理上下文長度。',
+                    '編寫繁體中文與英文雙語 OpenCode 使用指南，涵蓋環境設定、Skills 操作、資安注意事項與常見問題排解。',
+                    '將超過 20 位同仁的一對一諮詢經驗結構化沉澱，轉化為自助學習網站內容與 Agent Workflow 應用評估參考。',
+                ],
+                outcome: [
+                    'General LLM Usage 與 OpenCode Skills 兩類教材均通過主管審閱並正式公告給全公司同仁使用。',
+                    '累計完成超過 20 位同仁一對一技術諮詢，協助改善 Prompt 品質、Context 管理習慣與 AI Coding Workflow。',
+                    '完成 LLM Prompt Caching 與推論效能優化教材，建立清晰的 Cache 使用限制說明與 TTFT／Hit Rate 驗證方法。',
+                    '建立「LLM 可觀測性 → 推論效能優化 → 開發者賦能 → 知識轉移」的完整工程改善閉環，並奠定後續企業內部培訓與跨部門技術分享的教材基礎。',
+                ],
+                problemSolved: [
+                    '將重複性高的一對一環境設定、Prompt 設計與長對話逾時排查問題，轉化為全公司可自主查閱的網頁學習資源。',
+                    '連結底層推論引擎機制（`KV Cache`、`Prefill` 計算成本）與第一線使用者的實際提問與開發習慣。',
+                    '建立可持續維護的標準化內部知識庫，作為後續企業內部 GenAI 培訓與部門分享的教材基礎。',
+                ],
+                impact: [
+                    '展現從「LLM 可觀測性 → 推論效能優化 → 開發者賦能 → 知識轉移」的完整工程改善閉環。',
+                    '提升團隊對 Prompt 結構、Context 管理與 Prefix Caching 如何影響模型反應速度與資源消耗的技術認知。',
+                    '為公司後續正式內部培訓、工作坊與跨部門 AI 工作流程導入建立可重複使用的教材與經驗基礎。',
+                ],
+                cardTags: ['LLM 推論效能優化', 'Prompt 與 Context 工程', 'OpenCode 賦能', '知識轉移'],
+            },
+        },
+    },
+    {
         id: 'asc-merge-c-generator',
         category: 'PixArt',
         period: '2026/05',
@@ -836,18 +984,18 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
         companyId: 'pixart',
         heroBadges: ['Contract Comparison', 'Document Intelligence', 'Human Review Workflow'],
         heroImage: '/images/projects/legal-document-comparison-hero.svg',
-        techStack: ['Python', 'FastAPI', 'vLLM', 'Document Parsing', 'Human Review Workflow'],
+        techStack: ['Python', 'FastAPI', 'vLLM', 'Prompt Engineering', 'Document Parsing', 'Human Review Workflow'],
         translations: {
             en: {
                 title: 'Legal Document Comparison Web App',
                 coreValueLine: 'Internal Contract Comparison Workflow for Human Review',
                 role: 'AI Application Engineer',
                 company: 'PixArt Imaging Inc.',
-                shortDescription: 'Built an internal web app that helped legal users compare source contracts with signed or scanned copies using document parsing, AI-assisted comparison support, and side-by-side review.',
+                shortDescription: 'Built an internal web app that helped legal users compare source contracts with signed or scanned copies using document parsing, prompt-engineered clause extraction and comparison support, and side-by-side review.',
                 description: 'An internal document comparison workflow focused on review support.',
                 keyFeatures: [
                     'Internal review app for comparing originals against signed or scanned copies',
-                    'AI-assisted comparison support paired with supporting consistency checks',
+                    'Prompt-engineered clause and paragraph extraction paired with consistency checks',
                     'Dual-pane review interface for clearer clause-by-clause inspection',
                 ],
                 challenges: [
@@ -856,7 +1004,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: 'Built an internal web app that helped legal users compare source contracts with signed or scanned copies using document parsing, AI-assisted comparison support, and side-by-side review.',
                 beforeSummary: 'Legal users needed a faster way to compare sensitive contracts without sending documents to external tools.',
-                afterSummary: 'Structured the process into document extraction, comparison support, supporting consistency checks, and human review through a dual-pane interface.',
+                afterSummary: 'Structured the process into document extraction, prompt-engineered clause alignment and comparison support, supporting consistency checks, and human review through a dual-pane interface.',
                 context: [
                     'The legal team needed a faster way to review signed or scanned contracts against source documents.',
                     'The goal was not to showcase OCR or LLMs, but to reduce slow and error-prone manual comparison work.',
@@ -866,11 +1014,11 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Scanned files were structurally unstable, and legal review needed human-in-the-loop support instead of relying only on model output.',
                 ],
                 myRole: [
-                    'The review problem was broken into parsing, comparison support, consistency checks, and human review steps.',
+                    'The review problem was broken into parsing, prompt-engineered clause/paragraph extraction, comparison support, consistency checks, and human review steps.',
                     'The workflow was packaged as an internal web app instead of a loose backend process.',
                 ],
                 systemDesign: [
-                    'Combined document parsing, AI-assisted comparison support, supporting consistency checks, and a side-by-side review interface.',
+                    'Combined document parsing, prompt-engineered comparison support, supporting consistency checks, and a side-by-side review interface.',
                     'Added checks around reconstructed text so reviewers could inspect differences with clearer context.',
                 ],
                 outcome: [
@@ -884,7 +1032,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 implementationHighlights: [
                     'Built an internal web app around the review workflow, not just a comparison API.',
-                    'Integrated document parsing with AI-assisted comparison support and supporting consistency checks.',
+                    'Applied prompt engineering for noisy legal paragraph/clause extraction and structured comparison alignment alongside consistency checks.',
                     'Designed a synchronized dual-pane interface for efficient human review.',
                 ],
                 impact: [
@@ -897,11 +1045,11 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 title: '法務文件比對 Web App',
                 role: 'AI 應用工程師',
                 company: 'PixArt Imaging Inc.',
-                shortDescription: '建置內部 Web App，協助法務使用者比對原始合約與簽署版或掃描文件，透過文件解析、AI 輔助比對與雙欄檢視，支援人工審查。',
+                shortDescription: '建置內部 Web App，協助法務使用者比對原始合約與簽署版或掃描文件，透過文件解析、Prompt Engineering 條文段落萃取與比對輔助，以及雙欄檢視支援人工審查。',
                 description: '這是一個以文件比對與審查支援為核心的內部工具。',
                 keyFeatures: [
                     '比較原稿與簽署或掃描版本的內部審查工具',
-                    'AI 輔助比對搭配一致性檢查',
+                    '以 Prompt Engineering 進行合約段落／條文萃取，並搭配一致性檢查',
                     '雙欄對照介面，支援更清楚的逐條檢視',
                 ],
                 challenges: [
@@ -910,7 +1058,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 summary: '建置內部 Web App，協助法務使用者比對原始合約與簽署版或掃描文件，透過文件解析、AI 輔助比對與雙欄檢視，支援人工審查。',
                 beforeSummary: '法務使用者需要更有效率地比對敏感合約內容，同時避免將文件送至外部 AI 工具。',
-                afterSummary: '將流程拆分為文件擷取、比對輔助、一致性檢查與雙欄人工審查介面，讓使用者能更清楚地檢視差異。',
+                afterSummary: '將流程拆分為文件擷取、Prompt Engineering 條文對齊與比對輔助、一致性檢查與雙欄人工審查介面，讓使用者能更清楚地檢視差異。',
                 context: [
                     '法務團隊需要更快地比對原稿與簽署或掃描後的合約內容。',
                     '這個專案的重點不是展示 OCR 或 LLM，而是降低人工比對的耗時與漏看風險。',
@@ -920,7 +1068,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     '掃描文件格式不穩，且法務審查需要保留人工判斷，不能只依賴模型輸出。',
                 ],
                 myRole: [
-                    '我把需求拆成文件解析、比對輔助、一致性檢查與人工審查四個步驟。',
+                    '我把需求拆成文件解析、Prompt Engineering 段落／條文萃取、比對輔助、一致性檢查與人工審查步驟。',
                     '我負責設計整體流程，並把它包裝成內部 Web App，而不是零散的後端程序。',
                 ],
                 systemDesign: [
@@ -938,7 +1086,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 implementationHighlights: [
                     '把審查流程做成內部 Web App，而不是只做一個 comparison API。',
-                    '整合文件解析、AI 輔助比對與一致性檢查。',
+                    '針對帶噪音的掃描文件導入 Prompt Engineering 優化條文／段落萃取與結構化比對，並搭配一致性檢查。',
                     '設計雙欄同步介面，提升人工審查效率。',
                 ],
                 impact: [
@@ -1197,13 +1345,13 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
         companyId: 'auo',
         heroBadges: ['Manufacturing Decision Support', 'Cross-Source Reasoning', 'Agent Workflow'],
         heroImage: '/images/projects/manufacturing-assistant-hero.svg',
-        techStack: ['Python', 'LangGraph', 'RAG', 'Neo4j', 'SQL Tools'],
+        techStack: ['Python', 'Azure OpenAI', 'LangGraph', 'RAG', 'Neo4j', 'SQL Tools'],
         translations: {
             en: {
                 title: 'Manufacturing Knowledge Assistant',
                 role: 'AI Engineer / Project Leader',
                 company: 'AUO Corporation',
-                shortDescription: 'Evolved a manufacturing assistant from basic knowledge retrieval into a decision-support workflow that could reason across documents, SQL tools, and process knowledge.',
+                shortDescription: 'Evolved an Azure OpenAI–powered manufacturing assistant from basic knowledge retrieval into a decision-support workflow that could reason across documents, SQL tools, and process knowledge.',
                 description: 'A domain-aware assistant built for analysis rather than generic Q&A.',
                 keyFeatures: [
                     'Decision-support workflow for investigations and engineering analysis',
@@ -1214,7 +1362,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Manufacturing questions often depended on multiple data sources and process context at once.',
                     'Teams needed support for judgment, not just a nicer search box.',
                 ],
-                summary: 'Evolved a manufacturing assistant from basic knowledge retrieval into a decision-support workflow that could reason across documents, SQL tools, and process knowledge.',
+                summary: 'Evolved an Azure OpenAI–powered manufacturing assistant from basic knowledge retrieval into a decision-support workflow that could reason across documents, SQL tools, and process knowledge.',
                 beforeSummary: 'Engineers had to piece together manufacturing issues across documents, tables, and process knowledge before they could even form a useful hypothesis.',
                 afterSummary: 'Retrieval, SQL tools, knowledge modeling, and agent workflow design were combined into a decision-support system that could help structure investigation work.',
                 context: [
@@ -1230,7 +1378,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     'Tool use, reasoning steps, and domain representation were designed to work together as one system.',
                 ],
                 systemDesign: [
-                    'Combined retrieval, SQL access, domain relationships, and agent orchestration into one structured analysis flow.',
+                    'Combined Azure OpenAI models, retrieval, SQL access, domain relationships, and LangGraph agent orchestration into one structured analysis flow.',
                     'Used knowledge representation and tool routing so the assistant could support investigation instead of only retrieving text.',
                 ],
                 outcome: [
@@ -1243,7 +1391,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 implementationHighlights: [
                     'Expanded the assistant from document retrieval to structured decision-support workflow.',
-                    'Integrated retrieval, SQL tools, knowledge modeling, and agent-style orchestration.',
+                    'Integrated Azure OpenAI APIs with retrieval, SQL tools, Neo4j knowledge modeling, and LangGraph orchestration.',
                     'Focused the system on investigation support instead of open-ended chatbot behavior.',
                 ],
                 impact: [
@@ -1256,7 +1404,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 title: '製造知識助理',
                 role: 'AI 工程師／專案負責人',
                 company: 'AUO Corporation',
-                shortDescription: '將製造知識助理由基本檢索工具，發展成支援跨文件、SQL 工具與製程知識判斷的決策支援流程。',
+                shortDescription: '將串接 Azure OpenAI 的製造知識助理由基本檢索工具，發展成支援跨文件、SQL 工具與製程知識判斷的決策支援流程。',
                 description: '這是一個為分析與判斷而設計，而不只是回答問題的製造助理。',
                 keyFeatures: [
                     '支援調查與分析的決策輔助流程',
@@ -1267,7 +1415,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     '製造問題常常同時牽涉多個資料來源與製程上下文。',
                     '團隊要的不是更漂亮的搜尋框，而是能協助判斷的工具。',
                 ],
-                summary: '將製造知識助理由基本檢索工具，發展成支援跨文件、SQL 工具與製程知識判斷的決策支援流程。',
+                summary: '將串接 Azure OpenAI 的製造知識助理由基本檢索工具，發展成支援跨文件、SQL 工具與製程知識判斷的決策支援流程。',
                 beforeSummary: '工程師面對製造問題時，往往要先自己在文件、資料表與製程知識之間來回比對，才能形成初步判斷。',
                 afterSummary: '整合檢索、SQL 工具、知識表示與 Agent 流程，形成可輔助分析的決策支援系統。',
                 context: [
@@ -1283,7 +1431,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                     '我規劃工具調用、推理步驟與領域知識表示如何互相配合。',
                 ],
                 systemDesign: [
-                    '把檢索、SQL 存取、知識關係與 agent orchestration 串成結構化分析流程。',
+                    '把 Azure OpenAI 模型、檢索、SQL 存取、知識關係與 LangGraph agent orchestration 串成結構化分析流程。',
                     '透過知識表示與工具路由，讓系統支援調查判斷，而不只是找文字。',
                 ],
                 outcome: [
@@ -1296,7 +1444,7 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
                 ],
                 implementationHighlights: [
                     '把助理從文件檢索擴充成結構化的決策支援流程。',
-                    '整合檢索、SQL 工具、知識表示與 agent orchestration。',
+                    '整合 Azure OpenAI API、檢索、SQL 工具、Neo4j 知識表示與 LangGraph orchestration。',
                     '讓系統更聚焦在分析支援，而不是開放式聊天。',
                 ],
                 impact: [
@@ -1432,10 +1580,9 @@ const UNIFIED_PROJECTS_MAP: UnifiedProject[] = [
         visualType: 'gym-tracker',
         period: '2026 - Present',
         timeline: { start: '2026-01', status: 'ongoing', group: 'side-project', featured: true },
-        companyId: 'pixart',
         heroBadges: ['Personal Workflow Product', 'Behavior Tracking', 'Private Data Control'],
         heroImage: '/images/projects/gym-coach-hero.svg',
-        techStack: ['React', 'TypeScript', 'Cloudflare Workers', 'Cloudflare D1', 'LLM API'],
+        techStack: ['React', 'TypeScript', 'Cloudflare Workers', 'Cloudflare D1', 'OpenAI API'],
         link: 'https://github.com/bruce-lcz/my-gym-tracker',
         translations: {
             en: {

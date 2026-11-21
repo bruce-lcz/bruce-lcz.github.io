@@ -76,14 +76,16 @@
 \textbf{\Huge \scshape Bruce Cheng} \\ \vspace{3pt}
 \small AI Application Engineer $|$ Enterprise AI Architecture \& LLM Systems \\
 \small
+Hsinchu, Taiwan $|$
 \href{mailto:bruce.zheng0814@gmail.com}{\underline{bruce.zheng0814@gmail.com}} $|$
+\href{https://brucelcz.com}{\underline{brucelcz.com}} $|$
 \href{https://github.com/bruce-lcz}{\underline{github.com/bruce-lcz}} $|$
 \href{https://www.linkedin.com/in/bruce-lcz}{\underline{linkedin.com/in/bruce-lcz}}
 \end{center}
 
 \section{Summary}
 \small{
-Experienced in translating ambiguous enterprise requirements into production-ready AI systems and workflows, spanning on-prem LLM serving, RAG and agent workflows, multimodal document intelligence, and AI-enabled decision support. Strong in enterprise AI architecture, workflow orchestration, backend integration, and end-to-end solution delivery, with an emphasis on security, reliability, and practical adoption.
+AI Application Engineer with 5+ years of enterprise experience across IC design and smart manufacturing, translating ambiguous requirements into secure, production-ready AI systems. Experienced in independent technical project leadership from legacy-system assessment, technical feasibility analysis, and adoption planning to production rollout. Strong across on-prem LLM serving (vLLM), OpenAI / Azure OpenAI \& OpenAI-compatible APIs, vector-database RAG, agent workflows (LangGraph, MCP), prompt engineering, LLMOps deployment, AI security \& data privacy, inference optimization, and cross-functional knowledge transfer.
 }
 
 \section{Experience}
@@ -93,21 +95,22 @@ Experienced in translating ambiguous enterprise requirements into production-rea
 {PixArt Imaging Inc.}{Aug 2025 -- Present}
 {Information Engineer (Generative AI / LLM Projects)}{Hsinchu, Taiwan}
 \resumeItemListStart
-\resumeItem{Own end-to-end delivery of on-prem GenAI solutions for Legal, R\&D, engineering, and internal knowledge scenarios in a semiconductor / IC design environment with strict data-security constraints.}
-\resumeItem{Designed and integrated a shared internal GenAI workspace around vLLM model serving, document/image utilities, and task-oriented interaction flows to support coding, document review, and technical analysis.}
-\resumeItem{Delivered secure analytics and document-intelligence systems spanning role-scoped NL2SQL, multimodal technical review, LLM operations reporting, and evidence-grounded RAG with page-level traceability.}
-\resumeItem{Productionized sensitive legal and patent workflows using OCR, local LLMs, staged restructuring/proofreading, terminology handling, and validation checks for reliable offline document processing.}
+\resumeItem{Serve as self-PM in a lean 2-person GenAI team, partnering directly with Legal, R\&D, HR, and engineering stakeholders to assess legacy systems, conduct technical feasibility analyses, plan adoption strategies, and report project milestones to leadership.}
+\resumeItem{Designed and integrated a shared internal GenAI workspace and LLM Gateway around vLLM serving, OpenAI-compatible APIs, model routing, API key governance, and LLMOps telemetry to support coding, document review, and technical analysis.}
+\resumeItem{Delivered privacy-first analytics and document-intelligence systems spanning role-scoped NL2SQL (server-enforced RBAC, isolated read-only SQLite snapshots, audit logging), multimodal semiconductor datasheet review, and evidence-grounded ChromaDB RAG with page-level traceability.}
+\resumeItem{Productionized sensitive legal and patent workflows using OCR, local LLMs, Prompt Engineering (clause/paragraph extraction, staged proofreading, terminology rules), and validation checks --- relieving Legal and R\&D teams of repetitive manual review to focus on higher-value core work.}
 \resumeItem{Automated engineering and meeting workflows with reusable Python-based tools, including robust file-processing pipelines, ASR, speaker-aware segmentation, and structured summarization.}
+\resumeItem{Proactively drove enterprise GenAI enablement, knowledge transfer, and LLM inference optimization from usage telemetry (token consumption, context length, errors, timeouts) and 20+ 1-on-1 consultations, authoring management-announced bilingual Prompt Engineering, OpenCode, context-compression, and prefix-caching (KV cache / TTFT) best practices.}
 \resumeItemListEnd
 
 \resumeSubheading
 {AUO Corporation - Advanced Manufacturing Center}{Aug 2021 -- Aug 2025}
 {AI Engineer / Project Leader}{Taichung, Taiwan}
 \resumeItemListStart
-\resumeItem{Led manufacturing-facing AI projects that connected models, data pipelines, explainability, and internal tools to real engineering and operational decision workflows.}
-\resumeItem{\textbf{Manufacturing Assistant Platform (RAG $\rightarrow$ Agent):} Evolved internal documentation retrieval into a domain-aware assistant capable of retrieval, SQL querying, API/tool use, structured diagnostics, and process-knowledge reasoning.}
-\resumeItem{\textbf{Cross-Factory Yield Optimization:} Developed a Golden Path optimization workflow and LIME-based explainable analysis to translate cross-factory variability into actionable engineering parameters, improving yield by 1.43\%, reducing defects by 12.62\%, and saving approx. 300 man-hours monthly.}
-\resumeItem{\textbf{Preventive Maintenance Workflow:} Designed an LSTM-based time-series prediction workflow with a custom trend-consistency objective, reducing defect prediction RMSE by 20\% and saving approx. 90 man-hours monthly.}
+\resumeItem{Served as Project Leader during the final 2 years (2023--2025), leading engineers and interns to deliver cross-factory AI projects from requirement scoping and feasibility assessment through production rollout.}
+\resumeItem{\textbf{Manufacturing Assistant Platform (RAG $\rightarrow$ Agent):} Evolved an Azure OpenAI--powered documentation retrieval assistant into a LangGraph tool-using agent workflow capable of SQL querying, API/tool use, structured diagnostics, and process-knowledge reasoning.}
+\resumeItem{\textbf{Cross-Factory Yield Optimization:} Developed a Golden Path optimization workflow and LIME explainable analysis to translate cross-factory variability into actionable engineering parameters, improving yield by 1.43\%, reducing defects by 12.62\%, and saving approx. 300 man-hours monthly.}
+\resumeItem{\textbf{Preventive Maintenance Workflow:} Designed a PyTorch LSTM time-series prediction workflow with a custom trend-consistency loss function, reducing defect prediction RMSE by 20\% and saving approx. 90 man-hours monthly.}
 \resumeItem{Recognized as Smart Manufacturing Level 3 Elite Talent; preventive maintenance outcomes were approved for an internal defensive patent.}
 \resumeItemListEnd
 
@@ -121,35 +124,45 @@ Experienced in translating ambiguous enterprise requirements into production-rea
 
 \resumeSubHeadingListEnd
 
+\Needspace{8\baselineskip}
 \section{Selected Projects}
 \resumeSubHeadingListStart
 
 \Needspace{6\baselineskip}
 \resumeProjectHeading
-{\textbf{Work-Hour Review \& Insights Platform} $|$ \emph{NL2SQL, Data Integration, Query Engine, FastAPI}}{2026}
+{\textbf{Work-Hour Review \& Insights Platform} $|$ \emph{FastAPI, Guarded NL2SQL, Data Privacy, Web UI}}{2026}
 \resumeItemListStart
-\resumeItem{Turned encrypted and legacy attendance data into manager-scoped dashboards and evidence-grounded NL2SQL analysis, using historical organization snapshots, server-enforced authorization, isolated read-only SQLite views, and audit logging.}
+\resumeItem{Built an offline-deployable manager analytics web app turning encrypted and legacy attendance data into role-scoped dashboards and evidence-grounded NL2SQL analysis, using historical org snapshots, server-enforced RBAC, isolated read-only SQLite views, and audit logging.}
 \resumeItemListEnd
 
 \Needspace{6\baselineskip}
 \resumeProjectHeading
-{\textbf{Multimodal Technical Document Review} $|$ \emph{VLM, MCP, Multimodal Pipeline, FastAPI}}{2026}
+{\textbf{Multimodal Technical Document Review} $|$ \emph{OpenAI-compatible API, VLM, Prompt Eng., MCP, FastAPI}}{2026}
 \resumeItemListStart
-\resumeItem{Built a format-preserving technical datasheet review workflow with multimodal analysis and Web, CLI, and MCP interfaces for scalable engineering review.}
+\resumeItem{Built a format-preserving semiconductor datasheet review workflow (prose, register tables, diagrams) applying two-pass prompt engineering, few-shot exclusion rules, prompt/model A/B evaluation, and Web, CLI, and MCP interfaces.}
 \resumeItemListEnd
 
 \Needspace{6\baselineskip}
 \resumeProjectHeading
-{\textbf{LLM Gateway \& Operations Platform} $|$ \emph{LLM Gateway, Model Routing, Usage Metering}}{2025 -- 2026}
+{\textbf{LLM Gateway \& Operations Platform} $|$ \emph{LLMOps, Model Routing, Metering, Docker, PostgreSQL}}{2025 -- 2026}
 \resumeItemListStart
-\resumeItem{Designed and built an internal LLM gateway and operations platform that centralized model access, API key management, routing, and usage metering, while consolidating multi-source telemetry into reporting for usage, cost, service operations, and executive decision support.}
+\resumeItem{Designed and built an internal LLM gateway and operations platform unifying OpenAI-compatible model access, API key governance, routing, and usage metering, while consolidating multi-source GPU and usage telemetry into automated reporting.}
 \resumeItemListEnd
 
 \Needspace{6\baselineskip}
 \resumeProjectHeading
-{\textbf{Evidence-Grounded Technical Knowledge} $|$ \emph{VLM, RAG, Vector Search, Knowledge Extraction}}{2026}
+{\textbf{Evidence-Grounded Technical Knowledge} $|$ \emph{VLM, RAG, Vector Database (ChromaDB), Pydantic}}{2026}
 \resumeItemListStart
-\resumeItem{Created a human-reviewed knowledge pipeline that extracts engineering-document evidence and supports source-cited retrieval with exact page-level traceability.}
+\resumeItem{Created a VLM-assisted, human-reviewed RAG knowledge pipeline with Pydantic schema validation, grounding verification, ChromaDB vector indexing, and source-cited retrieval with exact page-level traceability.}
+\resumeItemListEnd
+
+\Needspace{6\baselineskip}
+\resumeProjectHeading
+{\textbf{GenAI Enablement \& LLM Optimization} $|$ \emph{vLLM, Prefix Caching, Prompt Eng., OpenCode}}{2025 -- Present}
+\resumeItemListStart
+\resumeItem{Proactively identified GenAI adoption challenges and inference bottlenecks through LLM usage monitoring (token consumption, context length, API errors, timeouts) and 20+ 1-on-1 employee consultations.}
+\resumeItem{Designed enterprise-wide bilingual knowledge-transfer resources covering Prompt Engineering best practices, context compression, OpenCode Skills, AI coding workflows, and LLM prefix caching (KV cache reuse, prompt structure comparisons, and TTFT verification methods), with General LLM Usage and OpenCode Skills officially announced company-wide.}
+\resumeItem{Guided 20+ colleagues in 1-on-1 technical consultations, translating recurring workflow issues into reusable tutorials and candidate agent-based workflow evaluations.}
 \resumeItemListEnd
 
 \resumeSubHeadingListEnd
@@ -157,10 +170,10 @@ Experienced in translating ambiguous enterprise requirements into production-rea
 \section{Skills}
 \begin{itemize}[leftmargin=0.15in, label={}]
 \small{\item{
-\textbf{Generative AI \& LLM Systems}{: On-Prem LLM Serving, vLLM, RAG, Agent \& Tool-Calling Workflows, Multimodal / VLM, OCR / ASR, Prompt \& Validation Design} \\
-\textbf{AI System \& Solution Design}{: Enterprise AI Architecture, Workflow Orchestration, API / Tool Integration, Security \& Reliability Design} \\
-\textbf{Backend \& Data Engineering}{: Python, FastAPI, REST APIs, SQL, Docker, ETL / Data Pipelines, Databricks} \\
-\textbf{Applied Machine Learning}{: Time-Series Forecasting, LSTM, Explainable AI, Optimization}
+\textbf{Generative AI \& LLM Systems}{: OpenAI / Azure OpenAI \& OpenAI-compatible APIs, On-Prem LLM Serving (vLLM), Prompt \& Context Engineering, RAG, Vector Databases (ChromaDB), Agent Workflows (LangGraph, MCP), Multimodal / VLM, OCR / ASR} \\
+\textbf{AI Architecture, LLMOps \& Security}{: Enterprise AI Architecture, LLMOps / MLOps Deployment, AI Security \& Data Privacy (Air-Gapped, RBAC, Guardrails, Audit Logging), Feasibility \& Adoption Strategy, Technical Project Leadership, Knowledge Transfer} \\
+\textbf{Backend \& Data Engineering}{: Python, FastAPI, REST APIs, SQL, PostgreSQL, Docker, ETL Pipelines, Databricks, AI-Assisted Web UI Delivery (React / TypeScript)} \\
+\textbf{Model Optimization \& Applied ML}{: LLM Inference Optimization (KV Cache / Prefix Caching / TTFT), PyTorch, Custom Loss Optimization, Time-Series (LSTM), Explainable AI (LIME)}
 }}
 \end{itemize}
 

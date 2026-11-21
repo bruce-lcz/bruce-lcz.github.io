@@ -5,9 +5,19 @@ export interface CompanyMeta {
     industry?: string;
 }
 
+export type ChangelogItemTag = 'new' | 'improved' | 'impact';
+
+export interface ChangelogItem {
+    tag: ChangelogItemTag;
+    text: string;
+}
+
 export interface Job {
     id: string;
     type: 'current' | 'past';
+    version: string;
+    releaseTag: string;
+    releaseSummary: string;
     company: string;
     companyMeta?: CompanyMeta;
     role: string;
@@ -15,6 +25,7 @@ export interface Job {
     description: string;
     techStack: string[];
     achievements: string[];
+    changelog: ChangelogItem[];
     relatedProjectIds?: string[];
 }
 
@@ -60,7 +71,8 @@ export interface DetailedProject extends NarrativeSection {
         | 'workforce-analytics'
         | 'datasheet-review'
         | 'llm-telemetry'
-        | 'evidence-qa';
+        | 'evidence-qa'
+        | 'genai-enablement';
     role: string;
     company?: string;
     period: string;
@@ -131,6 +143,8 @@ export interface Education {
     degree: string;
     field: string;
     period: string;
+    version?: string;
+    releaseTag?: string;
     thesis: string;
     logo?: string;
 }

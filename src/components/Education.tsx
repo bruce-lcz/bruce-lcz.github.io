@@ -38,6 +38,11 @@ export const Education = () => {
                             )}
 
                             <div>
+                                {education.version && (
+                                    <span className="mb-2 inline-flex items-center rounded-full border border-indigo-200/70 bg-indigo-50/70 px-2.5 py-0.5 font-mono text-xs font-medium text-indigo-700">
+                                        {education.releaseTag ? `${education.version} · ${education.releaseTag}` : education.version}
+                                    </span>
+                                )}
                                 <h3 className="text-xl font-semibold tracking-tight text-gray-900">
                                     {education.school}
                                 </h3>
