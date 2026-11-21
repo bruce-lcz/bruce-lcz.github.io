@@ -103,10 +103,10 @@
       {Information Engineer (Generative AI / LLM Projects)}{Aug. 2025 -- Present}
       {PixArt Imaging Inc.}{Hsinchu, Taiwan}
       \resumeItemListStart
-        \resumeItem{Act as self-PM in a 2-person GenAI team, partnering with Legal, R\&D, HR, and engineering teams to assess legacy systems, evaluate technical feasibility, and lead end-to-end on-prem AI delivery to leadership milestones.}
+        \resumeItem{Independently architect, develop, and deliver internal GenAI / LLM systems end-to-end, partnering with R\&D, Legal, HR, and engineering teams to assess existing workflows and evaluate technical feasibility.}
         \resumeItem{Designed a shared internal GenAI workspace and LLM Gateway (vLLM, OpenAI-compatible APIs, model routing, API key governance, LLMOps telemetry) for coding, document review, and technical analysis.}
-        \resumeItem{Delivered privacy-first analytics and document-intelligence systems with guarded NL2SQL (server-enforced RBAC, isolated SQLite snapshots, audit logs), multimodal datasheet review, and page-traceable ChromaDB RAG.}
-        \resumeItem{Productionized legal, patent, meeting, and engineering workflows via Prompt Engineering (clause extraction, two-pass review, validation), OCR/ASR, and Python tools --- freeing Legal/R\&D for core work.}
+        \resumeItem{Delivered internal analytics and document systems: natural-language SQL (NL2SQL) restricted to read-only manager scope with audit logs, multimodal IC datasheet review, and page-cited ChromaDB RAG.}
+        \resumeItem{Built legal, patent, meeting, and engineering tools via Prompt Engineering (clause extraction, staged review, validation), OCR/ASR, and Python --- freeing R\&D and legal/admin teams from manual proofreading.}
         \resumeItem{Drove GenAI enablement, knowledge transfer, and LLM optimization via telemetry and 20+ 1-on-1 consultations, authoring company-announced Prompt Engineering, OpenCode, context-compression, and KV-cache (TTFT) guides.}
       \resumeItemListEnd
 
@@ -132,9 +132,9 @@
 \section{Projects}
     \resumeSubHeadingListStart
       \resumeProjectHeading
-          {\textbf{Work-Hour Review \& Insights Platform} $|$ \emph{FastAPI, Guarded NL2SQL, Data Privacy, Web UI}}{2026}
+          {\textbf{Work-Hour Review \& Insights Platform} $|$ \emph{FastAPI, NL2SQL, Data Security, Web UI}}{2026 -- Present}
           \resumeItemListStart
-            \resumeItem{Built an offline-deployed manager review web app and evidence-grounded NL2SQL via legacy-data ETL, historical org snapshots, server-enforced RBAC, isolated read-only SQLite views, and audit logs.}
+            \resumeItem{Built an offline manager review web app and NL2SQL Q\&A over encrypted legacy HR data with historical org tracking, restricting users to read-only queries within their own department scope with audit logs.}
           \resumeItemListEnd
 
       \resumeProjectHeading
@@ -144,7 +144,7 @@
           \resumeItemListEnd
 
       \resumeProjectHeading
-          {\textbf{LLM Gateway \& Operations Platform} $|$ \emph{LLMOps, Model Routing, Metering, Docker, PostgreSQL}}{2025 -- 2026}
+          {\textbf{LLM Gateway \& Operations Platform} $|$ \emph{LLMOps, Model Routing, Metering, Docker, PostgreSQL}}{2026}
           \resumeItemListStart
             \resumeItem{Unified OpenAI-compatible model access, API key governance, routing, and usage metering with read-only GPU/usage telemetry dashboards and automated reports.}
           \resumeItemListEnd
@@ -156,7 +156,7 @@
           \resumeItemListEnd
 
       \resumeProjectHeading
-          {\textbf{GenAI Enablement \& LLM Optimization} $|$ \emph{vLLM, Prefix Caching, Prompt Eng., OpenCode}}{2025 -- Present}
+          {\textbf{GenAI Enablement \& LLM Optimization} $|$ \emph{vLLM, Prefix Caching, Prompt Eng., OpenCode}}{2026 -- Present}
           \resumeItemListStart
             \resumeItem{Turned LLM telemetry and 20+ 1-on-1 consultations into company-announced knowledge-transfer guides on Prompt Engineering best practices, OpenCode, context compression, and KV-cache / TTFT optimization.}
           \resumeItemListEnd
@@ -166,7 +166,7 @@
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
      \textbf{GenAI \& LLM Systems}{: OpenAI / Azure OpenAI \& OpenAI-compatible APIs, On-Prem LLM Serving (vLLM), Prompt \& Context Engineering, RAG, Vector DBs (ChromaDB), Agents (LangGraph, MCP), Multimodal / VLM, OCR / ASR} \\
-     \textbf{AI Architecture, LLMOps \& Security}{: Enterprise AI Architecture, LLMOps / MLOps Deployment, AI Security \& Data Privacy (Air-Gapped, RBAC, Guardrails, Audit Logs), Feasibility \& Adoption Strategy, Project Leadership, Knowledge Transfer} \\
+     \textbf{AI Architecture, LLMOps \& Security}{: Enterprise AI Architecture, LLMOps / MLOps Deployment, AI Security \& Data Privacy (Offline Deployment, Access Control, Audit Logs), Feasibility \& Adoption Strategy, Project Leadership, Knowledge Transfer} \\
      \textbf{Backend \& Data Engineering}{: Python, FastAPI, REST APIs, SQL, PostgreSQL, Docker, ETL, Databricks, AI-Assisted Web UI Delivery (React / TypeScript)} \\
      \textbf{Model Optimization \& Applied ML}{: LLM Inference Optimization (KV Cache / Prefix Caching / TTFT), PyTorch, Custom Loss, LSTM, LIME}
     }}

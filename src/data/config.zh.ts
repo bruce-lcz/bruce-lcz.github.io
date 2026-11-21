@@ -34,13 +34,13 @@ export const configZh: Config = {
             },
             role: '資訊工程師（生成式 AI／LLM 專案）',
             period: '2025 年 8 月－至今',
-            description: '在兩人編制的精實 GenAI 團隊中獨立擔任每個專案的 PM，直接與法務、研發、人資與工程團隊對接，評估既有系統與技術可行性、規劃導入策略並定期向主管匯報里程碑，完成端到端系統交付。',
+            description: '獨立負責企業內部 GenAI／LLM 系統的架構設計、開發與導入，直接與法務、研發、人資及工程部門合作評估既有系統與技術可行性，將實務流程轉化為可穩定運作的內部產品。',
             techStack: ['Python', 'FastAPI', 'vLLM', 'LLMOps', 'Prompt Engineering'],
             achievements: [
-                '在兩人 GenAI 團隊中獨立擔任各專案 PM，與法務、研發、人資及工程團隊對接，負責既有流程評估、技術可行性分析、導入規劃與端到端交付，並向主管匯報進度。',
+                '獨立負責企業內部 GenAI／LLM 系統架構設計與端到端開發，與法務、研發、人資及工程團隊對接，評估既有流程與技術可行性並完成導入落地。',
                 '建置共享內部 GenAI 工作區與 LLM Gateway（vLLM、OpenAI-compatible API、模型路由、API Key 管理與 LLMOps 遙測），支援程式輔助、文件審查與技術分析。',
-                '交付以資安與隱私保護為核心的分析與文件系統，涵蓋伺服器端權限隔離 NL2SQL（隔離唯讀 SQLite 快照與稽核日誌）、多模態半導體規格書審查與頁級溯源 ChromaDB RAG。',
-                '結合 OCR、地端 LLM、Prompt Engineering（法務條文／段落萃取、分階段規格書校對、術語一致性規則）與驗證機制，將敏感法務與專利流程產品化——協助法務與研發同仁分擔繁瑣的人工校對與比對作業，專注於更高價值的核心工作。',
+                '交付主管工時分析與自然語言查詢（NL2SQL）平台、多模態 IC 規格書審查與來源追溯 ChromaDB RAG；查詢限制僅能唯讀存取自身管轄範圍並保留查詢紀錄，兼顧資料安全。',
+                '結合 OCR、地端 LLM、Prompt Engineering（條文／段落萃取、階段審查與結構化驗證）與驗證機制將法務與專利流程工具化，協助研發與行政／法務同仁分擔繁瑣人工校對，專注於核心工作。',
                 '以可重複使用的 Python 工具自動化工程與會議流程，涵蓋檔案處理、ASR、講者分段與結構化摘要。',
                 '從 LLM 平台監控指標與 20+ 位同仁一對一技術諮詢主動發掘痛點，獨立建置全公司公告之 Prompt Engineering、OpenCode 雙語教材、Context 壓縮實務範例與 Prefix Caching（KV Cache／TTFT）推論優化指南。',
             ],
@@ -51,11 +51,11 @@ export const configZh: Config = {
                 },
                 {
                     tag: 'new',
-                    text: '交付以隱私保護為核心的分析與文件系統，涵蓋權限隔離 NL2SQL（隔離快照與稽核日誌）、多模態規格書審查與頁級溯源 ChromaDB RAG。',
+                    text: '交付主管工時自然語言查詢（NL2SQL）平台、多模態 IC 規格書審查與頁級溯源 ChromaDB RAG，並限制僅能唯讀查詢自身管轄範圍且保留查詢紀錄。',
                 },
                 {
                     tag: 'improved',
-                    text: '結合 OCR、地端 LLM、Prompt Engineering（法務條文／段落萃取、規格書兩階段審查與術語規則）與驗證機制，將法務與專利流程產品化——分擔法務與研發團隊繁瑣的人工校對工作，釋放時間專注於核心任務。',
+                    text: '結合 OCR、地端 LLM、Prompt Engineering（法務條文萃取、規格書兩階段審查與術語規則）與驗證機制將流程工具化，協助研發與行政／法務同仁分擔繁瑣人工校對，專注於核心工作。',
                 },
                 {
                     tag: 'impact',
@@ -63,7 +63,7 @@ export const configZh: Config = {
                 },
                 {
                     tag: 'impact',
-                    text: '獨立規劃並推動全公司 GenAI 賦能、知識轉移與 LLM 推論優化，將監控數據與 20+ 位同仁諮詢轉化為全公司公告之 Prompt Engineering、OpenCode 雙語教材、Context 壓縮與 KV Cache／TTFT 優化指南。',
+                    text: '獨立推動企業 GenAI 知識轉移與 LLM 推論優化，將監控數據與 20+ 位同仁諮詢轉化為全公司公告之 Prompt Engineering、OpenCode 雙語教材、Context 壓縮與 KV Cache／TTFT 優化指南。',
                 },
             ],
             relatedProjectIds: [
@@ -234,7 +234,7 @@ export const configZh: Config = {
             items: [
                 '企業級 AI 架構',
                 'LLMOps／MLOps 系統部署',
-                'AI 安全與資料隱私（內網隔離、RBAC、Guardrails、稽核日誌）',
+                'AI 安全與資料隱私（內網離線部署、權限控管、查詢紀錄）',
                 '技術可行性與導入策略規劃',
                 '技術專案管理與帶領',
                 '技術賦能與知識轉移',
