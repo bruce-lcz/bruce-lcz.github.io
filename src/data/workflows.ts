@@ -120,6 +120,27 @@ export const WORKFLOW_DEFINITIONS: Record<string, WorkflowDefinition> = {
         ],
         theme: 'amber',
     },
+    'genai-enablement': {
+        tags: ['Usage Telemetry', 'Prefix Cache & KV Reuse', '20+ Consultations & Rollout'],
+        tagsZh: ['LLM 使用監控', 'Prefix Cache 與推論優化', '20+ 技術諮詢與全公司發布'],
+        steps: [
+            { title: 'Usage Telemetry', icon: 'Activity', subtitle: 'Tokens / Context / Timeouts' },
+            { title: 'Issue Diagnosis', icon: 'SearchCheck', subtitle: 'Logs & Consultations' },
+            { title: 'Prefix Caching', icon: 'Zap', subtitle: 'KV Cache & TTFT Guide' },
+            { title: 'Context Flow', icon: 'SlidersHorizontal', subtitle: 'Compression & Prompts' },
+            { title: 'OpenCode Guides', icon: 'FileCode2', subtitle: 'Bilingual Skills & Docs' },
+            { title: 'Knowledge Rollout', icon: 'Users', subtitle: '20+ 1-on-1 & Portal' },
+        ],
+        stepsZh: [
+            { title: '使用監控', subtitle: 'Token／長度／逾時' },
+            { title: '問題診斷', subtitle: '遙測與諮詢回饋' },
+            { title: 'Cache 優化', subtitle: 'KV Cache 與 TTFT' },
+            { title: '上下文管理', subtitle: '壓縮與 Prompt 結構' },
+            { title: 'OpenCode 教材', subtitle: '雙語指南與 Skills' },
+            { title: '知識轉移', subtitle: '20+ 諮詢與全公司公告' },
+        ],
+        theme: 'indigo',
+    },
     'pixart-genai-hub': {
         tags: ['Air-Gapped', 'Internal Models', 'Multimodal'],
         tagsZh: ['隔離網路', '內部模型', '多模態'],

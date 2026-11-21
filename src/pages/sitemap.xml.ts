@@ -13,7 +13,7 @@ function escapeXml(value: string) {
 }
 
 export const GET: APIRoute = async ({ site }) => {
-  const base = site ?? new URL('https://bruce-lcz.github.io');
+  const base = site ?? new URL('https://brucelcz.com');
   const paths = [
     ...staticPaths,
     ...UNIFIED_PROJECTS.map((project) => `projects/${project.id}/`),

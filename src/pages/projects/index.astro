@@ -50,9 +50,9 @@ const companyFilterLabels: Record<string, { en: string; zh: string }> = {
           data-company={project.companyId || 'personal'}
         >
           {/* Hero Image */}
-          <div class="relative aspect-[2/1] w-full overflow-hidden bg-gray-50">
+          <div class="relative flex min-h-[248px] w-full flex-col overflow-hidden border-b border-gray-200/80 bg-slate-50 md:min-h-[256px] lg:aspect-[2/1] lg:min-h-0">
             {project.visualType ? (
-              <div aria-hidden="true" class="h-full w-full transition-transform duration-500 group-hover:scale-[1.025]">
+              <div aria-hidden="true" class="flex w-full flex-1 flex-col transition-transform duration-500 group-hover:scale-[1.025]">
                 <ProjectThumbnailVisual visualType={project.visualType} />
               </div>
             ) : project.heroImage ? (

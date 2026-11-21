@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import type { DetailedProject } from '../data/types';
+import { ProjectThumbnailVisual } from './ProjectThumbnailVisual';
 
 const categoryStyles: Record<string, string> = {
     work: 'bg-primary-50 text-primary',
@@ -49,14 +50,14 @@ export const Projects = () => {
 
     return (
         <section className="mx-auto max-w-[90rem] scroll-mt-24 px-6 py-20" id="projects">
-            <div className="mb-12 grid gap-5 lg:grid-cols-[max-content_minmax(0,1fr)] lg:items-end">
+            <div className="mb-12 grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-end">
                 <div>
                     <p className="editorial-kicker">{language === 'zh' ? '作品集' : 'Portfolio'}</p>
                     <h2 className="mt-3 text-4xl font-semibold tracking-tight text-gray-900">
                         {language === 'zh' ? '專案案例' : 'Case Studies'}
                     </h2>
                 </div>
-                <p className={`max-w-none text-base leading-7 text-gray-600 lg:justify-self-end ${language === 'zh' ? 'lg:whitespace-nowrap' : ''}`}>
+                <p className="max-w-2xl text-base leading-7 text-gray-600 xl:pr-8 min-[1760px]:pr-0">
                     {language === 'zh'
                         ? '將模糊需求、限制條件與使用情境，轉成團隊願意採用的內部工具與 AI 應用。'
                         : 'Turning ambiguous requirements, constraints, and usage scenarios into internal tools and AI applications teams can actually adopt.'}
@@ -75,7 +76,7 @@ export const Projects = () => {
                 >
                     <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#1a73e8,rgba(79,70,229,0.78),transparent)] opacity-75" />
                     <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-primary/10 blur-3xl transition-transform duration-300 group-hover:scale-110" />
-                    <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.7fr)]">
+                    <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(300px,0.85fr)]">
                         <div>
                             <div className="flex flex-wrap items-center gap-3">
                                 <span className="rounded-full border border-primary/15 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
@@ -118,13 +119,22 @@ export const Projects = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col justify-between rounded-[26px] border border-white/70 bg-white/80 p-5 shadow-[0_16px_36px_rgba(15,23,42,0.06)]">
+                        <div className="flex flex-col justify-between gap-5 rounded-[26px] border border-white/70 bg-white/80 p-5 shadow-[0_16px_36px_rgba(15,23,42,0.06)]">
+                            {featuredProject.visualType && (
+                                <div
+                                    aria-hidden="true"
+                                    className="flex h-52 flex-col overflow-hidden rounded-[20px] border border-gray-200/80 sm:h-60"
+                                >
+                                    <ProjectThumbnailVisual visualType={featuredProject.visualType} />
+                                </div>
+                            )}
+
                             <div className="space-y-4">
                                 <div>
                                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gray-500">
                                         {language === 'zh' ? '角色定位' : 'Role'}
                                     </p>
-                                    <p className="mt-2 text-sm leading-6 text-gray-700">
+                                    <p className="mt-1.5 text-sm leading-6 text-gray-700">
                                         {featuredProject.role}
                                     </p>
                                 </div>
@@ -132,9 +142,9 @@ export const Projects = () => {
                                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gray-500">
                                         {language === 'zh' ? '流程重點' : 'Workflow Signals'}
                                     </p>
-                                    <div className="mt-3 flex flex-wrap gap-2">
+                                    <div className="mt-2.5 flex flex-wrap gap-2">
                                         {(featuredProject.cardTags ?? featuredProject.techStack.slice(0, 4)).map((tag) => (
-                                            <span key={tag} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-600">
+                                            <span key={tag} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-600">
                                                 {tag}
                                             </span>
                                         ))}
@@ -142,7 +152,7 @@ export const Projects = () => {
                                 </div>
                             </div>
 
-                            <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary">
+                            <div className="inline-flex items-center gap-2 text-sm font-medium text-primary">
                                 {language === 'zh' ? '查看專案細節' : 'Open project detail'}
                                 <ArrowUpRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </div>
@@ -165,6 +175,15 @@ export const Projects = () => {
                     >
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#1a73e8,rgba(79,70,229,0.72),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-70" />
 
+                        {project.visualType && (
+                            <div
+                                aria-hidden="true"
+                                className="mb-5 flex h-52 flex-col overflow-hidden rounded-[20px] border border-gray-200/80 transition-transform duration-300 group-hover:scale-[1.01] sm:h-56"
+                            >
+                                <ProjectThumbnailVisual visualType={project.visualType} />
+                            </div>
+                        )}
+
                         <div className="relative flex items-start justify-between gap-4">
                             <span className={`rounded-full px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] ${getCategoryClassName(project.category)}`}>
                                 {project.category}
@@ -172,7 +191,7 @@ export const Projects = () => {
                             <ArrowUpRight aria-hidden="true" className="h-5 w-5 shrink-0 text-gray-400 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
                         </div>
 
-                        <h3 className="relative mt-6 text-2xl font-semibold tracking-normal text-gray-900 transition-colors group-hover:text-primary">
+                        <h3 className="relative mt-4 text-2xl font-semibold tracking-normal text-gray-900 transition-colors group-hover:text-primary">
                             {project.title}
                         </h3>
 
@@ -180,31 +199,27 @@ export const Projects = () => {
                             {getCoreValueLine(project)}
                         </p>
 
-                        <p className="relative mt-3 text-sm leading-7 text-gray-600">
-                            {project.summary ?? project.oneLineSummary ?? project.shortDescription}
-                        </p>
-
-                        <div className="relative mt-5 grid gap-3">
-                            <div className="rounded-[18px] border border-gray-200 bg-gray-50/85 p-4">
+                        <div className="relative mt-4 grid gap-2.5">
+                            <div className="rounded-[18px] border border-gray-200 bg-gray-50/85 p-3.5">
                                 <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-gray-500">
                                     {beforeLabel}
                                 </p>
-                                <p className="mt-2 text-sm leading-6 text-gray-700">
+                                <p className="mt-1.5 text-sm leading-6 text-gray-700">
                                     {project.beforeSummary}
                                 </p>
                             </div>
-                            <div className="rounded-[18px] border border-primary/15 bg-primary-50/70 p-4">
+                            <div className="rounded-[18px] border border-primary/15 bg-primary-50/70 p-3.5">
                                 <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-primary">
                                     {afterLabel}
                                 </p>
-                                <p className="mt-2 text-sm leading-6 text-gray-700">
+                                <p className="mt-1.5 text-sm leading-6 text-gray-700">
                                     {renderSolutionSummary(project.afterSummary)}
                                 </p>
                             </div>
                         </div>
 
-                        <div className="relative mt-6 border-t border-gray-100 pt-4">
-                            <div className="flex flex-wrap gap-2">
+                        <div className="relative mt-auto pt-5">
+                            <div className="flex flex-wrap gap-2 border-t border-gray-100 pt-4">
                                 {(project.cardTags ?? project.techStack.slice(0, 3)).map((tag) => (
                                     <span key={tag} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-600">
                                         {tag}

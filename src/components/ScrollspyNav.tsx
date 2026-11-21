@@ -17,14 +17,14 @@ export const ScrollspyNav = () => {
         language === 'zh'
             ? [
                 { id: 'profile', label: '個人介紹' },
-                { id: 'what-i-build', label: '我打造的產品' },
+                { id: 'what-i-build', label: '交付方法論' },
                 { id: 'projects', label: '專案' },
                 { id: 'experience', label: '經歷' },
                 { id: 'capability-map', label: '能力地圖' },
             ]
             : [
                 { id: 'profile', label: 'Profile / Hero' },
-                { id: 'what-i-build', label: 'What I Build' },
+                { id: 'what-i-build', label: 'How I Ship' },
                 { id: 'projects', label: 'Projects' },
                 { id: 'experience', label: 'Experience' },
                 { id: 'capability-map', label: 'Capability Map' },
@@ -139,11 +139,11 @@ export const ScrollspyNav = () => {
         <>
             <nav
                 aria-label="Section navigation"
-                className="pointer-events-none fixed inset-y-0 right-6 z-30 hidden xl:flex xl:items-center"
+                className="pointer-events-none fixed inset-y-0 right-3 z-30 hidden xl:flex xl:items-center min-[1760px]:right-6"
             >
                 <div className="pointer-events-auto">
-                    <div className="rounded-[28px] border border-white/70 bg-white/60 px-4 py-4 shadow-[0_18px_48px_rgba(15,23,42,0.08)] backdrop-blur-md">
-                        <div className="relative flex flex-col gap-3 before:absolute before:bottom-3 before:left-[0.43rem] before:top-3 before:w-px before:bg-gradient-to-b before:from-gray-200 before:via-gray-300 before:to-gray-200">
+                    <div className="group/nav rounded-full border border-gray-200/80 bg-white/75 px-2.5 py-3.5 shadow-[0_14px_36px_rgba(15,23,42,0.08)] backdrop-blur-md transition-all duration-300 hover:rounded-[24px] hover:bg-white/95 hover:px-4 focus-within:rounded-[24px] focus-within:bg-white/95 focus-within:px-4 min-[1760px]:rounded-[28px] min-[1760px]:px-4 min-[1760px]:py-4">
+                        <div className="relative flex flex-col gap-3 before:absolute before:bottom-3 before:left-[0.35rem] before:top-3 before:w-px before:bg-gradient-to-b before:from-gray-200 before:via-gray-300 before:to-gray-200">
                             {sections.map((section) => {
                                 return (
                                     <a
@@ -152,12 +152,13 @@ export const ScrollspyNav = () => {
                                         onClick={(event) => handleNavigate(event, section.id)}
                                         data-scrollspy-link={section.id}
                                         data-scrollspy-active={section.id === 'profile' ? 'true' : undefined}
-                                        className="scrollspy-link group relative flex min-h-11 items-center gap-3 pl-0 text-xs tracking-[0.18em] text-gray-400 transition-all duration-300 hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[scrollspy-active=true]:text-gray-900"
+                                        aria-label={section.label}
+                                        className="scrollspy-link group relative flex min-h-11 items-center gap-0 pl-0 text-xs tracking-[0.18em] text-gray-400 transition-all duration-300 hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[scrollspy-active=true]:text-gray-900"
                                     >
                                         <span
-                                            className="scrollspy-dot relative z-10 h-3 w-3 rounded-full border border-white bg-gray-300 transition-all duration-300 group-hover:bg-gray-500 data-[scrollspy-active=true]:scale-110 data-[scrollspy-active=true]:bg-primary data-[scrollspy-active=true]:shadow-[0_0_0_4px_rgba(26,115,232,0.10)]"
+                                            className="scrollspy-dot relative z-10 h-3 w-3 shrink-0 rounded-full border border-white bg-gray-300 transition-all duration-300 group-hover:bg-gray-500 data-[scrollspy-active=true]:scale-110 data-[scrollspy-active=true]:bg-primary data-[scrollspy-active=true]:shadow-[0_0_0_4px_rgba(26,115,232,0.10)]"
                                         />
-                                        <span className="whitespace-nowrap font-medium uppercase transition-all duration-300 data-[scrollspy-active=true]:translate-x-0.5">
+                                        <span className="max-w-0 overflow-hidden whitespace-nowrap font-medium uppercase opacity-0 transition-all duration-300 group-hover/nav:ml-2.5 group-hover/nav:max-w-[160px] group-hover/nav:opacity-100 group-focus-within/nav:ml-2.5 group-focus-within/nav:max-w-[160px] group-focus-within/nav:opacity-100 min-[1760px]:ml-2.5 min-[1760px]:max-w-[160px] min-[1760px]:opacity-100 data-[scrollspy-active=true]:translate-x-0.5">
                                             {section.label}
                                         </span>
                                     </a>

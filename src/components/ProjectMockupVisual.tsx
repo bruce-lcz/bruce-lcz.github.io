@@ -564,6 +564,53 @@ const AddressNormalizationVisual = () => (
     </Shell>
 );
 
+const GenAIEnablementMockupVisual = () => (
+    <Shell
+        header="GenAI Enablement & Inference Optimization"
+        status="Company-Wide Guides"
+        footer="Telemetry-driven optimization covering prefix caching, context management, and 20+ consultations"
+        tags={['KV Cache / TTFT', 'Context Compression', 'OpenCode Guides']}
+    >
+        <div className="grid gap-3 md:grid-cols-[1.05fr_0.95fr]">
+            <section className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
+                <div className="mb-3 flex items-center justify-between gap-2">
+                    <span className="text-sm font-medium text-slate-100">Prompt Structure</span>
+                    <span className="rounded-full border border-emerald-300/20 bg-emerald-400/10 px-2 py-1 text-[0.65rem] uppercase tracking-[0.16em] text-emerald-100">
+                        Prefix Reuse
+                    </span>
+                </div>
+                <div className="space-y-3">
+                    <div className="rounded-xl border border-emerald-300/15 bg-emerald-400/[0.06] p-3">
+                        <div className="mb-2 text-xs font-medium text-emerald-100">Stable Prefix (System + Tools + Docs)</div>
+                        {renderLines([{ width: 'w-[86%]', tone: 'emerald' }, { width: 'w-[72%]', tone: 'cyan' }])}
+                    </div>
+                    <div className="rounded-xl border border-white/8 bg-slate-950/45 p-3">
+                        <div className="mb-2 text-xs font-medium text-slate-200">Dynamic Task Context</div>
+                        {renderLines([{ width: 'w-[68%]', tone: 'blue' }])}
+                    </div>
+                </div>
+            </section>
+
+            <section className="rounded-2xl border border-cyan-300/12 bg-white/[0.03] p-4">
+                <div className="mb-3 flex items-center justify-between gap-2">
+                    <span className="text-sm font-medium text-slate-100">Enablement Assets</span>
+                    <span className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-2 py-1 text-[0.65rem] uppercase tracking-[0.16em] text-cyan-100">
+                        ZH / EN
+                    </span>
+                </div>
+                <div className="space-y-3">
+                    {['General LLM Usage', 'OpenCode & Skills', '20+ 1-on-1 Consultations'].map((label, index) => (
+                        <div key={label} className="rounded-xl border border-white/8 bg-slate-950/45 px-3 py-2.5">
+                            <div className="mb-1.5 text-xs font-medium text-slate-200">{label}</div>
+                            {renderLines([{ width: index === 1 ? 'w-[82%]' : 'w-[74%]', tone: index === 0 ? 'cyan' : 'blue' }])}
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </div>
+    </Shell>
+);
+
 export const ProjectMockupVisual = ({ visualType }: ProjectMockupVisualProps) => {
     switch (visualType) {
         case 'asc-merge-c-generator':
@@ -586,6 +633,8 @@ export const ProjectMockupVisual = ({ visualType }: ProjectMockupVisualProps) =>
             return <PreventiveMaintenanceVisual />;
         case 'address-normalization':
             return <AddressNormalizationVisual />;
+        case 'genai-enablement':
+            return <GenAIEnablementMockupVisual />;
         default:
             return null;
     }

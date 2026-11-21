@@ -6,35 +6,95 @@ export const Hero = () => {
     const { config, language } = useLanguage();
     const { identity, links } = config;
     const isZh = language === 'zh';
-    const heroTitle = isZh
-        ? '把企業 AI 從模糊需求，做成能上線、能驗證，也有人持續使用的內部產品'
-        : 'Turning enterprise AI requirements into secure, production-ready internal products.';
 
-    const editorialNotes = language === 'zh'
+    const statusBadge = isZh
+        ? '現任原相科技 PixArt · 前友達 AUO · 5+ 年企業 AI 實戰'
+        : 'PixArt Imaging · ex-AUO · 5+ Yrs Applied AI';
+
+    const heroSubtitle = isZh
+        ? '深耕 IC 設計、法務與智慧製造場景，結合地端 vLLM、權限隔離 NL2SQL、多模態審查與高容錯資料管線，解決企業高資安限制下的真實工作痛點。'
+        : 'Architecting on-prem LLM workflows, guarded NL2SQL, multimodal document review, and automated data pipelines across IC design, legal, and smart manufacturing.';
+
+    const keyMetrics = isZh
         ? [
-            '我把需求、資料與限制整理成能落地的 AI 應用，讓模型能力真正接上日常工作。',
-            '從需求釐清、系統設計、驗證到上線交付，我把 AI 做成團隊願意持續採用的流程與內部產品。',
+            {
+                metric: '10+',
+                label: '企業級 AI 落地系統',
+                detail: '實際交付於 IC 設計、法務、人資與製造現場',
+            },
+            {
+                metric: 'On-Prem',
+                label: '地端推論與權限隔離',
+                detail: '封閉內網部署、KV Cache 優化與受控 NL2SQL',
+            },
+            {
+                metric: '+1.43%',
+                label: '良率提升 · 月省 390+ 人時',
+                detail: '友達缺陷率 −12.62% 並推動全公司 GenAI 賦能',
+            },
         ]
         : [
-            'I turn requirements, data, and constraints into practical AI applications that connect model capabilities with real usage flows.',
-            'I design around on-prem serving, role-scoped access, human review, validation, and auditability — then carry the system from architecture to delivery.',
+            {
+                metric: '10+',
+                label: 'Production AI Systems',
+                detail: 'Shipped across IC design, legal, HR & fab workflows',
+            },
+            {
+                metric: 'On-Prem',
+                label: 'vLLM & Guarded Data',
+                detail: 'Air-gapped serving, KV cache tuning & scoped NL2SQL',
+            },
+            {
+                metric: '+1.43%',
+                label: 'Fab Yield · ~390 hrs/mo',
+                detail: '−12.62% defects at AUO & 20+ 1-on-1 staff enablement',
+            },
         ];
 
-    const profileSignals = language === 'zh'
+    const careerTrack = isZh
         ? [
-            { label: '目前主軸', value: '企業 AI 架構・LLM 系統・內部產品化', featured: true },
-            { label: '應用場景', value: '法務・研發・工程・知識工作', featured: false },
-            { label: '交付原則', value: '地端部署・權限隔離・人工審查', featured: false },
+            {
+                company: 'PixArt Imaging',
+                domain: 'IC Design',
+                period: '2025–至今',
+                focus: '企業 GenAI 架構與內部產品開發',
+            },
+            {
+                company: 'AUO Corp.',
+                domain: 'Smart Mfg',
+                period: '2021–2025',
+                focus: 'AI 專案負責人 · 良率最佳化與決策系統',
+            },
         ]
         : [
-            { label: 'Current Focus', value: 'Enterprise AI architecture · LLM systems · internal products', featured: true },
-            { label: 'Use Cases', value: 'Legal · R&D · engineering · knowledge work', featured: false },
-            { label: 'Delivery Principles', value: 'On-prem deployment · scoped access · human review', featured: false },
+            {
+                company: 'PixArt Imaging',
+                domain: 'IC Design',
+                period: '2025–Present',
+                focus: 'Enterprise GenAI & LLM Internal Products',
+            },
+            {
+                company: 'AUO Corp.',
+                domain: 'Smart Mfg',
+                period: '2021–2025',
+                focus: 'AI Project Leader · Yield & Agent Systems',
+            },
         ];
 
-    const previousImpact = language === 'zh'
-        ? { label: '過往製造成果', value: '良率 +1.43%・缺陷 −12.62%・每月約節省 300 人時' }
-        : { label: 'Previous Manufacturing Impact', value: '+1.43% yield · −12.62% defects · ~300 man-hours/month' };
+    const coreTechStack = [
+        'Python',
+        'FastAPI',
+        'vLLM',
+        'Guarded NL2SQL',
+        'RAG & VLM',
+        'LLMOps',
+        'Docker',
+        'SQL',
+    ];
+
+    const governanceStandards = isZh
+        ? ['封閉內網地端部署', '角色權限嚴格隔離', '頁級來源依據追溯']
+        : ['Air-Gapped On-Prem', 'Role-Scoped Access', 'Page-Level Traceability'];
 
     return (
         <section className="relative overflow-hidden px-6 pb-8 pt-20 md:pt-24 scroll-mt-24" id="profile">
@@ -48,37 +108,60 @@ export const Hero = () => {
                 className="relative mx-auto max-w-[90rem]"
             >
                 <div className="editorial-surface rounded-[36px] px-6 py-8 md:px-10 md:py-12 lg:px-12 lg:py-14">
-                    <div className="mb-8 flex items-center justify-between gap-4">
+                    <div className="mb-7 flex items-center justify-between gap-4">
                         <div>
-                            <p className="editorial-kicker">{language === 'zh' ? '個人作品集' : 'Portfolio Profile'}</p>
+                            <p className="editorial-kicker">{isZh ? '個人作品集' : 'Portfolio Profile'}</p>
                         </div>
                     </div>
 
-                    <div className="grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.85fr)] lg:items-center xl:gap-16">
+                    <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(350px,0.9fr)] lg:items-center xl:gap-14">
                         <div className="order-1 lg:order-1">
-                            <div className="mb-5 inline-flex items-center rounded-full border border-primary/15 bg-primary-50 px-4 py-2 text-sm font-medium text-primary shadow-sm">
-                                {identity.role}
+                            <div className="mb-5 flex flex-wrap items-center gap-2.5">
+                                <span className="inline-flex items-center rounded-full border border-primary/15 bg-primary-50 px-4 py-1.5 text-xs font-medium text-primary shadow-sm sm:text-sm">
+                                    {identity.role}
+                                </span>
+                                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200/90 bg-emerald-50/85 px-3.5 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm sm:text-sm">
+                                    <span className="relative flex h-2 w-2 shrink-0">
+                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                                    </span>
+                                    {statusBadge}
+                                </span>
                             </div>
 
                             <h1
-                                className={`max-w-[720px] text-4xl font-semibold leading-[1.08] text-gray-900 md:text-5xl ${
-                                    isZh ? 'xl:text-[3.2rem]' : 'xl:text-[3.35rem]'
+                                className={`max-w-[740px] text-4xl font-semibold leading-[1.12] text-gray-900 md:text-5xl ${
+                                    isZh ? 'xl:text-[3.1rem]' : 'xl:text-[3.3rem]'
                                 }`}
                             >
-                                {heroTitle}
+                                {isZh ? (
+                                    <>
+                                        把企業 AI 從模糊需求，做成
+                                        <span className="bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent">
+                                            能上線、能驗證、團隊持續使用的內部產品。
+                                        </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        Turning enterprise AI requirements into{' '}
+                                        <span className="bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent">
+                                            secure, production-ready internal products.
+                                        </span>
+                                    </>
+                                )}
                             </h1>
 
-                            <p className="mt-5 max-w-[620px] text-lg font-medium leading-8 text-gray-700 md:text-xl">
-                                {identity.tagline}
+                            <p className="mt-5 max-w-[660px] text-base font-normal leading-7 text-gray-600 md:text-lg md:leading-8">
+                                {heroSubtitle}
                             </p>
 
-                            <div className="mt-8 flex flex-wrap items-center gap-3">
+                            <div className="mt-7 flex flex-wrap items-center gap-3">
                                 <a
                                     href={`mailto:${links.email}`}
                                     className="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 shrink-0"
                                 >
                                     <Mail className="h-4 w-4" />
-                                    {language === 'zh' ? '聯絡我' : 'Contact Me'}
+                                    {isZh ? '聯絡我' : 'Contact Me'}
                                 </a>
 
                                 <a
@@ -105,28 +188,36 @@ export const Hero = () => {
                                     className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3.5 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:text-gray-900 shrink-0"
                                 >
                                     <FileText className="h-4 w-4" />
-                                    {language === 'zh' ? '履歷' : 'Resume'}
+                                    {isZh ? '履歷' : 'Resume'}
                                 </a>
                             </div>
 
-                            <div className="mt-10 grid gap-4 md:grid-cols-2">
-                                {editorialNotes.map((paragraph) => (
+                            <div className="mt-9 grid gap-3.5 sm:grid-cols-3">
+                                {keyMetrics.map((item) => (
                                     <div
-                                        key={paragraph}
-                                        className="min-h-[148px] rounded-[24px] border border-gray-200/90 bg-white/95 p-5 text-sm leading-7 text-gray-600 shadow-[0_14px_36px_rgba(15,23,42,0.05)]"
+                                        key={item.label}
+                                        className="rounded-[22px] border border-gray-200/90 bg-white/95 p-4 shadow-[0_12px_30px_rgba(15,23,42,0.04)]"
                                     >
-                                        {paragraph}
+                                        <p className="font-display text-2xl font-bold tracking-tight text-gray-900">
+                                            {item.metric}
+                                        </p>
+                                        <p className="mt-1 text-xs font-semibold text-primary">
+                                            {item.label}
+                                        </p>
+                                        <p className="mt-1.5 text-xs leading-5 text-gray-600">
+                                            {item.detail}
+                                        </p>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
                         <div className="order-2 lg:order-2">
-                            <div className="relative mx-auto max-w-[390px]">
+                            <div className="relative mx-auto max-w-[420px]">
                                 <div className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle_at_top,rgba(26,115,232,0.20),transparent_60%)] blur-2xl" />
-                                <div className="relative rounded-[32px] border border-gray-200 bg-[linear-gradient(160deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))] p-5 shadow-[0_24px_70px_rgba(15,23,42,0.12)]">
-                                    <div className="rounded-[28px] border border-gray-200/90 bg-white px-5 py-6">
-                                        <div className="flex justify-center">
+                                <div className="relative rounded-[32px] border border-gray-200 bg-[linear-gradient(160deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))] p-4 shadow-[0_24px_70px_rgba(15,23,42,0.12)] sm:p-5">
+                                    <div className="rounded-[26px] border border-gray-200/90 bg-white px-4 py-5 sm:px-5">
+                                        <div className="flex items-center gap-3.5">
                                             <img
                                                 src={identity.avatar}
                                                 alt={identity.name}
@@ -134,48 +225,87 @@ export const Hero = () => {
                                                 height={320}
                                                 srcSet="/assets/avatar-320.webp 1x, /assets/avatar-640.webp 2x"
                                                 loading="eager"
-                                                className="h-32 w-32 rounded-[28px] object-cover shadow-lg md:h-40 md:w-40"
+                                                className="h-20 w-20 shrink-0 rounded-[22px] object-cover shadow-md md:h-24 md:w-24"
                                             />
+                                            <div className="min-w-0">
+                                                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-primary">
+                                                    {isZh ? '專業摘要' : 'Profile Snapshot'}
+                                                </p>
+                                                <h2 className="mt-1 truncate text-xl font-bold tracking-tight text-gray-900">
+                                                    {identity.name}
+                                                </h2>
+                                                <p className={`mt-0.5 font-medium leading-snug text-gray-700 ${isZh ? 'text-xs sm:text-[0.82rem]' : 'text-xs tracking-[-0.01em]'}`}>
+                                                    {isZh ? '資訊工程師 · 生成式 AI／LLM' : 'Information Engineer · GenAI / LLM'}
+                                                </p>
+                                                <p className="mt-1 text-[0.72rem] leading-4 text-gray-500">
+                                                    {isZh ? '台灣新竹 · 半導體 IC 設計與智慧製造' : 'Hsinchu, TW · IC Design & Smart Mfg'}
+                                                </p>
+                                            </div>
                                         </div>
 
-                                        <div className="mt-6 border-t border-dashed border-gray-200 pt-5">
-                                            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gray-600">
-                                                {language === 'zh' ? '專業摘要' : 'Profile Snapshot'}
-                                            </p>
-                                            <dl className="mt-4 space-y-3">
-                                                {profileSignals.map((signal) => (
-                                                    <div
-                                                        key={signal.label}
-                                                        className={`rounded-[20px] border px-4 py-4 ${
-                                                            signal.featured
-                                                                ? 'border-primary/20 bg-primary-50/70 shadow-[0_10px_24px_rgba(26,115,232,0.08)]'
-                                                                : 'border-gray-200 bg-gray-50/80'
-                                                        }`}
-                                                    >
-                                                        <dt
-                                                            className={`text-[0.7rem] font-semibold uppercase tracking-[0.16em] ${
-                                                                signal.featured ? 'text-primary' : 'text-gray-600'
-                                                            }`}
+                                        <div className="mt-5 space-y-3 border-t border-dashed border-gray-200 pt-4">
+                                            <div className="rounded-[20px] border border-primary/20 bg-primary-50/60 px-4 py-3.5 shadow-[0_10px_24px_rgba(26,115,232,0.06)]">
+                                                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-primary">
+                                                    {isZh ? '職涯軌跡' : 'Career Track'}
+                                                </p>
+                                                <div className="mt-2.5 space-y-2.5">
+                                                    {careerTrack.map((track, idx) => (
+                                                        <div
+                                                            key={track.company}
+                                                            className={idx > 0 ? 'border-t border-primary/10 pt-2.5' : ''}
                                                         >
-                                                            {signal.label}
-                                                        </dt>
-                                                        <dd className="mt-2 text-sm leading-6 text-gray-700">
-                                                            {signal.value}
-                                                        </dd>
-                                                    </div>
-                                                ))}
-                                            </dl>
-
-                                            <dl className="mt-5 border-t border-dashed border-gray-200 pt-5">
-                                                <div>
-                                                    <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-gray-500">
-                                                        {previousImpact.label}
-                                                    </dt>
-                                                    <dd className="mt-2 text-xs leading-5 text-gray-500">
-                                                        {previousImpact.value}
-                                                    </dd>
+                                                            <div className="flex flex-wrap items-center justify-between gap-1.5">
+                                                                <div className="flex items-center gap-1.5">
+                                                                    <span className="text-xs font-bold text-gray-900">
+                                                                        {track.company}
+                                                                    </span>
+                                                                    <span className="rounded-full border border-primary/20 bg-white/90 px-2 py-0.5 text-[0.62rem] font-semibold text-primary">
+                                                                        {track.domain}
+                                                                    </span>
+                                                                </div>
+                                                                <span className="font-mono text-[0.68rem] font-medium text-gray-500">
+                                                                    {track.period}
+                                                                </span>
+                                                            </div>
+                                                            <p className="mt-1 text-xs leading-5 text-gray-700">
+                                                                {track.focus}
+                                                            </p>
+                                                        </div>
+                                                    ))}
                                                 </div>
-                                            </dl>
+                                            </div>
+
+                                            <div className="rounded-[20px] border border-gray-200 bg-gray-50/80 px-4 py-3.5">
+                                                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-gray-600">
+                                                    {isZh ? '主力技術棧' : 'Core Tech Stack'}
+                                                </p>
+                                                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                                                    {coreTechStack.map((tech) => (
+                                                        <span
+                                                            key={tech}
+                                                            className="rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs font-medium text-gray-700"
+                                                        >
+                                                            {tech}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            <div className="rounded-[20px] border border-gray-200 bg-gray-50/80 px-4 py-3.5">
+                                                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-gray-600">
+                                                    {isZh ? '企業落地標準' : 'Engineering Governance'}
+                                                </p>
+                                                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                                                    {governanceStandards.map((item) => (
+                                                        <span
+                                                            key={item}
+                                                            className="rounded-full border border-emerald-200/80 bg-emerald-50/70 px-2.5 py-1 text-xs font-medium text-emerald-800"
+                                                        >
+                                                            {item}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
