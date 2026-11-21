@@ -1,20 +1,175 @@
 <svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs><linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse"><stop stop-color="#111821"/><stop offset="1" stop-color="#19232D"/></linearGradient><linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#1E2833"/><stop offset="1" stop-color="#18212A"/></linearGradient><filter id="glow" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/><rect x="24" y="24" width="1392" height="432" rx="36" stroke="#2A3643"/>
-  <g transform="translate(0 60)">
-  <g font-family="Segoe UI, Arial, sans-serif"><rect x="72" y="60" width="150" height="40" rx="20" fill="#18212B" stroke="#344454"/><rect x="238" y="60" width="196" height="40" rx="20" fill="#18212B" stroke="#344454"/><rect x="450" y="60" width="188" height="40" rx="20" fill="#18212B" stroke="#344454"/><text x="100" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Air-Gapped</text><text x="274" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Internal Models</text><text x="489" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Multimodal</text></g>
-  <g filter="url(#glow)" stroke="#5AD7F7" stroke-width="4" stroke-linecap="round"><path d="M292 240H356"/><path d="M504 240H568"/><path d="M716 240H780"/><path d="M928 240H992"/><path d="M1140 240H1204"/></g>
-  <g fill="#5AD7F7"><path d="M356 240L343 232V248L356 240Z"/><path d="M568 240L555 232V248L568 240Z"/><path d="M780 240L767 232V248L780 240Z"/><path d="M992 240L979 232V248L992 240Z"/><path d="M1204 240L1191 232V248L1204 240Z"/></g>
-  <g fill="url(#node)" stroke="#334252"><rect x="88" y="184" width="204" height="112" rx="26"/><rect x="300" y="184" width="204" height="112" rx="26"/><rect x="512" y="184" width="204" height="112" rx="26"/><rect x="724" y="184" width="204" height="112" rx="26"/><rect x="936" y="184" width="204" height="112" rx="26"/><rect x="1148" y="184" width="204" height="112" rx="26"/></g>
-  <g fill="#141C25" stroke="#3A4E62"><rect x="154" y="198" width="44" height="44" rx="12"/><rect x="366" y="198" width="44" height="44" rx="12"/><rect x="578" y="198" width="44" height="44" rx="12"/><rect x="790" y="198" width="44" height="44" rx="12"/><rect x="1002" y="198" width="44" height="44" rx="12"/><rect x="1214" y="198" width="44" height="44" rx="12"/></g>
-  <g fill="none" stroke="#87E6FB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M167 220H185"/><path d="M176 211V229"/><rect x="164" y="231" width="24" height="5" rx="2.5"/>
-    <path d="M376 220H400"/><path d="M388 208V232"/><path d="M379 214L388 208L397 214"/><path d="M379 226L388 232L397 226"/>
-    <rect x="588" y="210" width="24" height="18" rx="4"/><path d="M596 217H604"/>
-    <rect x="800" y="210" width="24" height="18" rx="4"/><path d="M808 217H816"/>
-    <circle cx="1024" cy="220" r="10" stroke="#A78BFA"/><path d="M1018 214L1030 226M1030 214L1018 226" stroke="#A78BFA"/>
-    <rect x="1226" y="210" width="22" height="16" rx="3"/><path d="M1231 217H1243"/>
+  <defs>
+    <linearGradient id="bg-pixart-genai-hub" x1="40" y1="20" x2="1400" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="0.52" stop-color="#F0F9FF"/>
+      <stop offset="1" stop-color="#EFF6FF"/>
+    </linearGradient>
+    <linearGradient id="topbar-pixart-genai-hub" x1="20" y1="20" x2="1100" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A73E8"/>
+      <stop offset="0.6" stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#60A5FA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="card-hi-pixart-genai-hub" x1="0" y1="148" x2="0" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EFF6FF"/>
+    </linearGradient>
+    <pattern id="grid-pixart-genai-hub" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#CBD5E1" stroke-opacity="0.38" stroke-width="1"/>
+    </pattern>
+    <clipPath id="panel-pixart-genai-hub">
+      <rect x="20" y="20" width="1400" height="440" rx="30"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#panel-pixart-genai-hub)">
+    <rect x="20" y="20" width="1400" height="440" rx="30" fill="url(#bg-pixart-genai-hub)"/>
+    <rect x="20" y="20" width="1400" height="440" fill="url(#grid-pixart-genai-hub)"/>
+    <rect x="20" y="20" width="1400" height="4" fill="url(#topbar-pixart-genai-hub)"/>
   </g>
-  <g font-family="Segoe UI, Arial, sans-serif" fill="#EAF1F8" font-size="24" font-weight="700"><text x="144" y="272">Task</text><text x="367" y="272">Router</text><text x="573" y="272">Fast Model</text><text x="776" y="272">Deep Model</text><text x="993" y="272">Vision Tool</text><text x="1182" y="272">Workspace</text></g>
+  <rect x="20" y="20" width="1400" height="440" rx="30" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Header Row -->
+  <circle cx="62" cy="76" r="5" fill="#1A73E8"/>
+  <text x="78" y="81" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.2" fill="#475569">INTERNAL AI WORKSPACE · ROUTING FLOW</text>
+
+  
+  <rect x="899" y="58" width="165" height="34" rx="17" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.2"/>
+  <text x="981.5" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#1A73E8">Air-Gapped Intranet</text>
+  
+  <rect x="1074" y="58" width="114" height="34" rx="17" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.2"/>
+  <text x="1131" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#1A73E8">On-Prem vLLM</text>
+  
+  <rect x="1198" y="58" width="186" height="34" rx="17" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.2"/>
+  <text x="1291" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#1A73E8">Shared Engineering Hub</text>
+  
+
+  <!-- 6-Step Workflow Cards -->
+  
+  <g>
+    <rect x="56" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="74" y="166" width="42" height="42" rx="12" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1.2"/>
+    <g transform="translate(84 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="6" height="6" rx="1"></rect><path d="m3 17 2 2 4-4"></path><path d="M13 6h8"></path><path d="M13 12h8"></path><path d="M13 18h8"></path>
+    </g>
+    
+    <text x="236" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">01</text>
+    <text x="74" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Engineering Task</text>
+    
+    <text x="74" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Coding, Docs &amp; Analysis</text>
+    
   </g>
+  
+  <g stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M259 246H275"/>
+    <path d="M270 241L275 246L270 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="282" y="148" width="198" height="196" rx="20" fill="url(#card-hi-pixart-genai-hub)" stroke="#93C5FD" stroke-width="1.8"/>
+    <rect x="300" y="166" width="42" height="42" rx="12" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.2"/>
+    <g transform="translate(310 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9"></path><path d="M12 12v3"></path>
+    </g>
+    
+    <rect x="378" y="174" width="60" height="22" rx="11" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="408" y="188.5" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#1A73E8">Core Hub</text>
+    
+    <text x="462" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">02</text>
+    <text x="300" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Task Router</text>
+    
+    <text x="300" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Access Control &amp; Model</text>
+    
+    <text x="300" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Pick</text>
+    
+  </g>
+  
+  <g stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M485 246H501"/>
+    <path d="M496 241L501 246L496 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="508" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="526" y="166" width="42" height="42" rx="12" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1.2"/>
+    <g transform="translate(536 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+    </g>
+    
+    <text x="688" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">03</text>
+    <text x="526" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Fast Serving</text>
+    
+    <text x="526" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Low-Latency Chat &amp; Code</text>
+    
+  </g>
+  
+  <g stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M711 246H727"/>
+    <path d="M722 241L727 246L722 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="734" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="752" y="166" width="42" height="42" rx="12" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1.2"/>
+    <g transform="translate(762 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 4.5a2.5 2.5 0 0 0-4.96-.46 2.5 2.5 0 0 0-1.98 3 2.5 2.5 0 0 0-1.32 4.24 3 3 0 0 0 .34 5.58 2.5 2.5 0 0 0 2.96 3.08 2.5 2.5 0 0 0 4.91.05L12 20V4.5Z"></path><path d="M16 8V5c0-1.1.9-2 2-2"></path><path d="M12 13h4"></path><path d="M12 18h6a2 2 0 0 1 2 2v1"></path><path d="M12 8h8"></path><path d="M20.5 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"></path><path d="M16.5 13a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"></path><path d="M20.5 21a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"></path><path d="M18.5 3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"></path>
+    </g>
+    
+    <text x="914" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">04</text>
+    <text x="752" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Deep Reasoning</text>
+    
+    <text x="752" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Complex Technical</text>
+    
+    <text x="752" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Review</text>
+    
+  </g>
+  
+  <g stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M937 246H953"/>
+    <path d="M948 241L953 246L948 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="960" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="978" y="166" width="42" height="42" rx="12" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1.2"/>
+    <g transform="translate(988 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle>
+    </g>
+    
+    <text x="1140" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">05</text>
+    <text x="978" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Doc &amp; Vision</text>
+    
+    <text x="978" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Multimodal Input</text>
+    
+    <text x="978" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Utilities</text>
+    
+  </g>
+  
+  <g stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1163 246H1179"/>
+    <path d="M1174 241L1179 246L1174 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="1186" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="1204" y="166" width="42" height="42" rx="12" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1.2"/>
+    <g transform="translate(1214 176) scale(0.92)" fill="none" stroke="#1A73E8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect>
+    </g>
+    
+    <text x="1366" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">06</text>
+    <text x="1204" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Team Workspace</text>
+    
+    <text x="1204" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Reusable Daily Patterns</text>
+    
+  </g>
+  
+
+  <!-- Footer Takeaway Bar -->
+  <rect x="56" y="382" width="1328" height="50" rx="16" fill="#FFFFFF" fill-opacity="0.92" stroke="#E2E8F0" stroke-width="1.2"/>
+  <circle cx="76" cy="407" r="3.5" fill="#1A73E8"/>
+  <text x="90" y="412" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#475569">Unifies on-prem model serving, document/vision utilities, and repeatable workflows into one engineering entry point.</text>
+
+  <rect x="1100" y="392" width="268" height="30" rx="15" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="1234" y="411" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#1D4ED8">On-Prem Serving · Reusable Patterns</text>
 </svg>

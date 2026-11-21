@@ -1,68 +1,173 @@
 <svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0B1120"/>
-      <stop offset="1" stop-color="#1E1B4B"/>
+    <linearGradient id="bg-workforce-insight-platform" x1="40" y1="20" x2="1400" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="0.52" stop-color="#F1F5F9"/>
+      <stop offset="1" stop-color="#EEF4FF"/>
     </linearGradient>
-    <linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1E293B"/>
-      <stop offset="1" stop-color="#0F172A"/>
+    <linearGradient id="topbar-workforce-insight-platform" x1="20" y1="20" x2="1100" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366F1"/>
+      <stop offset="0.6" stop-color="#1A73E8"/>
+      <stop offset="1" stop-color="#1A73E8" stop-opacity="0"/>
     </linearGradient>
-    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
-      <feGaussianBlur stdDeviation="10" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="card-hi-workforce-insight-platform" x1="0" y1="148" x2="0" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EEF2FF"/>
+    </linearGradient>
+    <pattern id="grid-workforce-insight-platform" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#CBD5E1" stroke-opacity="0.38" stroke-width="1"/>
+    </pattern>
+    <clipPath id="panel-workforce-insight-platform">
+      <rect x="20" y="20" width="1400" height="440" rx="30"/>
+    </clipPath>
   </defs>
-  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/>
-  <rect x="24" y="24" width="1392" height="432" rx="36" stroke="#312E81" stroke-width="1.5"/>
-  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif">
-    <rect x="72" y="60" width="190" height="40" rx="20" fill="#1E1B4B" stroke="#4338CA"/>
-    <rect x="278" y="60" width="180" height="40" rx="20" fill="#1E1B4B" stroke="#4338CA"/>
-    <rect x="474" y="60" width="200" height="40" rx="20" fill="#1E1B4B" stroke="#4338CA"/>
-    <text x="100" y="85" fill="#E0E7FF" font-size="14" font-weight="600">Enterprise HR Analytics</text>
-    <text x="312" y="85" fill="#E0E7FF" font-size="14" font-weight="600">Guarded NL2SQL</text>
-    <text x="506" y="85" fill="#E0E7FF" font-size="14" font-weight="600">Role-Scoped Snapshots</text>
+
+  <g clip-path="url(#panel-workforce-insight-platform)">
+    <rect x="20" y="20" width="1400" height="440" rx="30" fill="url(#bg-workforce-insight-platform)"/>
+    <rect x="20" y="20" width="1400" height="440" fill="url(#grid-workforce-insight-platform)"/>
+    <rect x="20" y="20" width="1400" height="4" fill="url(#topbar-workforce-insight-platform)"/>
   </g>
-  <g filter="url(#glow)" stroke="#818CF8" stroke-width="4" stroke-linecap="round">
-    <path d="M280 240H324"/><path d="M492 240H536"/><path d="M704 240H748"/><path d="M916 240H960"/><path d="M1128 240H1172"/>
+  <rect x="20" y="20" width="1400" height="440" rx="30" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Header Row -->
+  <circle cx="62" cy="76" r="5" fill="#6366F1"/>
+  <text x="78" y="81" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.2" fill="#475569">WORK-HOUR REVIEW · SYSTEM ARCHITECTURE</text>
+
+  
+  <rect x="920" y="58" width="129" height="34" rx="17" fill="#FFFFFF" stroke="#C7D2FE" stroke-width="1.2"/>
+  <text x="984.5" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#4338CA">Guarded NL2SQL</text>
+  
+  <rect x="1059" y="58" width="172" height="34" rx="17" fill="#FFFFFF" stroke="#C7D2FE" stroke-width="1.2"/>
+  <text x="1145" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#4338CA">Historical Org Scope</text>
+  
+  <rect x="1241" y="58" width="143" height="34" rx="17" fill="#FFFFFF" stroke="#C7D2FE" stroke-width="1.2"/>
+  <text x="1312.5" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#4338CA">Offline Intranet</text>
+  
+
+  <!-- 6-Step Workflow Cards -->
+  
+  <g>
+    <rect x="56" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="74" y="166" width="42" height="42" rx="12" fill="#EEF2FF" stroke="#E0E7FF" stroke-width="1.2"/>
+    <g transform="translate(84 176) scale(0.92)" fill="none" stroke="#4338CA" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4"></path><polyline points="14 2 14 8 20 8"></polyline><rect width="8" height="5" x="2" y="13" rx="1"></rect><path d="M8 13v-2a2 2 0 1 0-4 0v2"></path>
+    </g>
+    
+    <text x="236" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">01</text>
+    <text x="74" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Encrypted HR</text>
+    
+    <text x="74" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">CP950 / Encrypted XLSX</text>
+    
   </g>
-  <g fill="#818CF8">
-    <path d="M324 240L312 233V247L324 240Z"/><path d="M536 240L524 233V247L536 240Z"/><path d="M748 240L736 233V247L748 240Z"/><path d="M960 240L948 233V247L960 240Z"/><path d="M1172 240L1160 233V247L1172 240Z"/>
+  
+  <g stroke="#818CF8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M259 246H275"/>
+    <path d="M270 241L275 246L270 251" fill="none"/>
   </g>
-  <g fill="url(#node)" stroke="#3730A3">
-    <rect x="76" y="184" width="204" height="112" rx="26"/><rect x="288" y="184" width="204" height="112" rx="26"/><rect x="500" y="184" width="204" height="112" rx="26"/><rect x="712" y="184" width="204" height="112" rx="26"/><rect x="924" y="184" width="204" height="112" rx="26"/><rect x="1136" y="184" width="204" height="112" rx="26"/>
+  
+  <g>
+    <rect x="282" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="300" y="166" width="42" height="42" rx="12" fill="#EEF2FF" stroke="#E0E7FF" stroke-width="1.2"/>
+    <g transform="translate(310 176) scale(0.92)" fill="none" stroke="#4338CA" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="8" height="8" x="3" y="3" rx="2"></rect><path d="M7 11v4a2 2 0 0 0 2 2h4"></path><rect width="8" height="8" x="13" y="13" rx="2"></rect>
+    </g>
+    
+    <text x="462" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">02</text>
+    <text x="300" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Pandas ETL</text>
+    
+    <text x="300" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Leave &amp; Holiday Rules</text>
+    
   </g>
-  <g fill="#1E1B4B" stroke="#4F46E5">
-    <rect x="156" y="198" width="44" height="44" rx="12"/><rect x="368" y="198" width="44" height="44" rx="12"/><rect x="580" y="198" width="44" height="44" rx="12"/><rect x="792" y="198" width="44" height="44" rx="12"/><rect x="1004" y="198" width="44" height="44" rx="12"/><rect x="1216" y="198" width="44" height="44" rx="12"/>
+  
+  <g stroke="#818CF8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M485 246H501"/>
+    <path d="M496 241L501 246L496 251" fill="none"/>
   </g>
-  <g fill="none" stroke="#A5B4FC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Lock & Files -->
-    <rect x="169" y="214" width="18" height="16" rx="2"/><path d="M173 214V210A5 5 0 0 1 183 210V214"/>
-    <!-- ETL gears/flow -->
-    <path d="M383 214L397 226M397 214L383 226"/><circle cx="390" cy="220" r="10"/>
-    <!-- Scoped DB snapshot -->
-    <ellipse cx="602" cy="214" rx="10" ry="4"/><path d="M592 214V226C592 228 596 230 602 230C608 230 612 228 612 226V214"/>
-    <!-- Guarded NL2SQL check -->
-    <path d="M805 220L810 225L823 214"/><rect x="800" y="208" width="28" height="24" rx="4"/>
-    <!-- Evidence verification -->
-    <circle cx="1026" cy="220" r="10"/><path d="M1021 220H1031M1026 215V225"/>
-    <!-- Manager dashboard -->
-    <rect x="1225" y="210" width="26" height="20" rx="3"/><path d="M1230 224V220M1238 224V216M1245 224V218"/>
+  
+  <g>
+    <rect x="508" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="526" y="166" width="42" height="42" rx="12" fill="#EEF2FF" stroke="#E0E7FF" stroke-width="1.2"/>
+    <g transform="translate(536 176) scale(0.92)" fill="none" stroke="#4338CA" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 12a9 3 0 0 0 5 2.69"></path><path d="M21 9.3V5"></path><path d="M3 5v14a9 3 0 0 0 6.47 2.88"></path><path d="M12 12v4h4"></path><path d="M13 20a5 5 0 0 0 9-3 4.5 4.5 0 0 0-4.5-4.5c-1.33 0-2.54.54-3.41 1.41L12 16"></path>
+    </g>
+    
+    <text x="688" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">03</text>
+    <text x="526" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Scoped Snapshot</text>
+    
+    <text x="526" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Month-Scoped SQLite</text>
+    
   </g>
-  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" fill="#EEF2FF" font-size="20" font-weight="700">
-    <text x="105" y="272">Encrypted HR</text>
-    <text x="330" y="272">Pandas ETL</text>
-    <text x="522" y="272">Scoped Snapshot</text>
-    <text x="734" y="272">Guarded SQL</text>
-    <text x="946" y="272">Evidence Verify</text>
-    <text x="1155" y="272">Manager Portal</text>
+  
+  <g stroke="#818CF8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M711 246H727"/>
+    <path d="M722 241L727 246L722 251" fill="none"/>
   </g>
-  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" fill="#A5B4FC" font-size="12">
-    <text x="112" y="288">CP950 / Passwords</text>
-    <text x="325" y="288">Leave / Work-Hour</text>
-    <text x="528" y="288">Historical Hierarchy</text>
-    <text x="740" y="288">Whitelist &amp; AST</text>
-    <text x="955" y="288">Audit Trail Log</text>
-    <text x="1162" y="288">React / FastAPI</text>
+  
+  <g>
+    <rect x="734" y="148" width="198" height="196" rx="20" fill="url(#card-hi-workforce-insight-platform)" stroke="#A5B4FC" stroke-width="1.8"/>
+    <rect x="752" y="166" width="42" height="42" rx="12" fill="#E0E7FF" stroke="#A5B4FC" stroke-width="1.2"/>
+    <g transform="translate(762 176) scale(0.92)" fill="none" stroke="#4338CA" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path>
+    </g>
+    
+    <rect x="825" y="174" width="65" height="22" rx="11" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1"/>
+    <text x="857.5" y="188.5" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#4338CA">Guardrail</text>
+    
+    <text x="914" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">04</text>
+    <text x="752" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Guarded SQL</text>
+    
+    <text x="752" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Single-SELECT AST</text>
+    
+    <text x="752" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Whitelist</text>
+    
   </g>
+  
+  <g stroke="#818CF8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M937 246H953"/>
+    <path d="M948 241L953 246L948 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="960" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="978" y="166" width="42" height="42" rx="12" fill="#EEF2FF" stroke="#E0E7FF" stroke-width="1.2"/>
+    <g transform="translate(988 176) scale(0.92)" fill="none" stroke="#4338CA" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m3 15 2 2 4-4"></path>
+    </g>
+    
+    <text x="1140" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">05</text>
+    <text x="978" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Evidence Audit</text>
+    
+    <text x="978" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Grounded Reply &amp; Logs</text>
+    
+  </g>
+  
+  <g stroke="#818CF8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1163 246H1179"/>
+    <path d="M1174 241L1179 246L1174 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="1186" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="1204" y="166" width="42" height="42" rx="12" fill="#EEF2FF" stroke="#E0E7FF" stroke-width="1.2"/>
+    <g transform="translate(1214 176) scale(0.92)" fill="none" stroke="#4338CA" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line>
+    </g>
+    
+    <text x="1366" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">06</text>
+    <text x="1204" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Manager Portal</text>
+    
+    <text x="1204" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">React / FastAPI /</text>
+    
+    <text x="1204" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Docker</text>
+    
+  </g>
+  
+
+  <!-- Footer Takeaway Bar -->
+  <rect x="56" y="382" width="1328" height="50" rx="16" fill="#FFFFFF" fill-opacity="0.92" stroke="#E2E8F0" stroke-width="1.2"/>
+  <circle cx="76" cy="407" r="3.5" fill="#6366F1"/>
+  <text x="90" y="412" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#475569">Server resolves manager scope &amp; period before SQL execution—LLM never touches the primary database.</text>
+
+  <rect x="1114" y="392" width="254" height="30" rx="15" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1"/>
+  <text x="1241" y="411" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#3730A3">Read-Only Snapshot · Audit Logged</text>
 </svg>

@@ -1,18 +1,177 @@
 <svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs><linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse"><stop stop-color="#111821"/><stop offset="1" stop-color="#19232D"/></linearGradient><linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#1E2833"/><stop offset="1" stop-color="#18212A"/></linearGradient><filter id="glow" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/><rect x="24" y="24" width="1392" height="432" rx="36" stroke="#2A3643"/>
-  <g font-family="Segoe UI, Arial, sans-serif"><rect x="72" y="60" width="154" height="40" rx="20" fill="#18212B" stroke="#344454"/><rect x="242" y="60" width="184" height="40" rx="20" fill="#18212B" stroke="#344454"/><rect x="442" y="60" width="184" height="40" rx="20" fill="#18212B" stroke="#344454"/><text x="102" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Multi-Agent</text><text x="275" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Knowledge Graph</text><text x="476" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Decision Support</text></g>
-  <g filter="url(#glow)" stroke="#5AD7F7" stroke-width="4" stroke-linecap="round"><path d="M292 240H356"/><path d="M504 240H568"/><path d="M716 240H780"/><path d="M928 240H992"/><path d="M1140 240H1204"/></g>
-  <g fill="#5AD7F7"><path d="M356 240L343 232V248L356 240Z"/><path d="M568 240L555 232V248L568 240Z"/><path d="M780 240L767 232V248L780 240Z"/><path d="M992 240L979 232V248L992 240Z"/><path d="M1204 240L1191 232V248L1204 240Z"/></g>
-  <g fill="url(#node)" stroke="#334252"><rect x="88" y="184" width="204" height="112" rx="26"/><rect x="300" y="184" width="204" height="112" rx="26"/><rect x="512" y="184" width="204" height="112" rx="26"/><rect x="724" y="184" width="204" height="112" rx="26"/><rect x="936" y="184" width="204" height="112" rx="26"/><rect x="1148" y="184" width="204" height="112" rx="26"/></g>
-  <g fill="#141C25" stroke="#3A4E62"><rect x="154" y="198" width="44" height="44" rx="12"/><rect x="366" y="198" width="44" height="44" rx="12"/><rect x="578" y="198" width="44" height="44" rx="12"/><rect x="790" y="198" width="44" height="44" rx="12"/><rect x="1002" y="198" width="44" height="44" rx="12"/><rect x="1214" y="198" width="44" height="44" rx="12"/></g>
-  <g fill="none" stroke="#87E6FB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M167 212C161 212 157 217 157 223C157 229 161 234 167 234C173 234 177 229 177 223"/><path d="M177 212V234"/>
-    <path d="M377 216H399"/><path d="M388 207V231"/><path d="M377 231L388 216L399 231"/>
-    <rect x="588" y="210" width="24" height="18" rx="4"/><path d="M596 217H604"/>
-    <circle cx="806" cy="214" r="4"/><circle cx="818" cy="226" r="4"/><circle cx="830" cy="214" r="4"/>
-    <path d="M1018 228L1024 214L1030 228" stroke="#F59E0B"/><path d="M1024 228V234" stroke="#F59E0B"/>
-    <circle cx="1236" cy="220" r="10"/><path d="M1231 220H1241M1236 215V225"/>
+  <defs>
+    <linearGradient id="bg-auo-assistant" x1="40" y1="20" x2="1400" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="0.52" stop-color="#ECFEFF"/>
+      <stop offset="1" stop-color="#EEF4FF"/>
+    </linearGradient>
+    <linearGradient id="topbar-auo-assistant" x1="20" y1="20" x2="1100" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0891B2"/>
+      <stop offset="0.6" stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#0EA5E9" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="card-hi-auo-assistant" x1="0" y1="148" x2="0" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#ECFEFF"/>
+    </linearGradient>
+    <pattern id="grid-auo-assistant" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#CBD5E1" stroke-opacity="0.38" stroke-width="1"/>
+    </pattern>
+    <clipPath id="panel-auo-assistant">
+      <rect x="20" y="20" width="1400" height="440" rx="30"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#panel-auo-assistant)">
+    <rect x="20" y="20" width="1400" height="440" rx="30" fill="url(#bg-auo-assistant)"/>
+    <rect x="20" y="20" width="1400" height="440" fill="url(#grid-auo-assistant)"/>
+    <rect x="20" y="20" width="1400" height="4" fill="url(#topbar-auo-assistant)"/>
   </g>
-  <g font-family="Segoe UI, Arial, sans-serif" fill="#EAF1F8" font-size="24" font-weight="700"><text x="145" y="272">Question</text><text x="345" y="272">Retrieve</text><text x="573" y="272">SQL Tool</text><text x="762" y="272">KG Reason</text><text x="985" y="272">Agents</text><text x="1196" y="272">Decision</text></g>
+  <rect x="20" y="20" width="1400" height="440" rx="30" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Header Row -->
+  <circle cx="62" cy="76" r="5" fill="#0891B2"/>
+  <text x="78" y="81" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.2" fill="#475569">DECISION ASSISTANT · MULTI-AGENT ARCHITECTURE</text>
+
+  
+  <rect x="820" y="58" width="179" height="34" rx="17" fill="#FFFFFF" stroke="#A5F3FC" stroke-width="1.2"/>
+  <text x="909.5" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#155E75">LangGraph Multi-Agent</text>
+  
+  <rect x="1009" y="58" width="179" height="34" rx="17" fill="#FFFFFF" stroke="#A5F3FC" stroke-width="1.2"/>
+  <text x="1098.5" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#155E75">Neo4j Knowledge Graph</text>
+  
+  <rect x="1198" y="58" width="186" height="34" rx="17" fill="#FFFFFF" stroke="#A5F3FC" stroke-width="1.2"/>
+  <text x="1291" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#155E75">Cross-Source Reasoning</text>
+  
+
+  <!-- 6-Step Workflow Cards -->
+  
+  <g>
+    <rect x="56" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="74" y="166" width="42" height="42" rx="12" fill="#ECFEFF" stroke="#CFFAFE" stroke-width="1.2"/>
+    <g transform="translate(84 176) scale(0.92)" fill="none" stroke="#0E7490" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path>
+    </g>
+    
+    <text x="236" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">01</text>
+    <text x="74" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Fab Question</text>
+    
+    <text x="74" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Cross-Source Issue</text>
+    
+    <text x="74" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Query</text>
+    
+  </g>
+  
+  <g stroke="#06B6D4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M259 246H275"/>
+    <path d="M270 241L275 246L270 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="282" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="300" y="166" width="42" height="42" rx="12" fill="#ECFEFF" stroke="#CFFAFE" stroke-width="1.2"/>
+    <g transform="translate(310 176) scale(0.92)" fill="none" stroke="#0E7490" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+    </g>
+    
+    <text x="462" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">02</text>
+    <text x="300" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">SOP Retrieval</text>
+    
+    <text x="300" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Process Docs &amp; RAG</text>
+    
+  </g>
+  
+  <g stroke="#06B6D4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M485 246H501"/>
+    <path d="M496 241L501 246L496 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="508" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="526" y="166" width="42" height="42" rx="12" fill="#ECFEFF" stroke="#CFFAFE" stroke-width="1.2"/>
+    <g transform="translate(536 176) scale(0.92)" fill="none" stroke="#0E7490" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"></path>
+    </g>
+    
+    <text x="688" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">03</text>
+    <text x="526" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">SQL Tooling</text>
+    
+    <text x="526" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Live Yield &amp; Chamber</text>
+    
+    <text x="526" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Data</text>
+    
+  </g>
+  
+  <g stroke="#06B6D4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M711 246H727"/>
+    <path d="M722 241L727 246L722 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="734" y="148" width="198" height="196" rx="20" fill="url(#card-hi-auo-assistant)" stroke="#67E8F9" stroke-width="1.8"/>
+    <rect x="752" y="166" width="42" height="42" rx="12" fill="#CFFAFE" stroke="#67E8F9" stroke-width="1.2"/>
+    <g transform="translate(762 176) scale(0.92)" fill="none" stroke="#0E7490" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path>
+    </g>
+    
+    <rect x="808" y="174" width="82" height="22" rx="11" fill="#ECFEFF" stroke="#A5F3FC" stroke-width="1"/>
+    <text x="849" y="188.5" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#155E75">Domain Graph</text>
+    
+    <text x="914" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">04</text>
+    <text x="752" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Neo4j KG</text>
+    
+    <text x="752" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Equipment–Process Links</text>
+    
+  </g>
+  
+  <g stroke="#06B6D4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M937 246H953"/>
+    <path d="M948 241L953 246L948 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="960" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="978" y="166" width="42" height="42" rx="12" fill="#ECFEFF" stroke="#CFFAFE" stroke-width="1.2"/>
+    <g transform="translate(988 176) scale(0.92)" fill="none" stroke="#0E7490" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path>
+    </g>
+    
+    <text x="1140" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">05</text>
+    <text x="978" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Agent Routing</text>
+    
+    <text x="978" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Multi-Step Tool</text>
+    
+    <text x="978" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Orchestration</text>
+    
+  </g>
+  
+  <g stroke="#06B6D4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1163 246H1179"/>
+    <path d="M1174 241L1179 246L1174 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="1186" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="1204" y="166" width="42" height="42" rx="12" fill="#ECFEFF" stroke="#CFFAFE" stroke-width="1.2"/>
+    <g transform="translate(1214 176) scale(0.92)" fill="none" stroke="#0E7490" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="6" x2="6" y1="3" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path>
+    </g>
+    
+    <text x="1366" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">06</text>
+    <text x="1204" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Decision Aid</text>
+    
+    <text x="1204" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Grounded Root-Cause</text>
+    
+    <text x="1204" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Path</text>
+    
+  </g>
+  
+
+  <!-- Footer Takeaway Bar -->
+  <rect x="56" y="382" width="1328" height="50" rx="16" fill="#FFFFFF" fill-opacity="0.92" stroke="#E2E8F0" stroke-width="1.2"/>
+  <circle cx="76" cy="407" r="3.5" fill="#0891B2"/>
+  <text x="90" y="412" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#475569">Evolved from basic text search into a LangGraph workflow coordinating RAG, SQL, and Neo4j process graphs.</text>
+
+  <rect x="1080" y="392" width="288" height="30" rx="15" fill="#ECFEFF" stroke="#A5F3FC" stroke-width="1"/>
+  <text x="1224" y="411" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#155E75">RAG + SQL + Neo4j · Investigation Flow</text>
 </svg>

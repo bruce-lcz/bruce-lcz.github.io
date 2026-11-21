@@ -1,18 +1,175 @@
 <svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs><linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse"><stop stop-color="#111821"/><stop offset="1" stop-color="#19232D"/></linearGradient><linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#1E2833"/><stop offset="1" stop-color="#18212A"/></linearGradient><filter id="glow" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/><rect x="24" y="24" width="1392" height="432" rx="36" stroke="#2A3643"/>
-  <g font-family="Segoe UI, Arial, sans-serif"><rect x="72" y="60" width="132" height="40" rx="20" fill="#18212B" stroke="#344454"/><rect x="220" y="60" width="176" height="40" rx="20" fill="#18212B" stroke="#344454"/><rect x="412" y="60" width="198" height="40" rx="20" fill="#18212B" stroke="#344454"/><text x="111" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Offline</text><text x="256" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Speaker Tags</text><text x="451" y="86" fill="#E7EEF6" font-size="15" font-weight="600">Structured Notes</text></g>
-  <g filter="url(#glow)" stroke="#5AD7F7" stroke-width="4" stroke-linecap="round"><path d="M292 240H356"/><path d="M504 240H568"/><path d="M716 240H780"/><path d="M928 240H992"/><path d="M1140 240H1204"/></g>
-  <g fill="#5AD7F7"><path d="M356 240L343 232V248L356 240Z"/><path d="M568 240L555 232V248L568 240Z"/><path d="M780 240L767 232V248L780 240Z"/><path d="M992 240L979 232V248L992 240Z"/><path d="M1204 240L1191 232V248L1204 240Z"/></g>
-  <g fill="url(#node)" stroke="#334252"><rect x="88" y="184" width="204" height="112" rx="26"/><rect x="300" y="184" width="204" height="112" rx="26"/><rect x="512" y="184" width="204" height="112" rx="26"/><rect x="724" y="184" width="204" height="112" rx="26"/><rect x="936" y="184" width="204" height="112" rx="26"/><rect x="1148" y="184" width="204" height="112" rx="26"/></g>
-  <g fill="#141C25" stroke="#3A4E62"><rect x="154" y="198" width="44" height="44" rx="12"/><rect x="366" y="198" width="44" height="44" rx="12"/><rect x="578" y="198" width="44" height="44" rx="12"/><rect x="790" y="198" width="44" height="44" rx="12"/><rect x="1002" y="198" width="44" height="44" rx="12"/><rect x="1214" y="198" width="44" height="44" rx="12"/></g>
-  <g fill="none" stroke="#87E6FB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M171 230V210"/><path d="M163 220C163 214 167 210 173 210C179 210 183 214 183 220C183 226 179 230 173 230"/>
-    <path d="M377 214L388 228L399 214"/><path d="M388 228V234"/>
-    <path d="M590 212H638M590 220H638M590 228H626"/>
-    <circle cx="810" cy="216" r="5"/><circle cx="826" cy="222" r="5"/><circle cx="842" cy="216" r="5"/>
-    <rect x="1014" y="210" width="20" height="14" rx="3" stroke="#F59E0B"/><path d="M1020 217H1028" stroke="#F59E0B"/>
-    <path d="M1228 212H1244"/><path d="M1228 220H1250"/><path d="M1228 228H1240"/>
+  <defs>
+    <linearGradient id="bg-auto-minutes-system" x1="40" y1="20" x2="1400" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="0.52" stop-color="#F5F3FF"/>
+      <stop offset="1" stop-color="#EEF2FF"/>
+    </linearGradient>
+    <linearGradient id="topbar-auto-minutes-system" x1="20" y1="20" x2="1100" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B5CF6"/>
+      <stop offset="0.6" stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#6366F1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="card-hi-auto-minutes-system" x1="0" y1="148" x2="0" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F5F3FF"/>
+    </linearGradient>
+    <pattern id="grid-auto-minutes-system" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#CBD5E1" stroke-opacity="0.38" stroke-width="1"/>
+    </pattern>
+    <clipPath id="panel-auto-minutes-system">
+      <rect x="20" y="20" width="1400" height="440" rx="30"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#panel-auto-minutes-system)">
+    <rect x="20" y="20" width="1400" height="440" rx="30" fill="url(#bg-auto-minutes-system)"/>
+    <rect x="20" y="20" width="1400" height="440" fill="url(#grid-auto-minutes-system)"/>
+    <rect x="20" y="20" width="1400" height="4" fill="url(#topbar-auto-minutes-system)"/>
   </g>
-  <g font-family="Segoe UI, Arial, sans-serif" fill="#EAF1F8" font-size="24" font-weight="700"><text x="145" y="272">Audio In</text><text x="347" y="272">VAD Split</text><text x="585" y="272">ASR</text><text x="761" y="272">Diarize</text><text x="965" y="272">Summarize</text><text x="1198" y="272">Minutes</text></g>
+  <rect x="20" y="20" width="1400" height="440" rx="30" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Header Row -->
+  <circle cx="62" cy="76" r="5" fill="#8B5CF6"/>
+  <text x="78" y="81" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.2" fill="#475569">MEETING INTELLIGENCE · OFFLINE AUDIO FLOW</text>
+
+  
+  <rect x="847" y="58" width="194" height="34" rx="17" fill="#FFFFFF" stroke="#DDD6FE" stroke-width="1.2"/>
+  <text x="944" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#6D28D9">Internal Audio Pipeline</text>
+  
+  <rect x="1051" y="58" width="165" height="34" rx="17" fill="#FFFFFF" stroke="#DDD6FE" stroke-width="1.2"/>
+  <text x="1133.5" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#6D28D9">Speaker Diarization</text>
+  
+  <rect x="1226" y="58" width="158" height="34" rx="17" fill="#FFFFFF" stroke="#DDD6FE" stroke-width="1.2"/>
+  <text x="1305" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#6D28D9">Structured Minutes</text>
+  
+
+  <!-- 6-Step Workflow Cards -->
+  
+  <g>
+    <rect x="56" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="74" y="166" width="42" height="42" rx="12" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="1.2"/>
+    <g transform="translate(84 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line>
+    </g>
+    
+    <text x="236" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">01</text>
+    <text x="74" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Audio Ingestion</text>
+    
+    <text x="74" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Long Recordings &amp; Cache</text>
+    
+  </g>
+  
+  <g stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M259 246H275"/>
+    <path d="M270 241L275 246L270 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="282" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="300" y="166" width="42" height="42" rx="12" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="1.2"/>
+    <g transform="translate(310 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+    </g>
+    
+    <text x="462" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">02</text>
+    <text x="300" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">VAD Segment</text>
+    
+    <text x="300" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Chunking &amp; Noise</text>
+    
+    <text x="300" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Cleanup</text>
+    
+  </g>
+  
+  <g stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M485 246H501"/>
+    <path d="M496 241L501 246L496 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="508" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="526" y="166" width="42" height="42" rx="12" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="1.2"/>
+    <g transform="translate(536 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8.8 20v-4.1l1.9.2a2.3 2.3 0 0 0 2.164-2.1V8.3A5.37 5.37 0 0 0 2 8.25c0 2.8.656 3.054 1 4.55a5.77 5.77 0 0 1 .029 2.758L2 20"></path><path d="M19.8 17.8a7.5 7.5 0 0 0 .003-10.603"></path><path d="M17 15a3.5 3.5 0 0 0-.025-4.975"></path>
+    </g>
+    
+    <text x="688" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">03</text>
+    <text x="526" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Offline ASR</text>
+    
+    <text x="526" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Internal Speech-to-Text</text>
+    
+  </g>
+  
+  <g stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M711 246H727"/>
+    <path d="M722 241L727 246L722 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="734" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="752" y="166" width="42" height="42" rx="12" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="1.2"/>
+    <g transform="translate(762 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+    </g>
+    
+    <text x="914" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">04</text>
+    <text x="752" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Speaker Diarize</text>
+    
+    <text x="752" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Multi-Speaker</text>
+    
+    <text x="752" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Attribution</text>
+    
+  </g>
+  
+  <g stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M937 246H953"/>
+    <path d="M948 241L953 246L948 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="960" y="148" width="198" height="196" rx="20" fill="url(#card-hi-auto-minutes-system)" stroke="#C4B5FD" stroke-width="1.8"/>
+    <rect x="978" y="166" width="42" height="42" rx="12" fill="#EDE9FE" stroke="#C4B5FD" stroke-width="1.2"/>
+    <g transform="translate(988 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="21" x2="3" y1="6" y2="6"></line><line x1="15" x2="3" y1="12" y2="12"></line><line x1="17" x2="3" y1="18" y2="18"></line>
+    </g>
+    
+    <rect x="1051" y="174" width="65" height="22" rx="11" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+    <text x="1083.5" y="188.5" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#6D28D9">Synthesis</text>
+    
+    <text x="1140" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">05</text>
+    <text x="978" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">LLM Structuring</text>
+    
+    <text x="978" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Decisions, Risks &amp;</text>
+    
+    <text x="978" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Actions</text>
+    
+  </g>
+  
+  <g stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1163 246H1179"/>
+    <path d="M1174 241L1179 246L1174 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="1186" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="1204" y="166" width="42" height="42" rx="12" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="1.2"/>
+    <g transform="translate(1214 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path>
+    </g>
+    
+    <text x="1366" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">06</text>
+    <text x="1204" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Action Minutes</text>
+    
+    <text x="1204" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Reviewable Team Output</text>
+    
+  </g>
+  
+
+  <!-- Footer Takeaway Bar -->
+  <rect x="56" y="382" width="1328" height="50" rx="16" fill="#FFFFFF" fill-opacity="0.92" stroke="#E2E8F0" stroke-width="1.2"/>
+  <circle cx="76" cy="407" r="3.5" fill="#8B5CF6"/>
+  <text x="90" y="412" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#475569">Turns messy multi-speaker recordings into actionable internal minutes with caching for recurring team use.</text>
+
+  <rect x="1073" y="392" width="295" height="30" rx="15" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+  <text x="1220.5" y="411" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#5B21B6">Offline Internal Flow · Caching Enabled</text>
 </svg>

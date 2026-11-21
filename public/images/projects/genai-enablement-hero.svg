@@ -1,62 +1,177 @@
 <svg width="1440" height="480" viewBox="0 0 1440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="120" y1="48" x2="1320" y2="432" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0B1120"/>
-      <stop offset="1" stop-color="#1E1B4B"/>
+    <linearGradient id="bg-genai-enablement" x1="40" y1="20" x2="1400" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="0.52" stop-color="#F5F3FF"/>
+      <stop offset="1" stop-color="#EEF2FF"/>
     </linearGradient>
-    <linearGradient id="node" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1E293B"/>
-      <stop offset="1" stop-color="#0F172A"/>
+    <linearGradient id="topbar-genai-enablement" x1="20" y1="20" x2="1100" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B5CF6"/>
+      <stop offset="0.6" stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#6366F1" stop-opacity="0"/>
     </linearGradient>
-    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
-      <feGaussianBlur stdDeviation="10" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="card-hi-genai-enablement" x1="0" y1="148" x2="0" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F5F3FF"/>
+    </linearGradient>
+    <pattern id="grid-genai-enablement" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#CBD5E1" stroke-opacity="0.38" stroke-width="1"/>
+    </pattern>
+    <clipPath id="panel-genai-enablement">
+      <rect x="20" y="20" width="1400" height="440" rx="30"/>
+    </clipPath>
   </defs>
-  <rect x="24" y="24" width="1392" height="432" rx="36" fill="url(#bg)"/>
-  <rect x="24" y="24" width="1392" height="432" rx="36" stroke="#312E81" stroke-width="1.5"/>
-  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif">
-    <rect x="72" y="60" width="180" height="40" rx="20" fill="#1E1B4B" stroke="#4338CA"/>
-    <rect x="268" y="60" width="210" height="40" rx="20" fill="#1E1B4B" stroke="#4338CA"/>
-    <rect x="494" y="60" width="220" height="40" rx="20" fill="#1E1B4B" stroke="#4338CA"/>
-    <text x="102" y="85" fill="#E0E7FF" font-size="14" font-weight="600">Usage Telemetry</text>
-    <text x="294" y="85" fill="#E0E7FF" font-size="14" font-weight="600">Prefix Cache &amp; KV Reuse</text>
-    <text x="518" y="85" fill="#E0E7FF" font-size="14" font-weight="600">20+ Consultations &amp; Rollout</text>
+
+  <g clip-path="url(#panel-genai-enablement)">
+    <rect x="20" y="20" width="1400" height="440" rx="30" fill="url(#bg-genai-enablement)"/>
+    <rect x="20" y="20" width="1400" height="440" fill="url(#grid-genai-enablement)"/>
+    <rect x="20" y="20" width="1400" height="4" fill="url(#topbar-genai-enablement)"/>
   </g>
-  <g filter="url(#glow)" stroke="#818CF8" stroke-width="4" stroke-linecap="round">
-    <path d="M280 240H324"/><path d="M492 240H536"/><path d="M704 240H748"/><path d="M916 240H960"/><path d="M1128 240H1172"/>
+  <rect x="20" y="20" width="1400" height="440" rx="30" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Header Row -->
+  <circle cx="62" cy="76" r="5" fill="#8B5CF6"/>
+  <text x="78" y="81" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.2" fill="#475569">GENAI ENABLEMENT · CLOSED-LOOP PERF FLOW</text>
+
+  
+  <rect x="870" y="58" width="150" height="34" rx="17" fill="#FFFFFF" stroke="#DDD6FE" stroke-width="1.2"/>
+  <text x="945" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#6D28D9">LLM Observability</text>
+  
+  <rect x="1030" y="58" width="194" height="34" rx="17" fill="#FFFFFF" stroke="#DDD6FE" stroke-width="1.2"/>
+  <text x="1127" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#6D28D9">Prefix Cache &amp; KV Reuse</text>
+  
+  <rect x="1234" y="58" width="150" height="34" rx="17" fill="#FFFFFF" stroke="#DDD6FE" stroke-width="1.2"/>
+  <text x="1309" y="79" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#6D28D9">20+ Consultations</text>
+  
+
+  <!-- 6-Step Workflow Cards -->
+  
+  <g>
+    <rect x="56" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="74" y="166" width="42" height="42" rx="12" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="1.2"/>
+    <g transform="translate(84 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+    </g>
+    
+    <text x="236" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">01</text>
+    <text x="74" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Usage Telemetry</text>
+    
+    <text x="74" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Tokens, Context &amp;</text>
+    
+    <text x="74" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Timeouts</text>
+    
   </g>
-  <g fill="#818CF8">
-    <path d="M324 240L312 233V247L324 240Z"/><path d="M536 240L524 233V247L536 240Z"/><path d="M748 240L736 233V247L748 240Z"/><path d="M960 240L948 233V247L960 240Z"/><path d="M1172 240L1160 233V247L1172 240Z"/>
+  
+  <g stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M259 246H275"/>
+    <path d="M270 241L275 246L270 251" fill="none"/>
   </g>
-  <g fill="url(#node)" stroke="#3730A3">
-    <rect x="76" y="184" width="204" height="112" rx="26"/><rect x="288" y="184" width="204" height="112" rx="26"/><rect x="500" y="184" width="204" height="112" rx="26"/><rect x="712" y="184" width="204" height="112" rx="26"/><rect x="924" y="184" width="204" height="112" rx="26"/><rect x="1136" y="184" width="204" height="112" rx="26"/>
+  
+  <g>
+    <rect x="282" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="300" y="166" width="42" height="42" rx="12" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="1.2"/>
+    <g transform="translate(310 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m8 11 2 2 4-4"></path><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+    </g>
+    
+    <text x="462" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">02</text>
+    <text x="300" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Issue Diagnosis</text>
+    
+    <text x="300" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Logs + 20+ 1-on-1</text>
+    
+    <text x="300" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Sessions</text>
+    
   </g>
-  <g fill="#1E1B4B" stroke="#4F46E5">
-    <rect x="156" y="198" width="44" height="44" rx="12"/><rect x="368" y="198" width="44" height="44" rx="12"/><rect x="580" y="198" width="44" height="44" rx="12"/><rect x="792" y="198" width="44" height="44" rx="12"/><rect x="1004" y="198" width="44" height="44" rx="12"/><rect x="1216" y="198" width="44" height="44" rx="12"/>
+  
+  <g stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M485 246H501"/>
+    <path d="M496 241L501 246L496 251" fill="none"/>
   </g>
-  <g fill="none" stroke="#A5B4FC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M167 224L173 216L179 222L187 212L191 224"/>
-    <circle cx="388" cy="218" r="8"/><path d="M394 224L400 230"/>
-    <path d="M604 209L594 221H602L600 231L610 219H602L604 209Z"/>
-    <path d="M802 214H826M802 226H826"/><circle cx="810" cy="214" r="2.5"/><circle cx="818" cy="226" r="2.5"/>
-    <rect x="1014" y="209" width="24" height="22" rx="3"/><path d="M1020 217L1017 220L1020 223M1032 217L1035 220L1032 223"/>
-    <circle cx="1234" cy="216" r="5"/><path d="M1226 230C1226 225 1230 223 1234 223C1238 223 1242 225 1242 230"/><circle cx="1246" cy="217" r="3.5"/>
+  
+  <g>
+    <rect x="508" y="148" width="198" height="196" rx="20" fill="url(#card-hi-genai-enablement)" stroke="#C4B5FD" stroke-width="1.8"/>
+    <rect x="526" y="166" width="42" height="42" rx="12" fill="#EDE9FE" stroke="#C4B5FD" stroke-width="1.2"/>
+    <g transform="translate(536 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+    </g>
+    
+    <rect x="599" y="174" width="65" height="22" rx="11" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+    <text x="631.5" y="188.5" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#6D28D9">Perf Core</text>
+    
+    <text x="688" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">03</text>
+    <text x="526" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Prefix Caching</text>
+    
+    <text x="526" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Stable KV Prefix &amp; TTFT</text>
+    
   </g>
-  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" fill="#EEF2FF" font-size="20" font-weight="700" text-anchor="middle">
-    <text x="178" y="272">Usage Telemetry</text>
-    <text x="390" y="272">Issue Diagnosis</text>
-    <text x="602" y="272">Prefix Caching</text>
-    <text x="814" y="272">Context Flow</text>
-    <text x="1026" y="272">OpenCode Guides</text>
-    <text x="1238" y="272">Knowledge Rollout</text>
+  
+  <g stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M711 246H727"/>
+    <path d="M722 241L727 246L722 251" fill="none"/>
   </g>
-  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" fill="#A5B4FC" font-size="12" text-anchor="middle">
-    <text x="178" y="288">Tokens / Context / Timeouts</text>
-    <text x="390" y="288">Logs &amp; Consultations</text>
-    <text x="602" y="288">KV Cache &amp; TTFT Guide</text>
-    <text x="814" y="288">Compression &amp; Prompts</text>
-    <text x="1026" y="288">Bilingual Skills &amp; Docs</text>
-    <text x="1238" y="288">20+ 1-on-1 &amp; Portal</text>
+  
+  <g>
+    <rect x="734" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="752" y="166" width="42" height="42" rx="12" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="1.2"/>
+    <g transform="translate(762 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="21" x2="14" y1="4" y2="4"></line><line x1="10" x2="3" y1="4" y2="4"></line><line x1="21" x2="12" y1="12" y2="12"></line><line x1="8" x2="3" y1="12" y2="12"></line><line x1="21" x2="16" y1="20" y2="20"></line><line x1="12" x2="3" y1="20" y2="20"></line><line x1="14" x2="14" y1="2" y2="6"></line><line x1="8" x2="8" y1="10" y2="14"></line><line x1="16" x2="16" y1="18" y2="22"></line>
+    </g>
+    
+    <text x="914" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">04</text>
+    <text x="752" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Context Flow</text>
+    
+    <text x="752" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Compression &amp; Task</text>
+    
+    <text x="752" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Split</text>
+    
   </g>
+  
+  <g stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M937 246H953"/>
+    <path d="M948 241L953 246L948 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="960" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="978" y="166" width="42" height="42" rx="12" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="1.2"/>
+    <g transform="translate(988 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 18 3-3-3-3"></path><path d="m5 12-3 3 3 3"></path>
+    </g>
+    
+    <text x="1140" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">05</text>
+    <text x="978" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">OpenCode Guides</text>
+    
+    <text x="978" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">ZH / EN Skills &amp;</text>
+    
+    <text x="978" y="293" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Guardrails</text>
+    
+  </g>
+  
+  <g stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1163 246H1179"/>
+    <path d="M1174 241L1179 246L1174 251" fill="none"/>
+  </g>
+  
+  <g>
+    <rect x="1186" y="148" width="198" height="196" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="1204" y="166" width="42" height="42" rx="12" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="1.2"/>
+    <g transform="translate(1214 176) scale(0.92)" fill="none" stroke="#6D28D9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+    </g>
+    
+    <text x="1366" y="189" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#94A3B8">06</text>
+    <text x="1204" y="248" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#202124">Company Rollout</text>
+    
+    <text x="1204" y="274" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5F6368">Mgmt-Announced Portal</text>
+    
+  </g>
+  
+
+  <!-- Footer Takeaway Bar -->
+  <rect x="56" y="382" width="1328" height="50" rx="16" fill="#FFFFFF" fill-opacity="0.92" stroke="#E2E8F0" stroke-width="1.2"/>
+  <circle cx="76" cy="407" r="3.5" fill="#8B5CF6"/>
+  <text x="90" y="412" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#475569">Closed-loop enablement turning production telemetry and 20+ 1-on-1 consultations into durable bilingual playbooks.</text>
+
+  <rect x="1107" y="392" width="261" height="30" rx="15" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+  <text x="1237.5" y="411" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#5B21B6">ZH / EN Portal · TTFT Verification</text>
 </svg>
